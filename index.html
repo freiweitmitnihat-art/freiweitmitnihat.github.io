@@ -59,7 +59,7 @@ nav{
 .mega-inner{max-width:1100px;margin:0 auto;padding:28px clamp(20px,5vw,80px) 36px}
 .mega-themes{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--light)}
 .mega-themes-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
-.mega-themes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.mega-themes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 .mtt{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid var(--light);border-radius:8px;padding:13px 15px;text-decoration:none;transition:all .18s}
 .mtt:hover{border-color:var(--terra);background:rgba(196,98,45,0.04)}
 .mtt-title{font-size:13px;font-weight:700;color:var(--earth)}
@@ -524,6 +524,10 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
         <a href="reise-buchen.html" class="mtt" onclick="toggleMenu()">
           <span class="mtt-title" data-i18n="mtt_reise">Reise buchen</span>
           <span class="mtt-sub" data-i18n="mtt_reise_sub">Hotels, Flüge &amp; Nihat treffen</span>
+        </a>
+        <a href="blog/pattaya-kosten-2026.html" class="mtt" onclick="toggleMenu()">
+          <span class="mtt-title" data-i18n="mtt_blog">Blog &amp; Artikel</span>
+          <span class="mtt-sub" data-i18n="mtt_blog_sub">Kosten, Visa, Alltag</span>
         </a>
       </div>
     </div>
@@ -1050,85 +1054,6 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<section class="sec" id="stimmen" style="background:var(--earth)">
-  <div class="sec-inner">
-    <div class="sec-eyebrow reveal" style="color:var(--sand)"><span style="background:var(--sand);width:24px;height:1px;display:inline-block;vertical-align:middle;margin-right:10px"></span>Stimmen der Community</div>
-    <h2 class="sec-h2 reveal d1" style="color:white">Was andere sagen.</h2>
-    <p class="sec-sub reveal d2" style="color:rgba(255,255,255,0.42)">Echte Erfahrungen von echten Menschen — Interviewpartner, Leser, Community-Mitglieder.</p>
-
-    <!-- REVIEWS GRID -->
-    <div id="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:52px">
-
-      <!-- Platzhalter Review 1 -->
-      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Platzhalter Review 2 -->
-      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Platzhalter Review 3 -->
-      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- FEEDBACK BUTTON -->
-    <div style="text-align:center;margin-top:44px" class="reveal d2">
-      <p style="font-size:14px;color:rgba(255,255,255,0.3);margin-bottom:16px;letter-spacing:-0.1px">Hast du mit mir zusammengearbeitet? Hinterlass dein Feedback.</p>
-      <button onclick="openReviewModal()" style="background:transparent;color:rgba(200,169,126,0.8);border:1px solid rgba(200,169,126,0.25);padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;letter-spacing:-0.1px" onmouseover="this.style.borderColor='var(--sand)';this.style.color='var(--sand)'" onmouseout="this.style.borderColor='rgba(200,169,126,0.25)';this.style.color='rgba(200,169,126,0.8)'">
-        Feedback hinterlassen
-      </button>
-    </div>
-  </div>
-</section>
-
 <!-- REVIEW MODAL -->
 <div id="review-overlay" style="display:none;position:fixed;inset:0;background:rgba(26,20,16,0.6);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px">
   <div style="background:white;border-radius:20px;padding:clamp(24px,4vw,40px);max-width:500px;width:100%;max-height:90vh;overflow-y:auto">
@@ -1352,6 +1277,86 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
     </div>
   </div>
 </section>
+
+<!-- SOCIAL PROOF -->
+<section class="sec" id="stimmen" style="background:var(--earth)">
+  <div class="sec-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--sand)"><span style="background:var(--sand);width:24px;height:1px;display:inline-block;vertical-align:middle;margin-right:10px"></span>Stimmen der Community</div>
+    <h2 class="sec-h2 reveal d1" style="color:white">Was andere sagen.</h2>
+    <p class="sec-sub reveal d2" style="color:rgba(255,255,255,0.42)">Echte Erfahrungen von echten Menschen — Interviewpartner, Leser, Community-Mitglieder.</p>
+
+    <!-- REVIEWS GRID -->
+    <div id="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:52px">
+
+      <!-- Platzhalter Review 1 -->
+      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+        <div style="display:flex;gap:4px;margin-bottom:16px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platzhalter Review 2 -->
+      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+        <div style="display:flex;gap:4px;margin-bottom:16px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platzhalter Review 3 -->
+      <div class="review-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,126,0.15);border-radius:16px;padding:28px;transition:background .3s" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+        <div style="display:flex;gap:4px;margin-bottom:16px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#C8A97E" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:20px;letter-spacing:-0.1px;font-style:italic">"Demnächst hier — erste Erfahrungen werden eingetragen."</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,126,0.2);border:1px solid rgba(200,169,126,0.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sand)">—</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:-0.1px">Platzhalter</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px">Demnächst</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FEEDBACK BUTTON -->
+    <div style="text-align:center;margin-top:44px" class="reveal d2">
+      <p style="font-size:14px;color:rgba(255,255,255,0.3);margin-bottom:16px;letter-spacing:-0.1px">Hast du mit mir zusammengearbeitet? Hinterlass dein Feedback.</p>
+      <button onclick="openReviewModal()" style="background:transparent;color:rgba(200,169,126,0.8);border:1px solid rgba(200,169,126,0.25);padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;letter-spacing:-0.1px" onmouseover="this.style.borderColor='var(--sand)';this.style.color='var(--sand)'" onmouseout="this.style.borderColor='rgba(200,169,126,0.25)';this.style.color='rgba(200,169,126,0.8)'">
+        Feedback hinterlassen
+      </button>
+    </div>
+  </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>

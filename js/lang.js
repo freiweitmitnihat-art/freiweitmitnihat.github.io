@@ -16,6 +16,7 @@ var TI={
     mtt_ratgeber:'Kostenloser Ratgeber',mtt_ratgeber_sub:'7 Fehler beim Auswandern',
     mtt_interview:'Interview vereinbaren',mtt_interview_sub:'Als Expat im Video auftreten',
     mtt_reise:'Reise buchen',mtt_reise_sub:'Hotels, Flüge & Nihat treffen',
+    mtt_blog:'Blog & Artikel',mtt_blog_sub:'Kosten, Visa, Alltag',
     /* Megamenu Spalten */
     nav_blog:'Blog',
     mega_thailand:'Thailand',mega_vietnam:'Vietnam',mega_yt:'YouTube & Links',mega_blog:'Blog & Ratgeber',
@@ -119,6 +120,7 @@ var TI={
     mtt_ratgeber:'Free Guide',mtt_ratgeber_sub:'7 mistakes when emigrating',
     mtt_interview:'Schedule Interview',mtt_interview_sub:'Appear as expat in my video',
     mtt_reise:'Book a Trip',mtt_reise_sub:'Hotels, flights & meet Nihat',
+    mtt_blog:'Blog & Articles',mtt_blog_sub:'Costs, visas, daily life',
     nav_blog:'Blog',
     mega_thailand:'Thailand',mega_vietnam:'Vietnam',mega_yt:'YouTube & Links',mega_blog:'Blog & Guides',
     mg_grab:'Set up Grab App',mg_grab_sub:'Taxi, food, packages across SEA',
