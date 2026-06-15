@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARTIKEL_TITEL — Freiweit mit Nihat</title>
+<meta name="description" content="ARTIKEL_EXCERPT">
+<meta property="og:title" content="ARTIKEL_TITEL">
+<meta property="og:description" content="ARTIKEL_EXCERPT">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://freiweitmitnihat.com/blog/ARTIKEL_SLUG.html">
+<link rel="canonical" href="https://freiweitmitnihat.com/blog/ARTIKEL_SLUG.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+body{background:var(--cream);color:var(--earth);font-family:Inter,sans-serif;font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(247,243,238,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);z-index:200}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--earth)}
+.nav-logo span{color:var(--terra)}
+.nav-back{font-size:13px;color:var(--mid);display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+.nav-cta{background:var(--earth);color:var(--cream);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+.article-hero{margin-top:60px;background:var(--earth);color:white;padding:clamp(48px,8vw,100px) clamp(20px,5vw,80px) clamp(40px,6vw,80px);text-align:center}
+.article-hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.15;letter-spacing:-1px;max-width:800px;margin:0 auto 20px}
+.article-hero .meta{font-size:13px;color:rgba(255,255,255,0.55);letter-spacing:0.5px}
+.hero-thumb{width:100%;max-height:420px;object-fit:cover;background:linear-gradient(135deg,#2d1505,#7a3a12,#c4622d)}
+.hero-color-block{width:100%;height:280px}
+
+/* ARTICLE BODY */
+.article-wrap{max-width:740px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,40px)}
+.article-body h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--earth);margin:48px 0 18px;letter-spacing:-0.3px}
+.article-body h3{font-size:19px;font-weight:700;color:var(--earth);margin:36px 0 14px}
+.article-body p{font-size:16.5px;color:#333;line-height:1.85;margin-bottom:22px}
+.article-body ul,.article-body ol{margin:0 0 22px 22px}
+.article-body li{font-size:16px;color:#333;line-height:1.8;margin-bottom:8px}
+.article-body strong{color:var(--earth)}
+.article-body blockquote{border-left:3px solid var(--terra);padding:16px 20px;background:#fff;margin:28px 0;font-style:italic;color:var(--mid);font-size:17px}
+.info-box{background:#fff;border:1px solid var(--light);border-left:4px solid var(--terra);border-radius:8px;padding:24px 28px;margin:32px 0}
+.info-box .info-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.stat-box{background:#fff;border:1px solid var(--light);border-radius:8px;padding:20px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--earth)}
+.stat-label{font-size:12px;color:var(--mid);margin-top:4px}
+
+/* VIDEO CTA */
+.video-cta{background:var(--earth);color:white;border-radius:12px;padding:32px 28px;margin:40px 0;text-align:center}
+.video-cta p{color:rgba(255,255,255,0.7);margin-bottom:16px;font-size:15px}
+.video-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--terra);color:white;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:0.3px;transition:opacity .2s}
+.video-cta a:hover{opacity:0.85}
+
+/* AUTHOR */
+.author-box{display:flex;align-items:center;gap:20px;background:#fff;border:1px solid var(--light);border-radius:12px;padding:24px 28px;margin:40px 0}
+.author-avatar{width:56px;height:56px;border-radius:50%;background:var(--earth);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0}
+.author-name{font-weight:700;color:var(--earth);margin-bottom:3px}
+.author-bio{font-size:13px;color:var(--mid);line-height:1.6}
+
+/* MORE ARTICLES */
+.more-section{background:var(--earth);padding:clamp(48px,6vw,80px) clamp(20px,5vw,80px)}
+.more-section h2{font-family:'Playfair Display',serif;font-size:28px;color:white;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
+.more-section .more-sub{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:36px}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.more-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:background .2s}
+.more-card:hover{background:rgba(255,255,255,0.09)}
+.more-thumb{height:120px}
+.more-card-body{padding:16px}
+.more-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.more-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:white;line-height:1.4;margin-bottom:8px}
+.more-card-meta{font-size:12px;color:rgba(255,255,255,0.4)}
+@media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}.stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.more-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:#0e0b08;color:rgba(255,255,255,0.5);text-align:center;padding:32px 20px;font-size:13px}
+footer a{color:rgba(255,255,255,0.5);text-decoration:none}
+footer a:hover{color:white}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="../index.html#blog" class="nav-back">&#8592; Alle Artikel</a>
+  <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" class="nav-cta">Beratung buchen</a>
+</nav>
+
+<!-- ARTIKEL INHALT HIER -->
+ARTIKEL_CONTENT
+
+<!-- WEITERE ARTIKEL -->
+<section class="more-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <h2>Weitere Artikel</h2>
+    <p class="more-sub">Mehr aus dem Freiweit-Blog</p>
+    <div class="more-grid">
+      WEITERE_ARTIKEL
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:8px">
+    <a href="../index.html">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank">YouTube</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/nihatbucakli/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp;
+    <a href="../kontakt.html">Kontakt</a>
+  </p>
+  <p>&copy; 2026 Nihat Bucakli &middot; Freiweit mit Nihat</p>
+</footer>
+
+</body>
+</html>

@@ -39,9 +39,39 @@ nav{
 .nav-cta-outline{
   background:transparent;color:var(--earth);border:1.5px solid var(--earth);
   padding:8px 18px;border-radius:8px;font-size:13.5px;font-weight:500;
-  text-decoration:none;transition:all .2s;letter-spacing:-0.1px;margin-right:8px;
+  text-decoration:none;transition:all .2s;letter-spacing:-0.1px;
 }
 .nav-cta-outline:hover{background:var(--earth);color:var(--cream)}
+.nav-right-group{display:flex;align-items:center;gap:10px}
+.lang-switcher{display:flex;align-items:center;gap:2px;background:rgba(26,20,16,0.07);border-radius:20px;padding:3px}
+.lang-btn{border:none;background:transparent;cursor:pointer;font-size:11px;font-weight:700;color:var(--mid);padding:4px 9px;border-radius:16px;transition:all .2s;letter-spacing:0.3px;white-space:nowrap}
+.lang-btn.active{background:var(--earth);color:white}
+.nav-burger{border:none;background:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;margin-left:4px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--earth);border-radius:2px;transition:all .3s}
+.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* MEGAMENU */
+.megamenu{position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--light);z-index:99;transform:translateY(-10px);opacity:0;pointer-events:none;transition:all .25s ease}
+.megamenu.open{transform:translateY(0);opacity:1;pointer-events:all}
+.mega-inner{max-width:1100px;margin:0 auto;padding:40px clamp(20px,5vw,80px);display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.mega-col-title{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--earth)}
+.mega-link{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--light);text-decoration:none;transition:color .2s}
+.mega-link:last-child{border-bottom:none}
+.mega-link:hover .mega-link-title{color:var(--terra)}
+.mega-link-title{font-size:14px;font-weight:600;color:var(--earth);transition:color .2s}
+.mega-link-sub{font-size:12px;color:var(--mid)}
+#mega-backdrop{position:fixed;inset:0;top:60px;z-index:98;background:rgba(26,20,16,0.3);opacity:0;pointer-events:none;transition:opacity .25s}
+#mega-backdrop.open{opacity:1;pointer-events:all}
+@media(max-width:900px){
+  .mega-inner{grid-template-columns:1fr 1fr;gap:32px}
+  .lang-switcher{display:none}
+}
+@media(max-width:600px){
+  .mega-inner{grid-template-columns:1fr;padding:24px 20px}
+  .nav-cta-outline{display:none}
+  .nav-right-group{gap:6px}
+}
 
 /* HERO */
 .hero{
@@ -387,21 +417,110 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Freiweit <span>mit Nihat</span></a>
-  <ul class="nav-links">
-    <li><a href="#destinationen">Destinationen</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#angebote">Angebote</a></li>
-    <li><a href="#immobilien">Immobilien</a></li>
-    <li><a href="interview.html">Interview</a></li>
-    <li><a href="#stimmen">Stimmen</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:8px">
-    <a href="kontakt.html" class="nav-cta-outline">Media Kit anfordern</a>
-    <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" class="nav-cta">Beratung buchen</a>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <div class="nav-right-group">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="de" onclick="setLang('de')">&#127465;&#127466; DE</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">&#127468;&#127463; EN</button>
+      <button class="lang-btn" data-lang="th" onclick="setLang('th')">&#127481;&#127469; TH</button>
+    </div>
+    <a href="kontakt.html" class="nav-cta-outline" data-i18n="nav_mediakit">Media Kit anfordern</a>
+    <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" class="nav-cta" data-i18n="nav_beratung">Beratung buchen</a>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MEGAMENU -->
+<div id="megamenu" class="megamenu" onclick="closeMegaIfOutside(event)">
+  <div class="mega-inner">
+    <div class="mega-col">
+      <div class="mega-col-title" data-i18n="mega_thailand">&#127481;&#127469; Thailand</div>
+      <a href="https://www.true.th/service/truemove-h/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_sim_th">SIM-Karte: True Move H</span>
+        <span class="mega-link-sub" data-i18n="mg_sim_th_sub">Offiziell — günstig für Langzeitreisende</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.grabtaxi.passenger" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_grab">Grab App einrichten</span>
+        <span class="mega-link-sub" data-i18n="mg_grab_sub">Taxi, Essen, Pakete in ganz SEA</span>
+      </a>
+      <a href="https://www.thaievisa.go.th/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_visa_th">Thailand E-Visum</span>
+        <span class="mega-link-sub" data-i18n="mg_visa_th_sub">Offizielle Regierungsseite</span>
+      </a>
+      <a href="https://tdac.immigration.go.th/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_tdac">Thailand Digital Arrival Card</span>
+        <span class="mega-link-sub" data-i18n="mg_tdac_sub">Pflicht seit 2024 — offiziell</span>
+      </a>
+      <a href="ratgeber.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_kosten_th">Lebenshaltungskosten Thailand</span>
+        <span class="mega-link-sub" data-i18n="mg_kosten_th_sub">Pattaya, Chiang Mai, Bangkok</span>
+      </a>
+      <a href="immobilien.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_immo_th">Immobilien Thailand</span>
+        <span class="mega-link-sub" data-i18n="mg_immo_th_sub">Mieten &amp; Kaufen aus meinen Videos</span>
+      </a>
+    </div>
+
+    <div class="mega-col">
+      <div class="mega-col-title" data-i18n="mega_vietnam">&#127483;&#127475; Vietnam</div>
+      <a href="https://evisa.xuatnhapcanh.gov.vn/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_visa_vn">Vietnam E-Visum</span>
+        <span class="mega-link-sub" data-i18n="mg_visa_vn_sub">Einzige offizielle Seite — Scammer meiden</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.grabtaxi.passenger" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_grab_vn">Grab App Vietnam</span>
+        <span class="mega-link-sub" data-i18n="mg_grab_vn_sub">Da Nang, Hanoi, Ho-Chi-Minh</span>
+      </a>
+      <a href="https://www.viettel.vn/en/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_sim_vn">SIM-Karte: Viettel</span>
+        <span class="mega-link-sub" data-i18n="mg_sim_vn_sub">Beste Netzabdeckung in Vietnam</span>
+      </a>
+      <a href="ratgeber.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_kosten_vn">Lebenshaltungskosten Vietnam</span>
+        <span class="mega-link-sub" data-i18n="mg_kosten_vn_sub">Da Nang, Hanoi, HCMC — aus erster Hand</span>
+      </a>
+      <a href="city-guides.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_guides">City Guides kaufen</span>
+        <span class="mega-link-sub" data-i18n="mg_guides_sub">Google Maps Geheimtipps ab 9,90€</span>
+      </a>
+      <a href="immobilien.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_immo_vn">Immobilien Vietnam</span>
+        <span class="mega-link-sub" data-i18n="mg_immo_vn_sub">Wohnungen &amp; Häuser mit echten Preisen</span>
+      </a>
+    </div>
+
+    <div class="mega-col">
+      <div class="mega-col-title" data-i18n="mega_yt">YouTube &amp; Links</div>
+      <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_yt">YouTube Kanal</span>
+        <span class="mega-link-sub" data-i18n="mg_yt_sub">Wöchentlich neue Videos — kostenlos</span>
+      </a>
+      <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_beratung">1-on-1 Beratung — 97€</span>
+        <span class="mega-link-sub" data-i18n="mg_beratung_sub">60 Min. zu Visa, Budget, Wohnen</span>
+      </a>
+      <a href="interview.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_interview">Interview anfragen</span>
+        <span class="mega-link-sub" data-i18n="mg_interview_sub">Als Expat im Video auftreten</span>
+      </a>
+      <a href="kontakt.html" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_mediakit">Media Kit anfordern</span>
+        <span class="mega-link-sub" data-i18n="mg_mediakit_sub">Sponsoring &amp; Kooperationen</span>
+      </a>
+      <a href="https://t.me/FreiweitmitNihat" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title" data-i18n="mg_community">Telegram Community</span>
+        <span class="mega-link-sub" data-i18n="mg_community_sub">Austausch mit Gleichgesinnten</span>
+      </a>
+      <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener" class="mega-link">
+        <span class="mega-link-title">Instagram</span>
+        <span class="mega-link-sub">@nihatbucakli</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div id="mega-backdrop" onclick="toggleMenu()"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -949,7 +1068,7 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
     <h2 class="sec-h2 reveal d1">Aktuelle Einblicke.</h2>
     <p class="sec-sub reveal d2">Jedes neue Video erscheint auch hier als Artikel.</p>
     <div class="blog-grid">
-      <article class="blog-card reveal d1">
+      <a href="blog/pattaya-kosten-2026.html" class="blog-card reveal d1" style="text-decoration:none;display:block">
         <div class="blog-thumb">
           <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
           <span class="blog-country bc-th">Thailand</span>
@@ -958,10 +1077,10 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
           <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
           <h3 class="blog-title">Lebenshaltungskosten Pattaya 2026: Was es wirklich kostet</h3>
           <p class="blog-excerpt">Miete, Essen, Transport — meine echten Monatskosten. Keine geschönten Zahlen, kein Marketingblabla.</p>
-          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="blog-link">Video ansehen &#8594;</a>
+          <span class="blog-link">Artikel lesen &#8594;</span>
         </div>
-      </article>
-      <article class="blog-card reveal d2">
+      </a>
+      <a href="blog/da-nang-vietnam-entdeckt.html" class="blog-card reveal d2" style="text-decoration:none;display:block">
         <div class="blog-thumb">
           <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#0d2010 0%,#1a5c20 50%,#6b7c45 100%)"></div>
           <span class="blog-country bc-vn">Vietnam</span>
@@ -970,10 +1089,10 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
           <div class="blog-meta">Mai 2026 &middot; 6 Min. Lesezeit</div>
           <h3 class="blog-title">Da Nang: Warum ich Vietnam für mich entdeckt habe</h3>
           <p class="blog-excerpt">Nach Jahren in Thailand — plötzlich Vietnam. Was mich überrascht hat, was besser ist, was schlechter.</p>
-          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="blog-link">Video ansehen &#8594;</a>
+          <span class="blog-link">Artikel lesen &#8594;</span>
         </div>
-      </article>
-      <article class="blog-card reveal d3">
+      </a>
+      <a href="blog/7-fehler-auswandern.html" class="blog-card reveal d3" style="text-decoration:none;display:block">
         <div class="blog-thumb">
           <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#1a1410 0%,#3d2820 50%,#c8a97e 100%)"></div>
           <span class="blog-country bc-aus">Auswandern</span>
@@ -982,9 +1101,9 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
           <div class="blog-meta">April 2026 &middot; 10 Min. Lesezeit</div>
           <h3 class="blog-title">Die 7 größten Fehler beim Auswandern — aus eigener Erfahrung</h3>
           <p class="blog-excerpt">Ich habe sie alle selbst gemacht. Falsche Versicherung, falsches Visum, falscher Vermieter. Damit du es nicht musst.</p>
-          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="blog-link">Video ansehen &#8594;</a>
+          <span class="blog-link">Artikel lesen &#8594;</span>
         </div>
-      </article>
+      </a>
     </div>
     <div style="text-align:center;margin-top:40px">
       <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="btn-s" style="display:inline-flex;align-items:center;gap:6px;padding:13px 24px;border-radius:8px;border:1px solid rgba(26,20,16,0.18);color:var(--earth);text-decoration:none;font-size:14px;font-weight:500;transition:all .2s">Alle Videos auf YouTube</a>
@@ -1276,6 +1395,41 @@ document.getElementById('review-overlay').addEventListener('click', e => {
 });
 
 window.addEventListener('scroll',()=>{const img=document.querySelector('.hero-img');if(img)img.style.transform=`scale(1.04) translateY(${window.scrollY*0.06}px)`;});
+</script>
+
+<script>
+// MEGAMENU
+function toggleMenu(){
+  var m=document.getElementById('megamenu');
+  var bd=document.getElementById('mega-backdrop');
+  var btn=document.querySelector('.nav-burger');
+  var open=m.classList.toggle('open');
+  bd.classList.toggle('open',open);
+  btn.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMegaIfOutside(e){if(e.target===e.currentTarget)toggleMenu();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('megamenu').classList.contains('open'))toggleMenu();});
+
+// LANGUAGE
+var TI={
+  de:{nav_mediakit:'Media Kit anfordern',nav_beratung:'Beratung buchen',mega_thailand:'🇹🇭 Thailand',mega_vietnam:'🇻🇳 Vietnam',mega_yt:'YouTube & Links',mg_sim_th:'SIM-Karte: True Move H',mg_sim_th_sub:'Offiziell — günstig für Langzeitreisende',mg_grab:'Grab App einrichten',mg_grab_sub:'Taxi, Essen, Pakete in ganz SEA',mg_visa_th:'Thailand E-Visum',mg_visa_th_sub:'Offizielle Regierungsseite',mg_tdac:'Thailand Digital Arrival Card',mg_tdac_sub:'Pflicht seit 2024 — offiziell',mg_kosten_th:'Lebenshaltungskosten Thailand',mg_kosten_th_sub:'Pattaya, Chiang Mai, Bangkok',mg_immo_th:'Immobilien Thailand',mg_immo_th_sub:'Mieten & Kaufen aus meinen Videos',mg_visa_vn:'Vietnam E-Visum',mg_visa_vn_sub:'Einzige offizielle Seite — Scammer meiden',mg_grab_vn:'Grab App Vietnam',mg_grab_vn_sub:'Da Nang, Hanoi, Ho-Chi-Minh',mg_sim_vn:'SIM-Karte: Viettel',mg_sim_vn_sub:'Beste Netzabdeckung in Vietnam',mg_kosten_vn:'Lebenshaltungskosten Vietnam',mg_kosten_vn_sub:'Da Nang, Hanoi, HCMC — aus erster Hand',mg_guides:'City Guides kaufen',mg_guides_sub:'Google Maps Geheimtipps ab 9,90€',mg_immo_vn:'Immobilien Vietnam',mg_immo_vn_sub:'Wohnungen & Häuser mit echten Preisen',mg_yt:'YouTube Kanal',mg_yt_sub:'Wöchentlich neue Videos — kostenlos',mg_beratung:'1-on-1 Beratung — 97€',mg_beratung_sub:'60 Min. zu Visa, Budget, Wohnen',mg_interview:'Interview anfragen',mg_interview_sub:'Als Expat im Video auftreten',mg_mediakit:'Media Kit anfordern',mg_mediakit_sub:'Sponsoring & Kooperationen',mg_community:'Telegram Community',mg_community_sub:'Austausch mit Gleichgesinnten'},
+  en:{nav_mediakit:'Request Media Kit',nav_beratung:'Book Consultation',mega_thailand:'🇹🇭 Thailand',mega_vietnam:'🇻🇳 Vietnam',mega_yt:'YouTube & Links',mg_sim_th:'SIM Card: True Move H',mg_sim_th_sub:'Official — cheap for long-term travelers',mg_grab:'Set up Grab App',mg_grab_sub:'Taxi, Food, Packages across SEA',mg_visa_th:'Thailand E-Visa',mg_visa_th_sub:'Official government website',mg_tdac:'Thailand Digital Arrival Card',mg_tdac_sub:'Mandatory since 2024 — official',mg_kosten_th:'Cost of Living Thailand',mg_kosten_th_sub:'Pattaya, Chiang Mai, Bangkok',mg_immo_th:'Real Estate Thailand',mg_immo_th_sub:'Rent & Buy from my videos',mg_visa_vn:'Vietnam E-Visa',mg_visa_vn_sub:'Only official site — avoid scammers',mg_grab_vn:'Grab App Vietnam',mg_grab_vn_sub:'Da Nang, Hanoi, Ho Chi Minh City',mg_sim_vn:'SIM Card: Viettel',mg_sim_vn_sub:'Best network coverage in Vietnam',mg_kosten_vn:'Cost of Living Vietnam',mg_kosten_vn_sub:'Da Nang, Hanoi, HCMC — first hand',mg_guides:'Buy City Guides',mg_guides_sub:'Google Maps insider tips from 9.90€',mg_immo_vn:'Real Estate Vietnam',mg_immo_vn_sub:'Apartments & houses with real prices',mg_yt:'YouTube Channel',mg_yt_sub:'New videos weekly — free',mg_beratung:'1-on-1 Consultation — 97€',mg_beratung_sub:'60 min on Visa, Budget, Housing',mg_interview:'Apply for Interview',mg_interview_sub:'Appear as expat in a video',mg_mediakit:'Request Media Kit',mg_mediakit_sub:'Sponsoring & Cooperations',mg_community:'Telegram Community',mg_community_sub:'Connect with like-minded people'},
+  th:{nav_mediakit:'ขอ Media Kit',nav_beratung:'จองปรึกษา',mega_thailand:'🇹🇭 ประเทศไทย',mega_vietnam:'🇻🇳 เวียดนาม',mega_yt:'YouTube & ลิงก์',mg_sim_th:'ซิมการ์ด: True Move H',mg_sim_th_sub:'เป็นทางการ — ราคาถูกสำหรับนักเดินทาง',mg_grab:'ตั้งค่าแอป Grab',mg_grab_sub:'แท็กซี่ อาหาร พัสดุทั่ว SEA',mg_visa_th:'วีซ่า E-Visa ไทย',mg_visa_th_sub:'เว็บไซต์รัฐบาลอย่างเป็นทางการ',mg_tdac:'บัตรเข้าเมืองดิจิทัลไทย',mg_tdac_sub:'บังคับตั้งแต่ 2024 — อย่างเป็นทางการ',mg_kosten_th:'ค่าครองชีพในไทย',mg_kosten_th_sub:'พัทยา เชียงใหม่ กรุงเทพ',mg_immo_th:'อสังหาริมทรัพย์ไทย',mg_immo_th_sub:'เช่าและซื้อจากวิดีโอของฉัน',mg_visa_vn:'E-Visa เวียดนาม',mg_visa_vn_sub:'เว็บเดียวที่เป็นทางการ — ระวังนักต้มตุ๋น',mg_grab_vn:'Grab แอป เวียดนาม',mg_grab_vn_sub:'ดานัง ฮานอย โฮจิมินห์',mg_sim_vn:'ซิมการ์ด: Viettel',mg_sim_vn_sub:'ครอบคลุมเครือข่ายดีที่สุดในเวียดนาม',mg_kosten_vn:'ค่าครองชีพในเวียดนาม',mg_kosten_vn_sub:'ดานัง ฮานอย HCMC',mg_guides:'ซื้อ City Guides',mg_guides_sub:'เคล็ดลับ Google Maps ตั้งแต่ 9.90€',mg_immo_vn:'อสังหาริมทรัพย์เวียดนาม',mg_immo_vn_sub:'อพาร์ตเมนต์และบ้านราคาจริง',mg_yt:'ช่อง YouTube',mg_yt_sub:'วิดีโอใหม่ทุกสัปดาห์ — ฟรี',mg_beratung:'ปรึกษาส่วนตัว — 97€',mg_beratung_sub:'60 นาที วีซ่า งบประมาณ ที่พัก',mg_interview:'สมัครสัมภาษณ์',mg_interview_sub:'ปรากฏในวิดีโอในฐานะ Expat',mg_mediakit:'ขอ Media Kit',mg_mediakit_sub:'สปอนเซอร์ & ความร่วมมือ',mg_community:'Telegram Community',mg_community_sub:'พูดคุยกับคนที่มีความคิดเหมือนกัน'}
+};
+
+function setLang(l){
+  localStorage.setItem('lang',l);
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(TI[l]&&TI[l][k]!==undefined)el.innerHTML=TI[l][k];
+  });
+  document.documentElement.lang=l==='th'?'th':l==='en'?'en':'de';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  setLang(localStorage.getItem('lang')||'de');
+});
 </script>
 </body>
 </html>
