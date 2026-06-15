@@ -42,6 +42,8 @@ nav{
   text-decoration:none;transition:all .2s;letter-spacing:-0.1px;
 }
 .nav-cta-outline:hover{background:var(--earth);color:var(--cream)}
+.nav-blog-link{font-size:13.5px;font-weight:500;color:var(--mid);text-decoration:none;padding:4px 2px;transition:color .2s;letter-spacing:-0.1px}
+.nav-blog-link:hover{color:var(--terra)}
 .nav-right-group{display:flex;align-items:center;gap:10px}
 .lang-switcher{display:flex;align-items:center;gap:2px;background:rgba(26,20,16,0.06);border-radius:20px;padding:3px}
 .lang-btn{border:none;background:transparent;cursor:pointer;font-size:11px;font-weight:700;color:var(--mid);padding:4px 9px;border-radius:16px;transition:all .2s;letter-spacing:0.3px;white-space:nowrap}
@@ -63,7 +65,7 @@ nav{
 .mtt-title{font-size:13px;font-weight:700;color:var(--earth)}
 .mtt-sub{font-size:11px;color:var(--mid);line-height:1.4}
 .mega-lang-mobile{display:none}
-.mega-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.mega-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
 .mega-col-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--light)}
 .mega-link{display:flex;flex-direction:column;gap:2px;padding:9px 0;border-bottom:1px solid var(--light);text-decoration:none;transition:color .2s}
 .mega-link:last-child{border-bottom:none}
@@ -80,6 +82,7 @@ nav{
   .mega-cols{grid-template-columns:1fr 1fr;gap:28px}
   .lang-switcher{display:flex}
   .nav-cta-outline{display:none}
+  .nav-blog-link{display:none}
 }
 @media(max-width:600px){
   .mega-themes-grid{grid-template-columns:1fr 1fr;gap:6px}
@@ -89,6 +92,7 @@ nav{
   .mega-cols{grid-template-columns:1fr;padding:0}
   .mega-inner{padding:24px 20px 32px}
   .nav-cta-outline{display:none}
+  .nav-blog-link{display:none}
   .nav-right-group{gap:6px}
 }
 
@@ -458,6 +462,7 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
       <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
+    <a href="blog/7-fehler-auswandern.html" class="nav-blog-link" data-i18n="nav_blog">Blog</a>
     <a href="kontakt.html" class="nav-cta-outline" data-i18n="nav_mediakit">Media Kit anfordern</a>
     <a href="beratung.html" class="nav-cta" data-i18n="nav_beratung">Beratung buchen</a>
     <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
@@ -594,6 +599,30 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
         <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener" class="mega-link">
           <span class="mega-link-title">Instagram</span>
           <span class="mega-link-sub">@nihatbucakli</span>
+        </a>
+      </div>
+
+      <div class="mega-col">
+        <div class="mega-col-title" data-i18n="mega_blog">Blog &amp; Ratgeber</div>
+        <a href="blog/pattaya-kosten-2026.html" class="mega-link">
+          <span class="mega-link-title" data-i18n="mg_blog_pattaya">Pattaya Kosten 2026</span>
+          <span class="mega-link-sub" data-i18n="mg_blog_pattaya_sub">Was kostet ein Monat wirklich?</span>
+        </a>
+        <a href="blog/lebenshaltungskosten-thailand.html" class="mega-link">
+          <span class="mega-link-title" data-i18n="mg_blog_lhk_th">LHK Thailand</span>
+          <span class="mega-link-sub" data-i18n="mg_blog_lhk_th_sub">Pattaya, Chiang Mai, Bangkok</span>
+        </a>
+        <a href="blog/lebenshaltungskosten-vietnam.html" class="mega-link">
+          <span class="mega-link-title" data-i18n="mg_blog_lhk_vn">LHK Vietnam</span>
+          <span class="mega-link-sub" data-i18n="mg_blog_lhk_vn_sub">Da Nang, Hanoi, Ho-Chi-Minh</span>
+        </a>
+        <a href="blog/da-nang-vietnam-entdeckt.html" class="mega-link">
+          <span class="mega-link-title" data-i18n="mg_blog_danang">Da Nang entdeckt</span>
+          <span class="mega-link-sub" data-i18n="mg_blog_danang_sub">Warum ich dort lebe</span>
+        </a>
+        <a href="blog/7-fehler-auswandern.html" class="mega-link">
+          <span class="mega-link-title" data-i18n="mg_blog_fehler">7 Fehler beim Auswandern</span>
+          <span class="mega-link-sub" data-i18n="mg_blog_fehler_sub">Teuer gelernt &mdash; du nicht</span>
         </a>
       </div>
     </div>
