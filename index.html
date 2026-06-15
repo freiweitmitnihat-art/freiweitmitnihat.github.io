@@ -59,7 +59,7 @@ nav{
 .mega-inner{max-width:1100px;margin:0 auto;padding:28px clamp(20px,5vw,80px) 36px}
 .mega-themes{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--light)}
 .mega-themes-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
-.mega-themes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mega-themes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .mtt{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid var(--light);border-radius:8px;padding:13px 15px;text-decoration:none;transition:all .18s}
 .mtt:hover{border-color:var(--terra);background:rgba(196,98,45,0.04)}
 .mtt-title{font-size:13px;font-weight:700;color:var(--earth)}
@@ -517,6 +517,14 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
           <span class="mtt-title" data-i18n="mtt_ratgeber">Kostenloser Ratgeber</span>
           <span class="mtt-sub" data-i18n="mtt_ratgeber_sub">7 Fehler beim Auswandern</span>
         </a>
+        <a href="interview.html" class="mtt" onclick="toggleMenu()">
+          <span class="mtt-title" data-i18n="mtt_interview">Interview vereinbaren</span>
+          <span class="mtt-sub" data-i18n="mtt_interview_sub">Als Expat im Video auftreten</span>
+        </a>
+        <a href="reise-buchen.html" class="mtt" onclick="toggleMenu()">
+          <span class="mtt-title" data-i18n="mtt_reise">Reise buchen</span>
+          <span class="mtt-sub" data-i18n="mtt_reise_sub">Hotels, Flüge &amp; Nihat treffen</span>
+        </a>
       </div>
     </div>
 
@@ -732,6 +740,22 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
         </div>
         <div style="font-size:14px;font-weight:600;color:var(--earth);letter-spacing:-0.1px;margin-bottom:4px">Kostenloser Ratgeber</div>
         <div style="font-size:12px;color:var(--mid)">7 Fehler beim Auswandern</div>
+      </a>
+
+      <a href="interview.html" style="background:white;border:1px solid rgba(26,20,16,0.08);border-radius:12px;padding:20px 18px;text-decoration:none;transition:all .25s;display:block" onmouseover="this.style.borderColor='var(--terra)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,20,16,0.08)'" onmouseout="this.style.borderColor='rgba(26,20,16,0.08)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:12px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.894L15 14"/><rect x="1" y="8" width="14" height="8" rx="2"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:600;color:var(--earth);letter-spacing:-0.1px;margin-bottom:4px">Interview vereinbaren</div>
+        <div style="font-size:12px;color:var(--mid)">Als Expat in meinem Video</div>
+      </a>
+
+      <a href="reise-buchen.html" style="background:white;border:1px solid rgba(26,20,16,0.08);border-radius:12px;padding:20px 18px;text-decoration:none;transition:all .25s;display:block" onmouseover="this.style.borderColor='var(--terra)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,20,16,0.08)'" onmouseout="this.style.borderColor='rgba(26,20,16,0.08)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:12px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.71 3.53 2 2 0 0 1 3.68 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.15a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M17 2h5v5"/><path d="M11.5 12.5L22 2"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:600;color:var(--earth);letter-spacing:-0.1px;margin-bottom:4px">Reise buchen</div>
+        <div style="font-size:12px;color:var(--mid)">Hotels, Flüge &amp; Nihat treffen</div>
       </a>
 
     </div>

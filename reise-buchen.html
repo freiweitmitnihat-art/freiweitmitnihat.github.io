@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reise buchen — Hotels, Flüge & Nihat treffen — Freiweit mit Nihat</title>
+<meta name="description" content="Buche günstige Hotels in Asien, finde Flüge oder vereinbare ein persönliches Treffen mit Nihat. Alles was du für deine Reise nach Thailand oder Vietnam brauchst.">
+<link rel="canonical" href="https://freiweitmitnihat.com/reise-buchen.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2;--sand:#b8965a;--cream2:#ede8e0}
+body{background:var(--cream);color:var(--earth);font-family:Inter,sans-serif;font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(247,243,238,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);z-index:200;gap:12px}
+.nl{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--earth)}.nl span{color:var(--terra)}
+.nb{font-size:13px;color:var(--mid);white-space:nowrap}.nb:hover{color:var(--terra)}
+.nc{background:var(--earth);color:var(--cream);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;white-space:nowrap}.nc:hover{background:var(--terra)}
+@media(max-width:600px){.nb{display:none}.nc{display:none}}
+
+/* Hero */
+.hero{margin-top:60px;background:var(--earth);color:white;padding:clamp(56px,8vw,100px) clamp(20px,5vw,80px);text-align:center}
+.ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.1;letter-spacing:-1px;max-width:720px;margin:0 auto 20px}
+.hero h1 em{color:var(--sand);font-style:normal}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto;line-height:1.75}
+
+/* Options grid */
+.options-sec{padding:clamp(56px,7vw,90px) clamp(20px,5vw,80px)}
+.options-inner{max-width:1060px;margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;letter-spacing:-0.5px;margin-bottom:12px}
+.sec-sub{font-size:15px;color:var(--mid);margin-bottom:52px;max-width:580px;line-height:1.7}
+
+.options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:860px){.options-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+
+/* Option Card */
+.opt-card{background:white;border:1px solid rgba(26,20,16,0.08);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s;text-decoration:none;color:var(--earth)}
+.opt-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(26,20,16,0.1);border-color:var(--terra)}
+.opt-card.highlight{background:var(--earth);color:white;border-color:var(--earth)}
+.opt-card.highlight:hover{border-color:var(--terra)}
+
+.opt-top{padding:36px 28px 28px}
+.opt-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:24px}
+.opt-icon.hotel{background:rgba(196,98,45,0.1)}
+.opt-icon.flight{background:rgba(26,20,16,0.07)}
+.opt-icon.meet{background:rgba(184,150,90,0.15)}
+.opt-card.highlight .opt-icon{background:rgba(255,255,255,0.1)}
+
+.opt-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--terra);background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.2);border-radius:20px;padding:3px 10px;margin-bottom:14px}
+.opt-card.highlight .opt-badge{color:var(--sand);background:rgba(184,150,90,0.15);border-color:rgba(184,150,90,0.3)}
+
+.opt-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.2;margin-bottom:12px;letter-spacing:-0.3px}
+.opt-desc{font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:24px}
+.opt-card.highlight .opt-desc{color:rgba(255,255,255,0.6)}
+
+.opt-features{list-style:none;margin-bottom:28px}
+.opt-features li{font-size:13.5px;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--light);display:flex;align-items:center;gap:10px}
+.opt-card.highlight .opt-features li{color:rgba(255,255,255,0.7);border-bottom-color:rgba(255,255,255,0.08)}
+.opt-features li:last-child{border-bottom:none}
+.feat-dot{width:6px;height:6px;border-radius:50%;background:var(--terra);flex-shrink:0}
+.opt-card.highlight .feat-dot{background:var(--sand)}
+
+.opt-cta{display:block;margin:0 28px 28px;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:700;text-align:center;transition:all .2s}
+.opt-cta.primary{background:var(--terra);color:white}.opt-cta.primary:hover{opacity:.88}
+.opt-cta.secondary{background:var(--cream2);color:var(--earth)}.opt-cta.secondary:hover{background:var(--light)}
+.opt-cta.gold{background:var(--sand);color:white}.opt-cta.gold:hover{opacity:.88}
+
+/* Coming soon badge */
+.coming-soon{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--mid);background:var(--cream2);border-radius:20px;padding:4px 12px;margin-bottom:14px}
+
+/* Info section */
+.info-sec{background:var(--cream2);padding:clamp(56px,7vw,90px) clamp(20px,5vw,80px)}
+.info-inner{max-width:1060px;margin:0 auto}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start;margin-top:48px}
+@media(max-width:720px){.info-grid{grid-template-columns:1fr;gap:36px}}
+
+.info-card{background:white;border-radius:16px;padding:32px 28px;border:1px solid rgba(26,20,16,0.06)}
+.info-card-icon{font-size:28px;margin-bottom:16px}
+.info-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px}
+.info-card-text{font-size:14px;color:var(--mid);line-height:1.7}
+
+/* Destinations */
+.dest-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.dest-chip{font-size:12px;font-weight:600;color:var(--terra);background:rgba(196,98,45,0.07);border:1px solid rgba(196,98,45,0.15);border-radius:20px;padding:5px 12px}
+
+/* CTA band */
+.cta-band{background:var(--earth);color:white;padding:clamp(48px,6vw,80px) clamp(20px,5vw,80px);text-align:center}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-0.5px;margin-bottom:16px}
+.cta-band p{font-size:15px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-btn-p{background:var(--terra);color:white;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:700;transition:opacity .2s}.cta-btn-p:hover{opacity:.88}
+.cta-btn-s{background:rgba(255,255,255,0.08);color:white;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.12);transition:all .2s}.cta-btn-s:hover{background:rgba(255,255,255,0.14)}
+
+/* Footer */
+footer{background:var(--earth);border-top:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.45);font-size:13px;padding:24px clamp(20px,5vw,80px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color:white}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nl">Freiweit <span>mit Nihat</span></a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <a href="index.html" class="nb">← Startseite</a>
+    <a href="beratung.html" class="nc">Beratung buchen</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="ey">Reise planen &middot; Freiweit mit Nihat</div>
+  <h1>Deine Reise nach<br><em>Asien</em> beginnt hier.</h1>
+  <p class="hero-sub">Hotels mit Nihat-Empfehlung, Flüge zum besten Preis — oder einfach Nihat persönlich treffen und alles besprechen.</p>
+</div>
+
+<!-- Options -->
+<section class="options-sec">
+  <div class="options-inner">
+    <div class="sec-label">Was möchtest du tun?</div>
+    <h2 class="sec-h2">Wähle deine Option.</h2>
+    <p class="sec-sub">Alles was du für deine Reise brauchst — an einem Ort.</p>
+
+    <div class="options-grid">
+
+      <!-- Hotel -->
+      <a href="https://bit.ly/NihatHotels" target="_blank" rel="noopener" class="opt-card">
+        <div class="opt-top">
+          <div class="opt-icon hotel">🏨</div>
+          <div class="opt-badge">Nihat-Empfehlung</div>
+          <div class="opt-title">Hotel buchen</div>
+          <div class="opt-desc">Günstige und gute Unterkünfte in Thailand & Vietnam — gefiltert nach meinen echten Erfahrungen vor Ort.</div>
+          <ul class="opt-features">
+            <li><span class="feat-dot"></span>Pattaya, Bangkok, Chiang Mai</li>
+            <li><span class="feat-dot"></span>Da Nang, Hanoi, Ho-Chi-Minh</li>
+            <li><span class="feat-dot"></span>Günstigste Preise via Agoda</li>
+            <li><span class="feat-dot"></span>Kein Aufpreis für dich</li>
+          </ul>
+        </div>
+        <div class="opt-cta primary">Jetzt Hotel suchen →</div>
+      </a>
+
+      <!-- Flüge -->
+      <div class="opt-card" style="cursor:default;opacity:0.8">
+        <div class="opt-top">
+          <div class="opt-icon flight">✈️</div>
+          <span class="coming-soon">⏳ Bald verfügbar</span>
+          <div class="opt-title">Flug buchen</div>
+          <div class="opt-desc">Günstige Flüge nach Thailand & Vietnam — direkt über meine Empfehlung buchen und sparen.</div>
+          <ul class="opt-features">
+            <li><span class="feat-dot"></span>Flüge nach Bangkok (BKK/DMK)</li>
+            <li><span class="feat-dot"></span>Da Nang, Hanoi, Ho-Chi-Minh</li>
+            <li><span class="feat-dot"></span>Preisvergleich verschiedener Airlines</li>
+            <li><span class="feat-dot"></span>Tipps: wann buchen, wie sparen</li>
+          </ul>
+        </div>
+        <div class="opt-cta secondary" style="cursor:default;opacity:0.6">Kommt demnächst</div>
+      </div>
+
+      <!-- Nihat treffen -->
+      <a href="beratung.html" class="opt-card highlight">
+        <div class="opt-top">
+          <div class="opt-icon meet">🤝</div>
+          <div class="opt-badge">Persönlich</div>
+          <div class="opt-title">Nihat treffen</div>
+          <div class="opt-desc">60 Minuten mit mir — dein Plan für Thailand oder Vietnam. Visa, Budget, Wohnen, alles konkret für deine Situation.</div>
+          <ul class="opt-features">
+            <li><span class="feat-dot"></span>60 Min. 1:1 Video-Call</li>
+            <li><span class="feat-dot"></span>Zoom oder Google Meet</li>
+            <li><span class="feat-dot"></span>Visa, Kosten, Wohnungssuche</li>
+            <li><span class="feat-dot"></span>Konkrete Empfehlungen für dich</li>
+          </ul>
+        </div>
+        <div class="opt-cta gold">Termin buchen — 97 € →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Info section -->
+<section class="info-sec">
+  <div class="info-inner">
+    <div class="sec-label">Warum mit Nihat buchen?</div>
+    <h2 class="sec-h2" style="margin-bottom:8px">7 Jahre, 70+ Länder.<br>Ich kenne die Geheimtipps.</h2>
+    <p class="sec-sub">Keine bezahlte Werbung. Nur Empfehlungen aus eigener Erfahrung.</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-title">Wo ich aktuell bin</div>
+        <div class="info-card-text">Ich pendle zwischen Thailand (Pattaya, Bangkok, Chiang Mai) und Vietnam (Da Nang) — und kenne beide Länder aus dem Alltag, nicht aus dem Urlaub.</div>
+        <div class="dest-chips">
+          <span class="dest-chip">🇹🇭 Pattaya</span>
+          <span class="dest-chip">🇹🇭 Bangkok</span>
+          <span class="dest-chip">🇹🇭 Chiang Mai</span>
+          <span class="dest-chip">🇻🇳 Da Nang</span>
+          <span class="dest-chip">🇻🇳 Hanoi</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">💡</div>
+        <div class="info-card-title">Hotels — meine Empfehlung</div>
+        <div class="info-card-text">Ich empfehle nur Unterkünfte, die ich selbst kenne oder die ich aus meiner Community empfohlen bekommen habe. Kein Luxusbullshit, keine überpreisten Touristenfallen — gutes Preis-Leistungs-Verhältnis.</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">✈️</div>
+        <div class="info-card-title">Flüge — bald verfügbar</div>
+        <div class="info-card-text">Ich arbeite gerade daran, die besten Flug-Deals für Südostasien zu kuratieren. Melde dich für den Newsletter an — du bekommst Bescheid sobald es so weit ist.</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">🗣️</div>
+        <div class="info-card-title">Persönliches Gespräch</div>
+        <div class="info-card-text">Im 1:1 Beratungsgespräch gehen wir deine individuelle Situation durch. Kein allgemeines Blabla — du bekommst einen konkreten Plan für dein Auswander-Vorhaben.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <h2>Noch Fragen vor der Buchung?</h2>
+  <p>Schreib mir direkt — ich antworte persönlich.</p>
+  <div class="cta-row">
+    <a href="beratung.html" class="cta-btn-p">Beratungsgespräch buchen — 97 €</a>
+    <a href="kontakt.html" class="cta-btn-s">Nachricht schicken</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Freiweit mit Nihat</span>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+    <a href="index.html">Startseite</a>
+    <a href="beratung.html">Beratung</a>
+    <a href="immobilien.html">Immobilien</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>

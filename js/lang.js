@@ -14,6 +14,8 @@ var TI={
     mtt_business:'Business & Kooperation',mtt_business_sub:'Sponsored, Affiliate',
     mtt_cityguides:'City Guides',mtt_cityguides_sub:'Pattaya, Bangkok & mehr',
     mtt_ratgeber:'Kostenloser Ratgeber',mtt_ratgeber_sub:'7 Fehler beim Auswandern',
+    mtt_interview:'Interview vereinbaren',mtt_interview_sub:'Als Expat im Video auftreten',
+    mtt_reise:'Reise buchen',mtt_reise_sub:'Hotels, Flüge & Nihat treffen',
     /* Megamenu Spalten */
     nav_blog:'Blog',
     mega_thailand:'Thailand',mega_vietnam:'Vietnam',mega_yt:'YouTube & Links',mega_blog:'Blog & Ratgeber',
@@ -114,6 +116,8 @@ var TI={
     mtt_business:'Business & Partnerships',mtt_business_sub:'Sponsored, affiliate',
     mtt_cityguides:'City Guides',mtt_cityguides_sub:'Pattaya, Bangkok & more',
     mtt_ratgeber:'Free Guide',mtt_ratgeber_sub:'7 mistakes when emigrating',
+    mtt_interview:'Schedule Interview',mtt_interview_sub:'Appear as expat in my video',
+    mtt_reise:'Book a Trip',mtt_reise_sub:'Hotels, flights & meet Nihat',
     nav_blog:'Blog',
     mega_thailand:'Thailand',mega_vietnam:'Vietnam',mega_yt:'YouTube & Links',mega_blog:'Blog & Guides',
     mg_grab:'Set up Grab App',mg_grab_sub:'Taxi, food, packages across SEA',
