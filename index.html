@@ -73,12 +73,13 @@ nav{
 #mega-backdrop{position:fixed;inset:0;top:60px;z-index:98;background:rgba(26,20,16,0.3);opacity:0;pointer-events:none;transition:opacity .25s}
 #mega-backdrop.open{opacity:1;pointer-events:all}
 @media(max-width:900px){
-  .megamenu{overflow-y:auto;max-height:calc(100vh - 60px);-webkit-overflow-scrolling:touch}
+  .megamenu{overflow-y:scroll;overflow-x:hidden;height:calc(100dvh - 60px);max-height:calc(100vh - 60px);-webkit-overflow-scrolling:touch}
   .mega-themes-grid{grid-template-columns:repeat(2,1fr);gap:7px}
   .mega-lang-mobile{display:flex;gap:6px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--light)}
   .mega-lang-mobile .lang-btn{font-size:13px;padding:8px 16px}
   .mega-cols{grid-template-columns:1fr 1fr;gap:28px}
-  .lang-switcher{display:none}
+  .lang-switcher{display:flex}
+  .nav-cta-outline{display:none}
 }
 @media(max-width:600px){
   .mega-themes-grid{grid-template-columns:1fr 1fr;gap:6px}
@@ -1464,6 +1465,15 @@ window.addEventListener('scroll',()=>{const img=document.querySelector('.hero-im
 
 <script>
 // MEGAMENU
+var _scrollY=0;
+function _lockBody(){
+  _scrollY=window.scrollY||window.pageYOffset;
+  document.body.style.cssText='position:fixed;top:-'+_scrollY+'px;left:0;right:0;width:100%;overflow-y:scroll';
+}
+function _unlockBody(){
+  document.body.style.cssText='';
+  window.scrollTo(0,_scrollY);
+}
 function toggleMenu(){
   var m=document.getElementById('megamenu');
   var bd=document.getElementById('mega-backdrop');
@@ -1471,7 +1481,7 @@ function toggleMenu(){
   var open=m.classList.toggle('open');
   bd.classList.toggle('open',open);
   btn.classList.toggle('open',open);
-  if(window.innerWidth<=900){document.body.style.overflow=open?'hidden':'';}else{document.body.style.overflow='';}
+  if(open){_lockBody();}else{_unlockBody();}
 }
 function closeMegaIfOutside(e){if(e.target===e.currentTarget)toggleMenu();}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('megamenu').classList.contains('open'))toggleMenu();});
