@@ -79,7 +79,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 @media(max-width:720px){.info-grid{grid-template-columns:1fr;gap:36px}}
 
 .info-card{background:white;border-radius:16px;padding:32px 28px;border:1px solid rgba(26,20,16,0.06)}
-.info-card-icon{font-size:28px;margin-bottom:16px}
+.info-card-icon{width:40px;height:40px;border-radius:10px;background:rgba(196,98,45,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 .info-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px}
 .info-card-text{font-size:14px;color:var(--mid);line-height:1.7}
 
@@ -129,7 +129,7 @@ footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color
       <!-- Hotel -->
       <a href="https://bit.ly/NihatHotels" target="_blank" rel="noopener" class="opt-card">
         <div class="opt-top">
-          <div class="opt-icon hotel">🏨</div>
+          <div class="opt-icon hotel"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="12" width="6" height="10"/><path d="M9 12h6"/><path d="M2 22h20"/></svg></div>
           <div class="opt-badge">Nihat-Empfehlung</div>
           <div class="opt-title">Hotel buchen</div>
           <div class="opt-desc">Günstige und gute Unterkünfte in Thailand & Vietnam — gefiltert nach meinen echten Erfahrungen vor Ort.</div>
@@ -146,8 +146,8 @@ footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color
       <!-- Flüge -->
       <div class="opt-card" style="cursor:default;opacity:0.8">
         <div class="opt-top">
-          <div class="opt-icon flight">✈️</div>
-          <span class="coming-soon">⏳ Bald verfügbar</span>
+          <div class="opt-icon flight"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--mid)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19 2c-2-2-4-2-5.5-.5L10 5 1.8 6.2c-.5.1-.7.6-.4 1l3 3.3c.2.2.5.3.7.2l3.5-1.5 2.5 2.5-1.5 3.5c-.1.2 0 .5.2.7l3.3 3c.4.3.9.1 1-.4z"/></svg></div>
+          <span class="coming-soon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px;margin-right:4px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Bald verfügbar</span>
           <div class="opt-title">Flug buchen</div>
           <div class="opt-desc">Günstige Flüge nach Thailand & Vietnam — direkt über meine Empfehlung buchen und sparen.</div>
           <ul class="opt-features">
@@ -163,7 +163,7 @@ footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color
       <!-- Nihat treffen -->
       <a href="beratung.html" class="opt-card highlight">
         <div class="opt-top">
-          <div class="opt-icon meet">🤝</div>
+          <div class="opt-icon meet"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div class="opt-badge">Persönlich</div>
           <div class="opt-title">Nihat treffen</div>
           <div class="opt-desc">60 Minuten mit mir — dein Plan für Thailand oder Vietnam. Visa, Budget, Wohnen, alles konkret für deine Situation.</div>
@@ -190,32 +190,32 @@ footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color
 
     <div class="info-grid">
       <div class="info-card">
-        <div class="info-card-icon">📍</div>
+        <div class="info-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="info-card-title">Wo ich aktuell bin</div>
         <div class="info-card-text">Ich pendle zwischen Thailand (Pattaya, Bangkok, Chiang Mai) und Vietnam (Da Nang) — und kenne beide Länder aus dem Alltag, nicht aus dem Urlaub.</div>
         <div class="dest-chips">
-          <span class="dest-chip">🇹🇭 Pattaya</span>
-          <span class="dest-chip">🇹🇭 Bangkok</span>
-          <span class="dest-chip">🇹🇭 Chiang Mai</span>
-          <span class="dest-chip">🇻🇳 Da Nang</span>
-          <span class="dest-chip">🇻🇳 Hanoi</span>
+          <span class="dest-chip">TH · Pattaya</span>
+          <span class="dest-chip">TH · Bangkok</span>
+          <span class="dest-chip">TH · Chiang Mai</span>
+          <span class="dest-chip">VN · Da Nang</span>
+          <span class="dest-chip">VN · Hanoi</span>
         </div>
       </div>
 
       <div class="info-card">
-        <div class="info-card-icon">💡</div>
+        <div class="info-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="12" width="6" height="10"/></svg></div>
         <div class="info-card-title">Hotels — meine Empfehlung</div>
         <div class="info-card-text">Ich empfehle nur Unterkünfte, die ich selbst kenne oder die ich aus meiner Community empfohlen bekommen habe. Kein Luxusbullshit, keine überpreisten Touristenfallen — gutes Preis-Leistungs-Verhältnis.</div>
       </div>
 
       <div class="info-card">
-        <div class="info-card-icon">✈️</div>
+        <div class="info-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19 2c-2-2-4-2-5.5-.5L10 5 1.8 6.2c-.5.1-.7.6-.4 1l3 3.3c.2.2.5.3.7.2l3.5-1.5 2.5 2.5-1.5 3.5c-.1.2 0 .5.2.7l3.3 3c.4.3.9.1 1-.4z"/></svg></div>
         <div class="info-card-title">Flüge — bald verfügbar</div>
         <div class="info-card-text">Ich arbeite gerade daran, die besten Flug-Deals für Südostasien zu kuratieren. Melde dich für den Newsletter an — du bekommst Bescheid sobald es so weit ist.</div>
       </div>
 
       <div class="info-card">
-        <div class="info-card-icon">🗣️</div>
+        <div class="info-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <div class="info-card-title">Persönliches Gespräch</div>
         <div class="info-card-text">Im 1:1 Beratungsgespräch gehen wir deine individuelle Situation durch. Kein allgemeines Blabla — du bekommst einen konkreten Plan für dein Auswander-Vorhaben.</div>
       </div>
