@@ -3,147 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Anfrage — Freiweit mit Nihat</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Kontakt — Freiweit mit Nihat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth);min-height:100vh}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;background:var(--cream);border-bottom:1px solid var(--light);position:sticky;top:0;z-index:100}
-  .nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--earth);text-decoration:none}
-  .nav-logo span{color:var(--terra)}
-  .nav-right{display:flex;align-items:center;gap:16px}
-  .nav-back{font-size:13px;color:var(--mid);text-decoration:none}
-  .nav-back:hover{color:var(--earth)}
-  .lang-switcher{display:flex;align-items:center;gap:2px;background:rgba(26,20,16,0.06);border-radius:20px;padding:3px}
-  .lang-btn{border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:600;color:var(--mid);padding:4px 10px;border-radius:16px;transition:all .2s}
-  .lang-btn.active{background:var(--earth);color:white}
-  .page{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 60px);max-width:1100px;margin:0 auto;padding:60px 40px;gap:80px;align-items:center}
-  .page-left h1{font-size:clamp(28px,3.5vw,48px);font-weight:800;line-height:1.05;letter-spacing:-1px;text-transform:uppercase;margin-bottom:20px}
-  .page-left p{font-size:15px;color:var(--mid);line-height:1.7;margin-bottom:14px}
-  .card{background:#16120e;border-radius:20px;padding:32px;color:white}
-  .tab-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-  .tab{border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .2s;background:transparent;color:white;text-align:left;width:100%}
-  .tab:hover{border-color:rgba(255,255,255,0.3)}
-  .tab.active{border-color:white;background:rgba(255,255,255,0.06)}
-  .tab-title{font-size:14px;font-weight:700;margin-bottom:3px}
-  .tab-sub{font-size:12px;color:rgba(255,255,255,0.4)}
-  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-  .field{display:flex;flex-direction:column;gap:6px}
-  .field label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.5px;text-transform:uppercase}
-  .field input,.field textarea{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;color:white;outline:none;transition:border .2s}
-  .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,0.25)}
-  .field input:focus,.field textarea:focus{border-color:rgba(255,255,255,0.35)}
-  .field textarea{resize:vertical;min-height:100px}
-  .field-full{grid-column:1/-1}
-  .btn-submit{width:100%;background:white;color:#16120e;font-size:14px;font-weight:700;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:all .2s;margin-top:6px;letter-spacing:0.2px}
-  .btn-submit:hover{background:#f0ede8}
-  .privat-panel{display:none}
-  .privat-inner{display:flex;gap:18px}
-  .privat-divider{width:3px;background:rgba(255,255,255,0.15);border-radius:2px;flex-shrink:0;min-height:120px}
-  .privat-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75}
-  .privat-text p{margin-bottom:12px}
-  .privat-text p:last-child{margin-bottom:0}
-  .privat-text a{color:white;font-weight:700;text-decoration:underline;text-underline-offset:3px}
-  @media(max-width:768px){.page{grid-template-columns:1fr;padding:32px 20px;gap:40px}.form-grid{grid-template-columns:1fr}nav{padding:0 20px}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,60px);height:60px;background:rgba(247,243,238,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--earth)}
+.nav-logo span{color:var(--terra)}
+.nav-back{font-size:13px;color:var(--mid);transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+
+/* HERO SPLIT */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 60px);max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,60px);gap:clamp(40px,6vw,100px);align-items:start;padding-top:clamp(48px,7vw,100px)}
+.hero-left .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px}
+.hero-left .sub{font-size:16px;color:var(--mid);line-height:1.7;margin-bottom:32px;font-weight:500}
+.hero-left p{font-size:14.5px;color:var(--mid);line-height:1.75;margin-bottom:28px}
+.social-links{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.social-link{display:flex;align-items:center;gap:14px;background:white;border:1px solid var(--light);border-radius:12px;padding:16px 20px;transition:all .2s;cursor:pointer}
+.social-link:hover{border-color:var(--terra);transform:translateX(4px)}
+.social-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.si-yt{background:#fee2e2}
+.si-ig{background:#fce7f3}
+.si-mail{background:#ede9fe}
+.social-icon svg{width:18px;height:18px}
+.social-text{font-size:14px;font-weight:600;color:var(--earth)}
+
+/* WIZARD CARD */
+.wizard-card{background:#16120e;border-radius:20px;padding:32px;color:white;position:sticky;top:80px}
+.wizard-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.wizard-back{font-size:13px;color:rgba(255,255,255,0.45);cursor:pointer;transition:color .2s;background:none;border:none;padding:0}
+.wizard-back:hover{color:rgba(255,255,255,0.8)}
+.progress-dots{display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15)}
+.dot.active{background:var(--terra)}
+.dot.done{background:rgba(255,255,255,0.5)}
+.wizard-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;line-height:1.25}
+.wizard-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:24px}
+.q-block{margin-bottom:20px}
+.q-label{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);cursor:pointer;background:transparent;transition:all .2s}
+.chip:hover{border-color:rgba(255,255,255,0.4);color:white}
+.chip.selected{border-color:var(--terra);background:rgba(196,98,45,0.15);color:white}
+.btn-weiter{width:100%;background:white;color:#16120e;font-size:14px;font-weight:700;padding:14px;border-radius:10px;border:none;cursor:pointer;margin-top:20px;transition:all .2s;opacity:0.35;pointer-events:none}
+.btn-weiter.ready{opacity:1;pointer-events:all}
+.btn-weiter.ready:hover{background:#f0ede8}
+/* Step 2 form */
+.f-field{margin-bottom:14px}
+.f-label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px}
+.f-input{width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;color:white;outline:none;transition:border .2s}
+.f-input::placeholder{color:rgba(255,255,255,0.25)}
+.f-input:focus{border-color:rgba(255,255,255,0.35)}
+.f-input.err{border-color:#e55;}
+textarea.f-input{resize:vertical;min-height:90px}
+.err-msg{font-size:12px;color:#ff8a8a;margin-top:5px;display:none}
+.f-input.err+.err-msg{display:block}
+
+/* CATEGORY GRID */
+.cat-section{background:var(--cream);border-top:1px solid var(--light);padding:clamp(48px,7vw,100px) clamp(20px,5vw,60px)}
+.cat-inner{max-width:1200px;margin:0 auto}
+.cat-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.cat-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-1px;margin-bottom:12px;line-height:1.1}
+.cat-sub{font-size:15px;color:var(--mid);margin-bottom:44px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat-card{background:white;border:1px solid var(--light);border-radius:14px;padding:22px 20px;cursor:pointer;transition:all .2s}
+.cat-card:hover{border-color:var(--terra);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,20,16,0.08)}
+.cat-card.active-cat{border-color:var(--terra);background:rgba(196,98,45,0.04)}
+.cat-icon{width:40px;height:40px;border-radius:10px;background:#fef3ee;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.cat-icon svg{width:20px;height:20px;color:var(--terra)}
+.cat-name{font-size:14px;font-weight:700;color:var(--earth);margin-bottom:4px}
+.cat-desc{font-size:12px;color:var(--mid);line-height:1.5}
+
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:40px}.wizard-card{position:static}.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.cat-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
-  <div class="nav-right">
-    <a href="index.html" class="nav-back" data-i18n="nav_back">&#8592; Zurück</a>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="de" onclick="setLang('de')">&#127465;&#127466; DE</button>
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">&#127468;&#127463; EN</button>
-      <button class="lang-btn" data-lang="th" onclick="setLang('th')">&#127481;&#127469; TH</button>
-    </div>
-  </div>
+  <a href="index.html" class="nav-back">&#8592; Startseite</a>
 </nav>
 
-<div class="page">
-  <div class="page-left">
-    <h1 data-i18n="h1">Geschäftliche<br>Anfragen</h1>
-    <p data-i18n="p1">Willkommen! Um dir schnellstmöglich antworten zu können, wähle bitte dein Anliegen aus.</p>
-    <p><strong data-i18n="note_label">Hinweis:</strong> <span data-i18n="note_text">Über dieses Formular bearbeite ich ausschließlich Kooperationen und Sponsoring-Anfragen.</span></p>
-  </div>
+<div class="hero" id="hero-top">
 
-  <div class="card">
-    <div class="tab-bar">
-      <button class="tab active" id="tab-b" onclick="switchTab('b')">
-        <div class="tab-title" data-i18n="tab_b">&#128188; Geschäftliche Anfrage</div>
-        <div class="tab-sub" data-i18n="tab_b_sub">Sponsoring &amp; Kooperationen</div>
-      </button>
-      <button class="tab" id="tab-p" onclick="switchTab('p')">
-        <div class="tab-title" data-i18n="tab_p">&#127796; Persönliche Nachricht</div>
-        <div class="tab-sub" data-i18n="tab_p_sub">Fans &amp; Fragen</div>
-      </button>
-    </div>
-
-    <div id="panel-b">
-      <div class="form-grid">
-        <div class="field"><label data-i18n="f_name">Dein Name</label><input type="text" id="f-name" placeholder="Vor- und Nachname"></div>
-        <div class="field"><label data-i18n="f_company">Unternehmen / Sender</label><input type="text" id="f-company" placeholder="GmbH / Agentur / TV"></div>
-        <div class="field field-full"><label data-i18n="f_email">E-Mail-Adresse</label><input type="email" id="f-email" placeholder="name@firma.de"></div>
-        <div class="field field-full"><label data-i18n="f_details">Details zur Anfrage</label><textarea id="f-msg" placeholder="Budget, Zeitraum, Produktinfos..."></textarea></div>
-      </div>
-      <button class="btn-submit" onclick="sendB()" data-i18n="f_submit">Anfrage senden</button>
-    </div>
-
-    <div id="panel-p" class="privat-panel">
-      <div class="privat-inner">
-        <div class="privat-divider"></div>
-        <div class="privat-text">
-          <p data-i18n="priv_1">Danke für dein Interesse!</p>
-          <p data-i18n="priv_2">Ich drehe fast täglich neue Videos in Asien. Mein Postfach würde explodieren, wenn ich private Nachrichten einzeln beantworten würde — deshalb habe ich den E-Mail-Support für Privates eingestellt.</p>
-          <p><span data-i18n="priv_3a">Hast du eine Frage zum Auswandern oder willst Feedback geben? Poste es als Kommentar unter meinem </span><a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener" data-i18n="priv_yt">neuesten YouTube-Video</a><span data-i18n="priv_3b">. Ich lese dort alles und antworte auf die spannendsten Fragen direkt in der Community!</span></p>
-        </div>
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="eyebrow">Kontakt</div>
+    <h1>Schreib<br>mir.</h1>
+    <p class="sub">Ich antworte persönlich.</p>
+    <p>Am Ende des Tages geht es darum, dass du die richtige Entscheidung triffst — nicht die schnellste. Schreib mir, was dich bewegt. Ich höre erst zu.</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="social-link">
+        <div class="social-icon si-yt"><svg viewBox="0 0 24 24" fill="#dc2626"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+        <span class="social-text">YouTube — @FreiweitmitNihat</span>
+      </a>
+      <a href="https://www.instagram.com/nihatbucakli/" target="_blank" class="social-link">
+        <div class="social-icon si-ig"><svg viewBox="0 0 24 24" fill="#ec4899"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+        <span class="social-text">Instagram — @nihatbucakli</span>
+      </a>
+      <div class="social-link" onclick="scrollToForm()">
+        <div class="social-icon si-mail"><svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+        <span class="social-text">Kontaktformular öffnen</span>
       </div>
     </div>
   </div>
+
+  <!-- RIGHT: WIZARD -->
+  <div class="wizard-card" id="wizard">
+    <!-- filled by JS -->
+  </div>
+
 </div>
 
+<!-- CATEGORY SECTION -->
+<section class="cat-section" id="cat-section">
+  <div class="cat-inner">
+    <div class="cat-eyebrow">Schnellauswahl</div>
+    <h2 class="cat-title">Was interessiert dich?</h2>
+    <p class="cat-sub">Wähle eine Kategorie — dann stelle ich dir die richtigen Fragen.</p>
+    <div class="cat-grid">
+      <div class="cat-card" id="cc-beratung" onclick="selectCat('beratung')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg></div>
+        <div class="cat-name">Auswandern &amp; Beratung</div>
+        <div class="cat-desc">Visa, Kosten, erster Schritt</div>
+      </div>
+      <div class="cat-card" id="cc-nomade" onclick="selectCat('nomade')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="cat-name">Digitaler Nomade</div>
+        <div class="cat-desc">Remote work, Co-working</div>
+      </div>
+      <div class="cat-card" id="cc-mieten" onclick="selectCat('mieten')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="cat-name">Mieten</div>
+        <div class="cat-desc">Wohnung oder Haus</div>
+      </div>
+      <div class="cat-card" id="cc-kaufen" onclick="selectCat('kaufen')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+        <div class="cat-name">Kaufen</div>
+        <div class="cat-desc">Immobilien in Asien</div>
+      </div>
+      <div class="cat-card" id="cc-hotel" onclick="selectCat('hotel')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <div class="cat-name">Hotel &amp; Reise</div>
+        <div class="cat-desc">Empfehlungen &amp; Tipps</div>
+      </div>
+      <div class="cat-card" id="cc-business" onclick="selectCat('business')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="cat-name">Business &amp; Kooperation</div>
+        <div class="cat-desc">Sponsored, Affiliate</div>
+      </div>
+      <div class="cat-card" id="cc-guides" onclick="selectCat('guides')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+        <div class="cat-name">City Guides</div>
+        <div class="cat-desc">Pattaya, Bangkok &amp; mehr</div>
+      </div>
+      <div class="cat-card" id="cc-ratgeber" onclick="selectCat('ratgeber')">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg></div>
+        <div class="cat-name">Kostenloser Ratgeber</div>
+        <div class="cat-desc">7 Fehler beim Auswandern</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0e0b08;color:rgba(255,255,255,0.4);text-align:center;padding:28px 20px;font-size:13px">
+  <p><a href="index.html" style="color:rgba(255,255,255,0.4)">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp; &copy; 2026 Nihat Bucakli</p>
+</footer>
+
 <script>
-function switchTab(t) {
-  ['b','p'].forEach(function(x){
-    document.getElementById('tab-'+x).classList.toggle('active',x===t);
-    document.getElementById('panel-'+x).style.display=x===t?'block':'none';
-  });
-}
-
-function sendB() {
-  var n=document.getElementById('f-name').value.trim();
-  var c=document.getElementById('f-company').value.trim();
-  var e=document.getElementById('f-email').value.trim();
-  var m=document.getElementById('f-msg').value.trim();
-  if(!n||!e||!m){alert('Bitte Name, E-Mail und Details ausfüllen.');return;}
-  var sub=encodeURIComponent('Kooperationsanfrage: '+(c||n));
-  var bod=encodeURIComponent('Name: '+n+'\nUnternehmen: '+c+'\nE-Mail: '+e+'\n\n'+m);
-  window.location.href='mailto:kontakt@freiweitmitnihat.com?subject='+sub+'&body='+bod;
-  setTimeout(function(){
-    var panel=document.getElementById('panel-biz');
-    panel.innerHTML='<div style="text-align:center;padding:48px 20px"><div style="font-size:36px;margin-bottom:16px">&#10003;</div><p style="font-family:Playfair Display,serif;font-size:22px;font-weight:700;color:#1a1410;margin-bottom:12px">Danke für deine Anfrage.</p><p style="color:#6b5e52;font-size:15px;line-height:1.7">Ich melde mich innerhalb von 48 Stunden bei dir<br>und entscheide dann, ob ich dir das Media Kit zusende.</p></div>';
-  }, 500);
-}
-
-var T={
-  de:{nav_back:'← Zurück',h1:'Geschäftliche<br>Anfragen',p1:'Willkommen! Um dir schnellstmöglich antworten zu können, wähle bitte dein Anliegen aus.',note_label:'Hinweis:',note_text:'Über dieses Formular bearbeite ich ausschließlich Kooperationen und Sponsoring-Anfragen.',tab_b:'💼 Geschäftliche Anfrage',tab_b_sub:'Sponsoring & Kooperationen',tab_p:'🌴 Persönliche Nachricht',tab_p_sub:'Fans & Fragen',f_name:'Dein Name',f_company:'Unternehmen / Sender',f_email:'E-Mail-Adresse',f_details:'Details zur Anfrage',f_submit:'Anfrage senden & Media Kit öffnen',priv_1:'Danke für dein Interesse!',priv_2:'Ich drehe fast täglich neue Videos in Asien. Mein Postfach würde explodieren, wenn ich private Nachrichten einzeln beantworten würde — deshalb habe ich den E-Mail-Support für Privates eingestellt.',priv_3a:'Hast du eine Frage zum Auswandern oder willst Feedback geben? Poste es als Kommentar unter meinem ',priv_yt:'neuesten YouTube-Video',priv_3b:'. Ich lese dort alles und antworte auf die spannendsten Fragen direkt in der Community!'},
-  en:{nav_back:'← Back',h1:'Business<br>Inquiries',p1:'Welcome! Please select your request type so I can respond as quickly as possible.',note_label:'Note:',note_text:'Through this form I exclusively handle cooperation and sponsorship inquiries.',tab_b:'💼 Business Inquiry',tab_b_sub:'Sponsoring & Cooperations',tab_p:'🌴 Personal Message',tab_p_sub:'Fans & Questions',f_name:'Your Name',f_company:'Company / Agency / TV',f_email:'E-Mail Address',f_details:'Inquiry Details',f_submit:'Send Inquiry & Open Media Kit',priv_1:'Thanks for your interest!',priv_2:'I film new videos in Asia almost every day. My inbox would explode if I answered private messages individually — that\'s why I\'ve stopped private email support.',priv_3a:'Have a question about emigrating or want to give feedback? Post it as a comment under my ',priv_yt:'latest YouTube video',priv_3b:'. I read everything and answer the most interesting questions directly in the community!'},
-  th:{nav_back:'← กลับ',h1:'ติดต่อ<br>ธุรกิจ',p1:'ยินดีต้อนรับ! กรุณาเลือกประเภทคำขอเพื่อให้ฉันตอบกลับได้เร็วที่สุด',note_label:'หมายเหตุ:',note_text:'ฟอร์มนี้ใช้สำหรับการร่วมมือทางธุรกิจและสปอนเซอร์เท่านั้น',tab_b:'💼 ติดต่อธุรกิจ',tab_b_sub:'สปอนเซอร์ & ความร่วมมือ',tab_p:'🌴 ข้อความส่วนตัว',tab_p_sub:'แฟนคลับ & คำถาม',f_name:'ชื่อของคุณ',f_company:'บริษัท / หน่วยงาน',f_email:'อีเมล',f_details:'รายละเอียดคำขอ',f_submit:'ส่งคำขอ & เปิด Media Kit',priv_1:'ขอบคุณสำหรับความสนใจ!',priv_2:'ฉันถ่ายทำวิดีโอใหม่ในเอเชียเกือบทุกวัน กล่องข้อความจะล้นถ้าต้องตอบข้อความส่วนตัวทุกข้อความ จึงปิดรับอีเมลส่วนตัว',priv_3a:'มีคำถามหรืออยากให้ Feedback? โพสต์เป็นคอมเมนต์ใต้ ',priv_yt:'วิดีโอ YouTube ล่าสุด',priv_3b:' ฉันอ่านทุกอย่างและตอบคำถามที่น่าสนใจในชุมชน!'}
+// ─── DATA ─────────────────────────────────────────────────────────
+var CATS = {
+  beratung:{
+    title:'Auswandern & Beratung', sub:'Was planst du?', subject:'Auswandern & Beratung',
+    qs:[
+      {id:'zielland', label:'ZIELLAND', opts:['Thailand','Vietnam','Beide','Noch offen']},
+      {id:'zeitplan', label:'ZEITPLAN', opts:['Innerhalb 3 Monate','6–12 Monate','Nächstes Jahr','Noch unbekannt']},
+      {id:'plan',     label:'WAS PLANST DU', opts:['Erstbesuch','Langzeitaufenthalt','Dauerhaft auswandern','Rente im Ausland']}
+    ]
+  },
+  nomade:{
+    title:'Digitaler Nomade', sub:'Was möchtest du wissen?', subject:'Digitaler Nomade',
+    qs:[
+      {id:'zielland', label:'ZIELLAND', opts:['Thailand','Vietnam','Beide','Woanders']},
+      {id:'dauer',    label:'WIE LANGE', opts:['1–3 Monate','3–6 Monate','Dauerhaft','Flexibel']}
+    ]
+  },
+  mieten:{
+    title:'Mieten', sub:'Was suchst du?', subject:'Anfrage: Mieten',
+    qs:[
+      {id:'land',    label:'ZIELLAND',     opts:['Thailand','Vietnam','Beide']},
+      {id:'budget',  label:'BUDGET/MONAT', opts:['Bis 300 €','300–500 €','500–800 €','800 €+']},
+      {id:'wann',    label:'WANN',          opts:['Sofort','In 1–3 Monaten','In 3–6 Monaten','Noch offen']}
+    ]
+  },
+  kaufen:{
+    title:'Kaufen', sub:'Was interessiert dich?', subject:'Anfrage: Immobilien kaufen',
+    qs:[
+      {id:'land',   label:'ZIELLAND', opts:['Thailand','Vietnam']},
+      {id:'budget', label:'BUDGET',   opts:['Bis 50.000 €','50–100.000 €','100–200.000 €','200.000 €+']},
+      {id:'art',    label:'ART',      opts:['Condo','Haus/Villa','Grundstück','Noch offen']}
+    ]
+  },
+  hotel:{
+    title:'Hotel & Reise', sub:'Was planst du?', subject:'Anfrage: Hotel & Reise',
+    qs:[
+      {id:'land',    label:'ZIELLAND',     opts:['Thailand','Vietnam','Beide']},
+      {id:'dauer',   label:'REISEDAUER',   opts:['1–2 Wochen','3–4 Wochen','1–3 Monate','Länger']},
+      {id:'komfort', label:'KOMFORTLEVEL', opts:['Backpacker','Mittelklasse','Komfort','Luxus']}
+    ]
+  },
+  business:{
+    title:'Business & Kooperation', sub:'Was hast du vor?', subject:'Business & Kooperation',
+    qs:[
+      {id:'art',    label:'ART DER KOOPERATION', opts:['Sponsored Video','Affiliate','Produktplatzierung','Sonstiges']},
+      {id:'budget', label:'BUDGET',               opts:['Anfrage ohne Budget','Bis 500 €','500–2.000 €','2.000 €+']}
+    ],
+    extraFields:true
+  },
+  guides:{
+    title:'City Guides', sub:'Welche Stadt interessiert dich?', subject:'Anfrage: City Guides',
+    qs:[
+      {id:'stadt', label:'WELCHE STADT', opts:['Pattaya','Bangkok','Chiang Mai','Da Nang','Andere']}
+    ]
+  },
+  ratgeber:{
+    title:'Kostenloser Ratgeber', sub:'7 Fehler beim Auswandern — PDF', subject:'Ratgeber-Download',
+    qs:[]
+  }
 };
 
-function setLang(l){
-  localStorage.setItem('lang',l);
-  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});
-  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(T[l]&&T[l][k]!==undefined)el.innerHTML=T[l][k];});
+var state = {cat:null, answers:{}, step:1, name:'', email:'', firma:'', details:''};
+
+// ─── DISPOSABLE EMAIL BLOCKLIST ────────────────────────────────────
+var BLOCKED_DOMAINS = ['mailinator.com','guerrillamail.com','temp-mail.org','throwam.com','yopmail.com','trashmail.com','fakeinbox.com','maildrop.cc','dispostable.com','spamgourmet.com','10minutemail.com','sharklasers.com','guerrillamailblock.com','grr.la','guerrillamail.info','guerrillamail.biz','guerrillamail.de','guerrillamail.net','guerrillamail.org','spam4.me','getairmail.com','trashmail.at','trashmail.io','tempinbox.com','filzmail.com','notmailinator.com','discard.email','fakemail.net','bouncr.com','mailnull.com'];
+
+function isValidEmail(e){
+  if(!e||!e.includes('@')||!e.includes('.'))return false;
+  var parts=e.split('@');
+  if(parts.length!==2||!parts[0]||parts[1].split('.').length<2)return false;
+  var domain=parts[1].toLowerCase();
+  if(BLOCKED_DOMAINS.includes(domain))return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  setLang(localStorage.getItem('lang')||'de');
-  switchTab('b');
-});
+// ─── RENDER WIZARD ─────────────────────────────────────────────────
+function renderWizard(){
+  var w=document.getElementById('wizard');
+
+  if(!state.cat){
+    w.innerHTML='<div style="text-align:center;padding:32px 0"><p style="color:rgba(255,255,255,0.35);font-size:14px;line-height:1.75">Wähle eine Kategorie unten<br>— dann geht es hier weiter.</p><div style="margin-top:24px;font-size:32px">&#8595;</div></div>';
+    return;
+  }
+
+  var cat=CATS[state.cat];
+  var totalSteps=2;
+  var dotsHTML='';
+  for(var i=1;i<=totalSteps;i++){dotsHTML+='<div class="dot'+(i<state.step?' done':i===state.step?' active':'')+'"></div>';}
+
+  if(state.step===1){
+    // Questions step
+    var qHTML='';
+    cat.qs.forEach(function(q){
+      var row='';
+      q.opts.forEach(function(o){row+='<button class="chip'+(state.answers[q.id]===o?' selected':'')+'" onclick="pick(\''+q.id+'\',\''+o+'\')" type="button">'+o+'</button>';});
+      qHTML+='<div class="q-block"><div class="q-label">'+q.label+'</div><div class="chip-row">'+row+'</div></div>';
+    });
+
+    if(cat.qs.length===0){
+      // ratgeber: no questions, go straight to contact
+      state.step=2;
+      renderWizard();
+      return;
+    }
+
+    var allPicked=cat.qs.every(function(q){return state.answers[q.id];});
+
+    w.innerHTML='<div class="wizard-top"><button class="wizard-back" onclick="goBack()">&#8592; Zurück</button><div class="progress-dots">'+dotsHTML+'</div></div>'
+      +'<div class="wizard-title">'+cat.title+'</div>'
+      +'<div class="wizard-sub">'+cat.sub+'</div>'
+      +qHTML
+      +'<button class="btn-weiter'+(allPicked?' ready':'')+'" id="btn-weiter" onclick="nextStep()">Weiter</button>';
+  }
+  else{
+    // Contact form step
+    var extraF='';
+    if(cat.extraFields){
+      extraF='<div class="f-field"><label class="f-label">Unternehmen / Agentur</label><input class="f-input" type="text" id="f-firma" placeholder="GmbH / Agentur / Sender" oninput="syncState()" value="'+escH(state.firma)+'"></div>'
+             +'<div class="f-field"><label class="f-label">Details &amp; Budget</label><textarea class="f-input" id="f-details" placeholder="Budget, Zeitraum, Kampagneninfos..." oninput="syncState()">'+escH(state.details)+'</textarea></div>';
+    }
+
+    w.innerHTML='<div class="wizard-top"><button class="wizard-back" onclick="prevStep()">&#8592; Zurück</button><div class="progress-dots">'+dotsHTML+'</div></div>'
+      +'<div class="wizard-title">Fast geschafft.</div>'
+      +'<div class="wizard-sub">Damit ich dir persönlich antworten kann:</div>'
+      +'<div class="f-field"><label class="f-label">Dein Name <span style="color:#e55">*</span></label><input class="f-input" type="text" id="f-name" placeholder="Vor- und Nachname" oninput="syncState()" value="'+escH(state.name)+'"><div class="err-msg">Bitte gib deinen Namen ein.</div></div>'
+      +'<div class="f-field"><label class="f-label">E-Mail-Adresse <span style="color:#e55">*</span></label><input class="f-input" type="email" id="f-email" placeholder="deine@email.de" oninput="syncState()" value="'+escH(state.email)+'"><div class="err-msg" id="email-err">Bitte gib eine gültige E-Mail-Adresse ein.</div></div>'
+      +extraF
+      +'<button class="btn-weiter ready" onclick="sendForm()" style="margin-top:20px">Absenden</button>';
+  }
+}
+
+function escH(s){return (s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function pick(qid,opt){
+  state.answers[qid]=opt;
+  renderWizard();
+}
+
+function nextStep(){
+  var cat=CATS[state.cat];
+  var allPicked=cat.qs.every(function(q){return state.answers[q.id];});
+  if(!allPicked)return;
+  state.step=2;
+  renderWizard();
+}
+
+function prevStep(){
+  state.step=1;
+  renderWizard();
+}
+
+function syncState(){
+  var n=document.getElementById('f-name');
+  var e=document.getElementById('f-email');
+  var firma=document.getElementById('f-firma');
+  var det=document.getElementById('f-details');
+  if(n)state.name=n.value;
+  if(e)state.email=e.value;
+  if(firma)state.firma=firma.value;
+  if(det)state.details=det.value;
+}
+
+function sendForm(){
+  syncState();
+  var ok=true;
+  var nEl=document.getElementById('f-name');
+  var eEl=document.getElementById('f-email');
+
+  if(!state.name.trim()){nEl.classList.add('err');ok=false;}else{nEl.classList.remove('err');}
+  if(!isValidEmail(state.email.trim())){
+    eEl.classList.add('err');
+    document.getElementById('email-err').textContent=state.email.includes('@')?'Diese E-Mail-Domain ist nicht erlaubt.':'Bitte gib eine gültige E-Mail-Adresse ein.';
+    ok=false;
+  }else{eEl.classList.remove('err');}
+
+  if(!ok)return;
+
+  var cat=CATS[state.cat];
+  var answersText='';
+  cat.qs.forEach(function(q){answersText+=q.label+': '+(state.answers[q.id]||'—')+'\n';});
+  if(state.firma)answersText+='Unternehmen: '+state.firma+'\n';
+  if(state.details)answersText+='\nDetails:\n'+state.details;
+
+  var subj=encodeURIComponent('Anfrage: '+cat.subject+' — '+state.name);
+  var body=encodeURIComponent('Name: '+state.name+'\nE-Mail: '+state.email+'\n\n'+answersText);
+
+  window.location.href='mailto:kontakt@freiweitmitnihat.com?subject='+subj+'&body='+body;
+
+  setTimeout(function(){
+    document.getElementById('wizard').innerHTML='<div style="text-align:center;padding:40px 10px"><div style="font-size:40px;margin-bottom:16px">&#10003;</div><p style="font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px">Danke, '+escH(state.name)+'!</p><p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7">Ich habe deine Anfrage erhalten<br>und melde mich persönlich bei dir.</p></div>';
+    ['beratung','nomade','mieten','kaufen','hotel','business','guides','ratgeber'].forEach(function(id){var c=document.getElementById('cc-'+id);if(c)c.classList.remove('active-cat');});
+  },400);
+}
+
+function goBack(){
+  state.cat=null;
+  state.answers={};
+  state.step=1;
+  ['beratung','nomade','mieten','kaufen','hotel','business','guides','ratgeber'].forEach(function(id){var c=document.getElementById('cc-'+id);if(c)c.classList.remove('active-cat');});
+  renderWizard();
+}
+
+function selectCat(id){
+  state.cat=id;
+  state.answers={};
+  state.step=1;
+  state.name='';state.email='';state.firma='';state.details='';
+  ['beratung','nomade','mieten','kaufen','hotel','business','guides','ratgeber'].forEach(function(cid){var el=document.getElementById('cc-'+cid);if(el)el.classList.toggle('active-cat',cid===id);});
+  renderWizard();
+  document.getElementById('hero-top').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function scrollToForm(){
+  document.getElementById('cat-section').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// init
+renderWizard();
 </script>
 </body>
 </html>
