@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Guides — Freiweit mit Nihat</title>
+<meta name="description" content="Google Maps Guides von Nihat — die besten Restaurants, Bars, Geld-Exchange und lokale Geheimtipps für Pattaya, Bangkok und mehr.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1A1410;--terra:#C4622D;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#7A7068;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--earth);text-decoration:none}
+.nav-logo span{color:var(--terra)}
+.nav-back{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--mid);font-size:13.5px;font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+.hero{background:var(--earth);padding:clamp(110px,14vh,160px) clamp(24px,5vw,80px) clamp(80px,10vh,120px);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--sand)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:white;margin-bottom:20px}
+h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.42);line-height:1.75;max-width:560px;letter-spacing:-0.1px}
+.sec{padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px)}
+.sec-inner{max-width:1100px;margin:0 auto}
+.eyebrow2{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow2::before{content:'';width:24px;height:1px;background:var(--terra)}
+h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:700;letter-spacing:-1px;color:var(--earth);margin-bottom:14px;line-height:1.1}
+.sec-sub{font-size:16px;color:var(--mid);line-height:1.75;max-width:520px;letter-spacing:-0.1px;margin-bottom:52px}
+.guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.guide-card{background:white;border:1px solid rgba(26,20,16,0.07);border-radius:16px;overflow:hidden;transition:all .3s}
+.guide-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(26,20,16,0.09)}
+.guide-thumb{height:180px;position:relative;display:flex;align-items:center;justify-content:center}
+.guide-flag{font-size:52px;opacity:.85}
+.guide-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:5px}
+.badge-available{background:var(--olive);color:white}
+.badge-soon{background:rgba(26,20,16,0.4);color:rgba(255,255,255,0.6)}
+.guide-price{position:absolute;bottom:14px;right:14px;background:rgba(26,20,16,0.7);backdrop-filter:blur(8px);color:white;font-size:14px;font-weight:700;padding:6px 12px;border-radius:8px}
+.guide-body{padding:22px}
+.guide-city{font-size:12px;color:var(--mid);font-weight:500;margin-bottom:6px;letter-spacing:0.2px}
+.guide-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--earth);margin-bottom:10px;letter-spacing:-0.3px}
+.guide-features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.feat{font-size:11px;color:var(--mid);background:var(--cream2);border:1px solid rgba(26,20,16,0.07);padding:4px 10px;border-radius:4px}
+.guide-count{font-size:13px;color:var(--mid);margin-bottom:18px;letter-spacing:-0.1px}
+.guide-count strong{color:var(--earth);font-weight:600}
+.btn-buy{display:block;text-align:center;background:var(--earth);color:var(--cream);padding:13px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s;letter-spacing:-0.1px}
+.btn-buy:hover{background:var(--terra)}
+.btn-soon{display:block;text-align:center;background:var(--cream2);color:var(--mid);padding:13px;border-radius:8px;font-size:14px;font-weight:500;letter-spacing:-0.1px;cursor:default}
+.what-inside{background:var(--cream2);padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:48px}
+.feat-card{background:white;border:1px solid rgba(26,20,16,0.07);border-radius:14px;padding:24px}
+.feat-icon{width:40px;height:40px;border-radius:9px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feat-icon svg{width:18px;height:18px;stroke:var(--terra);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat-title{font-size:14px;font-weight:600;color:var(--earth);margin-bottom:6px;letter-spacing:-0.1px}
+.feat-desc{font-size:13px;color:var(--mid);line-height:1.7;letter-spacing:-0.1px}
+footer{background:var(--earth);padding:28px clamp(24px,5vw,80px);border-top:1px solid rgba(255,255,255,0.06)}
+.f-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.f-bottom p,.f-bottom a{font-size:13px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s}
+.f-bottom a:hover{color:white}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+@media(max-width:768px){.guides-grid,.features-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="index.html" class="nav-back">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Zurück
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">City Guides</div>
+    <h1>Meine Geheimtipps.<br><em>Direkt in Google Maps.</em></h1>
+    <p class="hero-sub">Kein Suchen, kein Ausprobieren. Ich habe die besten Spots bereits für dich gespeichert — Restaurants, Bars, Geld-Exchange, lokale Märkte. Einmal kaufen, für immer nutzen.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="eyebrow2 reveal">Verfügbare Guides</div>
+    <h2 class="reveal d1">Wähle deine Stadt.</h2>
+    <p class="sec-sub reveal d2">Nach dem Kauf erhältst du einen Google Maps Link — einfach öffnen und alle Spots sind direkt in deiner App gespeichert.</p>
+    <div class="guides-grid">
+
+      <div class="guide-card reveal d1">
+        <div class="guide-thumb" style="background:linear-gradient(135deg,#2d1505,#c4622d)">
+          <div class="guide-flag">🗺️</div>
+          <span class="guide-badge badge-available">Verfügbar</span>
+          <div class="guide-price">9,90 €</div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-city">Thailand · Pattaya</div>
+          <div class="guide-title">Pattaya Guide</div>
+          <div class="guide-features">
+            <span class="feat">Restaurants</span>
+            <span class="feat">Bars</span>
+            <span class="feat">Geld-Exchange</span>
+            <span class="feat">Märkte</span>
+            <span class="feat">Strände</span>
+          </div>
+          <div class="guide-count"><strong>50+</strong> gespeicherte Spots · inklusive persönlicher Notizen</div>
+          <a href="mailto:freiweit.mit.nihat@gmail.com?subject=City Guide Pattaya" class="btn-buy">Guide kaufen — 9,90 €</a>
+        </div>
+      </div>
+
+      <div class="guide-card reveal d2">
+        <div class="guide-thumb" style="background:linear-gradient(135deg,#1a0a20,#4a2060)">
+          <div class="guide-flag">🗺️</div>
+          <span class="guide-badge badge-soon">Bald verfügbar</span>
+          <div class="guide-price">9,90 €</div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-city">Thailand · Bangkok</div>
+          <div class="guide-title">Bangkok Guide</div>
+          <div class="guide-features">
+            <span class="feat">Restaurants</span>
+            <span class="feat">Rooftop Bars</span>
+            <span class="feat">Co-Working</span>
+            <span class="feat">Shopping</span>
+          </div>
+          <div class="guide-count">Kommt bald · Newsletter abonnieren für Update</div>
+          <div class="btn-soon">Kommt bald</div>
+        </div>
+      </div>
+
+      <div class="guide-card reveal d3">
+        <div class="guide-thumb" style="background:linear-gradient(135deg,#0d2010,#2a5020)">
+          <div class="guide-flag">🗺️</div>
+          <span class="guide-badge badge-soon">Bald verfügbar</span>
+          <div class="guide-price">9,90 €</div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-city">Vietnam · Da Nang</div>
+          <div class="guide-title">Da Nang Guide</div>
+          <div class="guide-features">
+            <span class="feat">Strand-Cafés</span>
+            <span class="feat">Lokale Küche</span>
+            <span class="feat">Co-Working</span>
+            <span class="feat">Märkte</span>
+          </div>
+          <div class="guide-count">Kommt bald · Newsletter abonnieren für Update</div>
+          <div class="btn-soon">Kommt bald</div>
+        </div>
+      </div>
+
+      <div class="guide-card reveal d1">
+        <div class="guide-thumb" style="background:linear-gradient(135deg,#0a1520,#1a3560)">
+          <div class="guide-flag">🗺️</div>
+          <span class="guide-badge badge-soon">Bald verfügbar</span>
+          <div class="guide-price">9,90 €</div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-city">Thailand · Chiang Mai</div>
+          <div class="guide-title">Chiang Mai Guide</div>
+          <div class="guide-features">
+            <span class="feat">Cafés</span>
+            <span class="feat">Nachtmärkte</span>
+            <span class="feat">Tempel</span>
+            <span class="feat">Nomad-Spots</span>
+          </div>
+          <div class="guide-count">Kommt bald · Newsletter abonnieren für Update</div>
+          <div class="btn-soon">Kommt bald</div>
+        </div>
+      </div>
+
+      <div class="guide-card reveal d2" style="background:linear-gradient(135deg,var(--cream2),white)">
+        <div class="guide-thumb" style="background:var(--cream2);display:flex;align-items:center;justify-content:center">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(26,20,16,0.15)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="guide-body">
+          <div class="guide-city">Weitere Städte</div>
+          <div class="guide-title">Bundle — alle Guides</div>
+          <div class="guide-features">
+            <span class="feat">Alle Städte</span>
+            <span class="feat">Updates inklusive</span>
+          </div>
+          <div class="guide-count">Sobald alle Guides verfügbar sind · Bundle-Rabatt</div>
+          <a href="index.html#newsletter" class="btn-buy" style="background:var(--terra)">Newsletter — Updates erhalten</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="what-inside">
+  <div class="sec-inner">
+    <div class="eyebrow2 reveal">Was ist drin?</div>
+    <h2 class="reveal d1">Alles was du vor Ort brauchst.</h2>
+    <div class="features-grid">
+      <div class="feat-card reveal d1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="feat-title">Beste Restaurants</div>
+        <div class="feat-desc">Lokale Küche zu fairen Preisen — keine Tourist-Fallen. Spots die ich selbst regelmäßig besuche.</div>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="feat-title">Bester Geld-Exchange</div>
+        <div class="feat-desc">Wo du die besten Wechselkurse bekommst — ohne versteckte Gebühren. Spart dir echtes Geld.</div>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="feat-title">Lokale Geheimtipps</div>
+        <div class="feat-desc">Orte die du im normalen Reiseführer nicht findest — Bars, Märkte, versteckte Strände.</div>
+      </div>
+      <div class="feat-card reveal d1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="feat-title">Co-Working Spaces</div>
+        <div class="feat-desc">Die besten Orte zum Arbeiten — schnelles WLAN, ruhige Atmosphäre, guter Kaffee.</div>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="feat-title">Persönliche Notizen</div>
+        <div class="feat-desc">Jeder Spot hat meine persönliche Bewertung und Tipps — was bestellen, wann hingehen, worauf achten.</div>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.75"/></svg></div>
+        <div class="feat-title">Regelmäßige Updates</div>
+        <div class="feat-desc">Einmal kaufen — Guides werden aktualisiert wenn sich etwas ändert. Du bekommst die neue Version kostenlos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-bottom">
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:white;text-decoration:none">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
+      <a href="index.html">← Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2026 Freiweit mit Nihat</p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

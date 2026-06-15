@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interviewpartner gesucht — Freiweit mit Nihat</title>
+<meta name="description" content="Du lebst in Asien und hast eine Geschichte? Bewirb dich für ein Interview auf dem YouTube-Kanal Freiweit mit Nihat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1A1410;--terra:#C4622D;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#7A7068;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--earth);text-decoration:none}
+.nav-logo span{color:var(--terra)}
+.nav-back{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--mid);font-size:13.5px;font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+
+/* HERO */
+.hero{background:var(--earth);padding:clamp(110px,14vh,160px) clamp(24px,5vw,80px) clamp(80px,10vh,120px);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+.eyebrow::before,.eyebrow::after{content:'';width:24px;height:1px;background:var(--sand)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,68px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:white;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.45);line-height:1.75;max-width:580px;margin:0 auto 40px;letter-spacing:-0.1px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:44px}
+.htag{font-size:12px;font-weight:500;color:rgba(200,169,126,0.7);background:rgba(200,169,126,0.08);border:1px solid rgba(200,169,126,0.15);padding:6px 16px;border-radius:5px;letter-spacing:-0.1px}
+.scroll-cta{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:13px;font-weight:500;letter-spacing:-0.1px;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Inter',sans-serif}
+.scroll-cta:hover{color:white}
+
+/* HOW IT WORKS */
+.how{padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px);background:var(--cream2)}
+.how-inner{max-width:1000px;margin:0 auto}
+.sec-eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sec-eyebrow::before{content:'';width:24px;height:1px;background:var(--terra)}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:var(--earth);margin-bottom:52px;line-height:1.1}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(26,20,16,0.07);border-radius:16px;overflow:hidden}
+.step{background:white;padding:32px 28px}
+.step-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:rgba(196,98,45,0.15);line-height:1;margin-bottom:16px;letter-spacing:-1px}
+.step-title{font-size:15px;font-weight:600;color:var(--earth);margin-bottom:8px;letter-spacing:-0.1px}
+.step-desc{font-size:14px;color:var(--mid);line-height:1.7;letter-spacing:-0.1px}
+
+/* WHAT WE LOOK FOR */
+.looking{padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px);background:var(--cream)}
+.looking-inner{max-width:1000px;margin:0 auto}
+.criteria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:48px}
+.crit-card{background:white;border:1px solid rgba(26,20,16,0.07);border-radius:14px;padding:26px;transition:all .3s}
+.crit-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(26,20,16,0.07)}
+.crit-icon{width:40px;height:40px;border-radius:9px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.crit-icon svg{width:18px;height:18px;stroke:var(--terra);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.crit-title{font-size:15px;font-weight:600;color:var(--earth);margin-bottom:6px;letter-spacing:-0.1px}
+.crit-desc{font-size:13.5px;color:var(--mid);line-height:1.7;letter-spacing:-0.1px}
+
+/* FORM */
+.form-sec{padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px);background:var(--cream2)}
+.form-sec-inner{max-width:700px;margin:0 auto}
+.form-box{background:white;border:1px solid rgba(26,20,16,0.07);border-radius:20px;padding:clamp(28px,4vw,48px);margin-top:48px}
+.f-group{margin-bottom:18px}
+.f-group label{font-size:12.5px;font-weight:500;color:var(--mid);display:block;margin-bottom:7px;letter-spacing:0.1px;text-transform:uppercase}
+.f-group input,.f-group textarea,.f-group select{width:100%;padding:13px 15px;border-radius:10px;background:var(--cream2);border:1.5px solid transparent;font-size:15px;color:var(--earth);font-family:'Inter',sans-serif;outline:none;transition:all .2s}
+.f-group input:focus,.f-group textarea:focus,.f-group select:focus{border-color:var(--terra);background:white}
+.f-group textarea{min-height:110px;resize:vertical}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px}
+.radio-pill{cursor:pointer}
+.radio-pill input{display:none}
+.radio-pill span{display:block;font-size:13px;font-weight:500;padding:8px 16px;border-radius:6px;border:1.5px solid rgba(26,20,16,0.1);color:var(--mid);transition:all .2s;letter-spacing:-0.1px}
+.radio-pill input:checked + span{border-color:var(--terra);color:var(--terra);background:rgba(196,98,45,0.05)}
+.radio-pill span:hover{border-color:rgba(196,98,45,0.3)}
+.btn-submit{width:100%;background:var(--earth);color:var(--cream);padding:15px;border-radius:8px;font-size:15px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;margin-top:8px;transition:background .2s;letter-spacing:-0.1px}
+.btn-submit:hover{background:var(--terra)}
+.success-box{text-align:center;padding:40px;display:none}
+.success-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--earth);margin-bottom:10px}
+.success-box p{color:var(--mid);font-size:15px;line-height:1.7}
+
+/* PREVIOUS */
+.prev{padding:clamp(80px,10vh,120px) clamp(24px,5vw,80px);background:var(--earth)}
+.prev-inner{max-width:1000px;margin:0 auto}
+.prev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:48px}
+.prev-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,126,0.12);border-radius:14px;overflow:hidden;transition:all .3s}
+.prev-card:hover{background:rgba(255,255,255,0.07)}
+.prev-thumb{height:180px;background:linear-gradient(135deg,#2d1505,#7a3a12);position:relative;overflow:hidden}
+.prev-thumb img{width:100%;height:100%;object-fit:cover}
+.prev-body{padding:20px}
+.prev-name{font-size:15px;font-weight:600;color:white;margin-bottom:4px;letter-spacing:-0.1px}
+.prev-meta{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:12px}
+.prev-quote{font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.65;font-style:italic;letter-spacing:-0.1px}
+.prev-link{display:inline-flex;align-items:center;gap:5px;color:var(--sand);font-size:13px;font-weight:500;text-decoration:none;margin-top:14px;transition:gap .2s}
+.prev-link:hover{gap:9px}
+
+footer{background:var(--earth);padding:28px clamp(24px,5vw,80px);border-top:1px solid rgba(255,255,255,0.06)}
+.f-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.f-bottom p{font-size:13px;color:rgba(255,255,255,0.2)}
+.f-bottom a{color:rgba(255,255,255,0.2);text-decoration:none;font-size:13px;transition:color .2s}
+.f-bottom a:hover{color:white}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media(max-width:768px){
+  .f-row{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .prev-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="index.html" class="nav-back">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Zurück
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Interviewpartner gesucht</div>
+    <h1>Deine Geschichte.<br><em>Mein Kanal.</em></h1>
+    <p class="hero-sub">Du lebst in Asien — und hast eine Geschichte die andere inspirieren kann? Ich suche echte Menschen mit echten Erfahrungen. Keine perfekten Leben. Sondern die Wahrheit.</p>
+    <div class="hero-tags">
+      <span class="htag">Rentner im Ausland</span>
+      <span class="htag">Digitale Nomaden</span>
+      <span class="htag">Auswanderer</span>
+      <span class="htag">Frührentner</span>
+      <span class="htag">Unternehmer vor Ort</span>
+      <span class="htag">Langzeitreisende</span>
+    </div>
+    <button class="scroll-cta" onclick="document.getElementById('bewerbung').scrollIntoView({behavior:'smooth'})">
+      Jetzt bewerben
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <div class="sec-eyebrow reveal">Ablauf</div>
+    <h2 class="sec-h2 reveal d1">So läuft ein Interview ab.</h2>
+    <div class="steps">
+      <div class="step reveal d1">
+        <div class="step-num">01</div>
+        <div class="step-title">Bewerbung absenden</div>
+        <div class="step-desc">Du füllst das Formular unten aus — kurze Infos über dich, wo du lebst und was deine Geschichte ausmacht.</div>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">02</div>
+        <div class="step-title">Nihat meldet sich</div>
+        <div class="step-desc">Ich lese jede Bewerbung persönlich und melde mich innerhalb von 1–2 Wochen wenn es passt.</div>
+      </div>
+      <div class="step reveal d3">
+        <div class="step-num">03</div>
+        <div class="step-title">Interview vor Ort</div>
+        <div class="step-desc">Wir treffen uns dort wo du lebst — in deiner Wohnung, einem Café oder einem Ort der zu deiner Geschichte passt.</div>
+      </div>
+      <div class="step reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-title">Video geht online</div>
+        <div class="step-desc">Das Interview wird auf meinem YouTube-Kanal veröffentlicht — du erreichst damit die gesamte DACH-Community.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE LOOK FOR -->
+<section class="looking">
+  <div class="looking-inner">
+    <div class="sec-eyebrow reveal">Wen ich suche</div>
+    <h2 class="sec-h2 reveal d1">Deine Geschichte muss nicht perfekt sein.<br><em style="font-style:italic;color:var(--terra)">Sie muss echt sein.</em></h2>
+    <div class="criteria-grid">
+      <div class="crit-card reveal d1">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="crit-title">Du lebst wirklich dort</div>
+        <div class="crit-desc">Kein Urlaub, kein Kurzaufenthalt. Du hast deinen Lebensmittelpunkt in Asien — egal wie lange du schon dort bist.</div>
+      </div>
+      <div class="crit-card reveal d2">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="crit-title">Du hast eine echte Geschichte</div>
+        <div class="crit-desc">Warum bist du gegangen? Was hat sich verändert? Was war schwerer als gedacht? Diese ehrlichen Antworten interessieren meine Community.</div>
+      </div>
+      <div class="crit-card reveal d3">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="crit-title">Aus dem DACH-Raum</div>
+        <div class="crit-desc">Deutsche, Österreicher oder Schweizer — meine Community kommt aus dem DACH-Raum und sucht Inspiration von Menschen mit ähnlichem Hintergrund.</div>
+      </div>
+      <div class="crit-card reveal d1">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="crit-title">Keine Mindest-Aufenthaltsdauer</div>
+        <div class="crit-desc">Ob du seit 6 Monaten oder 10 Jahren dort lebst — jede Phase hat ihre eigene Geschichte und ist wertvoll für die Community.</div>
+      </div>
+      <div class="crit-card reveal d2">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="crit-title">Kein Mindestbudget</div>
+        <div class="crit-desc">Mit wenig auskommen oder gut verdienen — beides ist interessant. Meine Community will wissen was wirklich möglich ist, ohne Schönfärberei.</div>
+      </div>
+      <div class="crit-card reveal d3">
+        <div class="crit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="crit-title">Kein Skript, kein Drehbuch</div>
+        <div class="crit-desc">Das Interview läuft wie ein Gespräch zwischen Freunden. Keine vorbereiteten Antworten — nur echte Reaktionen und ehrliche Einblicke.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEWERBUNGSFORMULAR -->
+<section class="form-sec" id="bewerbung">
+  <div class="form-sec-inner">
+    <div class="sec-eyebrow reveal">Bewerbung</div>
+    <h2 class="sec-h2 reveal d1" style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:var(--earth);margin-bottom:0;line-height:1.1">Erzähl mir von dir.</h2>
+    <p style="font-size:15px;color:var(--mid);line-height:1.75;margin-top:14px;letter-spacing:-0.1px" class="reveal d2">Ich lese jede Bewerbung persönlich. Je mehr du schreibst, desto besser kann ich einschätzen ob deine Geschichte zu meinem Kanal passt.</p>
+
+    <div class="form-box reveal d2">
+      <div id="form-wrap">
+        <div class="success-box" id="form-success">
+          <div style="width:52px;height:52px;border-radius:50%;background:rgba(107,124,69,0.1);border:1px solid rgba(107,124,69,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B7C45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Bewerbung eingegangen!</h3>
+          <p>Ich habe deine Bewerbung erhalten und melde mich innerhalb von 1–2 Wochen bei dir — wenn ich denke, dass deine Geschichte zur Community passt.</p>
+        </div>
+
+        <div class="f-row">
+          <div class="f-group"><label>Vorname *</label><input type="text" id="iv-name" placeholder="Dein Vorname"></div>
+          <div class="f-group"><label>Alter</label><input type="text" id="iv-age" placeholder="z.B. 54"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label>Herkunft (DACH) *</label><input type="text" id="iv-from" placeholder="z.B. München, Deutschland"></div>
+          <div class="f-group"><label>E-Mail *</label><input type="email" id="iv-email" placeholder="deine@email.de"></div>
+        </div>
+
+        <div class="f-group">
+          <label>Wo lebst du aktuell? *</label>
+          <input type="text" id="iv-location" placeholder="z.B. Pattaya, Thailand seit 2021">
+        </div>
+
+        <div class="f-group">
+          <label>Deine Situation</label>
+          <div class="radio-group">
+            <label class="radio-pill"><input type="radio" name="situation" value="rentner"><span>Rentner</span></label>
+            <label class="radio-pill"><input type="radio" name="situation" value="fruehrentner"><span>Frührentner</span></label>
+            <label class="radio-pill"><input type="radio" name="situation" value="nomad"><span>Digitaler Nomade</span></label>
+            <label class="radio-pill"><input type="radio" name="situation" value="unternehmer"><span>Unternehmer vor Ort</span></label>
+            <label class="radio-pill"><input type="radio" name="situation" value="auswanderer"><span>Auswanderer</span></label>
+            <label class="radio-pill"><input type="radio" name="situation" value="langzeitreisender"><span>Langzeitreisender</span></label>
+          </div>
+        </div>
+
+        <div class="f-group">
+          <label>Deine Geschichte — warum bist du gegangen? *</label>
+          <textarea id="iv-story" placeholder="Erzähl mir kurz warum du gegangen bist, was dich bewogen hat und wie dein Leben jetzt aussieht. Je ehrlicher, desto besser."></textarea>
+        </div>
+
+        <div class="f-group">
+          <label>Was macht deine Geschichte besonders?</label>
+          <textarea id="iv-special" style="min-height:80px" placeholder="Was ist an deiner Geschichte einzigartig? Was würde andere überraschen oder inspirieren?"></textarea>
+        </div>
+
+        <div class="f-group">
+          <label>Budget / Lebenshaltungskosten (optional)</label>
+          <input type="text" id="iv-budget" placeholder="z.B. 1.200€/Monat in Chiang Mai — muss nicht genau sein">
+        </div>
+
+        <div class="f-group">
+          <label>Hast du Social Media / YouTube?</label>
+          <input type="text" id="iv-social" placeholder="Instagram, YouTube-Link oder 'nein' — kein Muss">
+        </div>
+
+        <p style="font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:16px;padding:12px 16px;background:var(--cream2);border-radius:8px;letter-spacing:-0.1px">Deine Angaben werden nur zur Auswahl von Interviewpartnern verwendet und nicht an Dritte weitergegeben. Du entscheidest selbst was du im Interview teilen möchtest.</p>
+
+        <button class="btn-submit" onclick="submitInterview()">Bewerbung absenden</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BISHERIGE INTERVIEWS -->
+<section class="prev">
+  <div class="prev-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--sand)"><span style="background:var(--sand);width:24px;height:1px;display:inline-block;vertical-align:middle;margin-right:10px"></span>Bisherige Interviews</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:white;margin-bottom:0;line-height:1.1" class="reveal d1">Echte Geschichten.<br><em style="font-style:italic;color:var(--sand)">Echte Menschen.</em></h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.35);line-height:1.75;margin-top:14px;max-width:520px;letter-spacing:-0.1px" class="reveal d2">Alle Interviews sind auf YouTube verfügbar — schau rein und lass dich inspirieren.</p>
+    <div class="prev-grid">
+      <!-- Platzhalter — werden durch echte Videos ersetzt -->
+      <div class="prev-card reveal d1">
+        <div class="prev-thumb" style="background:linear-gradient(135deg,#2d1505,#c4622d);display:flex;align-items:center;justify-content:center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="prev-body">
+          <div class="prev-name">Interview folgt</div>
+          <div class="prev-meta">Thailand &middot; Demnächst</div>
+          <div class="prev-quote">"Demnächst hier — das erste Interview wird eingetragen."</div>
+          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="prev-link">Zum Kanal &#8594;</a>
+        </div>
+      </div>
+      <div class="prev-card reveal d2">
+        <div class="prev-thumb" style="background:linear-gradient(135deg,#0d2010,#6b7c45);display:flex;align-items:center;justify-content:center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="prev-body">
+          <div class="prev-name">Interview folgt</div>
+          <div class="prev-meta">Vietnam &middot; Demnächst</div>
+          <div class="prev-quote">"Demnächst hier — weitere Interviews werden ergänzt."</div>
+          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="prev-link">Zum Kanal &#8594;</a>
+        </div>
+      </div>
+      <div class="prev-card reveal d3">
+        <div class="prev-thumb" style="background:linear-gradient(135deg,#1a1410,#c8a97e);display:flex;align-items:center;justify-content:center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="prev-body">
+          <div class="prev-name">Interview folgt</div>
+          <div class="prev-meta">Asien &middot; Demnächst</div>
+          <div class="prev-quote">"Sobald Interviews live gehen, erscheinen sie hier."</div>
+          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" class="prev-link">Zum Kanal &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-bottom">
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:white;text-decoration:none">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
+      <a href="index.html">← Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2026 Freiweit mit Nihat</p>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function submitInterview() {
+  const name = document.getElementById('iv-name').value;
+  const email = document.getElementById('iv-email').value;
+  const location = document.getElementById('iv-location').value;
+  const story = document.getElementById('iv-story').value;
+  if(!name||!email||!location||!story){alert('Bitte alle Pflichtfelder ausfüllen.');return;}
+  document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(el=>{
+    if(el.tagName!=='DIV'||el.id==='form-success')return;
+    el.style.display='none';
+  });
+  document.getElementById('form-success').style.display='block';
+  window.scrollTo({top:document.getElementById('bewerbung').offsetTop-80,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenloser Ratgeber — Freiweit mit Nihat</title>
+<meta name="description" content="Die 7 größten Fehler beim Auswandern nach Thailand — kostenloser PDF-Ratgeber von Nihat. Aus 7 Jahren eigener Erfahrung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1A1410;--terra:#C4622D;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#7A7068;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--earth);text-decoration:none}
+.nav-logo span{color:var(--terra)}
+.nav-back{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--mid);font-size:13.5px;font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+
+.page{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:60px}
+
+/* LEFT */
+.left{background:var(--earth);padding:clamp(60px,8vh,100px) clamp(32px,5vw,80px);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.left::before{content:'';position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,0.12) 0%,transparent 70%);pointer-events:none}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--sand)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,56px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:white;margin-bottom:20px}
+h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.42);line-height:1.8;margin-bottom:40px;letter-spacing:-0.1px;max-width:440px}
+.mistakes-list{list-style:none;display:flex;flex-direction:column;gap:14px;position:relative;z-index:1}
+.mistake-item{display:flex;align-items:flex-start;gap:14px}
+.mistake-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:rgba(200,169,126,0.3);line-height:1;min-width:24px;padding-top:2px}
+.mistake-text{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;letter-spacing:-0.1px}
+.mistake-text strong{color:rgba(255,255,255,0.85);font-weight:500}
+
+/* RIGHT */
+.right{background:var(--cream2);padding:clamp(60px,8vh,100px) clamp(32px,5vw,80px);display:flex;flex-direction:column;justify-content:center}
+.form-card{background:white;border:1px solid rgba(26,20,16,0.07);border-radius:20px;padding:clamp(28px,4vw,44px)}
+.form-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--earth);letter-spacing:-0.5px;margin-bottom:8px}
+.form-sub{font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:28px;letter-spacing:-0.1px}
+.f-group{margin-bottom:16px}
+.f-group label{font-size:12px;font-weight:500;color:var(--mid);display:block;margin-bottom:7px;letter-spacing:0.3px;text-transform:uppercase}
+.f-group input{width:100%;padding:14px 15px;border-radius:10px;background:var(--cream2);border:1.5px solid transparent;font-size:15px;color:var(--earth);font-family:'Inter',sans-serif;outline:none;transition:all .2s}
+.f-group input:focus{border-color:var(--terra);background:white}
+.btn-submit{width:100%;background:var(--earth);color:var(--cream);padding:16px;border-radius:8px;font-size:15px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;letter-spacing:-0.1px;margin-top:4px}
+.btn-submit:hover{background:var(--terra)}
+.trust{display:flex;align-items:center;gap:8px;margin-top:14px}
+.trust svg{width:14px;height:14px;stroke:var(--olive);fill:none;stroke-width:2;flex-shrink:0}
+.trust p{font-size:12px;color:var(--mid);line-height:1.5;letter-spacing:-0.1px}
+.success-box{text-align:center;padding:32px;display:none}
+.success-box .check{width:56px;height:56px;border-radius:50%;background:rgba(107,124,69,0.1);border:1px solid rgba(107,124,69,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.success-box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--earth);margin-bottom:10px}
+.success-box p{color:var(--mid);font-size:14px;line-height:1.7}
+.success-box a{color:var(--terra);text-decoration:none;font-weight:500}
+
+footer{background:var(--earth);padding:24px clamp(24px,5vw,80px)}
+.f-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.f-bottom p,.f-bottom a{font-size:13px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s}
+.f-bottom a:hover{color:white}
+
+@media(max-width:768px){
+  .page{grid-template-columns:1fr}
+  .left{padding:clamp(80px,10vh,100px) clamp(24px,5vw,40px) 60px}
+  .right{padding:60px clamp(24px,5vw,40px)}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="index.html" class="nav-back">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Zurück
+  </a>
+</nav>
+
+<div class="page">
+  <div class="left">
+    <div class="eyebrow">Kostenloser Ratgeber</div>
+    <h1>Die 7 größten Fehler<br>beim Auswandern.<br><em>Aus eigener Erfahrung.</em></h1>
+    <p class="hero-sub">7 Jahre Reisen. 70+ Länder. Ich habe alle diese Fehler selbst gemacht — damit du es nicht musst. Kostenlos als PDF.</p>
+    <ul class="mistakes-list">
+      <li class="mistake-item"><span class="mistake-num">01</span><div class="mistake-text"><strong>Die falsche Krankenversicherung</strong> — was wirklich abgedeckt sein muss</div></li>
+      <li class="mistake-item"><span class="mistake-num">02</span><div class="mistake-text"><strong>Kein Puffer eingeplant</strong> — warum du mindestens 6 Monatsbudget Reserve brauchst</div></li>
+      <li class="mistake-item"><span class="mistake-num">03</span><div class="mistake-text"><strong>Ohne Probeaufenthalt direkt auswandern</strong> — der häufigste und teuerste Fehler</div></li>
+      <li class="mistake-item"><span class="mistake-num">04</span><div class="mistake-text"><strong>Steuerliche Abmeldung vergessen</strong> — was das wirklich bedeutet</div></li>
+      <li class="mistake-item"><span class="mistake-num">05</span><div class="mistake-text"><strong>Falsches Visum gewählt</strong> — die Unterschiede die zählen</div></li>
+      <li class="mistake-item"><span class="mistake-num">06</span><div class="mistake-text"><strong>Schlechten Vermieter erwischt</strong> — worauf du bei Mietverträgen achten musst</div></li>
+      <li class="mistake-item"><span class="mistake-num">07</span><div class="mistake-text"><strong>Community unterschätzt</strong> — warum du nicht alleine starten solltest</div></li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <div class="form-card">
+      <div id="form-wrap">
+        <div class="success-box" id="form-success">
+          <div class="check">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B7C45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Gleich in deinem Postfach!</h3>
+          <p>Ich habe dir den Ratgeber an deine E-Mail geschickt. Falls du ihn nicht siehst, schau kurz im Spam-Ordner nach.<br><br>
+          Willst du noch mehr? <a href="index.html#newsletter">Abonniere meinen Newsletter</a> für wöchentliche Updates.</p>
+        </div>
+        <div class="form-title">Jetzt kostenlos erhalten.</div>
+        <p class="form-sub">Trag deine E-Mail ein — ich schicke dir den PDF-Ratgeber direkt zu. Kein Spam, nur der Ratgeber.</p>
+        <div class="f-group">
+          <label>Vorname</label>
+          <input type="text" id="r-name" placeholder="Dein Vorname">
+        </div>
+        <div class="f-group">
+          <label>E-Mail-Adresse *</label>
+          <input type="email" id="r-email" placeholder="deine@email.de">
+        </div>
+        <button class="btn-submit" onclick="submitRatgeber()">Ratgeber kostenlos erhalten</button>
+        <div class="trust">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>Kein Spam. Keine Weitergabe deiner Daten. Nur der Ratgeber — und optional mein wöchentlicher Newsletter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-bottom">
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:white;text-decoration:none">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
+      <a href="index.html">← Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2026 Freiweit mit Nihat</p>
+  </div>
+</footer>
+
+<script>
+function submitRatgeber() {
+  const email = document.getElementById('r-email').value;
+  if(!email){alert('Bitte E-Mail-Adresse eingeben.');return;}
+  document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(el=>el.style.display='none');
+  document.getElementById('form-success').style.display='block';
+}
+</script>
+</body>
+</html>
