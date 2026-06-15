@@ -20,7 +20,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,50px);font-weight:900;line-height:1.12;letter-spacing:-1px;max-width:820px;margin:0 auto 20px}
 .mt{font-size:13px;color:rgba(255,255,255,0.45);padding-bottom:48px}
 .hb{width:100%;height:260px}
-.wrap{max-width:760px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,40px)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,40px);background:var(--cream)}
 h2{font-family:'Playfair Display',serif;font-size:25px;font-weight:700;color:var(--earth);margin:44px 0 16px;letter-spacing:-0.3px}
 h3{font-size:18px;font-weight:700;color:var(--earth);margin:30px 0 12px}
 p{font-size:16.5px;color:#333;line-height:1.85;margin-bottom:20px}
@@ -59,12 +59,12 @@ footer a{color:rgba(255,255,255,0.4)}footer a:hover{color:white}
 <nav>
   <a href="../index.html" class="nl">Freiweit <span>mit Nihat</span></a>
   <a href="../index.html" class="nb">&#8592; Startseite</a>
-      <div class="lang-switcher" style="display:flex;align-items:center;gap:2px;background:rgba(26,20,16,0.06);border-radius:20px;padding:3px">
-      <button style="border:none;background:none;cursor:pointer;font-size:12px;font-weight:600;color:#6b5e52;padding:5px 10px;border-radius:16px" class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
-      <button style="border:none;background:none;cursor:pointer;font-size:12px;font-weight:600;color:#6b5e52;padding:5px 10px;border-radius:16px" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button style="border:none;background:none;cursor:pointer;font-size:12px;font-weight:600;color:#6b5e52;padding:5px 10px;border-radius:16px" class="lang-btn" data-lang="th" onclick="setLang('th')">TH</button>
+          <div class="lang-switcher">
+      <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="th" onclick="setLang('th')">TH</button>
     </div>
-  <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" class="nc">Beratung buchen</a>
+    <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" class="nc">Beratung buchen</a>
 </nav>
 <header class="hero" style="background:#0d2010">
   <div class="ey">Vietnam &nbsp;&middot;&nbsp; Alltag &amp; Technik</div>
