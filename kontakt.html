@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anfrage — Freiweit mit Nihat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth);min-height:100vh}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;background:var(--cream);border-bottom:1px solid var(--light);position:sticky;top:0;z-index:100}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--earth);text-decoration:none}
+  .nav-logo span{color:var(--terra)}
+  .nav-back{font-size:13px;color:var(--mid);text-decoration:none;display:flex;align-items:center;gap:6px}
+  .nav-back:hover{color:var(--earth)}
+
+  .page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 60px);padding:60px 24px}
+  .eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:16px;text-align:center}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--earth);text-align:center;margin-bottom:12px;line-height:1.2}
+  .subtitle{font-size:15px;color:var(--mid);text-align:center;max-width:460px;line-height:1.7;margin-bottom:48px}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:640px;width:100%}
+  .card{background:white;border:1.5px solid var(--light);border-radius:16px;padding:36px 32px;cursor:pointer;text-decoration:none;color:var(--earth);transition:all .25s;display:block}
+  .card:hover{border-color:var(--terra);transform:translateY(-3px);box-shadow:0 16px 40px rgba(26,20,16,0.1)}
+  .card-icon{width:48px;height:48px;border-radius:12px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .card-icon svg{width:22px;height:22px;stroke:var(--terra);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px}
+  .card-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:20px}
+  .card-cta{font-size:12px;font-weight:600;color:var(--terra);letter-spacing:0.3px}
+
+  .card.business{border-color:var(--earth)}
+  .card.business .card-icon{background:rgba(26,20,16,0.06);border-color:rgba(26,20,16,0.15)}
+  .card.business .card-icon svg{stroke:var(--earth)}
+  .card.business:hover{border-color:var(--earth);background:var(--earth)}
+  .card.business:hover .card-title,.card.business:hover .card-desc,.card.business:hover .card-cta{color:white}
+  .card.business:hover .card-icon{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+  .card.business:hover .card-icon svg{stroke:white}
+
+  @media(max-width:560px){.cards{grid-template-columns:1fr}.page{padding:40px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="index.html" class="nav-back">&#8592; Zurück zur Startseite</a>
+</nav>
+
+<div class="page">
+  <div class="eyebrow">Kontakt & Anfragen</div>
+  <h1>Was kann ich<br>für dich tun?</h1>
+  <p class="subtitle">Um dir schnellstmöglich antworten zu können, wähle bitte dein Anliegen aus.</p>
+
+  <div class="cards">
+
+    <a href="mediakit.html" class="card business">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="card-title">Business Anfrage</div>
+      <div class="card-desc">Sponsoring, Kooperationen, Location Reviews, Product Placements & Media Kit.</div>
+      <div class="card-cta">Media Kit ansehen &#8594;</div>
+    </a>
+
+    <a href="#privat" class="card" onclick="showPrivat(event)">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="card-title">Persönliche Nachricht</div>
+      <div class="card-desc">Fragen, Feedback, Zuschauer-Nachrichten & allgemeine Anfragen.</div>
+      <div class="card-cta">Nachricht schreiben &#8594;</div>
+    </a>
+
+  </div>
+
+  <!-- Privat-Formular (zunächst versteckt) -->
+  <div id="privat-form" style="display:none;max-width:480px;width:100%;margin-top:40px">
+    <div style="background:white;border:1.5px solid var(--light);border-radius:16px;padding:36px 32px">
+      <h2 style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px">Persönliche Nachricht</h2>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.6">Oder schreib mir direkt: <a href="mailto:kontakt@freiweitmitnihat.com" style="color:var(--terra);text-decoration:none;font-weight:600">kontakt@freiweitmitnihat.com</a></p>
+      <div style="margin-bottom:16px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px">Name</label>
+        <input type="text" placeholder="Dein Name" style="width:100%;padding:11px 14px;border:1.5px solid var(--light);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--earth);background:var(--cream)">
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px">E-Mail</label>
+        <input type="email" placeholder="deine@email.de" style="width:100%;padding:11px 14px;border:1.5px solid var(--light);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--earth);background:var(--cream)">
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px">Nachricht</label>
+        <textarea placeholder="Was liegt dir auf dem Herzen?" rows="5" style="width:100%;padding:11px 14px;border:1.5px solid var(--light);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--earth);background:var(--cream);resize:vertical"></textarea>
+      </div>
+      <p style="font-size:12px;color:var(--mid);margin-bottom:16px">Für schnelle Antworten: Direkt an <a href="mailto:kontakt@freiweitmitnihat.com" style="color:var(--terra);text-decoration:none">kontakt@freiweitmitnihat.com</a> schreiben.</p>
+      <a href="mailto:kontakt@freiweitmitnihat.com" style="display:block;text-align:center;background:var(--earth);color:white;font-size:13px;font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;letter-spacing:0.2px">Nachricht senden &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPrivat(e){
+  e.preventDefault();
+  var f=document.getElementById('privat-form');
+  f.style.display='block';
+  setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'})},50);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Media Kit 2026 — Freiweit mit Nihat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--earth:#1a1410;--terra:#C4622D;--gold:#b8965a;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2;--dark:#0d0b09}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth)}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;background:var(--cream);border-bottom:1px solid var(--light);position:sticky;top:0;z-index:100}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--earth);text-decoration:none}
+  .nav-logo span{color:var(--terra)}
+  .nav-actions{display:flex;align-items:center;gap:12px}
+  .btn-dl{background:var(--earth);color:white;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
+  .btn-dl:hover{background:var(--terra)}
+  .btn-back{font-size:13px;color:var(--mid);text-decoration:none}
+  .btn-back:hover{color:var(--earth)}
+
+  /* HERO */
+  .hero{background:var(--dark);color:white;padding:80px 0 0}
+  .hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .hero-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px}
+  .hero h1 em{color:var(--gold);font-style:normal}
+  .hero-sub{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:36px}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(184,150,90,0.15);border:1px solid rgba(184,150,90,0.3);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--gold);margin-bottom:28px}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+  .stat-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px}
+  .stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold);line-height:1}
+  .stat-label{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.8px;text-transform:uppercase;margin-top:4px}
+  .hero-img{width:100%;border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.05);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
+  .hero-img-placeholder{text-align:center;color:rgba(255,255,255,0.2);font-size:14px;padding:40px}
+  .hero-bar{background:rgba(255,255,255,0.04);border-top:1px solid rgba(255,255,255,0.06);margin-top:60px;padding:20px 40px}
+  .hero-bar-inner{max-width:1100px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
+  .meta-item{display:flex;flex-direction:column;gap:2px}
+  .meta-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+  .meta-val{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500}
+  .meta-val a{color:var(--gold);text-decoration:none}
+
+  /* SECTIONS */
+  .sec{padding:72px 0}
+  .sec-inner{max-width:1100px;margin:0 auto;padding:0 40px}
+  .sec-eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:12px}
+  .sec-h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,40px);font-weight:700;margin-bottom:8px}
+  .sec-sub{font-size:15px;color:var(--mid);line-height:1.7;max-width:580px;margin-bottom:48px}
+  .divider{height:1px;background:var(--light);margin:0}
+
+  /* ZIELGRUPPE */
+  .zg-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .highlight-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+  .hl-card{background:var(--dark);border-radius:12px;padding:24px 20px;text-align:center}
+  .hl-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold)}
+  .hl-desc{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;line-height:1.4}
+  .stats-table{width:100%;border-collapse:collapse}
+  .stats-table tr{border-bottom:1px solid var(--light)}
+  .stats-table td{padding:12px 0;font-size:14px}
+  .stats-table td:first-child{color:var(--mid)}
+  .stats-table td:last-child{font-weight:700;text-align:right}
+  .stats-block{background:white;border:1px solid var(--light);border-radius:12px;padding:24px;margin-bottom:16px}
+  .stats-block-title{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:12px}
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .bar-label{font-size:13px;color:var(--earth);min-width:60px}
+  .bar-track{flex:1;height:6px;background:var(--light);border-radius:3px}
+  .bar-fill{height:6px;background:var(--gold);border-radius:3px}
+  .bar-val{font-size:12px;font-weight:700;min-width:44px;text-align:right}
+
+  /* PERFORMANCE */
+  .perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
+  .perf-card{background:var(--dark);border-radius:12px;padding:28px 24px}
+  .perf-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold)}
+  .perf-label{font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px}
+  .perf-note{font-size:12px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.4}
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .video-card{background:white;border:1px solid var(--light);border-radius:12px;overflow:hidden}
+  .video-thumb{aspect-ratio:16/9;background:#2a2218;display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,0.3);padding:16px;text-align:center}
+  .video-info{padding:16px}
+  .video-views{font-size:11px;color:var(--terra);font-weight:700;margin-bottom:4px}
+  .video-title{font-size:13px;font-weight:600;color:var(--earth);line-height:1.4}
+  .video-tag{font-size:10px;color:var(--mid);margin-top:6px}
+
+  /* KOOPERATIONEN */
+  .koop-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px}
+  .koop-card{background:white;border:1px solid var(--light);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start}
+  .koop-icon{width:40px;height:40px;border-radius:10px;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .koop-icon svg{width:18px;height:18px;stroke:var(--terra);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .koop-title{font-size:14px;font-weight:700;margin-bottom:4px}
+  .koop-desc{font-size:12px;color:var(--mid);line-height:1.5}
+  .partner-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--light);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--mid)}
+
+  /* CTA */
+  .cta-sec{background:var(--dark);padding:80px 0}
+  .cta-inner{max-width:700px;margin:0 auto;padding:0 40px;text-align:center}
+  .cta-inner .sec-eyebrow{color:var(--gold)}
+  .cta-inner .sec-h2{color:white}
+  .cta-inner em{color:var(--gold);font-style:normal}
+  .cta-sub{font-size:15px;color:rgba(255,255,255,0.55);margin-bottom:40px;line-height:1.7}
+  .cta-contacts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:480px;margin:0 auto}
+  .cta-contact{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:left}
+  .cta-c-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px}
+  .cta-c-val{font-size:13px;font-weight:600;color:white}
+  .cta-c-val a{color:var(--gold);text-decoration:none}
+
+  @media(max-width:768px){
+    .hero-inner{grid-template-columns:1fr}.hero-img{display:none}
+    .zg-grid,.koop-grid{grid-template-columns:1fr}
+    .highlight-cards,.perf-grid,.video-grid,.cta-contacts{grid-template-columns:1fr 1fr}
+    .perf-grid{grid-template-columns:1fr 1fr}
+    nav{padding:0 20px}.sec-inner{padding:0 20px}.hero-bar{padding:20px}.hero-inner{padding:0 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <div class="nav-actions">
+    <a href="kontakt.html" class="btn-back">&#8592; Zurück</a>
+    <a href="mailto:kontakt@freiweitmitnihat.com" class="btn-dl">Kooperation anfragen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Media Kit 2026 &nbsp;·&nbsp; Freiweit mit Nihat</div>
+      <div class="hero-badge">&#128200; Kanal seit November 2025 &mdash; explosives Wachstum</div>
+      <h1>Der Kanal für die<br><em>Generation Freiheit.</em></h1>
+      <p class="hero-sub">Geo-Arbitrage, Auswandern, Rente im Ausland &mdash; authentisch, täglich, mit einer der kaufkräftigsten Zielgruppen auf YouTube.</p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-num">400K+</div>
+          <div class="stat-label">Views / Monat</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">220K</div>
+          <div class="stat-label">Zuschauer / Monat</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">+500%</div>
+          <div class="stat-label">Abo-Wachstum (28d)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">84%</div>
+          <div class="stat-label">Algorithmisch empfohlen</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="hero-img-placeholder">Profilfoto<br>Nihat Bucakli</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-inner">
+      <div class="meta-item"><span class="meta-label">YouTube</span><span class="meta-val"><a href="https://www.youtube.com/@FreiweitmitNihat">@FreiweitmitNihat</a></span></div>
+      <div class="meta-item"><span class="meta-label">Instagram</span><span class="meta-val"><a href="https://www.instagram.com/nihatbucakli/">@nihatbucakli</a></span></div>
+      <div class="meta-item"><span class="meta-label">Website</span><span class="meta-val"><a href="https://freiweitmitnihat.com">freiweitmitnihat.com</a></span></div>
+      <div class="meta-item"><span class="meta-label">E-Mail</span><span class="meta-val"><a href="mailto:kontakt@freiweitmitnihat.com">kontakt@freiweitmitnihat.com</a></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ÜBER NIHAT -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="zg-grid">
+      <div>
+        <div class="sec-eyebrow">Über Nihat</div>
+        <h2 class="sec-h2">Der Reisende, dem die<br>Generation 55+ vertraut.</h2>
+        <p style="font-size:15px;color:var(--mid);line-height:1.8;margin-bottom:20px">Nihat Bucakli hat mit "Freiweit mit Nihat" in wenigen Monaten einen der am schnellsten wachsenden deutschsprachigen YouTube-Kanäle im Segment Auswandern &amp; Rente im Ausland aufgebaut.</p>
+        <p style="font-size:15px;color:var(--mid);line-height:1.8;margin-bottom:20px">Sein Erfolgsrezept: <strong style="color:var(--earth)">Authentizität statt Clickbait.</strong> Nihat lebt, was er zeigt &mdash; Geo-Arbitrage, Südostasien, finanzielle Freiheit. Seine Zuschauer sind keine passiven Scroller, sondern <strong style="color:var(--earth)">kaufkräftige Entscheider</strong>, die aktiv nach Lösungen suchen.</p>
+        <p style="font-size:15px;color:var(--mid);line-height:1.8;margin-bottom:32px">Mit <strong style="color:var(--earth)">84 % algorithmischer Empfehlung</strong> wird der Kanal von YouTube selbst als vertrauenswürdige Quelle eingestuft &mdash; ein Qualitätssignal, das Marken zugute kommt.</p>
+        <blockquote style="border-left:3px solid var(--gold);padding-left:20px;font-size:15px;font-style:italic;color:var(--mid);line-height:1.7">"Happiness requires discomfort &mdash; und genau das zeige ich meiner Community jeden Tag."<br><strong style="font-style:normal;color:var(--terra);font-size:13px">— Nihat Bucakli</strong></blockquote>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns:1fr;gap:12px">
+          <div class="stats-block">
+            <div class="stats-block-title">Themen</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Geo-Arbitrage</span>
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Auswandern</span>
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Rente im Ausland</span>
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Thailand &amp; Vietnam</span>
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Finanzielle Freiheit</span>
+              <span style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.2);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--terra)">Immobilien SEA</span>
+            </div>
+          </div>
+          <div class="stats-block">
+            <div class="stats-block-title">7 Jahre unterwegs · 70+ Länder · 6 Sprachen</div>
+            <table class="stats-table">
+              <tr><td>Stützpunkte</td><td>Thailand &amp; Vietnam (Da Nang)</td></tr>
+              <tr><td>Reiseerfahrung</td><td>7 Jahre, seit 2018 Backpacking</td></tr>
+              <tr><td>Sprachen</td><td>6 Sprachen</td></tr>
+              <tr><td>Kanal gestartet</td><td>November 2025</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ZIELGRUPPE -->
+<section class="sec" style="background:white">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Die Zielgruppe</div>
+    <h2 class="sec-h2">Golden Generation:<br>Kaufkraft trifft Entscheidungsfreude.</h2>
+    <p class="sec-sub">93 % der Zuschauer sind über 35 Jahre alt &mdash; 60 % davon Rentner und Investoren mit echtem Entscheidungsbudget.</p>
+
+    <div class="highlight-cards" style="margin-bottom:40px">
+      <div class="hl-card"><div class="hl-num">93 %</div><div class="hl-desc">der Zuschauer über 35 Jahre</div></div>
+      <div class="hl-card"><div class="hl-num">60 %</div><div class="hl-desc">über 55 &mdash; Rentner &amp; Investoren</div></div>
+      <div class="hl-card"><div class="hl-num">90 %</div><div class="hl-desc">aus dem DACH-Raum</div></div>
+    </div>
+
+    <div class="zg-grid">
+      <div>
+        <div class="stats-block">
+          <div class="stats-block-title">Altersverteilung</div>
+          <div class="bar-row"><span class="bar-label">65+</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><span class="bar-val">24,8 %</span></div>
+          <div class="bar-row"><span class="bar-label">55–64</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><span class="bar-val">35,0 %</span></div>
+          <div class="bar-row"><span class="bar-label">45–54</span><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div><span class="bar-val">19,7 %</span></div>
+          <div class="bar-row"><span class="bar-label">35–44</span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div><span class="bar-val">13,8 %</span></div>
+        </div>
+        <div class="stats-block">
+          <div class="stats-block-title">Standort</div>
+          <table class="stats-table">
+            <tr><td>Deutschland</td><td>76,8 %</td></tr>
+            <tr><td>Österreich</td><td>7,8 %</td></tr>
+            <tr><td>Schweiz</td><td>6,1 %</td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="stats-block">
+          <div class="stats-block-title">Geschlecht &amp; Geräte</div>
+          <table class="stats-table">
+            <tr><td>Männlich</td><td>77 %</td></tr>
+            <tr><td>Weiblich</td><td>23 %</td></tr>
+            <tr><td>Smart-TV Anteil</td><td>25,4 %</td></tr>
+          </table>
+        </div>
+        <div class="stats-block" style="background:var(--dark);border-color:transparent">
+          <div class="stats-block-title" style="color:rgba(255,255,255,0.35)">25,4 % Smart-TV</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6">Lean-back Audience &mdash; hohe Aufmerksamkeit, lange Verweildauer, keine Ablenkung durch andere Apps.</p>
+        </div>
+        <div class="stats-block">
+          <div class="stats-block-title">Performance (28 Tage)</div>
+          <table class="stats-table">
+            <tr><td>Views</td><td>403K</td></tr>
+            <tr><td>Impressionen</td><td>900K+</td></tr>
+            <tr><td>Neue Abonnenten</td><td>+902</td></tr>
+            <tr><td>Wiedergabezeit</td><td>7.642 h</td></tr>
+            <tr><td>Ø Wiedergabedauer</td><td>4:23</td></tr>
+            <tr><td>Klickrate (CTR)</td><td>6,0 %</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PERFORMANCE & CONTENT -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Performance &amp; Content</div>
+    <h2 class="sec-h2">Zahlen, die für sich sprechen.</h2>
+    <p class="sec-sub">+500 % Abonnenten-Wachstum in 28 Tagen. Der Algorithmus pusht den Kanal aktiv &mdash; ein Zeichen für hohe Qualität und Relevanz.</p>
+
+    <div class="perf-grid">
+      <div class="perf-card"><div class="perf-num">403K</div><div class="perf-label">Views / Monat</div></div>
+      <div class="perf-card"><div class="perf-num">900K+</div><div class="perf-label">Impressionen</div></div>
+      <div class="perf-card"><div class="perf-num">7.642h</div><div class="perf-label">Watchtime</div></div>
+      <div class="perf-card"><div class="perf-num">6,0 %</div><div class="perf-label">Klickrate CTR</div><div class="perf-note">Branchendurchschnitt: 2–4 %</div></div>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">Hotel statt Wohnung!? Was das Leben in Vietnam wirklich kostet!</div>
+        <div class="video-info">
+          <div class="video-views">27.600 Views</div>
+          <div class="video-title">Hotel statt Wohnung!? Was das Leben in Vietnam wirklich kostet!</div>
+          <div class="video-tag">#1 Video &nbsp;·&nbsp; Hohe Retention</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">Luxus-Villa in Thailand: Immobilie für den Preis einer Kaltmiete!</div>
+        <div class="video-info">
+          <div class="video-views">8.800 Views</div>
+          <div class="video-title">Luxus-Villa in Thailand: Immobilie für den Preis einer Kaltmiete!</div>
+          <div class="video-tag">Immobilien &nbsp;·&nbsp; Kaufkräftige Zielgruppe</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">Was das Leben in Thailand wirklich kostet! Tom zeigt seine Kosten</div>
+        <div class="video-info">
+          <div class="video-views">8.700 Views</div>
+          <div class="video-title">Was das Leben in Thailand wirklich kostet! Tom zeigt seine Kosten</div>
+          <div class="video-tag">Authentisch &nbsp;·&nbsp; Kosten &amp; Leben</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KOOPERATIONEN -->
+<section class="sec" style="background:white">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Kooperationen</div>
+    <h2 class="sec-h2">Zusammenarbeit mit Nihat.</h2>
+    <p class="sec-sub">Verschiedene Formate &mdash; authentisch, passend zur Zielgruppe, mit messbarer Wirkung.</p>
+
+    <div class="koop-grid">
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><polygon points="10 9 15 12 10 15 10 9"/></svg></div>
+        <div><div class="koop-title">Video Integration</div><div class="koop-desc">Pre- oder Mid-Roll in täglichen YouTube-Videos mit authentischer Einbettung.</div></div>
+      </div>
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="koop-title">Location Reviews</div><div class="koop-desc">Hotels, Resorts und Immobilien vor Ort in Thailand &amp; Vietnam — ehrlich bewertet.</div></div>
+      </div>
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div><div class="koop-title">Produkttests</div><div class="koop-desc">Reise-Equipment, Tech &amp; Tools — ehrlich getestet, direkte Kaufempfehlung.</div></div>
+      </div>
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><div class="koop-title">Interview-Format</div><div class="koop-desc">Deine Experten als Gesprächspartner im Video — hohe Glaubwürdigkeit.</div></div>
+      </div>
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div><div class="koop-title">SEO-Links &amp; Community</div><div class="koop-desc">Beschreibungslinks + Community-Post für direkte Conversion zur Zielseite.</div></div>
+      </div>
+      <div class="koop-card">
+        <div class="koop-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><div class="koop-title">Immobilien &amp; Guides</div><div class="koop-desc">Objekte aus Südostasien präsentieren, City Guides vermarkten, Leads generieren.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px">
+      <div class="sec-eyebrow" style="margin-bottom:16px">Ideale Kooperationspartner</div>
+      <div class="partner-tags">
+        <span class="tag">Auslands-Immobilien</span>
+        <span class="tag">Reisekrankenversicherung</span>
+        <span class="tag">Hotels &amp; Resorts SEA</span>
+        <span class="tag">Rente &amp; Vorsorge</span>
+        <span class="tag">VPN &amp; Privacy</span>
+        <span class="tag">Geo-Arbitrage Tools</span>
+        <span class="tag">Reise-Equipment</span>
+        <span class="tag">Finanz-Apps</span>
+        <span class="tag">SIM &amp; Telecom</span>
+        <span class="tag">Visa-Dienstleister</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="sec-eyebrow">Let's Talk</div>
+    <h2 class="sec-h2" style="color:white;margin-bottom:16px">Die Generation Freiheit<br>wartet auf <em>deine Marke.</em></h2>
+    <p class="cta-sub">Erreiche eine kaufkräftige DACH-Zielgruppe 55+ mit authentischem Content. Lass uns gemeinsam ein Format entwickeln, das zu deiner Marke passt.</p>
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-c-label">E-Mail</div>
+        <div class="cta-c-val"><a href="mailto:kontakt@freiweitmitnihat.com">kontakt@freiweitmitnihat.com</a></div>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-c-label">WhatsApp</div>
+        <div class="cta-c-val"><a href="https://wa.me/4917647319797" style="color:var(--gold)">+49 176 47319797</a></div>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-c-label">YouTube</div>
+        <div class="cta-c-val"><a href="https://www.youtube.com/@FreiweitmitNihat">@FreiweitmitNihat</a></div>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-c-label">Website</div>
+        <div class="cta-c-val"><a href="https://freiweitmitnihat.com">freiweitmitnihat.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
