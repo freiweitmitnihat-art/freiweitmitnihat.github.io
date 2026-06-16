@@ -1482,13 +1482,33 @@ function goFS(n){document.querySelectorAll('.f-step').forEach(s=>s.classList.rem
 function submitF(){
   const n=document.getElementById('fi-name').value,e=document.getElementById('fi-email').value,m=document.getElementById('fi-msg').value;
   if(!n||!e||!m){alert('Bitte alle Pflichtfelder ausfüllen.');return;}
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:W3F_KEY,subject:'Neue Nachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'})
+  }).catch(function(err){console.error('Form error:',err);});
   document.getElementById('f-wrap').querySelectorAll('.f-step').forEach(s=>s.style.display='none');
   document.getElementById('f-success').style.display='block';
 }
-function handleNL(){const e=document.getElementById('nl-email').value;if(!e){alert('Bitte E-Mail eingeben.');return;}alert('Danke! Erstes Update kommt diese Woche.');}
+function handleNL(){
+  const e=document.getElementById('nl-email').value;
+  if(!e){alert('Bitte E-Mail eingeben.');return;}
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:W3F_KEY,subject:'Newsletter-Anmeldung',email:e,message:'Neue Newsletter-Anmeldung: '+e,from_name:'Freiweit Website'})
+  }).catch(function(err){console.error('Form error:',err);});
+  alert('Danke! Erstes Update kommt diese Woche.');
+}
 function openImmoModal(){const o=document.getElementById('immo-overlay');o.style.display='flex';document.body.style.overflow='hidden';}
 function closeImmoModal(){document.getElementById('immo-overlay').style.display='none';document.body.style.overflow='';}
-function sendImmo(){const n=document.getElementById('im-name').value,e=document.getElementById('im-email').value;if(!n||!e){alert('Bitte Name und E-Mail eingeben.');return;}closeImmoModal();alert('Anfrage gesendet! Ich melde mich bei dir.');}
+function sendImmo(){
+  const n=document.getElementById('im-name').value,e=document.getElementById('im-email').value;
+  if(!n||!e){alert('Bitte Name und E-Mail eingeben.');return;}
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:W3F_KEY,subject:'Immobilien-Anfrage von '+n,name:n,email:e,replyto:e,message:'Immobilien-Anfrage\nName: '+n+'\nE-Mail: '+e,from_name:'Freiweit Website'})
+  }).catch(function(err){console.error('Form error:',err);});
+  closeImmoModal();alert('Anfrage gesendet! Ich melde mich bei dir.');
+}
 document.getElementById('immo-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('immo-overlay'))closeImmoModal();});
 
 let currentRating = 0;
@@ -1521,10 +1541,15 @@ function sendReview() {
   const name = document.getElementById('rv-name').value;
   const text = document.getElementById('rv-text').value;
   const type = document.getElementById('rv-type').value;
+  const from = document.getElementById('rv-from') ? document.getElementById('rv-from').value : '';
   if (!name || !text || !type || !currentRating) {
     alert('Bitte alle Pflichtfelder ausfüllen und eine Sternebewertung abgeben.');
     return;
   }
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:W3F_KEY,subject:'Neue Bewertung von '+name+' ('+currentRating+'★)',name:name,message:'Bewertung: '+currentRating+'/5 ★\nFunktion: '+type+(from?'\nHerkunft: '+from:'')+'\n\n'+text,from_name:'Freiweit Website'})
+  }).catch(function(err){console.error('Form error:',err);});
   document.getElementById('review-form-wrap').style.display = 'none';
   document.getElementById('review-success').style.display = 'block';
   setTimeout(closeReviewModal, 3500);
@@ -1561,6 +1586,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.ge
 
 // LANGUAGE
 /* Translations moved to js/lang.js */</script>
+<script src="js/w3f.js"></script>
 <script src="js/lang.js"></script>
 </body>
 </html>
