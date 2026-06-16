@@ -442,14 +442,38 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 function sendModal() {
-  const name = document.getElementById('m-name').value;
-  const email = document.getElementById('m-email').value;
-  if(!name || !email) { alert('Bitte Name und E-Mail eingeben.'); return; }
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Immobilien-Anfrage von '+name,name:name,email:email,replyto:email,
-      message:'Immobilien-Anfrage\nName: '+name+'\nE-Mail: '+email,from_name:'Freiweit Website'})
+  var name   = document.getElementById('m-name').value.trim();
+  var email  = document.getElementById('m-email').value.trim();
+  var budget = (document.getElementById('m-budget') || {}).value || '';
+  var intent = (document.getElementById('m-intent') || {}).value || '';
+  var msg    = (document.getElementById('m-msg')    || {}).value || '';
+
+  ['m-name','m-email','m-budget'].forEach(clearErr);
+  var ok = true;
+
+  if (!name)          { showErr('m-name',  'Bitte deinen Namen eingeben.'); ok = false; }
+  if (!isEmail(email)){ showErr('m-email', 'Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).'); ok = false; }
+
+  // Budget: optional — aber 0 oder 1 sind keine sinnvollen Werte
+  if (budget.trim() && !isBudgetPlausible(budget)) {
+    showErr('m-budget', 'Bitte ein realistisches Budget eingeben (z.B. 500€/Monat oder ab 50.000€).'); ok = false;
+  }
+
+  if (!ok) return;
+
+  var fullMsg = 'Immobilien-Anfrage'
+    + '\nName: '    + name
+    + '\nE-Mail: '  + email
+    + '\nInteresse: ' + (intent || '—')
+    + '\nBudget/Zeitraum: ' + (budget || '—')
+    + (msg ? '\n\nNachricht:\n' + msg : '');
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({access_key:W3F_KEY, subject:'Immobilien-Anfrage von '+name,
+      name:name, email:email, replyto:email, message:fullMsg, from_name:'Freiweit Website'})
   }).catch(function(err){console.error('Form error:',err);});
+
   document.getElementById('modal-form-wrap').style.display = 'none';
   document.getElementById('modal-success').style.display = 'block';
   setTimeout(closeModal, 3000);

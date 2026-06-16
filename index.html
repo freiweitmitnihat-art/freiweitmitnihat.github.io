@@ -1480,8 +1480,15 @@ function selCat(cat,btn){
 }
 function goFS(n){document.querySelectorAll('.f-step').forEach(s=>s.classList.remove('active'));document.getElementById('f-s'+n).classList.add('active');}
 function submitF(){
-  const n=document.getElementById('fi-name').value,e=document.getElementById('fi-email').value,m=document.getElementById('fi-msg').value;
-  if(!n||!e||!m){alert('Bitte alle Pflichtfelder ausfüllen.');return;}
+  var n=document.getElementById('fi-name').value.trim();
+  var e=document.getElementById('fi-email').value.trim();
+  var m=document.getElementById('fi-msg').value.trim();
+  ['fi-name','fi-email','fi-msg'].forEach(clearErr);
+  var ok=true;
+  if(!n){showErr('fi-name','Bitte deinen Namen eingeben.');ok=false;}
+  if(!isEmail(e)){showErr('fi-email','Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).');ok=false;}
+  if(!m){showErr('fi-msg','Bitte eine Nachricht schreiben.');ok=false;}
+  if(!ok)return;
   fetch('https://api.web3forms.com/submit',{
     method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({access_key:W3F_KEY,subject:'Neue Nachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'})
@@ -1490,8 +1497,9 @@ function submitF(){
   document.getElementById('f-success').style.display='block';
 }
 function handleNL(){
-  const e=document.getElementById('nl-email').value;
-  if(!e){alert('Bitte E-Mail eingeben.');return;}
+  var e=document.getElementById('nl-email').value.trim();
+  clearErr('nl-email');
+  if(!isEmail(e)){showErr('nl-email','Bitte eine gültige E-Mail-Adresse mit @ eingeben.');return;}
   fetch('https://api.web3forms.com/submit',{
     method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({access_key:W3F_KEY,subject:'Newsletter-Anmeldung',email:e,message:'Neue Newsletter-Anmeldung: '+e,from_name:'Freiweit Website'})
@@ -1501,8 +1509,13 @@ function handleNL(){
 function openImmoModal(){const o=document.getElementById('immo-overlay');o.style.display='flex';document.body.style.overflow='hidden';}
 function closeImmoModal(){document.getElementById('immo-overlay').style.display='none';document.body.style.overflow='';}
 function sendImmo(){
-  const n=document.getElementById('im-name').value,e=document.getElementById('im-email').value;
-  if(!n||!e){alert('Bitte Name und E-Mail eingeben.');return;}
+  var n=document.getElementById('im-name').value.trim();
+  var e=document.getElementById('im-email').value.trim();
+  ['im-name','im-email'].forEach(clearErr);
+  var ok=true;
+  if(!n){showErr('im-name','Bitte deinen Namen eingeben.');ok=false;}
+  if(!isEmail(e)){showErr('im-email','Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).');ok=false;}
+  if(!ok)return;
   fetch('https://api.web3forms.com/submit',{
     method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({access_key:W3F_KEY,subject:'Immobilien-Anfrage von '+n,name:n,email:e,replyto:e,message:'Immobilien-Anfrage\nName: '+n+'\nE-Mail: '+e,from_name:'Freiweit Website'})

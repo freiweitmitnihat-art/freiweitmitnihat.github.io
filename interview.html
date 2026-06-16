@@ -347,17 +347,55 @@ const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.tar
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 function submitInterview() {
-  const name = document.getElementById('iv-name').value;
-  const email = document.getElementById('iv-email').value;
-  const location = document.getElementById('iv-location').value;
-  const story = document.getElementById('iv-story').value;
-  if(!name||!email||!location||!story){alert('Bitte alle Pflichtfelder ausfüllen.');return;}
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Interview-Bewerbung von '+name,name:name,email:email,replyto:email,
-      message:'Interview-Bewerbung\nName: '+name+'\nE-Mail: '+email+'\nWohnort/Land: '+location+'\n\nGeschichte:\n'+story,from_name:'Freiweit Website'})
+  var name     = document.getElementById('iv-name').value.trim();
+  var email    = document.getElementById('iv-email').value.trim();
+  var location = document.getElementById('iv-location').value.trim();
+  var story    = document.getElementById('iv-story').value.trim();
+  var age      = (document.getElementById('iv-age')     || {}).value || '';
+  var special  = (document.getElementById('iv-special') || {}).value || '';
+  var budget   = (document.getElementById('iv-budget')  || {}).value || '';
+  var social   = (document.getElementById('iv-social')  || {}).value || '';
+  var situation = '';
+  document.querySelectorAll('input[name="situation"]').forEach(function(r){if(r.checked)situation=r.value;});
+
+  ['iv-name','iv-email','iv-location','iv-story','iv-age'].forEach(clearErr);
+  var ok = true;
+
+  if (!name)         { showErr('iv-name',    'Bitte deinen Vornamen eingeben.'); ok = false; }
+  if (!isEmail(email)){ showErr('iv-email',  'Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).'); ok = false; }
+  if (!location)     { showErr('iv-location','Bitte deinen aktuellen Wohnort eingeben.'); ok = false; }
+  if (story.length < 20) { showErr('iv-story', 'Bitte etwas mehr über dich erzählen.'); ok = false; }
+
+  // Alter optional — wenn ausgefüllt, muss es plausibel sein
+  age = age.trim();
+  if (age) {
+    var ageNum = parseInt(age);
+    if (isNaN(ageNum) || ageNum < 18 || ageNum > 100) {
+      showErr('iv-age', 'Bitte ein realistisches Alter zwischen 18 und 100 eingeben.'); ok = false;
+    }
+  }
+
+  if (!ok) return;
+
+  var msg = 'Interview-Bewerbung'
+    + '\nName: '    + name
+    + '\nE-Mail: '  + email
+    + '\nAlter: '   + (age || '—')
+    + '\nHerkunft: '+ ((document.getElementById('iv-from')||{}).value||'—')
+    + '\nWohnort: ' + location
+    + '\nSituation: '+ (situation || '—')
+    + '\nBudget/LHK: '+ (budget || '—')
+    + '\nSocial: '  + (social || '—')
+    + '\n\nGeschichte:\n' + story
+    + (special ? '\n\nBesonderheit:\n' + special : '');
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({access_key:W3F_KEY, subject:'Interview-Bewerbung von '+name,
+      name:name, email:email, replyto:email, message:msg, from_name:'Freiweit Website'})
   }).catch(function(err){console.error('Form error:',err);});
-  document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(el=>{
+
+  document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(function(el){
     if(el.tagName!=='DIV'||el.id==='form-success')return;
     el.style.display='none';
   });
