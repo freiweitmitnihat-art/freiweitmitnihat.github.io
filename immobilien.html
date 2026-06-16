@@ -468,10 +468,8 @@ function sendModal() {
     + '\nBudget/Zeitraum: ' + (budget || '—')
     + (msg ? '\n\nNachricht:\n' + msg : '');
 
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({access_key:W3F_KEY, subject:'Immobilien-Anfrage von '+name,
-      name:name, email:email, replyto:email, message:fullMsg, from_name:'Freiweit Website'})
+  w3fSend({subject:'Immobilien-Anfrage von '+name,
+    name:name, email:email, replyto:email, message:fullMsg, from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
 
   document.getElementById('modal-form-wrap').style.display = 'none';

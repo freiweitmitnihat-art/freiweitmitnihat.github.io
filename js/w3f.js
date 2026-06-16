@@ -45,3 +45,14 @@ function isBudgetPlausible(v) {
   if (!isNaN(num) && num <= 1) return false;
   return true;
 }
+
+// ── Web3Forms Absende-Helper ──────────────────────────────────
+// Schickt ein Formular an Web3Forms und gibt das fetch-Promise zurück.
+// botcheck: false ist Pflicht — ohne es blockiert Web3Forms als Spam.
+function w3fSend(payload) {
+  return fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(Object.assign({ access_key: W3F_KEY, botcheck: false }, payload))
+  });
+}

@@ -369,18 +369,13 @@ function sendForm(){
   var subject='Anfrage: '+cat.subject+' — '+state.name;
   var message='Name: '+state.name+'\nE-Mail: '+state.email+'\nKategorie: '+cat.subject+'\n\n'+answersText;
 
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      access_key:W3F_KEY,
-      subject:subject,
-      name:state.name,
-      email:state.email,
-      replyto:state.email,
-      message:message,
-      from_name:'Freiweit Website'
-    })
+  w3fSend({
+    subject:subject,
+    name:state.name,
+    email:state.email,
+    replyto:state.email,
+    message:message,
+    from_name:'Freiweit Website'
   }).catch(function(e){console.error('Form error:',e);});
 
   document.getElementById('wizard').innerHTML='<div style="text-align:center;padding:40px 10px"><div style="font-size:40px;margin-bottom:16px">&#10003;</div><p style="font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px">Danke, '+escH(state.name)+'!</p><p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7">Ich habe deine Anfrage erhalten<br>und melde mich persönlich bei dir.</p></div>';

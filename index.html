@@ -1489,9 +1489,7 @@ function submitF(){
   if(!isEmail(e)){showErr('fi-email','Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).');ok=false;}
   if(!m){showErr('fi-msg','Bitte eine Nachricht schreiben.');ok=false;}
   if(!ok)return;
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Neue Nachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'})
+  w3fSend({subject:'Neue Nachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
   document.getElementById('f-wrap').querySelectorAll('.f-step').forEach(s=>s.style.display='none');
   document.getElementById('f-success').style.display='block';
@@ -1500,9 +1498,7 @@ function handleNL(){
   var e=document.getElementById('nl-email').value.trim();
   clearErr('nl-email');
   if(!isEmail(e)){showErr('nl-email','Bitte eine gültige E-Mail-Adresse mit @ eingeben.');return;}
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Newsletter-Anmeldung',email:e,message:'Neue Newsletter-Anmeldung: '+e,from_name:'Freiweit Website'})
+  w3fSend({subject:'Newsletter-Anmeldung',email:e,message:'Neue Newsletter-Anmeldung: '+e,from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
   alert('Danke! Erstes Update kommt diese Woche.');
 }
@@ -1516,9 +1512,7 @@ function sendImmo(){
   if(!n){showErr('im-name','Bitte deinen Namen eingeben.');ok=false;}
   if(!isEmail(e)){showErr('im-email','Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).');ok=false;}
   if(!ok)return;
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Immobilien-Anfrage von '+n,name:n,email:e,replyto:e,message:'Immobilien-Anfrage\nName: '+n+'\nE-Mail: '+e,from_name:'Freiweit Website'})
+  w3fSend({subject:'Immobilien-Anfrage von '+n,name:n,email:e,replyto:e,message:'Immobilien-Anfrage\nName: '+n+'\nE-Mail: '+e,from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
   closeImmoModal();alert('Anfrage gesendet! Ich melde mich bei dir.');
 }
@@ -1559,9 +1553,7 @@ function sendReview() {
     alert('Bitte alle Pflichtfelder ausfüllen und eine Sternebewertung abgeben.');
     return;
   }
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({access_key:W3F_KEY,subject:'Neue Bewertung von '+name+' ('+currentRating+'★)',name:name,message:'Bewertung: '+currentRating+'/5 ★\nFunktion: '+type+(from?'\nHerkunft: '+from:'')+'\n\n'+text,from_name:'Freiweit Website'})
+  w3fSend({subject:'Neue Bewertung von '+name+' ('+currentRating+'★)',name:name,message:'Bewertung: '+currentRating+'/5 ★\nFunktion: '+type+(from?'\nHerkunft: '+from:'')+'\n\n'+text,from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
   document.getElementById('review-form-wrap').style.display = 'none';
   document.getElementById('review-success').style.display = 'block';
