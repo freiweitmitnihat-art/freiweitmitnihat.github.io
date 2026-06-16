@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog & Artikel — Freiweit mit Nihat</title>
+<meta name="description" content="Alle Blog-Artikel von Freiweit mit Nihat: Thailand, Vietnam, Auswandern, Lebenshaltungskosten, Visa und mehr.">
+<link rel="canonical" href="https://freiweitmitnihat.com/blog/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2;--cream2:#f0ebe4}
+body{background:var(--cream);color:var(--earth);font-family:Inter,sans-serif;font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(247,243,238,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);z-index:200}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--earth)}
+.nav-logo span{color:var(--terra)}
+.nav-back{font-size:13px;color:var(--mid);transition:color .2s}
+.nav-back:hover{color:var(--terra)}
+.nav-cta{background:var(--earth);color:var(--cream);padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+.blog-hero{margin-top:60px;background:var(--earth);color:white;padding:clamp(56px,8vw,100px) clamp(20px,5vw,80px);text-align:center}
+.blog-hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
+.blog-hero p{font-size:16px;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto}
+
+/* FILTER */
+.filter-bar{background:var(--cream2);border-bottom:1px solid var(--light);padding:16px clamp(20px,5vw,80px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.filter-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;border:1px solid rgba(26,20,16,0.15);background:transparent;color:var(--mid);cursor:pointer;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--earth);color:white;border-color:var(--earth)}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-right:4px}
+
+/* GRID */
+.blog-wrap{max-width:1100px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,40px)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{background:white;border-radius:14px;overflow:hidden;border:1px solid var(--light);transition:transform .2s,box-shadow .2s;display:block;text-decoration:none}
+.blog-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(26,20,16,0.09)}
+.blog-thumb{height:196px;position:relative;overflow:hidden}
+.blog-thumb-grad{width:100%;height:100%}
+.blog-country{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;color:white}
+.bc-th{background:rgba(196,98,45,0.85)}
+.bc-vn{background:rgba(26,92,32,0.85)}
+.bc-aus{background:rgba(26,20,16,0.75)}
+.blog-body{padding:22px 22px 24px}
+.blog-meta{font-size:12px;color:var(--mid);margin-bottom:8px}
+.blog-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--earth);line-height:1.35;margin-bottom:10px;letter-spacing:-0.2px}
+.blog-excerpt{font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:16px}
+.blog-link{font-size:13px;font-weight:600;color:var(--terra)}
+
+/* HIDDEN by filter */
+.blog-card[hidden]{display:none}
+
+/* FOOTER */
+footer{background:#0e0b08;color:rgba(255,255,255,0.5);text-align:center;padding:32px 20px;font-size:13px;margin-top:80px}
+footer a{color:rgba(255,255,255,0.5)}
+footer a:hover{color:white}
+
+@media(max-width:760px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a>
+  <a href="../index.html" class="nav-back">&#8592; Startseite</a>
+  <a href="../beratung.html" class="nav-cta">Beratung buchen</a>
+</nav>
+
+<div class="blog-hero">
+  <div class="eyebrow">Blog &amp; Artikel</div>
+  <h1>Alles was du<br><em>wissen musst.</em></h1>
+  <p>Thailand, Vietnam, Auswandern, Kosten, Visa — echte Infos aus erster Hand.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="filter('all')">Alle</button>
+  <button class="filter-btn" onclick="filter('thailand')">Thailand</button>
+  <button class="filter-btn" onclick="filter('vietnam')">Vietnam</button>
+  <button class="filter-btn" onclick="filter('auswandern')">Auswandern</button>
+</div>
+
+<div class="blog-wrap">
+  <div class="blog-grid" id="grid">
+
+    <!-- NEUESTER ARTIKEL -->
+    <a href="2026-06-16-thomas-loft-pattaya.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/2026-06-16-thomas-loft-pattaya.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">82m² Loft-Condo in Pattaya für 78.000€ — ist das ein Schnäppchen?</h3>
+        <p class="blog-excerpt">Thomas verkauft sein Loft in Jomtien. Foreigner Quota, 800m zum Strand, 2,95 Mio. Baht. Alle Zahlen, kein Bullshit.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="pattaya-kosten-2026.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
+        <h3 class="blog-title">Lebenshaltungskosten Pattaya 2026: Was es wirklich kostet</h3>
+        <p class="blog-excerpt">Miete, Essen, Transport — meine echten Monatskosten. Keine geschönten Zahlen, kein Marketingblabla.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="da-nang-vietnam-entdeckt.html" class="blog-card" data-land="vietnam">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#0d2010 0%,#1a5c20 50%,#6b7c45 100%)"></div>
+        <span class="blog-country bc-vn">Vietnam</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Mai 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Da Nang: Warum ich Vietnam für mich entdeckt habe</h3>
+        <p class="blog-excerpt">Nach Jahren in Thailand — plötzlich Vietnam. Was mich überrascht hat, was besser ist, was schlechter.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="7-fehler-auswandern.html" class="blog-card" data-land="auswandern">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#1a1410 0%,#3d2820 50%,#c8a97e 100%)"></div>
+        <span class="blog-country bc-aus">Auswandern</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">April 2026 &middot; 10 Min. Lesezeit</div>
+        <h3 class="blog-title">Die 7 größten Fehler beim Auswandern — aus eigener Erfahrung</h3>
+        <p class="blog-excerpt">Ich habe sie alle selbst gemacht. Damit du es nicht musst.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="lebenshaltungskosten-thailand.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 9 Min. Lesezeit</div>
+        <h3 class="blog-title">Lebenshaltungskosten Thailand: Pattaya, Chiang Mai, Bangkok</h3>
+        <p class="blog-excerpt">Was kostet das Leben in Thailand wirklich? Alle Städte im Vergleich.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="lebenshaltungskosten-vietnam.html" class="blog-card" data-land="vietnam">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#0d2010 0%,#1a5c20 50%,#6b7c45 100%)"></div>
+        <span class="blog-country bc-vn">Vietnam</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 8 Min. Lesezeit</div>
+        <h3 class="blog-title">Lebenshaltungskosten Vietnam: Da Nang, Hanoi, Ho-Chi-Minh</h3>
+        <p class="blog-excerpt">Vietnam ist günstiger als Thailand — aber um wie viel? Die echten Zahlen.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="thailand-e-visum.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Thailand E-Visum: Anleitung + alle Visa-Optionen 2026</h3>
+        <p class="blog-excerpt">Tourist Visa, TR, METV, LTR — welches brauchst du? Schritt für Schritt erklärt.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="vietnam-e-visum.html" class="blog-card" data-land="vietnam">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#0d2010 0%,#1a5c20 50%,#6b7c45 100%)"></div>
+        <span class="blog-country bc-vn">Vietnam</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 5 Min. Lesezeit</div>
+        <h3 class="blog-title">Vietnam E-Visum: Anleitung + offizieller Antrag</h3>
+        <p class="blog-excerpt">Das Vietnam E-Visum beantragen — so geht es, das kostet es, das dauert es.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="grab-app-einrichten.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 4 Min. Lesezeit</div>
+        <h3 class="blog-title">Grab App einrichten: Taxi, Essen, Pakete in ganz SEA</h3>
+        <p class="blog-excerpt">Grab ist das Uber Südostasiens — so richtest du es ein und sparst Geld.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="sim-karte-thailand.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 4 Min. Lesezeit</div>
+        <h3 class="blog-title">SIM-Karte Thailand: Welche, wo kaufen, was kostet sie</h3>
+        <p class="blog-excerpt">AIS, DTAC oder TrueMove — meine Empfehlung für Langzeitreisende.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="sim-karte-vietnam.html" class="blog-card" data-land="vietnam">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#0d2010 0%,#1a5c20 50%,#6b7c45 100%)"></div>
+        <span class="blog-country bc-vn">Vietnam</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 4 Min. Lesezeit</div>
+        <h3 class="blog-title">SIM-Karte Vietnam: Welche SIM, wo kaufen, was kostet es</h3>
+        <p class="blog-excerpt">Viettel, Mobifone oder Vietnamobile? Das brauchst du wirklich.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="thailand-tdac.html" class="blog-card" data-land="thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">2026 &middot; 5 Min. Lesezeit</div>
+        <h3 class="blog-title">Thailand Digital Arrival Card: Pflicht seit 2024 — so geht's</h3>
+        <p class="blog-excerpt">Die TDAC ist Pflicht bei der Einreise — hier ist die Schritt-für-Schritt-Anleitung.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <p style="margin-bottom:8px">
+    <a href="../index.html">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank">YouTube</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/nihatbucakli/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp;
+    <a href="../kontakt.html">Kontakt</a>
+  </p>
+  <p>&copy; 2026 Nihat Bucakli &middot; Freiweit mit Nihat</p>
+</footer>
+
+<script>
+function filter(land) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(card => {
+    if (land === 'all' || card.dataset.land === land) {
+      card.hidden = false;
+    } else {
+      card.hidden = true;
+    }
+  });
+}
+</script>
+</body>
+</html>
