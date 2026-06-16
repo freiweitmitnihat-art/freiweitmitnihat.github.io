@@ -244,7 +244,7 @@ var CATS = {
   }
 };
 
-var state = {cat:null, answers:{}, step:1, name:'', email:'', firma:'', details:''};
+var state = {cat:null, answers:{}, step:1, name:'', email:'', firma:'', details:'', msg:''};
 
 // ─── DISPOSABLE EMAIL BLOCKLIST ────────────────────────────────────
 var BLOCKED_DOMAINS = ['mailinator.com','guerrillamail.com','temp-mail.org','throwam.com','yopmail.com','trashmail.com','fakeinbox.com','maildrop.cc','dispostable.com','spamgourmet.com','10minutemail.com','sharklasers.com','guerrillamailblock.com','grr.la','guerrillamail.info','guerrillamail.biz','guerrillamail.de','guerrillamail.net','guerrillamail.org','spam4.me','getairmail.com','trashmail.at','trashmail.io','tempinbox.com','filzmail.com','notmailinator.com','discard.email','fakemail.net','bouncr.com','mailnull.com'];
@@ -304,12 +304,14 @@ function renderWizard(){
              +'<div class="f-field"><label class="f-label">Details &amp; Budget</label><textarea class="f-input" id="f-details" placeholder="Budget, Zeitraum, Kampagneninfos..." oninput="syncState()">'+escH(state.details)+'</textarea></div>';
     }
 
+    var msgCounter='<span id="msg-count" style="float:right;font-size:10px;color:rgba(255,255,255,0.3);font-weight:400">0 / 400</span>';
     w.innerHTML='<div class="wizard-top"><button class="wizard-back" onclick="prevStep()">&#8592; Zurück</button><div class="progress-dots">'+dotsHTML+'</div></div>'
       +'<div class="wizard-title">Fast geschafft.</div>'
       +'<div class="wizard-sub">Damit ich dir persönlich antworten kann:</div>'
       +'<div class="f-field"><label class="f-label">Dein Name <span style="color:#e55">*</span></label><input class="f-input" type="text" id="f-name" placeholder="Vor- und Nachname" oninput="syncState()" value="'+escH(state.name)+'"><div class="err-msg">Bitte gib deinen Namen ein.</div></div>'
       +'<div class="f-field"><label class="f-label">E-Mail-Adresse <span style="color:#e55">*</span></label><input class="f-input" type="email" id="f-email" placeholder="deine@email.de" oninput="syncState()" value="'+escH(state.email)+'"><div class="err-msg" id="email-err">Bitte gib eine gültige E-Mail-Adresse ein.</div></div>'
       +extraF
+      +'<div class="f-field"><label class="f-label">Kurznachricht (optional) '+msgCounter+'</label><textarea class="f-input" id="f-msg" maxlength="400" placeholder="Was möchtest du mir noch sagen? (max. 400 Zeichen)" oninput="var c=document.getElementById(\'msg-count\');if(c)c.textContent=this.value.length+\' / 400\';syncState()" style="min-height:90px">'+escH(state.msg||'')+'</textarea></div>'
       +'<button class="btn-weiter ready" onclick="sendForm()" style="margin-top:20px">Absenden</button>';
   }
 }
@@ -339,10 +341,12 @@ function syncState(){
   var e=document.getElementById('f-email');
   var firma=document.getElementById('f-firma');
   var det=document.getElementById('f-details');
+  var msg=document.getElementById('f-msg');
   if(n)state.name=n.value;
   if(e)state.email=e.value;
   if(firma)state.firma=firma.value;
   if(det)state.details=det.value;
+  if(msg)state.msg=msg.value;
 }
 
 function sendForm(){
@@ -367,7 +371,7 @@ function sendForm(){
   if(state.details)answersText+='\nDetails:\n'+state.details;
 
   var subject='Anfrage: '+cat.subject+' — '+state.name;
-  var message='Name: '+state.name+'\nE-Mail: '+state.email+'\nKategorie: '+cat.subject+'\n\n'+answersText;
+  var message='Name: '+state.name+'\nE-Mail: '+state.email+'\nKategorie: '+cat.subject+'\n\n'+answersText+(state.msg?'\n\nNachricht:\n'+state.msg:'');
 
   w3fSend({
     subject:subject,

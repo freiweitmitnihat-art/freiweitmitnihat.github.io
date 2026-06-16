@@ -657,6 +657,7 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
       <a href="immobilien.html#verkaufen" class="btn-s" data-i18n="hero_btn_verkaufen">Verkaufen</a>
       <a href="interview.html" class="btn-s" data-i18n="hero_btn_interview">Interview vereinbaren</a>
       <a href="reise-buchen.html" class="btn-s" data-i18n="hero_btn_reise">Reise buchen</a>
+      <a href="#kontakt" class="btn-s" data-i18n="hero_btn_kontakt" style="background:var(--terra);color:var(--cream);border-color:var(--terra)">Kontakt</a>
     </div>
     <div class="hero-stats reveal d3">
       <div><div class="stat-n">70+</div><div class="stat-l" data-i18n="stat_countries">Länder bereist</div></div>
@@ -1232,45 +1233,26 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
       </div>
       <div class="form-box reveal d1">
         <div id="f-wrap">
-          <div class="success-wrap" id="f-success">
+          <div class="success-wrap" id="f-success" style="display:none">
             <div style="font-size:40px;margin-bottom:14px">&#10003;</div>
             <h3>Nachricht gesendet!</h3>
             <p>Ich melde mich so schnell wie möglich bei dir.</p>
           </div>
-          <div class="f-step active" id="f-s1">
-            <div class="step-dots"><div class="s-dot on"></div><div class="s-dot"></div><div class="s-dot"></div></div>
-            <div class="f-title">Was interessiert dich?</div>
-            <div class="f-sub">Wähle eine Kategorie — dann die richtigen Fragen.</div>
-            <div class="cat-grid">
-              <button class="cat-btn" onclick="selCat('auswandern',this)"><span class="cat-label">Auswandern &amp; Beratung</span><span class="cat-hint">Visa, Kosten, erster Schritt</span></button>
-              <button class="cat-btn" onclick="selCat('nomad',this)"><span class="cat-label">Digitaler Nomade</span><span class="cat-hint">Remote work, Co-working</span></button>
-              <button class="cat-btn" onclick="selCat('mieten',this)"><span class="cat-label">Mieten</span><span class="cat-hint">Wohnung oder Haus</span></button>
-              <button class="cat-btn" onclick="selCat('kaufen',this)"><span class="cat-label">Kaufen</span><span class="cat-hint">Immobilien in Asien</span></button>
-              <button class="cat-btn" onclick="selCat('hotel',this)"><span class="cat-label">Hotel &amp; Reise</span><span class="cat-hint">Empfehlungen &amp; Tipps</span></button>
-              <button class="cat-btn" onclick="selCat('business',this)"><span class="cat-label">Business &amp; Kooperation</span><span class="cat-hint">Sponsored, Affiliate</span></button>
-            </div>
-          </div>
-          <div class="f-step" id="f-s2">
-            <div class="step-dots"><div class="s-dot on"></div><div class="s-dot on"></div><div class="s-dot"></div></div>
-            <button class="btn-back" onclick="goFS(1)">&#8592; Zurück</button>
-            <div class="f-title" id="fs2-title">Details</div>
-            <div class="f-sub" id="fs2-sub">Hilf mir dein Anliegen zu verstehen.</div>
-            <div id="fs2-content"></div>
-            <button class="btn-next" onclick="goFS(3)">Weiter</button>
-          </div>
-          <div class="f-step" id="f-s3">
-            <div class="step-dots"><div class="s-dot on"></div><div class="s-dot on"></div><div class="s-dot on"></div></div>
-            <button class="btn-back" onclick="goFS(2)">&#8592; Zurück</button>
-            <div class="f-title">Fast fertig</div>
-            <div class="f-sub">Wie kann ich dich erreichen?</div>
+          <div id="f-form">
+            <div class="f-title" style="font-size:18px;font-weight:700;color:var(--earth);margin-bottom:6px">Direkt schreiben</div>
+            <div class="f-sub" style="font-size:13.5px;color:var(--mid);margin-bottom:22px">Kein Formular-Stress — einfach Name, E-Mail und was du sagen willst.</div>
             <div class="f-row">
-              <div class="f-group"><label>Vorname *</label><input type="text" id="fi-name" placeholder="Dein Name"></div>
+              <div class="f-group"><label>Name *</label><input type="text" id="fi-name" placeholder="Dein Name"></div>
               <div class="f-group"><label>E-Mail *</label><input type="email" id="fi-email" placeholder="deine@email.de"></div>
             </div>
-            <div class="f-group"><label>Deine Nachricht *</label><textarea id="fi-msg" placeholder="Schreib mir — ich lese alles persönlich."></textarea></div>
-            <input type="hidden" id="fi-cat"><input type="hidden" id="fi-det">
+            <div class="f-group" style="position:relative">
+              <label>Nachricht * <span id="fi-msg-count" style="float:right;font-size:11px;color:var(--mid);font-weight:400">0 / 500</span></label>
+              <textarea id="fi-msg" placeholder="Schreib mir — ich lese alles persönlich." maxlength="500" oninput="document.getElementById('fi-msg-count').textContent=this.value.length+' / 500'" style="min-height:130px"></textarea>
+            </div>
+            <input type="hidden" id="fi-cat" value="Direktnachricht">
             <button class="btn-sub" onclick="submitF()">Nachricht senden</button>
             <p style="font-size:12px;color:var(--mid);text-align:center;margin-top:10px;letter-spacing:-0.1px">Antwort in der Regel innerhalb von 1–2 Werktagen.</p>
+            <p style="font-size:12px;color:var(--mid);text-align:center;margin-top:8px">Für Beratung, Immobilien & mehr → <a href="kontakt.html" style="color:var(--terra);font-weight:500">Alle Optionen</a></p>
           </div>
         </div>
       </div>
@@ -1489,9 +1471,9 @@ function submitF(){
   if(!isEmail(e)){showErr('fi-email','Bitte eine gültige E-Mail-Adresse eingeben (z.B. name@beispiel.de).');ok=false;}
   if(!m){showErr('fi-msg','Bitte eine Nachricht schreiben.');ok=false;}
   if(!ok)return;
-  w3fSend({subject:'Neue Nachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'
+  w3fSend({subject:'Direktnachricht von '+n,name:n,email:e,replyto:e,message:m,from_name:'Freiweit Website'
   }).catch(function(err){console.error('Form error:',err);});
-  document.getElementById('f-wrap').querySelectorAll('.f-step').forEach(s=>s.style.display='none');
+  document.getElementById('f-form').style.display='none';
   document.getElementById('f-success').style.display='block';
 }
 function handleNL(){
