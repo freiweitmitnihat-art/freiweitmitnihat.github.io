@@ -32,11 +32,18 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
 .blog-hero p{font-size:16px;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto}
 
-/* FILTER */
-.filter-bar{background:var(--cream2);border-bottom:1px solid var(--light);padding:16px clamp(20px,5vw,80px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+/* FILTER + SEARCH */
+.filter-bar{background:var(--cream2);border-bottom:1px solid var(--light);padding:14px clamp(20px,5vw,80px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search-wrap{display:flex;align-items:center;gap:8px;background:white;border:1.5px solid rgba(26,20,16,0.13);border-radius:24px;padding:7px 14px;min-width:220px;transition:border-color .2s}
+.search-wrap:focus-within{border-color:var(--terra)}
+.search-wrap input{border:none;outline:none;background:transparent;font-size:13.5px;color:var(--earth);font-family:Inter,sans-serif;width:100%;min-width:0}
+.search-wrap input::placeholder{color:#b0a49a}
+.search-wrap #clearBtn{background:none;border:none;cursor:pointer;color:#b0a49a;font-size:14px;padding:0;line-height:1;transition:color .2s}
+.search-wrap #clearBtn:hover{color:var(--terra)}
+.filter-divider{width:1px;height:24px;background:rgba(26,20,16,0.12);margin:0 4px;flex-shrink:0}
 .filter-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;border:1px solid rgba(26,20,16,0.15);background:transparent;color:var(--mid);cursor:pointer;transition:all .2s}
 .filter-btn.active,.filter-btn:hover{background:var(--earth);color:white;border-color:var(--earth)}
-.filter-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-right:4px}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-right:4px;white-space:nowrap}
 
 /* GRID */
 .blog-wrap{max-width:1100px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,40px)}
@@ -82,17 +89,189 @@ footer a:hover{color:white}
 </div>
 
 <div class="filter-bar">
-  <span class="filter-label">Filter:</span>
-  <button class="filter-btn active" onclick="filter('all')">Alle</button>
-  <button class="filter-btn" onclick="filter('thailand')">Thailand</button>
-  <button class="filter-btn" onclick="filter('vietnam')">Vietnam</button>
-  <button class="filter-btn" onclick="filter('auswandern')">Auswandern</button>
+  <div class="search-wrap">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:#9b8c82;flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Artikel suchen..."
+      oninput="applyFilters()"
+      autocomplete="off"
+    >
+    <button id="clearBtn" onclick="clearSearch()" title="Suche löschen" style="display:none">&#10005;</button>
+  </div>
+  <div class="filter-divider"></div>
+  <span class="filter-label">Kategorie:</span>
+  <button class="filter-btn active" data-land="all" onclick="setLand('all',this)">Alle</button>
+  <button class="filter-btn" data-land="thailand" onclick="setLand('thailand',this)">Thailand</button>
+  <button class="filter-btn" data-land="vietnam" onclick="setLand('vietnam',this)">Vietnam</button>
+  <button class="filter-btn" data-land="auswandern" onclick="setLand('auswandern',this)">Auswandern</button>
+</div>
+<div id="noResults" style="display:none;text-align:center;padding:60px 20px;color:#9b8c82;font-size:15px">
+  Keine Artikel gefunden für "<span id="noResultsTerm"></span>"
 </div>
 
 <div class="blog-wrap">
   <div class="blog-grid" id="grid">
 
+    <!-- NEUE ARTIKEL — Si Racha Serie 2026 -->
+    <a href="trio-town-si-racha.html" class="blog-card" data-land="thailand" data-search="trio town si racha doppelhaushälfte 3 zimmer 675 euro haus thailand miete">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/trio-town-si-racha.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">3 Zimmer, 3 Bäder, 2 Parkplätze — NUR 675€/Monat in Si Racha</h3>
+        <p class="blog-excerpt">Eine Doppelhaushälfte in Thailand für 675 Euro. Ich war vor Ort. Alle Räume, alle Fakten.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="si-racha-the-strand.html" class="blog-card" data-land="thailand" data-search="the strand indeed condo si racha infinity pool 216 euro miete neubau">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-the-strand.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">216€ Miete — Infinity Pool + Meerblick in Si Racha</h3>
+        <p class="blog-excerpt">Neues Hochhaus-Condo, 644 Wohnungen, Infinity Pool im 24. Stock — ab 216€ im Monat.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="si-racha-the-near-residence.html" class="blog-card" data-land="thailand" data-search="the near residence si racha 162 euro miete 35m2 meer kaufen foreigner quota">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-the-near-residence.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">162€ Miete · 35m² · 2 Min. vom Meer — The Near Residence Si Racha</h3>
+        <p class="blog-excerpt">Mieten für 162€ oder kaufen für ~27.000€ — ich erkläre ehrlich was beides bedeutet.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="ladda-condoview.html" class="blog-card" data-land="thailand" data-search="ladda condo view si racha 5 wohnungen 270 euro meerblick ältestes condo kaufen">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/ladda-condoview.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
+        <h3 class="blog-title">5 Wohnungen in Thailand ab 270€ — mit Meerblick (Ladda Condo View)</h3>
+        <p class="blog-excerpt">Das älteste Condo in Si Racha — 14 Jahre alt, 5 verschiedene Wohnungen, alle Preise verglichen.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="si-racha-immobilie.html" class="blog-card" data-land="thailand" data-search="haus thailand kaufen 164m2 124000 euro pattaya si racha reihenhaus doppelhaushälfte ausländer">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-immobilie.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">164 m² Haus in Thailand für 124.000€ — Immobilien zwischen Pattaya und Si Racha</h3>
+        <p class="blog-excerpt">Nagelneu, 2 Bäder, 2 Parkplätze. Und die wichtigste Frage: Was müssen Ausländer beim Hauskauf in Thailand wissen?</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="sharmonyx-sriracha-wohnungen.html" class="blog-card" data-land="thailand" data-search="sharmonyx sriracha si racha 186 euro wohnung mieten studio pool gym sauna mietfallen">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/sharmonyx-sriracha-wohnungen.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Für 186€ eine Wohnung in Thailand mieten — Sharmonyx Si Racha</h3>
+        <p class="blog-excerpt">Studio 186€, Eckwohnung 270€, 2-Zimmer 430€ — alle inklusive Pool, Gym, Sauna. Plus: 6 Mietfallen die du kennen musst.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="riviera-ocean-drive.html" class="blog-card" data-land="thailand" data-search="riviera ocean drive pattaya jomtien 550 euro apartment infinity pool face scan luxus">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/riviera-ocean-drive.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">550€ Luxus-Apartment in Pattaya — Riviera Ocean Drive, Jomtien</h3>
+        <p class="blog-excerpt">Face Scan statt Schlüssel, Partyraum im 43. Stock, Infinity Pool — für 550€ im Monat. Ich war auf allen Etagen.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="casey-papagei-maklerin.html" class="blog-card" data-land="thailand" data-search="casey maklerin pattaya deutschsprachig papagei interview auswandern selbstständig thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/casey-papagei-maklerin.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Deutschsprachige Maklerin & Papagei-Trainerin in Pattaya — Interview mit Casey</h3>
+        <p class="blog-excerpt">650 Stunden Deutsch an der VHS, 80% deutsche Kunden — und sofort "Nein" auf die Frage ob sie länger in Deutschland bleiben würde.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="bonus-suki-si-racha.html" class="blog-card" data-land="thailand" data-search="bonus suki si racha all you can eat 7 euro hotpot roboter buffet essen thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/bonus-suki-si-racha.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Für 7€ All You Can Eat in Thailand — Bonus Suki Si Racha</h3>
+        <p class="blog-excerpt">Hotpot, Roboter-Service, unlimited Drinks und Slushy Thai Tee. 7 Euro pro Person. Ich war dabei.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="si-racha-barber-boxer.html" class="blog-card" data-land="thailand" data-search="si racha barbershop 3 euro haarschnitt boxerin muay thai sea games gold thailand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-barber-boxer.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">3€ Haarschnitt — und die Friseurin kämpfte für Thailand</h3>
+        <p class="blog-excerpt">120 Baht beim Barber in Si Racha. Fei hat 3× Gold bei den SEA Games geholt. Am Ende zahlte sie für mich.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
+    <a href="si-racha-koh-loi.html" class="blog-card" data-land="thailand" data-search="koh loi si racha tanzen einheimische sonnenuntergang promenade geheimtipp thailand alltag">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-koh-loi.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 5 Min. Lesezeit</div>
+        <h3 class="blog-title">Jeden Abend tanzt Si Racha — Koh Loi, der Geheimtipp</h3>
+        <p class="blog-excerpt">Hunderte Einheimische, Sonnenuntergang, Karaoke und ich barfuß mittendrin. Eine Oma hat mich locker in Grund und Boden getanzt.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
     <!-- NEUESTER ARTIKEL -->
+    <a href="si-racha-baan-talay-cafe.html" class="blog-card" data-land="thailand" data-search="si racha baan talay cafe thailand essen kosten günstig strand">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/si-racha-baan-talay-cafe.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
+        <h3 class="blog-title">Für 11€ am Strand essen: Baan Talay Cafe, Si Racha</h3>
+        <p class="blog-excerpt">3 Gerichte, 2 Drinks, 1 Suppe — 420 Baht. So sieht es aus wenn Thailand nicht für Touristen gebaut ist.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
+
     <a href="2026-06-16-thomas-loft-pattaya.html" class="blog-card" data-land="thailand">
       <div class="blog-thumb">
         <div class="blog-thumb-grad" style="background:url('images/2026-06-16-thomas-loft-pattaya.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
@@ -263,17 +442,55 @@ footer a:hover{color:white}
 </footer>
 
 <script>
-function filter(land) {
+let activeLand = 'all';
+
+function setLand(land, btn) {
+  activeLand = land;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('.blog-card').forEach(card => {
-    if (land === 'all' || card.dataset.land === land) {
-      card.hidden = false;
-    } else {
-      card.hidden = true;
-    }
-  });
+  btn.classList.add('active');
+  applyFilters();
 }
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  applyFilters();
+}
+
+function applyFilters() {
+  const term = document.getElementById('searchInput').value.trim().toLowerCase();
+  const clearBtn = document.getElementById('clearBtn');
+  clearBtn.style.display = term ? 'block' : 'none';
+
+  const cards = document.querySelectorAll('.blog-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const landMatch = activeLand === 'all' || card.dataset.land === activeLand;
+
+    let textMatch = true;
+    if (term) {
+      // Search in title, excerpt, and optional data-search attribute
+      const title = card.querySelector('.blog-title')?.textContent.toLowerCase() || '';
+      const excerpt = card.querySelector('.blog-excerpt')?.textContent.toLowerCase() || '';
+      const extra = (card.dataset.search || '').toLowerCase();
+      textMatch = title.includes(term) || excerpt.includes(term) || extra.includes(term);
+    }
+
+    const show = landMatch && textMatch;
+    card.hidden = !show;
+    if (show) visible++;
+  });
+
+  const noResults = document.getElementById('noResults');
+  document.getElementById('noResultsTerm').textContent = term;
+  noResults.style.display = (visible === 0 && term) ? 'block' : 'none';
+}
+
+// Support Enter key on search
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Escape') clearSearch();
+});
 </script>
 </body>
 </html>
