@@ -1550,51 +1550,65 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.ge
 <script src="js/lang.js"></script>
 <script>
 (function(){
-  var FEED = 'https://api.rss2json.com/v1/api.json?rss_url=' +
-    encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCASU1hWMq2RVSc5QJzYWeWg');
-  var MONTHS = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
+  var CHANNEL = 'UCASU1hWMq2RVSc5QJzYWeWg';
+  var RSS_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL;
+  var PROXY   = 'https://corsproxy.io/?' + encodeURIComponent(RSS_URL);
+  var MONTHS  = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
 
   function fmtDate(s){
     var d = new Date(s);
     return MONTHS[d.getMonth()] + ' ' + d.getFullYear();
   }
-  function trunc(s, n){
+  function trunc(s,n){
     s = s ? s.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim() : '';
-    return s.length > n ? s.substr(0,n) + '…' : s;
+    return s.length > n ? s.substr(0,n)+'…' : s;
   }
-  function vidId(link){
-    var m = link.match(/[?&]v=([^&]+)/);
-    return m ? m[1] : '';
-  }
-  function renderCard(item, n){
-    var el = document.getElementById('yt-card-' + n);
+  function renderCard(videoId, title, published, desc, n){
+    var el = document.getElementById('yt-card-'+n);
     if(!el) return;
-    var id = vidId(item.link);
-    var thumb = item.thumbnail || (id ? 'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg' : '');
-    var date = fmtDate(item.pubDate);
-    var desc = trunc(item.description, 130);
+    var thumb = 'https://i.ytimg.com/vi/'+videoId+'/hqdefault.jpg';
+    var link  = 'https://www.youtube.com/watch?v='+videoId;
+    var date  = fmtDate(published);
     el.outerHTML =
-      '<a href="'+item.link+'" target="_blank" rel="noopener" class="blog-card reveal d'+n+'" style="text-decoration:none;display:block">'+
+      '<a href="'+link+'" target="_blank" rel="noopener" class="blog-card reveal d'+n+'" style="text-decoration:none;display:block">'+
         '<div class="blog-thumb">'+
-          '<img src="'+thumb+'" alt="'+item.title+'" class="blog-thumb-img" '+
-            'onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)\'" '+
-            'style="width:100%;height:100%;object-fit:cover">'+
+          '<img src="'+thumb+'" alt="'+title+'" class="blog-thumb-img" '+
+            'onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)\'">'+
           '<span class="blog-country bc-th">Thailand</span>'+
         '</div>'+
         '<div class="blog-body">'+
           '<div class="blog-meta">'+date+' &middot; YouTube</div>'+
-          '<h3 class="blog-title">'+item.title+'</h3>'+
-          '<p class="blog-excerpt">'+desc+'</p>'+
+          '<h3 class="blog-title">'+title+'</h3>'+
+          '<p class="blog-excerpt">'+trunc(desc,130)+'</p>'+
           '<span class="blog-link">Video ansehen &#8599;</span>'+
         '</div>'+
       '</a>';
   }
 
-  fetch(FEED)
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(!data.items || !data.items.length) return;
-      data.items.slice(0,3).forEach(function(item, i){ renderCard(item, i+1); });
+  fetch(PROXY)
+    .then(function(r){ return r.text(); })
+    .then(function(xml){
+      var doc     = new DOMParser().parseFromString(xml,'text/xml');
+      var entries = doc.querySelectorAll('entry');
+      var count   = 0;
+      entries.forEach(function(e){
+        if(count >= 3) return;
+        count++;
+        var videoId   = (e.querySelector('videoId') || e.querySelector('[name="videoId"]') || {textContent:''}).textContent;
+        if(!videoId){
+          var idEl = e.getElementsByTagNameNS('http://www.youtube.com/xml/schemas/2015','videoId');
+          videoId = idEl.length ? idEl[0].textContent : '';
+        }
+        if(!videoId){
+          var lnk = (e.querySelector('link') || {getAttribute:function(){return '';}}).getAttribute('href') || '';
+          var m = lnk.match(/[?&]v=([^&]+)/);
+          videoId = m ? m[1] : '';
+        }
+        var title     = (e.querySelector('title') || {textContent:''}).textContent;
+        var published = (e.querySelector('published') || {textContent:''}).textContent;
+        var desc      = (e.querySelector('description') || e.querySelector('summary') || {textContent:''}).textContent;
+        if(videoId) renderCard(videoId, title, published, desc, count);
+      });
     })
     .catch(function(){});
 })();
