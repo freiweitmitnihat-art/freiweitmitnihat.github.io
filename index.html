@@ -1132,42 +1132,10 @@ footer{background:var(--earth);padding:clamp(56px,8vh,88px) clamp(24px,5vw,80px)
     <h2 class="sec-h2 reveal d1" data-i18n="blog_h2">Aktuelle Einblicke.</h2>
     <p class="sec-sub reveal d2" data-i18n="blog_sub">Jedes neue Video erscheint auch hier als Artikel.</p>
     <div class="blog-grid">
-      <a href="blog/trio-town-si-racha.html" class="blog-card reveal d1" style="text-decoration:none;display:block">
-        <div class="blog-thumb">
-          <div class="blog-thumb-grad" style="background:url('blog/images/trio-town-si-racha.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
-          <span class="blog-country bc-th">Thailand</span>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-          <h3 class="blog-title">675€ Doppelhaushälfte in Si Racha — 3 Zimmer, 3 Bäder, 2 Parkplätze</h3>
-          <p class="blog-excerpt">Trio Town Si Racha: Voll möbliert, 3 Gehminuten zu J Park, sofort verfügbar. Alle Zahlen, kein Bullshit.</p>
-          <span class="blog-link">Artikel lesen &#8594;</span>
-        </div>
-      </a>
-      <a href="blog/si-racha-the-strand.html" class="blog-card reveal d2" style="text-decoration:none;display:block">
-        <div class="blog-thumb">
-          <div class="blog-thumb-grad" style="background:url('blog/images/si-racha-the-strand.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
-          <span class="blog-country bc-th">Thailand</span>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
-          <h3 class="blog-title">216€ Studio mit Infinity Pool im 24. Stock — The Strand, Si Racha</h3>
-          <p class="blog-excerpt">Neubau 2023, 644 Wohnungen, Meerblick und Poolblick zum gleichen Preis. Was steckt wirklich dahinter?</p>
-          <span class="blog-link">Artikel lesen &#8594;</span>
-        </div>
-      </a>
-      <a href="blog/si-racha-the-near-residence.html" class="blog-card reveal d3" style="text-decoration:none;display:block">
-        <div class="blog-thumb">
-          <div class="blog-thumb-grad" style="background:url('blog/images/si-racha-the-near-residence.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
-          <span class="blog-country bc-th">Thailand</span>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-          <h3 class="blog-title">162€ Miete, 2 Minuten vom Meer — The Near Residence Si Racha</h3>
-          <p class="blog-excerpt">35m², Badewanne, Pool, Sauna — weniger als die Nebenkosten in Deutschland. Kaufpreis ab ~27.000€.</p>
-          <span class="blog-link">Artikel lesen &#8594;</span>
-        </div>
-      </a>
+      <!-- neueste 3 YouTube-Videos — werden automatisch per JS befüllt -->
+      <div id="yt-card-1" class="blog-card reveal d1" style="display:block"></div>
+      <div id="yt-card-2" class="blog-card reveal d2" style="display:block"></div>
+      <div id="yt-card-3" class="blog-card reveal d3" style="display:block"></div>
     </div>
     <div style="text-align:center;margin-top:40px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
       <a href="blog/index.html" class="btn-s" style="display:inline-flex;align-items:center;gap:6px;padding:13px 24px;border-radius:8px;background:var(--earth);color:var(--cream);text-decoration:none;font-size:14px;font-weight:600;transition:all .2s">Alle Artikel lesen &#8594;</a>
@@ -1580,5 +1548,56 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.ge
 /* Translations moved to js/lang.js */</script>
 <script src="js/w3f.js"></script>
 <script src="js/lang.js"></script>
+<script>
+(function(){
+  var FEED = 'https://api.rss2json.com/v1/api.json?rss_url=' +
+    encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCASU1hWMq2RVSc5QJzYWeWg');
+  var MONTHS = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
+
+  function fmtDate(s){
+    var d = new Date(s);
+    return MONTHS[d.getMonth()] + ' ' + d.getFullYear();
+  }
+  function trunc(s, n){
+    s = s ? s.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim() : '';
+    return s.length > n ? s.substr(0,n) + '…' : s;
+  }
+  function vidId(link){
+    var m = link.match(/[?&]v=([^&]+)/);
+    return m ? m[1] : '';
+  }
+  function renderCard(item, n){
+    var el = document.getElementById('yt-card-' + n);
+    if(!el) return;
+    var id = vidId(item.link);
+    var thumb = item.thumbnail || (id ? 'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg' : '');
+    var date = fmtDate(item.pubDate);
+    var desc = trunc(item.description, 130);
+    el.outerHTML =
+      '<a href="'+item.link+'" target="_blank" rel="noopener" class="blog-card reveal d'+n+'" style="text-decoration:none;display:block">'+
+        '<div class="blog-thumb">'+
+          '<img src="'+thumb+'" alt="'+item.title+'" class="blog-thumb-img" '+
+            'onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)\'" '+
+            'style="width:100%;height:100%;object-fit:cover">'+
+          '<span class="blog-country bc-th">Thailand</span>'+
+        '</div>'+
+        '<div class="blog-body">'+
+          '<div class="blog-meta">'+date+' &middot; YouTube</div>'+
+          '<h3 class="blog-title">'+item.title+'</h3>'+
+          '<p class="blog-excerpt">'+desc+'</p>'+
+          '<span class="blog-link">Video ansehen &#8599;</span>'+
+        '</div>'+
+      '</a>';
+  }
+
+  fetch(FEED)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(!data.items || !data.items.length) return;
+      data.items.slice(0,3).forEach(function(item, i){ renderCard(item, i+1); });
+    })
+    .catch(function(){});
+})();
+</script>
 </body>
 </html>
