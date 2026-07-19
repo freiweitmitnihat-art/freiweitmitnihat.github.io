@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://freiweitmitnihat.com/sitemap.xml

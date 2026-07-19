@@ -8,6 +8,19 @@
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kostenloser Ratgeber — Freiweit mit Nihat</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Freiweit mit Nihat">
+<meta property="og:title" content="Kostenloser Ratgeber — Freiweit mit Nihat">
+<meta property="og:description" content="Die 7 größten Fehler beim Auswandern nach Thailand — kostenloser PDF-Ratgeber von Nihat. Aus 7 Jahren eigener Erfahrung.">
+<meta property="og:url" content="https://freiweitmitnihat.com/ratgeber.html">
+<meta property="og:image" content="https://freiweitmitnihat.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kostenloser Ratgeber — Freiweit mit Nihat">
+<meta name="twitter:description" content="Die 7 größten Fehler beim Auswandern nach Thailand — kostenloser PDF-Ratgeber von Nihat. Aus 7 Jahren eigener Erfahrung.">
+<meta name="twitter:image" content="https://freiweitmitnihat.com/og-image.jpg">
 <meta name="description" content="Die 7 größten Fehler beim Auswandern nach Thailand — kostenloser PDF-Ratgeber von Nihat. Aus 7 Jahren eigener Erfahrung.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -106,8 +119,8 @@ footer{background:var(--earth);padding:24px clamp(24px,5vw,80px)}
           <div class="check">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B7C45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h3>Gleich in deinem Postfach!</h3>
-          <p>Ich habe dir den Ratgeber an deine E-Mail geschickt. Falls du ihn nicht siehst, schau kurz im Spam-Ordner nach.<br><br>
+          <h3>Angekommen!</h3>
+          <p>Deine Anfrage ist bei mir. Ich schicke dir den Ratgeber persönlich an deine E-Mail — schau auch kurz im Spam-Ordner nach.<br><br>
           Willst du noch mehr? <a href="index.html#newsletter">Abonniere meinen Newsletter</a> für wöchentliche Updates.</p>
         </div>
         <div class="form-title">Jetzt kostenlos erhalten.</div>
@@ -142,12 +155,28 @@ footer{background:var(--earth);padding:24px clamp(24px,5vw,80px)}
   </div>
 </footer>
 
+<script src="js/w3f.js"></script>
 <script>
 function submitRatgeber() {
-  const email = document.getElementById('r-email').value;
-  if(!email){alert('Bitte E-Mail-Adresse eingeben.');return;}
-  document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(el=>el.style.display='none');
-  document.getElementById('form-success').style.display='block';
+  const email = document.getElementById('r-email').value.trim();
+  const name = document.getElementById('r-name').value.trim();
+  if(!email || !email.includes('@')){alert('Bitte gültige E-Mail-Adresse eingeben.');return;}
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true; btn.textContent = 'Wird gesendet…';
+  w3fSend({
+    subject: 'Ratgeber-Anfrage (7 Fehler beim Auswandern)',
+    name: name || 'Ohne Namen',
+    email: email,
+    replyto: email,
+    message: 'Neue Ratgeber-Anfrage\nName: ' + (name || '—') + '\nE-Mail: ' + email + '\n\nBitte PDF zusenden + in Brevo-Liste aufnehmen.',
+    from_name: 'Freiweit Website'
+  }).then(function(){
+    document.getElementById('form-wrap').querySelectorAll(':not(#form-success)').forEach(el=>el.style.display='none');
+    document.getElementById('form-success').style.display='block';
+  }).catch(function(){
+    btn.disabled = false; btn.textContent = 'Ratgeber kostenlos erhalten';
+    alert('Senden fehlgeschlagen — bitte versuch es noch einmal oder schreib direkt an freiweit.mit.nihat@gmail.com');
+  });
 }
 </script>
 <script src="js/lang.js"></script>
