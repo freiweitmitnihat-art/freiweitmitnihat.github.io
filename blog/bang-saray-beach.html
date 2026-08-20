@@ -73,7 +73,17 @@ footer a{color:rgba(255,255,255,0.45)}
 footer a:hover{color:white}
 @media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}.stat-row{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.more-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}}
-  </style>
+  
+.vid-block{margin:38px 0}
+.vid-block>p.vid-kicker{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--mid);margin:0 0 14px}
+.vid-karte{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;background:var(--cream);border:1px solid var(--light);border-radius:10px;padding:16px;text-decoration:none;color:inherit;margin-bottom:12px}
+.vid-karte:hover,.vid-karte:focus-visible{border-color:var(--terra);outline:none}
+.vid-karte img{width:100%;height:auto;border-radius:6px;display:block}
+.vid-karte .vid-titel{font-weight:600;font-size:17px;line-height:1.4;color:var(--earth);margin-bottom:6px}
+.vid-karte:hover .vid-titel{color:var(--terra)}
+.vid-karte .vid-mehr{font-size:15px;color:var(--terra);font-weight:600}
+@media(max-width:600px){.vid-karte{grid-template-columns:1fr;gap:12px}}
+</style>
 </head>
 <body>
 
@@ -89,7 +99,7 @@ footer a:hover{color:white}
   <div class="meta">Juli 2026 &nbsp;&middot;&nbsp; 6 Min. Lesezeit &nbsp;&middot;&nbsp; Nihat Bucakli</div>
 </header>
 
-<img src="images/bang-saray-beach.png" alt="Bang Saray Beach Thailand Strand mit Palmen" class="hero-img" onerror="this.style.display='none';document.querySelector('.hero-color-block').style.display='block'">
+<img src="images/bang-saray-beach.jpg" alt="Bang Saray Beach Thailand Strand mit Palmen" class="hero-img" onerror="this.style.display='none';document.querySelector('.hero-color-block').style.display='block'">
 <div class="hero-color-block" style="display:none"></div>
 
 <main class="article-wrap">
@@ -147,6 +157,17 @@ footer a:hover{color:white}
     <h2>Mein ehrliches Fazit</h2>
 
     <p>Bang Saray ist kein Ort f&uuml;r einen einw&ouml;chigen Action-Urlaub. Es ist ein Ort zum Bleiben. Wenn du dir das Leben in Thailand vorstellst als: morgens Kaffee mit Meerblick, tags&uuml;ber Ruhe, abends ein einfaches Essen am Strand statt Neonlicht &mdash; dann schau dir diesen Ort unbedingt an, bevor du dich f&uuml;r Pattaya oder Jomtien entscheidest. Am Ende des Tages entscheidet nicht der Preis dar&uuml;ber, ob du gl&uuml;cklich wirst, sondern ob der Rhythmus des Ortes zu deinem passt.</p>
+
+    <div class="vid-block">
+      <p class="vid-kicker">Das Video dazu</p>
+      <a class="vid-karte" href="https://youtu.be/Jk8xJOHPu3M" target="_blank" rel="noopener noreferrer">
+        <img src="images/bang-saray-beach.jpg" width="1280" height="720" loading="lazy" alt="Vorschaubild des Videos: Pattaya oder DAS hier? Bang Sarays Strand im ehrlichen Check">
+        <div>
+          <div class="vid-titel">Pattaya oder DAS hier? Bang Sarays Strand im ehrlichen Check</div>
+          <span class="vid-mehr">Auf YouTube ansehen</span>
+        </div>
+      </a>
+    </div>
 
     <div class="beratung-box">
       <h3>Du &uuml;berlegst nach Thailand auszuwandern?</h3>

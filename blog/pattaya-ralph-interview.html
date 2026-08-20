@@ -68,7 +68,17 @@ footer a{color:rgba(255,255,255,0.45)}
 footer a:hover{color:white}
 @media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}.stat-row{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.more-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}}
-  </style>
+  
+.vid-block{margin:38px 0}
+.vid-block>p.vid-kicker{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--mid);margin:0 0 14px}
+.vid-karte{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;background:var(--cream);border:1px solid var(--light);border-radius:10px;padding:16px;text-decoration:none;color:inherit;margin-bottom:12px}
+.vid-karte:hover,.vid-karte:focus-visible{border-color:var(--terra);outline:none}
+.vid-karte img{width:100%;height:auto;border-radius:6px;display:block}
+.vid-karte .vid-titel{font-weight:600;font-size:17px;line-height:1.4;color:var(--earth);margin-bottom:6px}
+.vid-karte:hover .vid-titel{color:var(--terra)}
+.vid-karte .vid-mehr{font-size:15px;color:var(--terra);font-weight:600}
+@media(max-width:600px){.vid-karte{grid-template-columns:1fr;gap:12px}}
+</style>
 </head>
 <body>
 
@@ -84,7 +94,7 @@ footer a:hover{color:white}
   <div class="meta">August 2026 &nbsp;&middot;&nbsp; 7 Min. Lesezeit &nbsp;&middot;&nbsp; Nihat Bucakli</div>
 </header>
 
-<img src="images/pattaya-ralph-interview.png" alt="Interview mit Ralph in Pattaya, 30 Jahre Thailand. Freiweit mit Nihat" class="hero-img" onerror="this.style.display='none';document.querySelector('.hero-color-block').style.display='block'">
+<img src="images/pattaya-ralph-interview.jpg" alt="Interview mit Ralph in Pattaya, 30 Jahre Thailand. Freiweit mit Nihat" class="hero-img" onerror="this.style.display='none';document.querySelector('.hero-color-block').style.display='block'">
 <div class="hero-color-block" style="display:none"></div>
 
 <main class="article-wrap">
@@ -155,6 +165,24 @@ footer a:hover{color:white}
     <p>Wer die thailändische Kultur nicht lesen lernt, das Lächeln nicht deuten kann, die Zeichen von Nichtachtung nicht bemerkt, der zahlt am Ende. Nicht sofort. Aber irgendwann. Genau deshalb kommt Ralph immer wieder auf denselben Anfang zurück: Sprache lernen, Respekt zeigen, sich bewusst sein, dass wir hier Gäste sind.</p>
 
     <p>Das komplette Interview mit allen Geschichten, die hier keinen Platz hatten (die Lauda-Air-Story, seine Ehe, der Sarkasmus auf Thai), findest du auf meinem YouTube-Kanal. Und wie Ralph wohnt, zeigt dir die große Tour durch seine Anlage in Pattaya, ebenfalls auf dem Kanal.</p>
+
+    <div class="vid-block">
+      <p class="vid-kicker">Die Videos dazu</p>
+      <a class="vid-karte" href="https://youtu.be/I20fI_VVYBY" target="_blank" rel="noopener noreferrer">
+        <img src="images/pattaya-ralph-interview.jpg" width="1280" height="720" loading="lazy" alt="Vorschaubild des Videos: Er kam mit Mitte 20 und blieb: So viel Geld brauchst du WIRKLICH in Thailand">
+        <div>
+          <div class="vid-titel">Er kam mit Mitte 20 und blieb: So viel Geld brauchst du WIRKLICH in Thailand</div>
+          <span class="vid-mehr">Auf YouTube ansehen</span>
+        </div>
+      </a>
+      <a class="vid-karte" href="https://youtu.be/rJy527MYHJA" target="_blank" rel="noopener noreferrer">
+        <img src="images/ralph-condo-tour.jpg" width="1280" height="720" loading="lazy" alt="Vorschaubild des Videos: SO LEBT ein Österreicher (57) nach 30 Jahren Thailand">
+        <div>
+          <div class="vid-titel">SO LEBT ein Österreicher (57) nach 30 Jahren Thailand</div>
+          <span class="vid-mehr">Auf YouTube ansehen</span>
+        </div>
+      </a>
+    </div>
 
     <div class="beratung-box">
       <h3>Du überlegst, nach Thailand auszuwandern?</h3>
