@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<!-- ============================================================
+HILFE-SEITE · Kaufanleitung und Wiederfinde-Hilfe
+Erreichbar unter freiweitmitnihat.com/hilfe
+NOCH EINZUSETZEN, sobald Digistore24 steht:
+     - Echte Screenshots aus einem Testkauf an den vier Stellen
+mit der Markierung SCREENSHOT-1 bis SCREENSHOT-4
+     - Der 90-Sekunden-Screencast oben
+Bis dahin funktioniert die Seite als reine Textanleitung.
+     ============================================================ -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilfe beim Kauf · Freiweit mit Nihat</title>
+<meta name="description" content="Schritt für Schritt erklärt: So kaufst du einen Ratgeber, so bekommst du die Datei, und so findest du sie wieder, wenn du sie verlegt hast.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1A1410;--terra:#C4622D;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#4A4238;--sand:#C8A97E;--glass:rgba(250,250,248,0.82)}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;overflow-x:hidden;font-size:19px;line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--earth);text-decoration:none}
+.nav-logo span{color:var(--terra)}
+.nav-back{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mid);font-size:16px;font-weight:500;transition:color .2s;min-height:48px;align-items:center;display:flex}
+.nav-back:hover{color:var(--terra)}
+
+.hero{background:var(--earth);padding:clamp(105px,13vh,146px) clamp(24px,5vw,80px) clamp(52px,7vh,78px)}
+.hero-inner{max-width:760px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--sand)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,54px);font-weight:700;line-height:1.09;letter-spacing:-1.3px;color:white;margin-bottom:20px}
+.hero-lead{font-size:20px;color:rgba(255,255,255,0.72);line-height:1.72}
+
+section{padding:clamp(50px,7vh,78px) clamp(24px,5vw,80px)}
+.inner{max-width:760px;margin:0 auto}
+.sec-eyebrow{font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(27px,3.8vw,38px);font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:18px}
+p.lead{font-size:19px;color:var(--mid);line-height:1.8;margin-bottom:16px}
+p.lead strong{color:var(--earth);font-weight:600}
+
+/* SCHRITTE */
+.step{background:white;border:1px solid rgba(26,20,16,0.09);border-radius:18px;padding:clamp(24px,3.4vw,34px);margin-bottom:18px;display:flex;gap:24px;align-items:flex-start}
+.step-n{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--earth);color:white;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step-body h3{font-size:21px;font-weight:600;margin-bottom:10px;letter-spacing:-0.2px;line-height:1.35}
+.step-body p{font-size:18px;color:var(--mid);line-height:1.75}
+.step-body p+p{margin-top:10px}
+.step-body strong{color:var(--earth);font-weight:600}
+.shot{background:var(--cream2);border:1px dashed rgba(26,20,16,0.2);border-radius:12px;padding:22px;margin-top:16px;font-size:16px;color:var(--mid);text-align:center}
+
+.sees{background:rgba(196,98,45,0.06);border-left:4px solid var(--terra);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:14px;font-size:17.5px;color:var(--earth)}
+
+/* GERAETE */
+.dev{background:white;border:1px solid rgba(26,20,16,0.09);border-radius:16px;padding:24px 26px;margin-bottom:14px}
+.dev h4{font-size:19px;font-weight:600;margin-bottom:8px}
+.dev p{font-size:18px;color:var(--mid);line-height:1.75}
+
+.help-box{background:var(--earth);border-radius:20px;padding:clamp(26px,4vw,42px);margin-top:28px}
+.help-box h3{font-family:'Playfair Display',serif;font-size:clamp(24px,3.2vw,32px);font-weight:700;color:white;margin-bottom:16px;letter-spacing:-0.7px}
+.help-box p{font-size:18.5px;color:rgba(255,255,255,0.66);line-height:1.78;margin-bottom:14px}
+.help-box a{color:var(--sand)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--terra);color:white;border:none;font-family:'Inter',sans-serif;font-size:18px;font-weight:600;padding:17px 30px;border-radius:9px;cursor:pointer;transition:all .2s;min-height:56px;text-decoration:none;margin-top:8px}
+.btn:hover{background:#a9521f;transform:translateY(-1px)}
+
+footer{background:var(--earth);padding:34px clamp(20px,5vw,80px);border-top:1px solid rgba(200,169,126,0.12)}
+.f-bottom{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.f-bottom a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:15px;transition:color .2s;display:inline-block;padding:8px 0}
+.f-bottom a:hover{color:var(--sand)}
+.f-bottom p{color:rgba(255,255,255,0.34);font-size:14.5px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Freiweit <span>mit Nihat</span></a>
+  <a class="nav-back" href="bibliothek.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Zu den Ratgebern
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Hilfe</div>
+    <h1>So kommst du an deinen Ratgeber</h1>
+    <p class="hero-lead">Vier Schritte, ganz genau erklärt. Und wenn du deine Datei später nicht mehr findest, steht weiter unten, wo sie auf deinem Gerät liegt.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-eyebrow">Der Kauf</div>
+    <h2>Was passiert, wenn du auf den Knopf drückst.</h2>
+    <p class="lead">Damit du weißt, was kommt, bevor du klickst. <strong>Es dauert insgesamt etwa zwei Minuten.</strong></p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <h3>Du klickst auf „Ratgeber kaufen"</h3>
+        <p>Es öffnet sich ein Bestellformular. Das kommt nicht von mir, sondern von <strong>Digistore24</strong>, einem deutschen Unternehmen aus Hameln, das die Abwicklung für mich übernimmt. Deshalb sieht die Seite anders aus als meine.</p>
+        <p>Oben auf dem Formular siehst du noch einmal, welchen Ratgeber du bekommst und was er kostet.</p>
+        <div class="sees">Du siehst: ein Formular mit meinem Foto oben und dem Namen des Ratgebers.</div>
+        <div class="shot">SCREENSHOT-1 · Das Bestellformular, oben</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <h3>Du trägst deinen Namen, deine E-Mail-Adresse und deine Anschrift ein</h3>
+        <p>Mehr wird nicht gefragt. <strong>Kein Passwort, keine Registrierung, kein Konto.</strong> Du musst dir nichts merken und kannst dich später auch nicht „einloggen", weil es nichts zum Einloggen gibt.</p>
+        <p>Die E-Mail-Adresse ist der wichtigste Punkt. Dorthin geht die Rechnung und der Link zu deiner Datei. Schreib sie bitte in Ruhe ab und prüfe sie einmal.</p>
+        <div class="sees">Du siehst: vier bis fünf Felder, darunter die Auswahl der Zahlungsart.</div>
+        <div class="shot">SCREENSHOT-2 · Die Eingabefelder</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <h3>Du wählst, wie du zahlen willst</h3>
+        <p>Zur Auswahl stehen <strong>Rechnung, Lastschrift, PayPal, Kreditkarte und Überweisung</strong>.</p>
+        <p>Wenn du auf Rechnung zahlst, bekommst du den Ratgeber sofort und überweist später. Das ist der Weg, den die meisten wählen, und der bequemste, wenn du deine Kartendaten nicht im Internet eingeben willst.</p>
+        <p>Danach klickst du unten auf <strong>„zahlungspflichtig bestellen"</strong>. Erst dieser Klick löst den Kauf aus, vorher passiert nichts.</p>
+        <div class="shot">SCREENSHOT-3 · Die Zahlungsarten und der Bestellknopf</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body">
+        <h3>Du lädst deinen Ratgeber herunter</h3>
+        <p>Sofort nach dem Bestellen landest du auf einer Seite mit einem Knopf zum Herunterladen. <strong>Klick darauf, und die Datei liegt auf deinem Gerät.</strong></p>
+        <p>Gleichzeitig bekommst du eine E-Mail mit der Rechnung und demselben Link. <strong>Diese E-Mail bitte nicht löschen</strong>, sie ist deine Sicherheitskopie.</p>
+        <p>Falls die E-Mail nicht innerhalb weniger Minuten ankommt: <strong>Schau bitte im Spam-Ordner nach.</strong> Dort landet die erste Nachricht manchmal, weil dein Programm den Absender noch nicht kennt.</p>
+        <div class="sees">Du siehst: einen Knopf mit der Aufschrift zum Herunterladen, direkt auf der Seite.</div>
+        <div class="shot">SCREENSHOT-4 · Die Seite mit dem Download-Knopf</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream2)">
+  <div class="inner">
+    <div class="sec-eyebrow">Das häufigste Problem</div>
+    <h2>Du hast heruntergeladen und findest die Datei nicht mehr.</h2>
+    <p class="lead">Das passiert oft und es liegt nicht an dir. Geräte legen heruntergeladene Dateien an einer Stelle ab, die niemand von selbst findet. <strong>Hier steht, wo du nachschauen musst.</strong></p>
+
+    <div class="dev">
+      <h4>Windows-Computer</h4>
+      <p>Öffne den Datei-Explorer, das gelbe Ordner-Symbol unten in der Leiste. Links in der Spalte steht <strong>„Downloads"</strong>. Dort liegt die Datei. Alternativ drückst du gleichzeitig die Windows-Taste und E, dann öffnet sich derselbe Ordner.</p>
+    </div>
+
+    <div class="dev">
+      <h4>Mac</h4>
+      <p>Klick unten im Dock auf das Finder-Symbol, das blaue Gesicht. Links in der Spalte steht <strong>„Downloads"</strong>. Alternativ siehst du oben rechts im Browser einen kleinen Pfeil nach unten, ein Klick darauf zeigt die zuletzt geladenen Dateien.</p>
+    </div>
+
+    <div class="dev">
+      <h4>iPhone und iPad</h4>
+      <p>Öffne die App <strong>„Dateien"</strong>, das blaue Ordner-Symbol. Tipp unten auf „Durchsuchen", dann auf <strong>„Auf meinem iPhone"</strong> und dort auf „Downloads". Wenn du die App nicht findest, wisch auf dem Startbildschirm nach unten und tippe „Dateien" ins Suchfeld.</p>
+    </div>
+
+    <div class="dev">
+      <h4>Android-Handy</h4>
+      <p>Öffne die App <strong>„Dateien"</strong> oder „Eigene Dateien". Dort gibt es einen Bereich <strong>„Downloads"</strong>. Wenn du die App nicht findest, öffne den Browser, tippe oben rechts auf die drei Punkte und dann auf „Downloads".</p>
+    </div>
+
+    <div class="help-box">
+      <h3>Oder du lädst sie einfach noch einmal herunter</h3>
+      <p>Du brauchst dafür kein Konto und kein Passwort. Du brauchst nur die <strong>Bestellnummer</strong> und deinen Nachnamen oder deine E-Mail-Adresse. Die Bestellnummer steht in der Bestätigungsmail.</p>
+      <p>Ein Tipp, falls du die Mail nicht mehr hast: <strong>Du kannst auch einfach den kompletten Text aus deinem Kontoauszug in das Feld für die Bestellnummer kopieren.</strong> Das Suchfeld erkennt die Nummer dann selbst.</p>
+      <a class="btn" href="https://www.digistore24.com/de/bestellung-finden" target="_blank" rel="noopener">Bestellung wiederfinden</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-eyebrow">Wenn gar nichts klappt</div>
+    <h2>Dann schreib mir einfach.</h2>
+    <p class="lead">Das ist keine Floskel. Wenn irgendetwas hakt, die Mail nicht ankommt, der Knopf nicht reagiert oder du dir schlicht unsicher bist: <strong>Schreib mir an freiweit.mit.nihat@gmail.com.</strong></p>
+    <p class="lead">Ich antworte dir am selben Tag und schicke dir die Datei notfalls direkt. Schreib dazu, welchen Ratgeber du wolltest und welche E-Mail-Adresse du beim Kauf angegeben hast, dann finde ich es schneller.</p>
+    <p class="lead">Und falls du das Gefühl hast, dich zu blamieren: <strong>Tust du nicht.</strong> Diese Fragen bekomme ich ständig, und meistens liegt es an der Technik, nicht an dir.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-bottom">
+    <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:17px;color:white;text-decoration:none">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
+      <a href="index.html">Startseite</a>
+      <a href="bibliothek.html">Ratgeber</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2026 Freiweit mit Nihat</p>
+  </div>
+</footer>
+
+</body>
+</html>

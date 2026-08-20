@@ -7,10 +7,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Blog & Artikel — Freiweit mit Nihat</title>
+<title>Blog & Artikel · Freiweit mit Nihat</title>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Freiweit mit Nihat">
-<meta property="og:title" content="Blog &amp; Artikel — Freiweit mit Nihat">
+<meta property="og:title" content="Blog &amp; Artikel · Freiweit mit Nihat">
 <meta property="og:description" content="Alle Blog-Artikel von Freiweit mit Nihat: Thailand, Vietnam, Auswandern, Lebenshaltungskosten, Visa und mehr.">
 <meta property="og:url" content="https://freiweitmitnihat.com/blog/index.html">
 <meta property="og:image" content="https://freiweitmitnihat.com/og-image.jpg">
@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Blog &amp; Artikel — Freiweit mit Nihat">
+<meta name="twitter:title" content="Blog &amp; Artikel · Freiweit mit Nihat">
 <meta name="twitter:description" content="Alle Blog-Artikel von Freiweit mit Nihat: Thailand, Vietnam, Auswandern, Lebenshaltungskosten, Visa und mehr.">
 <meta name="twitter:image" content="https://freiweitmitnihat.com/og-image.jpg">
 <meta name="description" content="Alle Blog-Artikel von Freiweit mit Nihat: Thailand, Vietnam, Auswandern, Lebenshaltungskosten, Visa und mehr.">
@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .search-wrap #clearBtn:hover{color:var(--terra)}
 .filter-divider{width:1px;height:24px;background:rgba(26,20,16,0.12);margin:0 4px;flex-shrink:0}
 .filter-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;border:1px solid rgba(26,20,16,0.15);background:transparent;color:var(--mid);cursor:pointer;transition:all .2s}
-.filter-btn.active,.filter-btn:hover{background:var(--earth);color:white;border-color:var(--earth)}
+.filter-btn.active.filter-btn:hover{background:var(--earth);color:white;border-color:var(--earth)}
 .filter-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-right:4px;white-space:nowrap}
 
 /* GRID */
@@ -98,18 +98,18 @@ footer a:hover{color:white}
 <div class="blog-hero">
   <div class="eyebrow">Blog &amp; Artikel</div>
   <h1>Alles was du<br><em>wissen musst.</em></h1>
-  <p>Thailand, Vietnam, Auswandern, Kosten, Visa — echte Infos aus erster Hand.</p>
+  <p>Thailand, Vietnam, Auswandern, Kosten, Visa, echte Infos aus erster Hand.</p>
 </div>
 
 <div class="filter-bar">
   <div class="search-wrap">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:#9b8c82;flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input
-      type="text"
-      id="searchInput"
-      placeholder="Artikel suchen..."
-      oninput="applyFilters()"
-      autocomplete="off"
+type="text"
+id="searchInput"
+placeholder="Artikel suchen..."
+oninput="applyFilters()"
+autocomplete="off"
     >
     <button id="clearBtn" onclick="clearSearch()" title="Suche löschen" style="display:none">&#10005;</button>
   </div>
@@ -120,14 +120,26 @@ footer a:hover{color:white}
   <button class="filter-btn" data-land="vietnam" onclick="setLand('vietnam',this)">Vietnam</button>
   <button class="filter-btn" data-land="auswandern" onclick="setLand('auswandern',this)">Auswandern</button>
 </div>
-<div id="noResults" style="display:none;text-align:center;padding:60px 20px;color:#9b8c82;font-size:15px">
-  Keine Artikel gefunden für "<span id="noResultsTerm"></span>"
+<div id="noResults" style="display:none;text-align:center;padding:60px 20px;color:#9b8c82;font-size:15px">Keine Artikel gefunden für "<span id="noResultsTerm"></span>"
 </div>
 
 <div class="blog-wrap">
   <div class="blog-grid" id="grid">
 
-    <!-- NEUESTE ARTIKEL — Bangkok + Si Racha + Interviews 2026 -->
+    <!-- NEUESTE ARTIKEL: Bangkok + Si Racha + Interviews 2026 -->
+
+    <a href="pattaya-ralph-interview.html" class="blog-card" data-land="thailand" data-search="pattaya ralph interview 30 jahre thailand österreicher thai sprechen lernen 1500 euro budget visum bankkonto krankenversicherung por ro bo mentalität auswandern langzeit">
+      <div class="blog-thumb">
+        <div class="blog-thumb-grad" style="background:url('images/pattaya-ralph-interview.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
+        <span class="blog-country bc-th">Thailand</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">August 2026 &middot; 7 Min. Lesezeit</div>
+        <h3 class="blog-title">30 Jahre Thailand: Das große Interview mit Ralph (57)</h3>
+        <p class="blog-excerpt">„Zu Hause bin ich hier": Ralph kam mit Mitte 20 aus Österreich. Seine ehrliche Bilanz zu Sprache, Kosten (1.500&nbsp;&euro; Budget), Visum, Versicherung und der Thai-Mentalität.</p>
+        <span class="blog-link">Artikel lesen &#8594;</span>
+      </div>
+    </a>
 
     <a href="bang-saray-beach.html" class="blog-card" data-land="thailand" data-search="bang saray beach strand pattaya alternative ruhig fischerdorf village feeling aquaverse columbia pictures parken aussprache na jomtien sattahip">
       <div class="blog-thumb">
@@ -136,8 +148,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juli 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">Bang Saray — der ruhige Strand 20 Minuten von Pattaya</h3>
-        <p class="blog-excerpt">Fischerdorf-Ruhe statt Party: kilometerlanger Strand, kein Nachtleben, CNN-prämierter Park nebenan — und die Aussprache, die fast alle falsch machen.</p>
+        <h3 class="blog-title">Bang Saray: der ruhige Strand 20 Minuten von Pattaya</h3>
+        <p class="blog-excerpt">Fischerdorf-Ruhe statt Party: kilometerlanger Strand, kein Nachtleben, CNN-prämierter Park nebenan, und die Aussprache, die fast alle falsch machen.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -149,8 +161,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juli 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">24 Jahre in derselben Anlage — wohnen in Jomtien ab 300€ (Baan Suan Lalana)</h3>
-        <p class="blog-excerpt">Oliver (61) zeigt seine Low-Rise-Anlage: Studio für ~300€, 101 m² mit Meerblick für ~600€ — plus Kaufpreise, Rendite und Steuer-Basics 2026.</p>
+        <h3 class="blog-title">24 Jahre in derselben Anlage: wohnen in Jomtien ab 300€ (Baan Suan Lalana)</h3>
+        <p class="blog-excerpt">Oliver (61) zeigt seine Low-Rise-Anlage: Studio für ~300€, 101 m² mit Meerblick für ~600€, plus Kaufpreise, Rendite und Steuer-Basics 2026.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -162,7 +174,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juli 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">Mit 58 kein Job, kein Wecker, kein Stress — Matz erklärt wie das geht</h3>
+        <h3 class="blog-title">Mit 58 kein Job, kein Wecker, kein Stress: Matz erklärt wie das geht</h3>
         <p class="blog-excerpt">27€ Maßhemd statt 6.000€ Gucci. Kein Wecker mehr. Niemandem mehr etwas beweisen. Teil 3 des ehrlichsten Bangkok-Interviews.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -176,7 +188,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">Juli 2026 &middot; 6 Min. Lesezeit</div>
         <h3 class="blog-title">Resort kaufen in Thailand: 51 Millionen Baht Gutachten in Bang Saray</h3>
-        <p class="blog-excerpt">24 Zimmer, 2 Privatpools, Hotel-Lizenz inklusive — unter Gutachten. Und 2030 kommt der internationale Flughafen Rayong.</p>
+        <p class="blog-excerpt">24 Zimmer, 2 Privatpools, Hotel-Lizenz inklusive, unter Gutachten. Und 2030 kommt der internationale Flughafen Rayong.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -188,8 +200,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
-        <h3 class="blog-title">18€ Krankenversicherung mit 100% Rückerstattung — Matz verrät alles</h3>
-        <p class="blog-excerpt">90.000€ Startkapital + 850€ monatlich — so rechnet Matz. Plus: der 18€ KV-Trick und die Million-Euro-Lage-Entscheidung. Teil 2 von 3.</p>
+        <h3 class="blog-title">18€ Krankenversicherung mit 100% Rückerstattung: Matz verrät alles</h3>
+        <p class="blog-excerpt">90.000€ Startkapital + 850€ monatlich, so rechnet Matz. Plus: der 18€ KV-Trick und die Million-Euro-Lage-Entscheidung. Teil 2 von 3.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -201,7 +213,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">Mit 25 nach Thailand: 11 Jahre später — Christians ehrliches Fazit aus Hua Hin</h3>
+        <h3 class="blog-title">Mit 25 nach Thailand: 11 Jahre später: Christians ehrliches Fazit aus Hua Hin</h3>
         <p class="blog-excerpt">Studentenkredit für ein unbezahltes Praktikum. 11 Jahre später: Immobilienagentur und KI-Company. Bereut er es? Sein ehrliches Fazit.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -214,8 +226,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 5 Min. Lesezeit</div>
-        <h3 class="blog-title">270€ im Monat in Bangkok — Excel Hideaway Sukhumvit 71 im Check</h3>
-        <p class="blog-excerpt">28 m², Pool, Gym, Co-Working mit Pool View. Gleicher Preis egal welches Stockwerk. Ich habe 3 Wohnungen angeschaut — alle Fakten.</p>
+        <h3 class="blog-title">270€ im Monat in Bangkok: Excel Hideaway Sukhumvit 71 im Check</h3>
+        <p class="blog-excerpt">28 m², Pool, Gym, Co-Working mit Pool View. Gleicher Preis egal welches Stockwerk. Ich habe 3 Wohnungen angeschaut, alle Fakten.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -228,7 +240,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
         <h3 class="blog-title">Das wandelnde Lexikon über Bangkok: Matthias (59) packt aus</h3>
-        <p class="blog-excerpt">4 Jahre Bangkok, 18 Jahre außerhalb Deutschlands. "Leben und sterben in Thailand — ich gehe nie zurück." Teil 1 des ehrlichsten Bangkok-Interviews.</p>
+        <p class="blog-excerpt">4 Jahre Bangkok, 18 Jahre außerhalb Deutschlands. "Leben und sterben in Thailand, ich gehe nie zurück." Teil 1 des ehrlichsten Bangkok-Interviews.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -240,7 +252,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Mai 2026 &middot; 5 Min. Lesezeit</div>
-        <h3 class="blog-title">Japan in Thailand? — J Park Si Racha ist ein eigenes Universum</h3>
+        <h3 class="blog-title">Japan in Thailand?: J Park Si Racha ist ein eigenes Universum</h3>
         <p class="blog-excerpt">150 Baht Haarschnitt. 600 Baht für 500g Sashimi. 3 Generationen Japaner. Koi-Teich. Buddha aus Kamakura. Kein Reiseführer zeigt dir das.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -253,13 +265,13 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Mai 2026 &middot; 5 Min. Lesezeit</div>
-        <h3 class="blog-title">Bangkoks Geheim-Tunnel — Das zeigt dir kein Reiseführer</h3>
-        <p class="blog-excerpt">Vom Chamchuri Square nach Samyan Mitrtown in 10 Minuten — durch einen Tunnel den Millionen Touristen täglich verpassen. Nur Locals wissen davon.</p>
+        <h3 class="blog-title">Bangkoks Geheim-Tunnel: Das zeigt dir kein Reiseführer</h3>
+        <p class="blog-excerpt">Vom Chamchuri Square nach Samyan Mitrtown in 10 Minuten, durch einen Tunnel den Millionen Touristen täglich verpassen. Nur Locals wissen davon.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
 
-    <!-- BESTEHENDE ARTIKEL — Si Racha Serie 2026 -->
+    <!-- BESTEHENDE ARTIKEL: Si Racha Serie 2026 -->
     <a href="trio-town-si-racha.html" class="blog-card" data-land="thailand" data-search="trio town si racha doppelhaushälfte 3 zimmer 675 euro haus thailand miete">
       <div class="blog-thumb">
         <div class="blog-thumb-grad" style="background:url('images/trio-town-si-racha.png') center/cover no-repeat, linear-gradient(135deg,#2d1505 0%,#7a3a12 50%,#c4622d 100%)"></div>
@@ -267,7 +279,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">3 Zimmer, 3 Bäder, 2 Parkplätze — NUR 675€/Monat in Si Racha</h3>
+        <h3 class="blog-title">3 Zimmer, 3 Bäder, 2 Parkplätze: NUR 675€/Monat in Si Racha</h3>
         <p class="blog-excerpt">Eine Doppelhaushälfte in Thailand für 675 Euro. Ich war vor Ort. Alle Räume, alle Fakten.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -280,8 +292,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">216€ Miete — Infinity Pool + Meerblick in Si Racha</h3>
-        <p class="blog-excerpt">Neues Hochhaus-Condo, 644 Wohnungen, Infinity Pool im 24. Stock — ab 216€ im Monat.</p>
+        <h3 class="blog-title">216€ Miete: Infinity Pool + Meerblick in Si Racha</h3>
+        <p class="blog-excerpt">Neues Hochhaus-Condo, 644 Wohnungen, Infinity Pool im 24. Stock, ab 216€ im Monat.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -293,8 +305,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">162€ Miete · 35m² · 2 Min. vom Meer — The Near Residence Si Racha</h3>
-        <p class="blog-excerpt">Mieten für 162€ oder kaufen für ~27.000€ — ich erkläre ehrlich was beides bedeutet.</p>
+        <h3 class="blog-title">162€ Miete · 35m² · 2 Min. vom Meer: The Near Residence Si Racha</h3>
+        <p class="blog-excerpt">Mieten für 162€ oder kaufen für ~27.000€, ich erkläre ehrlich was beides bedeutet.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -306,8 +318,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
-        <h3 class="blog-title">5 Wohnungen in Thailand ab 270€ — mit Meerblick (Ladda Condo View)</h3>
-        <p class="blog-excerpt">Das älteste Condo in Si Racha — 14 Jahre alt, 5 verschiedene Wohnungen, alle Preise verglichen.</p>
+        <h3 class="blog-title">5 Wohnungen in Thailand ab 270€: mit Meerblick (Ladda Condo View)</h3>
+        <p class="blog-excerpt">Das älteste Condo in Si Racha, 14 Jahre alt, 5 verschiedene Wohnungen, alle Preise verglichen.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -319,7 +331,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">164 m² Haus in Thailand für 124.000€ — Immobilien zwischen Pattaya und Si Racha</h3>
+        <h3 class="blog-title">164 m² Haus in Thailand für 124.000€: Immobilien zwischen Pattaya und Si Racha</h3>
         <p class="blog-excerpt">Nagelneu, 2 Bäder, 2 Parkplätze. Und die wichtigste Frage: Was müssen Ausländer beim Hauskauf in Thailand wissen?</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -332,8 +344,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">Für 186€ eine Wohnung in Thailand mieten — Sharmonyx Si Racha</h3>
-        <p class="blog-excerpt">Studio 186€, Eckwohnung 270€, 2-Zimmer 430€ — alle inklusive Pool, Gym, Sauna. Plus: 6 Mietfallen die du kennen musst.</p>
+        <h3 class="blog-title">Für 186€ eine Wohnung in Thailand mieten: Sharmonyx Si Racha</h3>
+        <p class="blog-excerpt">Studio 186€, Eckwohnung 270€, 2-Zimmer 430€, alle inklusive Pool, Gym, Sauna. Plus: 6 Mietfallen die du kennen musst.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -345,8 +357,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">550€ Luxus-Apartment in Pattaya — Riviera Ocean Drive, Jomtien</h3>
-        <p class="blog-excerpt">Face Scan statt Schlüssel, Partyraum im 43. Stock, Infinity Pool — für 550€ im Monat. Ich war auf allen Etagen.</p>
+        <h3 class="blog-title">550€ Luxus-Apartment in Pattaya: Riviera Ocean Drive, Jomtien</h3>
+        <p class="blog-excerpt">Face Scan statt Schlüssel, Partyraum im 43. Stock, Infinity Pool, für 550€ im Monat. Ich war auf allen Etagen.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -358,8 +370,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">Deutschsprachige Maklerin & Papagei-Trainerin in Pattaya — Interview mit Casey</h3>
-        <p class="blog-excerpt">650 Stunden Deutsch an der VHS, 80% deutsche Kunden — und sofort "Nein" auf die Frage ob sie länger in Deutschland bleiben würde.</p>
+        <h3 class="blog-title">Deutschsprachige Maklerin & Papagei-Trainerin in Pattaya: Interview mit Casey</h3>
+        <p class="blog-excerpt">650 Stunden Deutsch an der VHS, 80% deutsche Kunden, und sofort "Nein" auf die Frage ob sie länger in Deutschland bleiben würde.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -371,7 +383,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">Für 7€ All You Can Eat in Thailand — Bonus Suki Si Racha</h3>
+        <h3 class="blog-title">Für 7€ All You Can Eat in Thailand: Bonus Suki Si Racha</h3>
         <p class="blog-excerpt">Hotpot, Roboter-Service, unlimited Drinks und Slushy Thai Tee. 7 Euro pro Person. Ich war dabei.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -384,7 +396,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
-        <h3 class="blog-title">3€ Haarschnitt — und die Friseurin kämpfte für Thailand</h3>
+        <h3 class="blog-title">3€ Haarschnitt: und die Friseurin kämpfte für Thailand</h3>
         <p class="blog-excerpt">120 Baht beim Barber in Si Racha. Fei hat 3× Gold bei den SEA Games geholt. Am Ende zahlte sie für mich.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -397,7 +409,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 5 Min. Lesezeit</div>
-        <h3 class="blog-title">Jeden Abend tanzt Si Racha — Koh Loi, der Geheimtipp</h3>
+        <h3 class="blog-title">Jeden Abend tanzt Si Racha: Koh Loi, der Geheimtipp</h3>
         <p class="blog-excerpt">Hunderte Einheimische, Sonnenuntergang, Karaoke und ich barfuß mittendrin. Eine Oma hat mich locker in Grund und Boden getanzt.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -412,7 +424,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 6 Min. Lesezeit</div>
         <h3 class="blog-title">Für 11€ am Strand essen: Baan Talay Cafe, Si Racha</h3>
-        <p class="blog-excerpt">3 Gerichte, 2 Drinks, 1 Suppe — 420 Baht. So sieht es aus wenn Thailand nicht für Touristen gebaut ist.</p>
+        <p class="blog-excerpt">3 Gerichte, 2 Drinks, 1 Suppe, 420 Baht. So sieht es aus wenn Thailand nicht für Touristen gebaut ist.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -424,8 +436,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 7 Min. Lesezeit</div>
-        <h3 class="blog-title">82m² Loft-Condo in Pattaya für 78.000€ — ist das ein Schnäppchen?</h3>
-        <p class="blog-excerpt">Thomas verkauft sein Loft in Jomtien. Foreigner Quota, 800m zum Strand, 2,95 Mio. Baht. Alle Zahlen, kein Bullshit.</p>
+        <h3 class="blog-title">82m² Loft-Condo in Pattaya für 78.000€: ist das ein Schnäppchen?</h3>
+        <p class="blog-excerpt">Thomas verkauft sein Loft in Jomtien. Foreigner Quota, 800m zum Strand, 2,95 Mio. Baht. Alle Zahlen, kein Gerede.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -438,7 +450,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">Juni 2026 &middot; 8 Min. Lesezeit</div>
         <h3 class="blog-title">Lebenshaltungskosten Pattaya 2026: Was es wirklich kostet</h3>
-        <p class="blog-excerpt">Miete, Essen, Transport — meine echten Monatskosten. Keine geschönten Zahlen, kein Marketingblabla.</p>
+        <p class="blog-excerpt">Miete, Essen, Transport, meine echten Monatskosten. Keine geschönten Zahlen, kein Marketingblabla.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -451,7 +463,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">Mai 2026 &middot; 6 Min. Lesezeit</div>
         <h3 class="blog-title">Da Nang: Warum ich Vietnam für mich entdeckt habe</h3>
-        <p class="blog-excerpt">Nach Jahren in Thailand — plötzlich Vietnam. Was mich überrascht hat, was besser ist, was schlechter.</p>
+        <p class="blog-excerpt">Nach Jahren in Thailand, plötzlich Vietnam. Was mich überrascht hat, was besser ist, was schlechter.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -463,7 +475,7 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">April 2026 &middot; 10 Min. Lesezeit</div>
-        <h3 class="blog-title">Die 7 größten Fehler beim Auswandern — aus eigener Erfahrung</h3>
+        <h3 class="blog-title">Die 7 größten Fehler beim Auswandern: aus eigener Erfahrung</h3>
         <p class="blog-excerpt">Ich habe sie alle selbst gemacht. Damit du es nicht musst.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
@@ -490,7 +502,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 8 Min. Lesezeit</div>
         <h3 class="blog-title">Lebenshaltungskosten Vietnam: Da Nang, Hanoi, Ho-Chi-Minh</h3>
-        <p class="blog-excerpt">Vietnam ist günstiger als Thailand — aber um wie viel? Die echten Zahlen.</p>
+        <p class="blog-excerpt">Vietnam ist günstiger als Thailand, aber um wie viel? Die echten Zahlen.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -503,7 +515,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 6 Min. Lesezeit</div>
         <h3 class="blog-title">Thailand E-Visum: Anleitung + alle Visa-Optionen 2026</h3>
-        <p class="blog-excerpt">Tourist Visa, TR, METV, LTR — welches brauchst du? Schritt für Schritt erklärt.</p>
+        <p class="blog-excerpt">Tourist Visa, TR, METV, LTR, welches brauchst du? Schritt für Schritt erklärt.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -516,7 +528,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 5 Min. Lesezeit</div>
         <h3 class="blog-title">Vietnam E-Visum: Anleitung + offizieller Antrag</h3>
-        <p class="blog-excerpt">Das Vietnam E-Visum beantragen — so geht es, das kostet es, das dauert es.</p>
+        <p class="blog-excerpt">Das Vietnam E-Visum beantragen, so geht es, das kostet es, das dauert es.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -529,7 +541,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 4 Min. Lesezeit</div>
         <h3 class="blog-title">Grab App einrichten: Taxi, Essen, Pakete in ganz SEA</h3>
-        <p class="blog-excerpt">Grab ist das Uber Südostasiens — so richtest du es ein und sparst Geld.</p>
+        <p class="blog-excerpt">Grab ist das Uber Südostasiens, so richtest du es ein und sparst Geld.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -542,7 +554,7 @@ footer a:hover{color:white}
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 4 Min. Lesezeit</div>
         <h3 class="blog-title">SIM-Karte Thailand: Welche, wo kaufen, was kostet sie</h3>
-        <p class="blog-excerpt">AIS, DTAC oder TrueMove — meine Empfehlung für Langzeitreisende.</p>
+        <p class="blog-excerpt">AIS, DTAC oder TrueMove, meine Empfehlung für Langzeitreisende.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -567,8 +579,8 @@ footer a:hover{color:white}
       </div>
       <div class="blog-body">
         <div class="blog-meta">2026 &middot; 5 Min. Lesezeit</div>
-        <h3 class="blog-title">Thailand Digital Arrival Card: Pflicht seit 2024 — so geht's</h3>
-        <p class="blog-excerpt">Die TDAC ist Pflicht bei der Einreise — hier ist die Schritt-für-Schritt-Anleitung.</p>
+        <h3 class="blog-title">Thailand Digital Arrival Card: Pflicht seit 2024: so geht's</h3>
+        <p class="blog-excerpt">Die TDAC ist Pflicht bei der Einreise, hier ist die Schritt-für-Schritt-Anleitung.</p>
         <span class="blog-link">Artikel lesen &#8594;</span>
       </div>
     </a>
@@ -579,8 +591,8 @@ footer a:hover{color:white}
 <footer>
   <p style="margin-bottom:8px">
     <a href="../index.html">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp;
-    <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank">YouTube</a> &nbsp;&middot;&nbsp;
-    <a href="https://www.instagram.com/nihatbucakli/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer">YouTube</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener noreferrer">Instagram</a> &nbsp;&middot;&nbsp;
     <a href="../kontakt.html">Kontakt</a>
   </p>
   <p>&copy; 2026 Nihat Bucakli &middot; Freiweit mit Nihat</p>
@@ -590,51 +602,46 @@ footer a:hover{color:white}
 let activeLand = 'all';
 
 function setLand(land, btn) {
-  activeLand = land;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
+activeLand = land;
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+applyFilters();
 }
 
 function clearSearch() {
-  document.getElementById('searchInput').value = '';
-  document.getElementById('clearBtn').style.display = 'none';
-  applyFilters();
+document.getElementById('searchInput').value = '';
+document.getElementById('clearBtn').style.display = 'none';
+applyFilters();
 }
 
 function applyFilters() {
-  const term = document.getElementById('searchInput').value.trim().toLowerCase();
-  const clearBtn = document.getElementById('clearBtn');
-  clearBtn.style.display = term ? 'block' : 'none';
-
-  const cards = document.querySelectorAll('.blog-card');
-  let visible = 0;
-
-  cards.forEach(card => {
-    const landMatch = activeLand === 'all' || card.dataset.land === activeLand;
-
-    let textMatch = true;
-    if (term) {
+const term = document.getElementById('searchInput').value.trim().toLowerCase();
+const clearBtn = document.getElementById('clearBtn');
+clearBtn.style.display = term ? 'block' : 'none';
+const cards = document.querySelectorAll('.blog-card');
+let visible = 0;
+cards.forEach(card => {
+const landMatch = activeLand === 'all' || card.dataset.land === activeLand;
+let textMatch = true;
+if (term) {
       // Search in title, excerpt, and optional data-search attribute
-      const title = card.querySelector('.blog-title')?.textContent.toLowerCase() || '';
-      const excerpt = card.querySelector('.blog-excerpt')?.textContent.toLowerCase() || '';
-      const extra = (card.dataset.search || '').toLowerCase();
-      textMatch = title.includes(term) || excerpt.includes(term) || extra.includes(term);
+const title = card.querySelector('.blog-title')?.textContent.toLowerCase() || '';
+const excerpt = card.querySelector('.blog-excerpt')?.textContent.toLowerCase() || '';
+const extra = (card.dataset.search || '').toLowerCase();
+textMatch = title.includes(term) || excerpt.includes(term) || extra.includes(term);
     }
-
-    const show = landMatch && textMatch;
-    card.hidden = !show;
-    if (show) visible++;
+const show = landMatch && textMatch;
+card.hidden = !show;
+if (show) visible++;
   });
-
-  const noResults = document.getElementById('noResults');
-  document.getElementById('noResultsTerm').textContent = term;
-  noResults.style.display = (visible === 0 && term) ? 'block' : 'none';
+const noResults = document.getElementById('noResults');
+document.getElementById('noResultsTerm').textContent = term;
+noResults.style.display = (visible === 0 && term) ? 'block' : 'none';
 }
 
 // Support Enter key on search
 document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key === 'Escape') clearSearch();
+if (e.key === 'Escape') clearSearch();
 });
 </script>
 </body>

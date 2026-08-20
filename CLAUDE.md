@@ -1,192 +1,143 @@
-# CLAUDE.md — Freiweit mit Nihat · Homepage
+# CLAUDE.md · Freiweit mit Nihat · Homepage
 ## Master-Instruction für alle Homepage-Arbeiten
 
 Lies diese Datei vollständig bevor du irgendetwas änderst.
-Arbeite autonom, keine Rückfragen bei klaren Aufgaben.
+Zuerst die Root-CLAUDE.md, dann diese hier.
+
+**Stand: 20.08.2026. Startseite komplett neu gebaut, alte Fassung liegt als
+`index-alt.html` daneben und unter `/Volumes/Extreme Pro/Claude/homepage-backup-*`.**
 
 ---
 
 ## PROJEKT-ÜBERSICHT
 
-**Website:** Freiweit mit Nihat — persönliche Homepage für YouTube-Kanal @FreiweitmitNihat
-**Zweck:** Lead-Generierung, Community-Aufbau, Immobilien-Vermittlung, Beratung, Interview-Bewerbungen
-**Zielgruppe:** DACH-Raum, 25–70 Jahre, Auswanderer / Nomaden / Rentner / Interessierte
-**Sprache:** Deutsch (DACH)
-**Hosting:** GitHub Pages (geplant) · Domain: IONOS (geplant)
+**Website:** freiweitmitnihat.com, Homepage zum YouTube-Kanal @FreiweitmitNihat
+**Zweck (in dieser Reihenfolge):** E-Mail-Adressen einsammeln, Ratgeber verkaufen,
+Interview-Gäste gewinnen, Beratung und Immobilien vermitteln
+**Zielgruppe:** DACH, Kern 55 bis 65+, 84 % männlich, 35 % sehen über den Fernseher
+**Hosting:** GitHub Pages (`freiweitmitnihat-art/freiweitmitnihat.github.io`)
+**Domain:** Cloudflare
 
 ---
 
-## DATEIEN-STRUKTUR
+## DIE WICHTIGSTE REGEL: DIE ZIELGRUPPE IST ÄLTER
 
-```
-homepage/
-├── CLAUDE.md                  ← diese Datei
-├── index.html                 ← Hauptseite (vollständig)
-├── immobilien.html            ← Immobilien-Seite mit Filter + Modal
-├── interview.html             ← Interviewpartner-Bewerbung
-├── city-guides.html           ← Google Maps Guides (kaufen)
-├── ratgeber.html              ← Kostenloser PDF-Ratgeber (Lead Magnet)
-├── impressum.html             ← Separate Impressum-Seite
-├── datenschutz.html           ← Separate Datenschutz-Seite
-└── brand-context/
-    ├── README.md
-    ├── voice-profile.md
-    ├── body-of-work.md
-    └── visual-identity.md
-```
+Alles andere folgt daraus:
+
+- **Fließtext 20 px**, niemals kleiner. Sekundärtext nie unter 16 px.
+- **Kontrast mindestens 7:1** für Fließtext (WCAG AAA), nicht 4,5:1.
+  `--sand` ist eine Linien- und Flächenfarbe und darf **nie** Text tragen.
+- **Klickflächen mindestens 48 px hoch.**
+- **Keine Bewegung ohne Grund.** Kein Scroll-Reveal, kein Parallax, keine Zähler,
+  die hochlaufen. `prefers-reduced-motion` wird respektiert.
+- **Kurze, tippbare URLs.** Auf YouTube-TV sind Links in Videobeschreibungen
+  systemisch abgeschaltet, ein Drittel der Zuschauer kann nicht klicken.
+  Deshalb `/r` und `/b` als Kurzweiterleitungen, deshalb die QR-Einblendungen.
 
 ---
 
-## DESIGN-SYSTEM (niemals ändern ohne explizite Anweisung)
+## DESIGN-SYSTEM (Stand 20.08.2026)
 
 ### Farben
 ```css
---earth:   #1A1410   /* Haupt-Dunkel */
---terra:   #C4622D   /* Terrakotta — Hauptakzent */
---sand:    #C8A97E   /* Sand — sekundärer Akzent */
---olive:   #6B7C45   /* Olive — sparsam */
---cream:   #FAFAF8   /* Hintergrund hell */
---cream2:  #F4EFE8   /* Hintergrund getönt */
---mid:     #7A7068   /* Fließtext */
---glass:   rgba(250,250,248,0.80)
+--ink:    #1A1410   /* Fließtext, 17,2:1 auf Creme */
+--ink-2:  #4A4238   /* Sekundärtext, 9,3:1 */
+--terra:  #B4551F   /* Akzent, nur Buttons, Links, Zahlen. Dunkler als das alte C4622D */
+--sand:   #C8A97E   /* NUR Linien und Flächen, nie Text auf Hell */
+--paper:  #FAF8F5   /* Hintergrund */
+--paper-2:#F1ECE4   /* Hintergrund getönt */
+--line:   rgba(26,20,16,0.14)
 ```
 
 ### Typografie
-- Headlines: Playfair Display, italic für Akzente, letter-spacing -1px bis -2px
-- Body/UI: Inter, letter-spacing -0.1px
+- Überschriften: Playfair Display
+- Fließtext und Bedienelemente: Inter, 20 px, Zeilenhöhe 1.7
 
-### Regeln
-- Apple-Stil + warme Erdtöne
-- SVG-Icons (Linien) — KEINE Emojis
-- Glassmorphism in Nav
-- Scroll-Reveal via IntersectionObserver (.reveal → .vis)
-- Buttons: border-radius 8px
-- KEIN "Bullshit" oder ähnliches
+### Warum es nicht nach KI aussehen darf
+Creme plus Terrakotta plus Playfair ist genau das, was KI-Baukästen 2026 ausspucken.
+Die Palette bleibt, aber sie darf nie allein tragen. Was den Unterschied macht:
 
----
+- **Echte Fotos mit echter Bildunterschrift.** Jedes Bild sagt, wo es aufgenommen
+  wurde und was darauf passiert. Keine Symbolbilder, keine Fotos ohne Text darunter.
+- **Echte Zahlen statt Versprechen.** „1.254 € im Monat" statt „günstig leben".
+- **Asymmetrische Raster** (7fr/5fr, 8fr/4fr), nie drei gleich große Kacheln nebeneinander.
+- **Linien statt Karten.** Abschnitte werden mit `border-top` getrennt, nicht in
+  Kästen mit Schlagschatten gelegt.
+- **Keine Icon-Reihen**, keine Verlaufsflächen, keine Glasoptik.
 
-## SEITENSTRUKTUR index.html (Reihenfolge)
-
-1. Nav — Destinationen, Blog, Angebote, Immobilien, Stimmen, Newsletter, Interview · CTA: Kontakt
-2. Hero — Kyoto-Foto rechts, 6 Buttons, 4 Stats (70+ Länder, 7 Jahre, 100%, 6 Sprachen)
-3. Was interessiert dich? — 8 Karten (Auswandern, Nomade, Mieten, Kaufen, Hotel, Business, City Guides, Ratgeber)
-4. Über mich — Stadtbild-Foto + Text
-5. Blog & Videos — 6 YouTube-Videos mit Thumbnails + Filter
-6. Angebote — 6 Cards
-7. Interview — "Deine Geschichte. Mein Kanal."
-8. Immobilien CTA — Suchen + Anbieten/YouTube-Vorstellen
-9. Destinationen — Thailand + Vietnam + Kommt bald
-10. Stimmen — Social Proof + Feedback-Modal
-11. Newsletter
-12. Kontakt — 3-Schritt-Formular
-13. Footer — alle Links, Impressum, Datenschutz
+### Harte Verbote
+- **Keine Gedankenstriche.** Nirgends, in keiner Datei. Stattdessen Komma,
+  Doppelpunkt oder Punkt. Am 20.08.2026 wurden 891 Stück projektweit entfernt.
+- **Keine Emojis** in Website-Texten.
+- Kein „Hey Leute", kein „Ihr". Du-Ansprache.
+- Kein „Bullshit" oder Ähnliches.
+- **Wohnort-Framing:** Nihat ist nicht ausgewandert. Nie „ich lebe in X".
+  Immer „seit 2018 unterwegs, 70 Länder". Sein Aufenthaltsort wird nie Thema.
 
 ---
 
-## KONTAKTDATEN
+## SEITEN
 
-```
-YouTube:      https://www.youtube.com/@FreiweitmitNihat
-Instagram:    https://www.instagram.com/nihatbucakli/
-BuyMeACoffee: https://buymeacoffee.com/freiweitmitnihat
-E-Mail:       freiweit.mit.nihat@gmail.com
-Hotel-Aff.:   https://bit.ly/NihatHotels
-Versicherung: https://bit.ly/Nihat-Safe
-TikTok:       [NOCH OFFEN]
-Facebook:     [NOCH OFFEN]
-```
+| Datei | Zweck | Status |
+|---|---|---|
+| `index.html` | Startseite, 9 Abschnitte | neu, 20.08.2026 |
+| `index-alt.html` | alte Startseite, nur als Fundus | löschbar, sobald alles steht |
+| `rechnung.html` | Landingpage Lead Magnet, ein Feld, ein Button | live |
+| `r.html` / `b.html` | Kurzweiterleitungen für die QR-Codes | **Ziel nie ändern** |
+| `ratgeber.html` | leitet auf `/rechnung` weiter | Weiterleitung |
+| `bibliothek.html` | Ratgeber kaufen, 6 Hefte plus Paket | Digistore-IDs fehlen |
+| `hilfe.html` | Kaufhilfe, „wo ist mein Download-Ordner" | 4 Screenshots fehlen |
+| `freiweit-woche.html` | Programmwoche vor Ort | `noindex` bis Rechtsprüfung |
+| `beratung.html` | 97 € Beratungsgespräch, Cal.eu | live |
+| `immobilien.html` `interview.html` `kontakt.html` | | live |
+| `reality-check.html` | Selbsttest, 10 Fragen | live |
+| `city-guides.html` | Maps-Guides | wartet auf Guides |
+| `blog/` | 50 Artikel plus `blog/index.html` | live |
+| `impressum.html` `datenschutz.html` | | live |
+
+### Aufbau index.html
+1 Hero (Foto plus drei Zahlen) · 2 Neu auf dem Kanal · 3 Drei Wege ·
+4 Lead Magnet (dunkel) · 5 Ratgeber · 6 Immobilien · 7 Mit mir arbeiten ·
+8 Deine Geschichte (dunkel) · 9 Wer ich bin · Footer
 
 ---
 
-## YOUTUBE VIDEOS (Blog-Sektion)
+## FORMULARE UND NEWSLETTER
 
-IDs: KDYcaHDT2vk · 37Hdj6TEnsc · 24Qr5o9Daxk · 4Udz633KfiI · F8C2oNoItyk · 7xQhax1qLgg
-Thumbnails: https://img.youtube.com/vi/[ID]/maxresdefault.jpg
-Titel via oEmbed: https://www.youtube.com/oembed?url=...&format=json
+**`js/brevo.js` ist die einzige Stelle**, an der die Brevo-Adresse steht
+(`BREVO_ENDPOINT`). Erkennt automatisch eine sibforms-URL oder einen eigenen
+Cloudflare-Worker und fällt ohne Eintrag auf Web3Forms zurück.
+Angebunden: `rechnung.html`, `reality-check.html`.
+Felder an Brevo: EMAIL, VORNAME, QUELLE, MAGNET, OPT_IN.
+Anleitung: `README-brevo.md`. Mailtexte: `outputs/_bausteine/brevo-mails.md`.
+
+**`?via=` Konvention:** `qr` · `yt` · `pinned` · `web`. Wird als QUELLE
+mitgeschickt, damit sichtbar wird, welcher Kanal Anmeldungen bringt.
+
+**Offen, das kann nur Nihat:** Formular in Brevo anlegen, Serve-Adresse in
+`js/brevo.js` eintragen.
 
 ---
 
 ## BILDER
 
-```
-Hero rechts:  Kyoto Fushimi Inari — base64 in index.html
-Über mich:    Stadtbild weißes Hemd — base64 in index.html
-```
+Liegen als Datei in `homepage/img/`, **nicht mehr base64 eingebettet**.
+Neue Bilder: max. 1600 px Breite, JPEG 82 bis 88 %, immer `alt` und
+immer eine `<figcaption>` mit Ort und Situation.
 
-Neue Bilder: PIL, max. 900px Breite, JPEG 85–88%. Immer base64 einbetten.
-Ausnahme: YouTube-Thumbnails direkt von img.youtube.com.
-
----
-
-## OFFENE TO-DOS
-
-### Sofort
-- [ ] TikTok + Facebook Links → Social Icons ergänzen
-- [ ] Domain IONOS kaufen
-- [ ] GitHub Repository + Pages aktivieren
-- [ ] MailerLite Account → Formular-ID in ratgeber.html
-- [ ] Tally/Formspree in Kontaktformular
-- [ ] Calendly Beratungscall (97€)
-
-### Inhalt
-- [ ] Echte Bewertungen in Social Proof eintragen
-- [ ] Bisherige Interviews auf interview.html eintragen
-- [ ] Echte Immobilien-Objekte eintragen
-- [ ] Pattaya City Guide fertigstellen
-- [ ] Bangkok / Da Nang / Chiang Mai Guides erstellen
-
-### Nächste Phase
-- [ ] Partner-Sektion mit Affiliate-Links
-- [ ] "Langfristig investieren" Bereich (Trade Republic, ETFs, Crypto)
-- [ ] Formulare detaillierter + Backend
-- [ ] Blog-Archiv Seite
-- [ ] Skool Community Integration
+Fehlen noch: drei Beitragsbilder im Blog
+(`bang-saray-beach.png`, `jomtien-oliver-lalana.png`, `pattaya-ralph-interview.png`).
 
 ---
 
-## MONETARISIERUNGSPLAN
+## VOR JEDEM ABSCHLUSS PRÜFEN
 
-**Phase 1 (sofort):** Newsletter, Affiliate (Agoda, SafetyWing, eSIM), Beratung 97€, FS Consultings
-**Phase 2 (1–3 Monate):** City Guides 9,90€, PDF Lead Magnet, Blog SEO, Facebook-Gruppe
-**Phase 3 (3–9 Monate):** Skool Community 15–29€/Monat, Videokurs, Media Kit
-**Phase 4 (9–24 Monate):** Gruppenreisen, Meetup Thailand, App, Lifetime-Membership
+```bash
+grep -c '—' *.html blog/*.html          # muss überall 0 sein
+```
+Dazu: alle internen Links auflösen, jedes `<img>` hat `alt`, jedes Foto hat
+`<figcaption>`, Kontrast im Fließtext mindestens 7:1, Klickflächen mindestens 48 px.
 
 ---
 
-## HOSTING & TECHNIK
-
-```
-Hosting:    GitHub Pages
-Domain:     IONOS (.de)
-Formulare:  Tally (kostenlos)
-Newsletter: MailerLite (kostenlos bis 1.000 Abonnenten)
-E-Mail:     Cloudflare Email Routing → Gmail
-Calls:      Calendly
-PDF-Versand: MailerLite Automation
-```
-
----
-
-## CLAUDE CODE AGENTEN (~/Desktop/freiweit-nihat-youtube/)
-
-```
-CLAUDE.md               ← Master YouTube-Produktion
-beschreibung-agent.md   ← Beschreibung + Kapitel + Pinned Comment
-community-post-agent.md ← Community-Post + Bildprompts
-karusell-agent.md       ← 7 PNG-Slides
-blog-agent.md           ← Blog aus Transkript + Web Search
-komplett-paket.md       ← Alle Agenten sequenziell
-```
-
----
-
-## BRAND VOICE (Kurzversion)
-
-- Wir + Du + Ich-Geschichten · Konkrete Zahlen früh
-- "Am Ende des Tages..." / "Ich sage es dir so wie es ist:"
-- Ehrlich, keine Hochglanz-Versprechen
-- Keine Emojis · Kein "Bullshit"
-
----
-
-*Letzte Aktualisierung: Juni 2026*
+*Letzte Aktualisierung: 20.08.2026*

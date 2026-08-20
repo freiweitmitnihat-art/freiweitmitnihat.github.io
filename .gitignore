@@ -2,3 +2,7 @@
 blog/.DS_Store
 blog/images/.DS_Store
 **/.DS_Store
+
+# lokale Sicherung der alten Startseite, nicht veroeffentlichen
+index-alt.html
+index-neu.html

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+STARTSEITE, Neubau 20.08.2026
+Bauregeln, nicht ohne Grund ändern. Herleitung in
+monetarisierung/startseite-design-recherche.md
+1. Terrakotta NIE großflächig. Nur Buttons, Links, dünne Linien.
+Großflächige Rostfarbe ist 2026 das Erkennungszeichen von KI-Seiten.
+2. Sand NIE als Textfarbe. Hält den Kontrastwert nicht.
+3. Fließtext 20 px, Kontrast Ziel 7:1, Klickflächen 48 px.
+4. Fotos mit HARTEN Kanten, keine abgerundeten Ecken, JEDES mit Bildunterschrift.
+Kein KI-Werkzeug schreibt echte Bildunterschriften.
+5. Linien statt Karten mit Schatten.
+6. Kicker tragen Information (Ort, Datum), keine Deko-Labels wie "FEATURES".
+7. Keine Scroll-Animationen, kein Parallax, prefers-reduced-motion respektieren.
+8. Nie drei gleich große Karten nebeneinander. Asymmetrie ist Absicht.
+9. Playfair nur ab 32 px, darunter Inter.
+     ============================================================ -->
+<meta name="robots" content="noindex, nofollow">
+<title>Freiweit mit Nihat · Kachel-Start (Entwurf)</title>
+<meta name="description" content="Seit 2018 unterwegs, 70 Länder. Ich fahre hin und frage, was das Leben im Ausland wirklich kostet. Interviews mit echten Auswanderern, Ratgeber mit belegten Zahlen, Immobilien in Thailand und Vietnam.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Freiweit mit Nihat">
+<meta property="og:title" content="Freiweit mit Nihat · Auswandern mit echten Zahlen">
+<meta property="og:description" content="Ich fahre hin und frage, was es wirklich kostet. Keine Auswanderromantik, sondern Monatsrechnungen von echten Menschen.">
+<meta property="og:url" content="https://freiweitmitnihat.com/">
+<meta property="og:image" content="https://freiweitmitnihat.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Freiweit mit Nihat · Auswandern mit echten Zahlen">
+<meta name="twitter:description" content="Ich fahre hin und frage, was es wirklich kostet.">
+<meta name="twitter:image" content="https://freiweitmitnihat.com/og-image.jpg">
+<link rel="canonical" href="https://freiweitmitnihat.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#1A1410;        /* Fließtext, hält 7:1 auf Creme */
+  --ink-2:#4A4238;      /* Sekundärtext, immer noch kontraststark */
+  --terra:#B4551F;      /* Akzent. Dunkler als das alte C4622D, damit Links lesbar sind */
+  --sand:#C8A97E;       /* NUR Linien und Flächen, nie Text */
+  --paper:#FAF8F5;
+  --paper-2:#F1ECE4;
+  --line:rgba(26,20,16,0.14);
+}
+
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:20px;line-height:1.7;overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+img{max-width:100%;height:auto;display:block}
+a{color:var(--terra)}
+
+/* ── KOPFZEILE: fünf Punkte, immer sichtbar auf Desktop ── */
+.top{position:sticky;top:0;z-index:60;background:rgba(250,248,245,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,44px);height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.4px;white-space:nowrap}
+.logo i{font-style:normal;color:var(--terra)}
+.menu{display:flex;align-items:center;gap:4px}
+.menu a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:13px 14px;min-height:48px;display:flex;align-items:center;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--ink);border-bottom-color:var(--terra)}
+.menu a.cta{background:var(--terra);color:#fff;border-radius:7px;padding:13px 20px;margin-left:10px;font-weight:600;border-bottom:none}
+.menu a.cta:hover{background:#96430f}
+.burger{display:none;align-items:center;gap:9px;background:none;border:1.5px solid var(--line);border-radius:7px;padding:10px 15px;min-height:48px;font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer}
+.burger svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+@media (max-width:1000px){
+  .menu a:not(.cta):not(.keep){display:none}
+  .burger{display:flex}
+}
+@media (max-width:640px){
+  .top-in{gap:10px}
+  .logo{font-size:19px}
+  .menu a.cta{display:none}   /* steht im Menue und als erster Knopf im Hero */
+}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--paper)}
+.drawer.open{display:block}
+.drawer a.drawer-stark{color:var(--terra);font-weight:600}
+.drawer a{display:block;padding:17px clamp(18px,4vw,44px);font-size:18px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);min-height:48px}
+
+
+/* ══ KACHEL-START ══ */
+.top{border-bottom:2px solid var(--ink)}          /* klare Kante statt Haarlinie */
+.hero2{display:grid;grid-template-columns:1.22fr 1fr;gap:clamp(26px,3.6vw,52px);align-items:start;padding-top:clamp(30px,4vw,46px)}
+@media (max-width:940px){.hero2{grid-template-columns:1fr;gap:30px}}
+.hero2 h1{margin-bottom:14px}
+.hero2 .lead{margin-bottom:24px}
+.hero2 figure img{width:100%;height:auto}
+
+.magnetkarte{background:var(--ink);color:#fff;border-radius:12px;padding:clamp(24px,3vw,34px);position:sticky;top:88px}
+@media (max-width:940px){.magnetkarte{position:static}}
+.magnetkarte .kicker{color:var(--sand);margin-bottom:10px}
+.magnetkarte h2{color:#fff;font-size:clamp(27px,3.1vw,34px);line-height:1.13;margin-bottom:13px}
+.magnetkarte p.mk-lead{color:rgba(255,255,255,.76);font-size:18px;line-height:1.6;margin-bottom:20px}
+.mk-liste{list-style:none;margin:0 0 26px}
+.mk-liste li{display:flex;gap:12px;font-size:17px;color:rgba(255,255,255,.84);line-height:1.5;margin-bottom:11px}
+.mk-liste svg{width:18px;height:18px;stroke:var(--sand);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
+
+.band{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kacheln{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,18px)}
+@media (max-width:1000px){.kacheln{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.kacheln{grid-template-columns:1fr}}
+.kachel{display:block;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:clamp(18px,2vw,24px);text-decoration:none;color:inherit;min-height:48px}
+.kachel:hover,.kachel:focus-visible{border-color:var(--terra);outline:none}
+.kachel:hover h3{color:var(--terra)}
+.kachel svg.sym{width:26px;height:26px;stroke:var(--terra);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.kachel h3{font-family:'Playfair Display',Georgia,serif;font-size:23px;font-weight:700;letter-spacing:-.4px;margin-bottom:7px;transition:color .12s ease}
+.kachel p{font-size:16px;color:var(--ink-2);line-height:1.5;margin-bottom:12px}
+.kachel .preisrand{font-size:16px;font-weight:600;color:var(--terra)}
+@media (prefers-reduced-motion:reduce){.kachel h3{transition:none}}
+.zahlen-schmal{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(24px,5vw,60px);justify-content:start;padding:26px 0 0;margin-top:clamp(26px,3vw,38px);border-top:1px solid var(--line)}
+
+/* ── Grundraster ── */
+.wrap{max-width:1180px;margin:0 auto;padding-left:clamp(18px,4vw,44px);padding-right:clamp(18px,4vw,44px)}
+section{padding:clamp(52px,7vw,92px) 0}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+.kicker{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(38px,6.4vw,72px);font-weight:700;line-height:1.02;letter-spacing:-2px;margin-bottom:24px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4.4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:20px}
+h3{font-size:23px;font-weight:600;line-height:1.28;letter-spacing:-0.3px;margin-bottom:9px}
+p{margin-bottom:18px;max-width:66ch}
+.lead{font-size:23px;line-height:1.62;color:var(--ink-2)}
+.lead strong,p strong{color:var(--ink);font-weight:600}
+.small{font-size:17px;color:var(--ink-2)}
+
+/* Bildunterschrift, das Echtheitsmerkmal */
+figure{margin:0}
+figcaption{font-size:16px;color:var(--ink-2);padding-top:11px;line-height:1.5;border-top:1px solid var(--line);margin-top:11px}
+
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:#fff;font-size:18px;font-weight:600;padding:16px 28px;border-radius:7px;text-decoration:none;min-height:52px;border:none;cursor:pointer;font-family:inherit}
+.btn:hover{background:#96430f}
+.btn.ghost{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--terra);color:var(--terra);background:none}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── 1 · HERO, asymmetrisch 7/5 ── */
+.hero{padding-top:clamp(40px,5vw,64px)}
+.hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,56px);align-items:end}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;align-items:start}}
+.hero h1{margin-bottom:20px}
+.hero .lead{margin-bottom:0}
+.hero-photo img{width:100%;height:auto} /* harte Kanten, kein border-radius */
+
+.zahlen{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(24px,5vw,64px);justify-content:start;margin-top:clamp(30px,4vw,44px);padding-top:26px;border-top:1px solid var(--line)}
+.zahl b{display:block;font-family:'Playfair Display',serif;font-size:clamp(34px,4.6vw,46px);font-weight:700;line-height:1;letter-spacing:-1.4px}
+.zahl span{display:block;font-size:15px;color:var(--ink-2);margin-top:8px;line-height:1.4;max-width:16ch}
+
+/* ── 2 · Neu auf dem Kanal, ein großer und zwei kleine ── */
+.videos{display:grid;grid-template-columns:8fr 4fr;gap:clamp(24px,3.4vw,44px);margin-top:38px}
+@media (max-width:900px){.videos{grid-template-columns:1fr}}
+.v-side{display:flex;flex-direction:column;gap:26px}
+.v a{text-decoration:none;color:inherit;display:block}
+.v img{width:100%;height:auto;background:var(--paper-2)}
+.v .k{font-size:13.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-2);margin:14px 0 7px}
+.v-big h3{font-size:clamp(24px,2.8vw,32px);font-weight:700;letter-spacing:-0.5px;line-height:1.2}
+.v-side h3{font-size:19px;line-height:1.32}
+.v a:hover h3{color:var(--terra)}
+
+/* ── 3 · Drei Wege, gestapelt mit Linien, KEINE Karten ── */
+.weg{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,4vw,50px);align-items:center;padding:clamp(26px,3.4vw,38px) 0;border-top:1px solid var(--line)}
+.weg:last-of-type{border-bottom:1px solid var(--line)}
+@media (max-width:760px){.weg{grid-template-columns:1fr;align-items:start;gap:18px}}
+.weg h3{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,30px);font-weight:700;letter-spacing:-0.7px;margin-bottom:10px}
+.weg p{margin-bottom:0;font-size:19px;color:var(--ink-2)}
+.weg-link{display:inline-flex;align-items:center;gap:9px;font-size:18px;font-weight:600;color:var(--terra);text-decoration:none;white-space:nowrap;min-height:48px}
+.weg-link:hover{text-decoration:underline}
+/* Schnellzugriff im Hero */
+.schnell{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.schnell a{display:inline-flex;align-items:center;min-height:48px;padding:12px 19px;border:1.5px solid var(--line);border-radius:999px;font-size:17px;font-weight:500;color:var(--ink);text-decoration:none;background:var(--paper)}
+.schnell a:hover,.schnell a:focus-visible{border-color:var(--terra);color:var(--terra);outline:none}
+.schnell a.stark{background:var(--terra);color:#fff;border-color:var(--terra)}
+.schnell a.stark:hover,.schnell a.stark:focus-visible{background:#96430f;color:#fff}
+.ruf{display:flex;align-items:center;gap:13px;margin-top:22px;padding:15px 20px;border:1.5px solid rgba(180,85,31,.30);background:rgba(180,85,31,.06);border-radius:8px;font-size:18px;line-height:1.5;min-height:56px}
+.ruf svg{width:21px;height:21px;stroke:var(--terra);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ruf a{color:var(--terra);font-weight:600;text-decoration:none;white-space:nowrap}
+.ruf a:hover,.ruf a:focus-visible{text-decoration:underline}
+@media (max-width:600px){.ruf{font-size:17px;padding:14px 16px;gap:11px}.ruf span{min-width:0}}
+
+@media (max-width:600px){.schnell{gap:8px;margin-top:22px}.schnell a{font-size:16px;padding:11px 16px}}
+/* ganze Zeile antippbar */
+a.weg{text-decoration:none;color:inherit}
+a.weg:hover h3,a.weg:focus-visible h3{color:var(--terra)}
+a.weg:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
+a.weg h3{transition:color .12s ease}
+.weg .gratis{display:inline-block;margin-left:10px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--terra);vertical-align:middle}
+@media (prefers-reduced-motion:reduce){a.weg h3{transition:none}}
+
+.weg-link svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── 4 · Lead Magnet, dunkler Block ── */
+.dark{background:var(--ink);color:#fff}
+.dark h2{color:#fff}
+.dark .kicker{color:var(--sand)}
+.dark p{color:rgba(255,255,255,0.74)}
+.dark .lead strong{color:#fff}
+.magnet{display:grid;grid-template-columns:6fr 5fr;gap:clamp(28px,4vw,60px);align-items:center}
+@media (max-width:900px){.magnet{grid-template-columns:1fr}}
+.magnet-facts{list-style:none;margin:22px 0 30px}
+.magnet-facts li{display:flex;gap:13px;font-size:19px;color:rgba(255,255,255,0.8);line-height:1.55;margin-bottom:12px}
+.magnet-facts svg{width:19px;height:19px;stroke:var(--sand);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:5px}
+.dark figcaption{color:rgba(255,255,255,0.55);border-top-color:rgba(255,255,255,0.18)}
+
+/* ── 5 · Ratgeber: Paket groß, Titel als Liste ── */
+.buch{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,4vw,56px);margin-top:36px;align-items:start}
+@media (max-width:900px){.buch{grid-template-columns:1fr}}
+.paket{border:1.5px solid var(--ink);padding:clamp(26px,3.4vw,36px)}
+.paket .preis{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;letter-spacing:-1.8px;line-height:1}
+.paket .statt{font-size:18px;color:var(--ink-2);text-decoration:line-through;margin-left:10px}
+.titel{list-style:none}
+.titel li{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding:15px 0;border-top:1px solid var(--line)}
+.titel li:first-child{border-top:none;padding-top:0}
+.titel b{font-size:19px;font-weight:600;display:block}
+.titel span{font-size:16px;color:var(--ink-2)}
+.titel .p{font-size:19px;font-weight:600;white-space:nowrap}
+
+/* ── 6 + 7 · zwei Spalten ── */
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,52px)}
+@media (max-width:820px){.zwei{grid-template-columns:1fr}}
+.karte{border-top:2px solid var(--ink);padding-top:22px}
+.karte .preis{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;letter-spacing:-1px;margin-bottom:6px}
+
+/* ── 8 · Interview, Bild links ── */
+.gast{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media (max-width:900px){.gast{grid-template-columns:1fr}}
+blockquote{font-family:'Playfair Display',serif;font-size:clamp(23px,2.7vw,30px);line-height:1.34;letter-spacing:-0.5px;border-left:3px solid var(--terra);padding-left:22px;margin:0 0 16px}
+blockquote+cite{font-style:normal;font-size:16px;color:var(--ink-2)}
+
+/* ── 9 · Wer ich bin ── */
+.ich{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media (max-width:900px){.ich{grid-template-columns:1fr}}
+.social{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.social a{display:inline-flex;align-items:center;gap:9px;font-size:17px;font-weight:500;color:var(--ink);text-decoration:none;border:1.5px solid var(--line);border-radius:7px;padding:12px 18px;min-height:48px}
+.social a:hover{border-color:var(--terra);color:var(--terra)}
+.social svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── Footer ── */
+footer{background:var(--ink);color:rgba(255,255,255,0.7);padding:clamp(44px,6vw,68px) 0 34px;font-size:17px}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;margin-bottom:38px}
+footer h4{font-size:14px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--sand);margin-bottom:14px}
+footer a{display:block;color:rgba(255,255,255,0.7);text-decoration:none;padding:9px 0;min-height:44px;display:flex;align-items:center}
+footer a:hover{color:#fff}
+.f-end{border-top:1px solid rgba(255,255,255,0.16);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:15.5px;color:rgba(255,255,255,0.5)}
+.f-hinweis{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.6;margin-top:14px;max-width:70ch}
+</style>
+</head>
+<body>
+<!-- ENTWURF: alternative Startseite. Die echte Startseite bleibt index.html. -->
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="/">Freiweit <i>mit Nihat</i></a>
+    <nav class="menu">
+      <a href="blog/index.html">Videos</a>
+      <a href="bibliothek.html">Ratgeber</a>
+      <a href="immobilien.html">Immobilien</a>
+      <a href="beratung.html">Beratung</a>
+      <a href="#ich">Über mich</a>
+      <a class="cta keep" href="rechnung.html">Newsletter</a>
+      <button class="burger" onclick="var d=document.getElementById('drawer');d.classList.toggle('open');this.setAttribute('aria-expanded',d.classList.contains('open'))" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>Menü
+      </button>
+    </nav>
+  </div>
+  <div class="drawer" id="drawer">
+    <a class="drawer-stark" href="rechnung.html">Die echte Monatsrechnung, kostenlos</a>
+    <a href="blog/index.html">Videos und Artikel</a>
+    <a href="bibliothek.html">Ratgeber</a>
+    <a href="immobilien.html">Immobilien</a>
+    <a href="beratung.html">Beratung</a>
+    <a href="interview.html">Deine Geschichte erzählen</a>
+    <a href="#ich">Über mich</a>
+  </div>
+</header>
+
+<!-- 1 · HERO MIT ANGEBOT -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero2">
+      <div>
+        <div class="kicker">Pattaya, Thailand · Januar 2026</div>
+        <h1>Ich fahre hin und frage, was es wirklich kostet.</h1>
+        <p class="lead">Seit 2018 bin ich unterwegs, inzwischen 70 Länder. Ich setze mich zu Menschen, die den Schritt gemacht haben, und frage nach den Zahlen: Miete, Versicherung, Kontostand fürs Visum.</p>
+        <figure class="hero-photo">
+          <img src="img/hero-interview.jpg" width="1600" height="1200" alt="Nihat im Interview mit einem deutschen Auswanderer an einem Straßenlokal in Pattaya, die Kamera steht auf einem Stativ zwischen den beiden.">
+          <figcaption>Gespräch mit einem Auswanderer in Pattaya. Die Kamera läuft, auf dem Tisch stehen zwei Getränke, und die Frage ist immer dieselbe: Was zahlst du im Monat?</figcaption>
+        </figure>
+        <div class="zahlen-schmal">
+          <div class="zahl"><b>8</b><span>Jahre unterwegs, seit 2018</span></div>
+          <div class="zahl"><b>70</b><span>Länder, nachgezählt</span></div>
+          <div class="zahl"><b>5.810</b><span>Abonnenten auf YouTube</span></div>
+        </div>
+      </div>
+
+      <div class="magnetkarte">
+        <div class="kicker">Kostenlos als PDF · 30 Seiten</div>
+        <h2>Die echte Monatsrechnung</h2>
+        <p class="mk-lead">Die meisten rechnen mit Miete und Essen und vergessen den Rest. Ich habe alle Kosten für Bangkok und Pattaya zusammengetragen, in Baht und Euro, jede Zahl mit Quelle.</p>
+        <ul class="mk-liste">
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Die Posten, die fast jeder vergisst: Visum, Krankenversicherung, Heimflüge, Kaution</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Meine eigene Rechnung aus Da Nang, auf den Euro genau: 1.254 Euro</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Eine Vorlage zum Ausdrucken für deine eigene Rechnung</span></li>
+        </ul>
+        <a class="btn" href="rechnung.html">Kostenlos herunterladen <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · KACHELN -->
+<section class="band">
+  <div class="wrap">
+    <div class="kicker">Alles auf einen Blick</div>
+    <h2>Wonach suchst du?</h2>
+    <p class="lead">Vier Wege, mehr gibt es hier nicht. Der Preis steht dran, damit du nicht erst klicken musst.</p>
+    <div class="kacheln" style="margin-top:clamp(26px,3vw,38px)">
+      <a class="kachel" href="bibliothek.html">
+        <svg class="sym" viewBox="0 0 24 24"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v16H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M4 17.5A1.5 1.5 0 0 1 5.5 16H19"/></svg>
+        <h3>Ratgeber</h3>
+        <p>Visum, Wohnung, Krankenversicherung, Abmeldung, Plan B und die häufigsten Fehler. Belegte Zahlen, Arbeitsblätter zum Ausdrucken.</p>
+        <span class="preisrand">6 Hefte, ab 19 €</span>
+      </a>
+      <a class="kachel" href="immobilien.html">
+        <svg class="sym" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg>
+        <h3>Immobilien</h3>
+        <p>Objekte in Thailand und Vietnam, mit Preis, Lage und dem, was dir ein Makler nicht von selbst sagt.</p>
+        <span class="preisrand">Kontakt auf Wunsch</span>
+      </a>
+      <a class="kachel" href="beratung.html">
+        <svg class="sym" viewBox="0 0 24 24"><path d="M20 14a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>
+        <h3>Beratung</h3>
+        <p>Dein Fall, einmal in Ruhe durchgesprochen. Keine Verkaufsveranstaltung, auch wenn die Antwort dir nicht gefällt.</p>
+        <span class="preisrand">60 Minuten, 97 €</span>
+      </a>
+      <a class="kachel" href="interview.html">
+        <svg class="sym" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+        <h3>Deine Geschichte</h3>
+        <p>Du lebst draußen oder bist zurückgekommen? Ich suche laufend Menschen, die ehrlich erzählen.</p>
+        <span class="preisrand">Auf Wunsch anonym</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · RATGEBER -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Die Bibliothek</div>
+    <h2>Ratgeber mit belegten Zahlen.</h2>
+    <p class="lead">Jedes Heft beantwortet genau eine Frage. Mit Quellen, mit Stand-Datum, und mit Arbeitsblättern, die du ausdruckst und ausfüllst. Wo ich etwas nicht sicher belegen konnte, steht das im Heft.</p>
+
+    <div class="buch">
+      <div class="paket">
+        <div class="kicker">Alle sechs zusammen</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;letter-spacing:-0.9px;margin-bottom:14px">Das Paket</h3>
+        <p class="small" style="margin-bottom:22px">176 Seiten. Wer wirklich überlegt zu gehen, braucht am Ende ohnehin alle.</p>
+        <div><span class="preis">59 €</span><span class="statt">114 €</span></div>
+        <p class="small" style="margin:14px 0 22px">Einmal zahlen, kein Abo. Aktualisierungen der Hefte bekommst du kostenlos. 30 Tage Rückgaberecht.</p>
+        <a class="btn" href="bibliothek.html">Zur Bibliothek <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <ul class="titel">
+        <li><div><b>Welches Visum passt zu dir?</b><span>Thailand und Vietnam, 32 Seiten, mit Entscheidungsbaum</span></div><div class="p">19 €</div></li>
+        <li><div><b>Wohnung finden in Thailand und Vietnam</b><span>35 Seiten, 40 Prüfpunkte für die Besichtigung</span></div><div class="p">19 €</div></li>
+        <li><div><b>Deutschland abwickeln</b><span>34 Seiten, Zeitachse über die letzten 12 Monate</span></div><div class="p">19 €</div></li>
+        <li><div><b>Krankenversicherung im Ausland ab 55</b><span>27 Seiten, Vergleichsbogen mit 36 Prüfpunkten</span></div><div class="p">19 €</div></li>
+        <li><div><b>Plan B: falls du zurückwillst</b><span>26 Seiten, das Thema, über das sonst niemand schreibt</span></div><div class="p">19 €</div></li>
+        <li><div><b>Die 7 größten Fehler beim Auswandern</b><span>22 Seiten, mit Stimmen aus meinen Interviews</span></div><div class="p">19 €</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- 4 · IMMOBILIEN -->
+<section>
+  <div class="wrap">
+    <div class="magnet">
+      <figure>
+        <img src="img/pool-pattaya.jpg" width="900" height="1200" loading="lazy" alt="Blick von einer Dachterrasse mit Pool über Pattaya auf das Meer, im Vordergrund zwei Männer im Gespräch.">
+        <figcaption>Dachterrasse einer Anlage in Pattaya. Objekte wie dieses zeige ich im Video, mit Preis und Lage.</figcaption>
+      </figure>
+      <div>
+        <div class="kicker">Immobilien in Asien</div>
+        <h2>Wohnungen, die ich selbst gesehen habe.</h2>
+        <p class="lead">Mieten oder kaufen in Thailand und Vietnam. Ich zeige die Objekte im Video, mit echtem Preis, echter Lage und den Punkten, die man erst beim zweiten Hinsehen bemerkt.</p>
+        <p>Wenn dich eines interessiert, schreib mir. Ich stelle den Kontakt zum Eigentümer oder zur Maklerin her. Falls ich daran etwas verdiene, sage ich dir das vorher.</p>
+        <a class="btn ghost" href="immobilien.html">Zu den Objekten <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- 5 · MIT MIR ARBEITEN -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Mit mir arbeiten</div>
+    <h2>Wenn du es konkret angehen willst.</h2>
+
+    <div class="zwei" style="margin-top:34px">
+      <div class="karte">
+        <div class="kicker">Einzelgespräch</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:28px;letter-spacing:-0.7px">Beratungsgespräch</h3>
+        <div class="preis">97 €</div>
+        <p class="small">60 Minuten, nur deine Situation. Budget, Visum, Krankenversicherung und die drei Dinge, die du als Nächstes tun solltest.</p>
+        <a class="btn ghost" href="beratung.html">Termin ansehen <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="karte">
+        <div class="kicker">Eine Woche vor Ort</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:28px;letter-spacing:-0.7px">Die Freiweit-Woche</h3>
+        <div class="preis">in Planung</div>
+        <p class="small">Vormittags Seminar, nachmittags ziehst du selbst los, abends rechnen wir gemeinsam. In kleiner Gruppe, mit Menschen, die dasselbe vorhaben.</p>
+        <a class="btn ghost" href="freiweit-woche.html">Programm ansehen <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:30px;padding-top:22px;border-top:1px solid var(--line)">Du bist ein Unternehmen und willst die deutschsprachige Zielgruppe erreichen? Zahlen zum Kanal und Kooperationsmodelle stehen im <a href="mediakit.html">Media Kit</a>, Anfragen über die <a href="kontakt.html">Kontaktseite</a>.</p>
+  </div>
+</section>
+
+<!-- 6 · NEU AUF DEM KANAL -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Neu auf dem Kanal</div>
+    <h2>Die letzten Gespräche.</h2>
+    <p class="lead">Jede Woche neue Videos. Immer mit Zahlen, immer mit Menschen, die es wirklich gemacht haben.</p>
+
+    <div class="videos">
+      <article class="v v-big">
+        <a href="https://www.youtube.com/watch?v=BtcDUyr4_g8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/BtcDUyr4_g8/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="Videovorschau: Hotel statt Wohnung in Vietnam">
+          <div class="k">Hoi An, Vietnam · 33.000 Aufrufe</div>
+          <h3>Hotel statt Wohnung: Was das Leben in Vietnam wirklich kostet</h3>
+          <p class="small">Ella lebt dauerhaft im Hotel. Warum das günstiger sein kann als eine Wohnung, und was sie im Monat wirklich zahlt.</p>
+        </a>
+      </article>
+
+      <div class="v-side">
+        <article class="v">
+          <a href="https://www.youtube.com/watch?v=0Pb2j6Ku4KI" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/0Pb2j6Ku4KI/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Videovorschau: Wohnung kaufen und Rente in Pattaya">
+            <div class="k">Pattaya · 11.000 Aufrufe</div>
+            <h3>Wohnung kaufen und Rente in Pattaya: Preise, Kosten, Regeln</h3>
+          </a>
+        </article>
+        <article class="v">
+          <a href="https://www.youtube.com/watch?v=kzkwPZiL2tQ" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/kzkwPZiL2tQ/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Videovorschau: Das deutsche Viertel in Pattaya">
+            <div class="k">Pattaya · 8.800 Aufrufe</div>
+            <h3>Dieses Viertel in Pattaya ist komplett deutsch</h3>
+          </a>
+        </article>
+        <article class="v">
+          <a href="https://www.youtube.com/watch?v=wXmHuZ6e3zI" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/wXmHuZ6e3zI/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Videovorschau: Maklerin packt aus">
+            <div class="k">Pattaya · 8.200 Aufrufe</div>
+            <h3>Deutschsprachige Maklerin packt aus: Lohnt sich Pattaya noch?</h3>
+          </a>
+        </article>
+      </div>
+    </div>
+
+    <p style="margin-top:32px"><a class="btn ghost" href="blog/index.html">Alle Videos und Artikel <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- 7 · DEINE GESCHICHTE -->
+<section class="dark">
+  <div class="wrap">
+    <div class="gast">
+      <figure>
+        <img src="img/interview-gespraech.jpg" width="900" height="1200" loading="lazy" alt="Nihat im Gespräch mit einem älteren Deutschen an einem einfachen Straßenlokal, er gestikuliert beim Erklären.">
+        <figcaption>Interviews dauern bei mir oft über eine Stunde. Die interessanten Sätze kommen selten in den ersten zehn Minuten.</figcaption>
+      </figure>
+      <div>
+        <div class="kicker">Interviewpartner gesucht</div>
+        <h2>Deine Geschichte auf diesem Kanal.</h2>
+        <blockquote>„Entweder kannst du dir das Land leisten zum Leben, oder du bist nicht willkommen. Das ist eine knallharte Realität."</blockquote>
+        <cite>Ralph, 57, seit über 30 Jahren in Thailand</cite>
+        <p class="lead" style="margin-top:26px">Du lebst im Ausland und willst erzählen, wie es wirklich läuft? Oder du warst draußen und bist zurückgekommen? <strong>Beides interessiert mich.</strong></p>
+        <p>Ich suche echte Menschen mit echten Zahlen, keine Hochglanz-Geschichten. Weltweit, nicht nur in Südostasien. Auf Wunsch auch anonym, nur mit Vornamen und ohne Gesicht.</p>
+        <a class="btn" href="interview.html">Jetzt bewerben <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · WER ICH BIN -->
+<section id="ich">
+  <div class="wrap">
+    <div class="ich">
+      <figure>
+        <img src="img/portrait-peking.jpg" width="1600" height="1066" loading="lazy" alt="Nihat vor den goldenen Dächern der Verbotenen Stadt in Peking.">
+        <figcaption>Peking, eines von 70 Ländern. Angefangen hat alles 2018.</figcaption>
+      </figure>
+      <div>
+        <div class="kicker">Wer das hier macht</div>
+        <h2>Ich bin Nihat.</h2>
+        <p class="lead">Seit 2018 bin ich unterwegs, inzwischen acht Jahre und exakt 70 Länder. Am längsten war ich in Thailand, den USA und Vietnam, dort jeweils Monate am Stück, mit Miete, Behördengängen und Stromrechnungen.</p>
+        <p><strong>Ausgewandert bin ich nicht. Ich bin der, der die Fragen stellt.</strong> Auf dem Kanal setze ich mich zu Menschen, die den Schritt gemacht haben, und frage nach den Zahlen. Rentner, Frührentner, Handwerker, Selbstständige. Viele dieser Gespräche dauern über eine Stunde.</p>
+        <p>Was dabei immer wieder auffällt: Es scheitert selten am Mut. Es scheitert am fehlenden Puffer, an einer Krankenversicherung, die niemand vorher durchgerechnet hat, und an dem Satz „Ich wollte einfach nur weg".</p>
+        <div class="social">
+          <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>YouTube</a>
+          <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Instagram</a>
+          <a href="https://www.instagram.com/freiweit.mit.nihat/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Instagram Kanal</a>
+          <a href="kontakt.html"><svg viewBox="0 0 24 24"><rect x="2.6" y="4.6" width="18.8" height="14.8" rx="2.4"/><path d="M3.5 6.5 12 12.4 20.5 6.5"/></svg>Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h4>Inhalte</h4>
+        <a href="blog/index.html">Videos und Artikel</a>
+        <a href="rechnung.html">Die echte Monatsrechnung</a>
+        <a href="reality-check.html">Reality-Check</a>
+        <a href="city-guides.html">City Guides</a>
+      </div>
+      <div>
+        <h4>Angebote</h4>
+        <a href="bibliothek.html">Ratgeber</a>
+        <a href="beratung.html">Beratungsgespräch</a>
+        <a href="freiweit-woche.html">Freiweit-Woche</a>
+        <a href="immobilien.html">Immobilien</a>
+      </div>
+      <div>
+        <h4>Mitmachen</h4>
+        <a href="interview.html">Deine Geschichte erzählen</a>
+        <a href="mediakit.html">Media Kit</a>
+        <a href="kontakt.html">Kontakt und Kooperation</a>
+        <a href="hilfe.html">Hilfe beim Kauf</a>
+      </div>
+      <div>
+        <h4>Empfehlungen</h4>
+        <a href="https://bit.ly/NihatHotels" target="_blank" rel="noopener sponsored">Hotels in Südostasien</a>
+        <a href="https://bit.ly/Nihat-Safe" target="_blank" rel="noopener sponsored">Reiseversicherung</a>
+        <a href="https://buymeacoffee.com/freiweitmitnihat" target="_blank" rel="noopener">Buy me a coffee</a>
+      </div>
+    </div>
+    <p class="f-hinweis">Die beiden oberen Links unter Empfehlungen sind Partnerlinks. Wenn du darüber buchst, bekomme ich eine Provision. Für dich ändert sich am Preis nichts, und ich empfehle nur, was ich selbst benutzt habe.</p>
+    <div class="f-end">
+      <div>© 2026 Freiweit mit Nihat</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="impressum.html" style="min-height:auto;padding:0;display:inline">Impressum</a>
+        <a href="datenschutz.html" style="min-height:auto;padding:0;display:inline">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
