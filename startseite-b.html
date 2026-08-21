@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Ich fahre hin und frage, was das Leben im Ausland wirklich kostet. Echte Zahlen aus Thailand und Vietnam, Ratgeber, Immobilien und Beratung.">
+<title>Freiweit mit Nihat · Auswandern mit echten Zahlen</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#B4551F;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+img{max-width:100%;height:auto;display:block}
+body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:20px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.6px;line-height:1.12}
+h1 i,h2 i{font-style:italic;color:var(--terra)}
+a{color:inherit}
+
+/* ══ KOPFZEILE ══ */
+.top{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:2px solid var(--ink)}
+.top-in{max-width:1220px;margin:0 auto;padding:0 clamp(18px,4vw,44px);height:68px;display:flex;align-items:center;gap:18px}
+.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;text-decoration:none;white-space:nowrap;flex:none}
+.logo i{font-style:normal;color:var(--terra)}
+.menu{display:flex;align-items:center;gap:6px;margin-left:auto}
+.menu>a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 15px;min-height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;white-space:nowrap}
+.menu>a:hover,.menu>a:focus-visible{color:var(--ink);border-bottom-color:var(--terra);outline:none}
+.cta{background:var(--terra);color:#fff!important;border-radius:7px;padding:12px 20px!important;font-weight:600;border-bottom:none!important;margin-left:8px}
+.cta:hover{background:#96430f}
+/* Ausklappmenue mit Unterpunkten */
+.hat{position:relative}
+.hat>a{cursor:pointer;gap:7px}
+.hat>a::after{content:"";display:block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid currentColor;opacity:.5;flex:none;margin-top:2px}
+.hat:hover>a::after,.hat:focus-within>a::after{opacity:1}
+.hut{position:absolute;top:100%;left:0;min-width:280px;background:var(--paper);border:1px solid var(--line);border-top:2px solid var(--terra);border-radius:0 0 10px 10px;padding:8px;display:none;box-shadow:0 14px 34px rgba(26,20,16,.14)}
+.hat:hover .hut,.hat:focus-within .hut{display:block}
+.hut a{display:block;padding:12px 13px;text-decoration:none;border-radius:7px;min-height:48px}
+.hut a:hover,.hut a:focus-visible{background:var(--paper-2);outline:none}
+.hut b{display:block;font-size:17px;font-weight:600}
+.hut span{display:block;font-size:15px;color:var(--ink-2);line-height:1.4}
+.burger{display:none;margin-left:auto;align-items:center;gap:9px;background:none;border:1.5px solid var(--line);border-radius:7px;padding:10px 15px;min-height:48px;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.burger svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+@media (max-width:1060px){.menu{display:none}.burger{display:flex}}
+.lade{display:none;border-top:1px solid var(--line);background:var(--paper);max-height:78vh;overflow-y:auto}
+.lade.auf{display:block}
+.lade a{display:block;padding:15px clamp(18px,4vw,44px);text-decoration:none;border-bottom:1px solid var(--line);min-height:48px}
+.lade a b{display:block;font-size:18px;font-weight:600}
+.lade a span{font-size:15px;color:var(--ink-2)}
+.lade .kopf{padding:14px clamp(18px,4vw,44px) 6px;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);background:var(--paper-2)}
+
+/* ══ BUEHNE ══ */
+.buehne{position:relative;min-height:clamp(430px,52vw,600px);display:flex;align-items:flex-end}
+.buehne>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.schleier{position:absolute;inset:0;background:linear-gradient(4deg,rgba(26,20,16,.95) 0%,rgba(26,20,16,.84) 26%,rgba(26,20,16,.40) 58%,rgba(26,20,16,.14) 100%)}
+.buehne-in{position:relative;width:100%;padding:clamp(30px,4vw,54px) 0}
+.ort{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);margin-bottom:15px}
+.ort::before{content:"";width:32px;height:2px;background:var(--sand);flex:none}
+.buehne h1{color:#fff;font-size:clamp(31px,4.6vw,60px);max-width:16ch}
+.buehne h1 i{color:var(--sand)}
+.buehne p{color:rgba(255,255,255,.87);font-size:clamp(17px,1.5vw,20px);margin:16px 0 26px;max-width:50ch}
+.knoepfe{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--terra);color:#fff;font-size:18px;font-weight:600;padding:15px 26px;border-radius:8px;text-decoration:none;min-height:54px}
+.btn:hover{background:#96430f}
+.btn.hell{background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn.hell:hover{background:rgba(255,255,255,.22)}
+.btn.rand{background:none;border:1.5px solid var(--line);color:var(--ink)}
+.btn.rand:hover{border-color:var(--terra);color:var(--terra);background:none}
+@media (max-width:640px){.buehne{min-height:auto;padding-top:150px}.buehne h1{max-width:none}.knoepfe .btn{width:100%}}
+
+
+.hero-ruf{display:flex;align-items:flex-start;gap:11px;margin:24px 0 0;font-size:17px;color:rgba(255,255,255,.86);max-width:52ch;line-height:1.5}
+.hero-ruf svg{width:20px;height:20px;stroke:var(--sand);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:3px}
+.hero-ruf a{color:var(--sand);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.hero-ruf a:hover{color:#fff}
+@media(max-width:640px){.hero-ruf{font-size:16px;margin-top:20px}}
+
+/* Zahlen */
+.zband{background:var(--ink);color:#fff}
+.zband .in{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:20px 0}
+.zband b{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,36px);display:block;line-height:1}
+.zband span{font-size:15px;color:rgba(255,255,255,.68)}
+@media(max-width:520px){.zband .in{grid-template-columns:1fr 1fr;gap:14px}.zband .in>div:last-child{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.16);padding-top:12px}}
+
+/* Interview-Aufruf */
+.ruf{background:var(--paper-2);border-bottom:1px solid var(--line)}
+.ruf .in{display:flex;align-items:center;gap:18px;padding:18px 0;flex-wrap:wrap}
+.ruf svg{width:24px;height:24px;stroke:var(--terra);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ruf p{font-size:18px;flex:1;min-width:250px}
+.ruf .btn{padding:12px 20px;min-height:48px;font-size:17px}
+
+/* Abschnitte */
+section{padding:clamp(42px,5vw,74px) 0}
+.marke{background:var(--paper-2);padding:26px 0 0}
+.marke .wrap{padding-bottom:26px}
+.marke h2{font-size:24px;margin-bottom:5px}
+.marke p{font-size:17px;color:var(--ink-2);max-width:78ch}
+.kick{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);margin-bottom:12px}
+.lead{font-size:20px;color:var(--ink-2);max-width:60ch;margin-bottom:8px}
+
+/* V1 Leiter */
+.leiter{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px);margin-top:32px}
+.stufe{border-top:3px solid var(--ink);padding-top:18px;display:flex;flex-direction:column}
+.stufe .nr{font-family:'Playfair Display',serif;font-size:15px;color:var(--terra);font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.stufe h3{font-size:24px;margin-bottom:8px}
+.stufe p{font-size:17px;color:var(--ink-2);line-height:1.55;margin-bottom:14px;flex:1}
+.stufe .preis{font-size:16px;font-weight:600;color:var(--terra);margin-bottom:14px}
+@media(max-width:820px){.leiter{grid-template-columns:1fr;gap:0}.stufe{border-top:2px solid var(--line);padding:22px 0}.stufe:first-child{border-top:3px solid var(--ink)}}
+
+/* V2 Regal nach Ort */
+.regal{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:30px}
+.ort-karte{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--paper)}
+.ort-kopf{background:var(--ink);color:#fff;padding:16px 20px}
+.ort-kopf b{font-family:'Playfair Display',serif;font-size:22px;display:block}
+.ort-kopf span{font-size:14px;color:rgba(255,255,255,.66)}
+.ort-liste{padding:6px 8px}
+.ort-liste a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 12px;text-decoration:none;border-radius:7px;min-height:48px;font-size:17px}
+.ort-liste a:hover,.ort-liste a:focus-visible{background:var(--paper-2);outline:none}
+.ort-liste em{font-style:normal;font-size:15px;color:var(--terra);white-space:nowrap}
+@media(max-width:820px){.regal{grid-template-columns:1fr}}
+
+/* V3 Redaktionell */
+.red{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(22px,3vw,44px);margin-top:30px;align-items:start}
+.gross{background:var(--ink);color:#fff;border-radius:12px;padding:clamp(24px,3vw,38px)}
+.gross .kick{color:var(--sand)}
+.gross h3{color:#fff;font-size:clamp(26px,2.8vw,34px);margin-bottom:12px}
+.gross p{color:rgba(255,255,255,.78);font-size:18px;margin-bottom:20px}
+.seite{display:flex;flex-direction:column;gap:14px}
+.mini{border-top:2px solid var(--ink);padding-top:14px}
+.mini h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:5px}
+.mini p{font-size:16px;color:var(--ink-2);line-height:1.5;margin-bottom:8px}
+.mini a{color:var(--terra);font-weight:600;text-decoration:none;font-size:16px}
+.streifen{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+.streifen a{text-decoration:none;padding:14px 16px;border:1px solid var(--line);border-radius:9px;min-height:48px}
+.streifen a:hover{border-color:var(--terra)}
+.streifen b{display:block;font-size:17px;font-weight:600;margin-bottom:2px}
+.streifen span{font-size:15px;color:var(--ink-2)}
+@media(max-width:900px){.red{grid-template-columns:1fr}.streifen{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.streifen{grid-template-columns:1fr}}
+
+/* Videos */
+.filme{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,22px);margin-top:30px}
+.film{text-decoration:none;display:block}
+.film img{width:100%;height:auto;border-radius:9px;background:var(--paper-2);aspect-ratio:16/9;object-fit:cover}
+.film b{display:block;font-size:17px;font-weight:500;line-height:1.4;margin-top:11px}
+.film:hover b{color:var(--terra)}
+@media(max-width:900px){.filme{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.filme{grid-template-columns:1fr}}
+/* Wer ich bin */
+.ueber{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,3.4vw,52px);align-items:start}
+.ueber img{border-radius:11px}
+.ueber figcaption{font-size:15px;color:var(--ink-2);margin-top:9px;line-height:1.45}
+.ueber p{font-size:19px;color:var(--ink-2);margin-bottom:16px;max-width:62ch}
+.ueber p strong{color:var(--ink);font-weight:600}
+@media(max-width:820px){.ueber{grid-template-columns:1fr}}
+/* Fusszeile */
+footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(38px,4vw,58px) 0 30px;font-size:17px}
+.fspalten{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.6vw,40px)}
+.fspalten h4{font-family:Inter,sans-serif;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);margin-bottom:12px;font-weight:600}
+.fspalten a{display:block;color:rgba(255,255,255,.74);text-decoration:none;padding:7px 0;min-height:38px}
+.fspalten a:hover{color:#fff}
+.fende{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:16px}
+.fende a{color:rgba(255,255,255,.74);text-decoration:none;margin-right:18px}
+@media(max-width:820px){.fspalten{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fspalten{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="/">Freiweit <i>mit Nihat</i></a>
+    <nav class="menu">
+      <a href="/blog/">Videos</a>
+      <div class="hat">
+        <a href="/bibliothek" aria-haspopup="true">Ratgeber</a>
+        <div class="hut">
+          <a href="/rechnung"><b>Die echte Monatsrechnung</b><span>30 Seiten, kostenlos</span></a>
+          <a href="/bibliothek"><b>Alle sechs Hefte</b><span>Visum, Wohnung, Versicherung, ab 19 €</span></a>
+          <a href="/reality-check"><b>Reality-Check</b><span>Zehn Fragen, ehrliche Auswertung</span></a>
+        </div>
+      </div>
+      <div class="hat">
+        <a href="/immobilien" aria-haspopup="true">Reisen &amp; Leben</a>
+        <div class="hut">
+          <a href="/immobilien"><b>Immobilien in Asien</b><span>Thailand und Vietnam, mit Preisen</span></a>
+          <a href="/hotel-reise"><b>Hotels und Reise</b><span>Was ich selbst buche</span></a>
+          <a href="/city-guides"><b>City Guides</b><span>Karten mit echten Orten</span></a>
+        </div>
+      </div>
+      <span aria-hidden="true" style="width:1px;height:22px;background:var(--line);margin:0 8px"></span>
+      <a href="/beratung">Beratung</a>
+      <a href="/interview">Deine Geschichte</a>
+      <a class="cta" href="/rechnung">Monatsrechnung</a>
+    </nav>
+    <button class="burger" onclick="var d=document.getElementById('lade');d.classList.toggle('auf');this.setAttribute('aria-expanded',d.classList.contains('auf'))" aria-expanded="false" aria-controls="lade">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>Menü
+    </button>
+  </div>
+  <div class="lade" id="lade">
+    <a href="/rechnung" style="background:var(--paper-2)"><b style="color:var(--terra)">Die echte Monatsrechnung</b><span>30 Seiten, kostenlos</span></a>
+    <div class="kopf">Ratgeber</div>
+    <a href="/bibliothek"><b>Alle sechs Hefte</b><span>Visum, Wohnung, Versicherung, ab 19 €</span></a>
+    <a href="/reality-check"><b>Reality-Check</b><span>Zehn Fragen, ehrliche Auswertung</span></a>
+    <div class="kopf">Reisen und Leben</div>
+    <a href="/immobilien"><b>Immobilien in Asien</b><span>Thailand und Vietnam</span></a>
+    <a href="/hotel-reise"><b>Hotels und Reise</b><span>Was ich selbst buche</span></a>
+    <a href="/city-guides"><b>City Guides</b><span>Karten mit echten Orten</span></a>
+    <div class="kopf">Direkt</div>
+    <a href="/beratung"><b>Beratungsgespräch</b><span>60 Minuten, 97 €</span></a>
+    <a href="/interview"><b>Deine Geschichte erzählen</b><span>Auch anonym</span></a>
+    <a href="/blog/"><b>Videos und Artikel</b><span>Über 50 Beiträge</span></a>
+  </div>
+</header>
+
+<section class="buehne" style="padding-bottom:0">
+  <img src="img/bestand-1.jpg" width="900" height="600" alt="Nihat steht in den orangefarbenen Torii-Gaengen des Fushimi-Inari-Schreins in Kyoto.">
+  <div class="schleier"></div>
+  <div class="buehne-in"><div class="wrap">
+    <div class="ort">Fushimi Inari, Kyoto · Land 68</div>
+    <h1>Ich fahre hin und frage, was es <i>wirklich</i> kostet.</h1>
+    <p>Seit 2018 unterwegs, inzwischen 70 Länder. Ich setze mich zu Menschen, die den Schritt gemacht haben, und frage nach den Zahlen. Nicht nach dem Gefühl.</p>
+    <div class="knoepfe">
+      <a class="btn" href="/rechnung">Was es wirklich kostet</a>
+      <a class="btn hell" href="/blog/">Videos ansehen</a>
+    </div>
+    <p class="hero-ruf">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+      <span>Du lebst im Ausland oder bist zurückgekommen? <a href="/interview">Erzähl deine Geschichte</a></span>
+    </p>
+  </div></div>
+</section>
+
+<div class="zband"><div class="wrap"><div class="in">
+  <div><b>8</b><span>Jahre unterwegs, seit 2018</span></div>
+  <div><b>70</b><span>Länder, nachgezählt</span></div>
+  <div><b>5.810</b><span>Abonnenten auf YouTube</span></div>
+</div></div></div>
+
+<div class="ruf"><div class="wrap"><div class="in">
+  <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+  <p>Du lebst im Ausland oder bist zurückgekommen? Ich suche laufend Menschen, die ehrlich erzählen, wie es wirklich gelaufen ist. Weltweit, auf Wunsch anonym.</p>
+  <a class="btn" href="/interview">Zum Bewerbungsbogen</a>
+</div></div></div>
+
+<section><div class="wrap">
+  <div class="kick">Wie weit bist du</div>
+  <h2>Drei Stufen, in deinem Tempo.</h2>
+  <div class="leiter">
+    <div class="stufe"><div class="nr">STUFE 1</div><h3>Informieren</h3>
+      <p>Was ein Monat wirklich kostet, in Baht und Euro, jede Zahl mit Quelle. Dazu über 50 Artikel und wöchentlich neue Gespräche auf dem Kanal.</p>
+      <div class="preis">Kostenlos</div><a class="btn" href="/rechnung">Monatsrechnung laden</a></div>
+    <div class="stufe"><div class="nr">STUFE 2</div><h3>Vorbereiten</h3>
+      <p>Sechs Hefte zu den Fragen, an denen die meisten hängen bleiben: Visum, Wohnung, Krankenversicherung, Abmeldung, Plan B und die häufigsten Fehler.</p>
+      <div class="preis">Ab 19 €, alle sechs 59 €</div><a class="btn rand" href="/bibliothek">Ratgeber ansehen</a></div>
+    <div class="stufe"><div class="nr">STUFE 3</div><h3>Entscheiden</h3>
+      <p>Dein Fall, einmal in Ruhe durchgesprochen. Keine Verkaufsveranstaltung, sondern eine ehrliche Einschätzung, auch wenn sie dir nicht gefällt.</p>
+      <div class="preis">60 Minuten, 97 €</div><a class="btn rand" href="/beratung">Termin ansehen</a></div>
+  </div>
+</div></section>
+
+<section style="background:var(--paper-2)"><div class="wrap">
+  <div class="kick">Wohin willst du</div>
+  <h2>Alles zu deinem Ziel, an einer Stelle.</h2>
+  <div class="regal">
+    <div class="ort-karte"><div class="ort-kopf"><b>Thailand</b><span>Pattaya, Bangkok, Si Racha</span></div>
+      <div class="ort-liste">
+        <a href="/rechnung"><span>Was ein Monat kostet</span><em>kostenlos</em></a>
+        <a href="/bibliothek"><span>Visum und Wohnung</span><em>ab 19 €</em></a>
+        <a href="/immobilien"><span>Immobilien ansehen</span><em>mit Preis</em></a>
+        <a href="/blog/">Alle Artikel und Videos</a>
+      </div></div>
+    <div class="ort-karte"><div class="ort-kopf"><b>Vietnam</b><span>Da Nang, Hoi An</span></div>
+      <div class="ort-liste">
+        <a href="/rechnung"><span>Meine eigene Rechnung</span><em>1.254 €</em></a>
+        <a href="/bibliothek"><span>Visum und Behörden</span><em>ab 19 €</em></a>
+        <a href="/immobilien"><span>Wohnungen ansehen</span><em>mit Preis</em></a>
+        <a href="/blog/">Alle Artikel und Videos</a>
+      </div></div>
+    <div class="ort-karte"><div class="ort-kopf"><b>Weltweit</b><span>70 Länder bisher</span></div>
+      <div class="ort-liste">
+        <a href="/reality-check"><span>Passt Auswandern zu dir</span><em>10 Fragen</em></a>
+        <a href="/beratung"><span>Beratungsgespräch</span><em>97 €</em></a>
+        <a href="/hotel-reise"><span>Hotels und Reise</span><em>was ich buche</em></a>
+        <a href="/interview"><span>Deine Geschichte</span><em>auch anonym</em></a>
+      </div></div>
+  </div>
+</div></section>
+
+
+<div class="ruf"><div class="wrap"><div class="in">
+  <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+  <p>Du lebst im Ausland oder bist zurückgekommen? Ich suche laufend Menschen, die ehrlich erzählen, wie es wirklich gelaufen ist. Weltweit, auf Wunsch anonym.</p>
+  <a class="btn" href="/interview">Zum Bewerbungsbogen</a>
+</div></div></div>
+
+<section><div class="wrap">
+  <div class="kick">Neu auf dem Kanal</div>
+  <h2>Die letzten Gespräche.</h2>
+  <p class="lead">Jede Woche neue Videos. Immer mit Zahlen, immer mit Menschen, die es wirklich gemacht haben.</p>
+  <div class="filme">
+    <a class="film" href="https://www.youtube.com/watch?v=0Pb2j6Ku4KI" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.youtube.com/vi/0Pb2j6Ku4KI/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Vorschaubild des Videos: Was das Leben in Pattaya wirklich kostet">
+      <b>Was das Leben in Pattaya wirklich kostet</b>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=BtcDUyr4_g8" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.youtube.com/vi/BtcDUyr4_g8/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Vorschaubild des Videos: Wohnung in Da Nang, alle Zahlen offen">
+      <b>Wohnung in Da Nang, alle Zahlen offen</b>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=kzkwPZiL2tQ" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.youtube.com/vi/kzkwPZiL2tQ/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Vorschaubild des Videos: 30 Jahre Thailand, ein Gespräch mit Ralph">
+      <b>30 Jahre Thailand, ein Gespräch mit Ralph</b>
+    </a>
+    <a class="film" href="https://www.youtube.com/watch?v=wXmHuZ6e3zI" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.youtube.com/vi/wXmHuZ6e3zI/mqdefault.jpg" width="320" height="180" loading="lazy" alt="Vorschaubild des Videos: Zurück nach Deutschland, warum es nicht klappte">
+      <b>Zurück nach Deutschland, warum es nicht klappte</b>
+    </a>
+  </div>
+  <p style="margin-top:24px"><a class="btn rand" href="/blog/">Alle Videos und Artikel</a></p>
+</div></section>
+
+<section style="background:var(--paper-2)" id="ich"><div class="wrap">
+  <div class="kick">Wer das hier macht</div>
+  <div class="ueber">
+    <figure>
+      <img src="img/bestand-2.jpg" width="1326" height="1187" loading="lazy" alt="Portraet von Nihat im weissen Hemd vor einer Skyline in der Abenddaemmerung.">
+      <figcaption>Abends vor der Skyline. Angefangen hat alles 2018.</figcaption>
+    </figure>
+    <div>
+      <h2 style="margin-bottom:16px">Ich bin Nihat.</h2>
+      <p>Seit 2018 bin ich unterwegs, inzwischen acht Jahre und exakt 70 Länder. Am längsten war ich in Thailand, den USA und Vietnam, dort jeweils Monate am Stück, mit Miete, Behördengängen und Stromrechnungen.</p>
+      <p><strong>Ausgewandert bin ich nicht.</strong> Ich bin der, der die Fragen stellt. Auf dem Kanal setze ich mich zu Menschen, die den Schritt gemacht haben, und frage nach den Zahlen. Rentner, Frührentner, Handwerker, Selbstständige. Viele dieser Gespräche dauern über eine Stunde.</p>
+      <p>Was dabei immer wieder auffällt: Es scheitert selten am Mut. Es scheitert am fehlenden Puffer, an einer Krankenversicherung, die niemand vorher durchgerechnet hat, und an dem Satz „Ich wollte einfach nur weg".</p>
+      <div class="knoepfe" style="margin-top:22px">
+        <a class="btn rand" href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer">Zum Kanal</a>
+        <a class="btn rand" href="/kontakt">Kontakt und Kooperation</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fspalten">
+    <div><h4>Kostenlos</h4>
+      <a href="/rechnung">Die echte Monatsrechnung</a>
+      <a href="/reality-check">Reality-Check</a>
+      <a href="/blog/">Videos und Artikel</a>
+    </div>
+    <div><h4>Ratgeber und Guides</h4>
+      <a href="/bibliothek">Alle sechs Hefte</a>
+      <a href="/city-guides">City Guides</a>
+      <a href="/hilfe">Hilfe beim Kauf</a>
+    </div>
+    <div><h4>Mit mir arbeiten</h4>
+      <a href="/beratung">Beratungsgespräch</a>
+      <a href="/immobilien">Immobilien in Asien</a>
+      <a href="/interview">Deine Geschichte erzählen</a>
+      <a href="/kontakt">Kontakt und Kooperation</a>
+    </div>
+    <div><h4>Reise</h4>
+      <a href="/hotel-reise">Hotels in Südostasien</a>
+      <a href="https://bit.ly/Nihat-Safe" target="_blank" rel="noopener noreferrer">Reiseversicherung</a>
+      <a href="/mediakit">Media Kit</a>
+      <a href="https://buymeacoffee.com/freiweitmitnihat" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+    </div>
+  </div>
+  <div class="fende">
+    <span>Freiweit mit Nihat · 70 Länder seit 2018</span>
+    <span><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></span>
+  </div>
+</div></footer>
+
+</body>
+</html>
