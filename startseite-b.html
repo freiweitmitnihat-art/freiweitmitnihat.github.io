@@ -24,12 +24,12 @@ a{color:inherit}
 .logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;text-decoration:none;white-space:nowrap;flex:none}
 .logo i{font-style:normal;color:var(--terra)}
 .menu{display:flex;align-items:center;gap:6px;margin-left:auto}
-.menu>a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 15px;min-height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;white-space:nowrap}
-.menu>a:hover,.menu>a:focus-visible{color:var(--ink);border-bottom-color:var(--terra);outline:none}
+.menu>a,.hat>a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 15px;min-height:48px;height:100%;display:flex;align-items:center;border-bottom:2px solid transparent;white-space:nowrap}
+.menu>a:hover,.menu>a:focus-visible,.hat>a:hover,.hat:focus-within>a{color:var(--ink);border-bottom-color:var(--terra);outline:none}
 .cta{background:var(--terra);color:#fff!important;border-radius:7px;padding:12px 20px!important;font-weight:600;border-bottom:none!important;margin-left:8px}
 .cta:hover{background:#96430f}
 /* Ausklappmenue mit Unterpunkten */
-.hat{position:relative}
+.hat{position:relative;display:flex;align-items:stretch}
 .hat>a{cursor:pointer;gap:7px}
 .hat>a::after{content:"";display:block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid currentColor;opacity:.5;flex:none;margin-top:2px}
 .hat:hover>a::after,.hat:focus-within>a::after{opacity:1}
@@ -66,13 +66,14 @@ a{color:inherit}
 .btn.hell:hover{background:rgba(255,255,255,.22)}
 .btn.rand{background:none;border:1.5px solid var(--line);color:var(--ink)}
 .btn.rand:hover{border-color:var(--terra);color:var(--terra);background:none}
-@media (max-width:640px){.buehne{min-height:auto;padding-top:150px}.buehne h1{max-width:none}.knoepfe .btn{width:100%}}
+@media (max-width:640px){.buehne{min-height:auto;padding-top:190px}.buehne>img{object-position:50% 16%}.buehne h1{max-width:none}.knoepfe .btn{width:100%}}
 
 
-.hero-ruf{display:flex;align-items:flex-start;gap:11px;margin:24px 0 0;font-size:17px;color:rgba(255,255,255,.86);max-width:52ch;line-height:1.5}
+.hero-ruf{display:flex;align-items:flex-start;gap:11px;margin:24px 0 0;font-size:17px;color:rgba(255,255,255,.86);max-width:46ch;line-height:1.5}
 .hero-ruf svg{width:20px;height:20px;stroke:var(--sand);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:3px}
-.hero-ruf a{color:var(--sand);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.hero-ruf a:hover{color:#fff}
+.hero-ruf a{display:inline-flex;align-items:center;gap:8px;margin-top:7px;color:var(--sand);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--sand);padding-bottom:2px;min-height:32px}
+.hero-ruf a::after{content:"";width:7px;height:7px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);flex:none}
+.hero-ruf a:hover,.hero-ruf a:focus-visible{color:#fff;border-bottom-color:#fff;outline:none}
 @media(max-width:640px){.hero-ruf{font-size:16px;margin-top:20px}}
 
 /* Zahlen */
@@ -227,7 +228,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(38px,4vw,
     </div>
     <p class="hero-ruf">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
-      <span>Du lebst im Ausland oder bist zurückgekommen? <a href="/interview">Erzähl deine Geschichte</a></span>
+      <span>Du lebst im Ausland oder bist zurückgekommen?<br><a href="/interview">Erzähl deine Geschichte</a></span>
     </p>
   </div></div>
 </section>

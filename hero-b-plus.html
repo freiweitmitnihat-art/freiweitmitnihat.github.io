@@ -23,12 +23,12 @@ a{color:inherit}
 .logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;text-decoration:none;white-space:nowrap;flex:none}
 .logo i{font-style:normal;color:var(--terra)}
 .menu{display:flex;align-items:center;gap:6px;margin-left:auto}
-.menu>a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 15px;min-height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;white-space:nowrap}
-.menu>a:hover,.menu>a:focus-visible{color:var(--ink);border-bottom-color:var(--terra);outline:none}
+.menu>a,.hat>a{font-size:17px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 15px;min-height:48px;height:100%;display:flex;align-items:center;border-bottom:2px solid transparent;white-space:nowrap}
+.menu>a:hover,.menu>a:focus-visible,.hat>a:hover,.hat:focus-within>a{color:var(--ink);border-bottom-color:var(--terra);outline:none}
 .cta{background:var(--terra);color:#fff!important;border-radius:7px;padding:12px 20px!important;font-weight:600;border-bottom:none!important;margin-left:8px}
 .cta:hover{background:#96430f}
 /* Ausklappmenue mit Unterpunkten */
-.hat{position:relative}
+.hat{position:relative;display:flex;align-items:stretch}
 .hat>a{cursor:pointer;gap:7px}
 .hat>a::after{content:"";display:block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid currentColor;opacity:.5;flex:none;margin-top:2px}
 .hat:hover>a::after,.hat:focus-within>a::after{opacity:1}
