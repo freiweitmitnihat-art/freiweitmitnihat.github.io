@@ -81,6 +81,14 @@ a{color:inherit}
 .hero-ruf a:hover,.hero-ruf a:focus-visible{color:#fff;border-bottom-color:#fff;outline:none}
 @media(max-width:640px){.hero-ruf{font-size:16px;margin-top:20px}}
 
+
+.sozial{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.sozial>span{font-size:14px;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.52);margin-right:4px}
+.sozial a{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);text-decoration:none;font-size:16px;font-weight:500;min-height:44px}
+.sozial a:hover,.sozial a:focus-visible{color:var(--sand);outline:none}
+.sozial svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media(max-width:640px){.sozial{gap:2px 16px}.sozial a{font-size:15px}}
+
 /* Zahlen */
 .zband{background:var(--ink);color:#fff}
 .zband .in{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:20px 0}
@@ -239,6 +247,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(38px,4vw,
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
       <span>Du lebst im Ausland oder bist zurückgekommen?<br><a href="/interview">Erzähl deine Geschichte</a></span>
     </p>
+    <div class="sozial">
+      <span>Auch zu finden auf</span>
+      <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9.3 5 2.7-5 2.7z"/></svg>YouTube</a>
+      <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><path d="M17.2 6.8v.01"/></svg>@nihatbucakli</a>
+      <a href="https://www.instagram.com/freiweit.mit.nihat/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><path d="M17.2 6.8v.01"/></svg>@freiweit.mit.nihat</a>
+    </div>
   </div></div>
 </section>
 
@@ -373,7 +387,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(38px,4vw,
     </div>
   </div>
   <div class="fende">
-    <span>Freiweit mit Nihat · 70 Länder seit 2018</span>
+    <span>Freiweit mit Nihat · 70 Länder seit 2018 · <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://www.instagram.com/nihatbucakli/" target="_blank" rel="noopener noreferrer">Instagram @nihatbucakli</a> · <a href="https://www.instagram.com/freiweit.mit.nihat/" target="_blank" rel="noopener noreferrer">@freiweit.mit.nihat</a></span>
     <span><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></span>
   </div>
 </div></footer>
