@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Drei Hero-Varianten · Freiweit mit Nihat</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#B4551F;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+img{max-width:100%;height:auto;display:block}
+body{background:var(--paper-2);color:var(--ink);font-family:Inter,-apple-system,sans-serif;font-size:20px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.marke{max-width:1180px;margin:0 auto;padding:34px 24px 12px}
+.marke h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700}
+.marke p{font-size:17px;color:var(--ink-2);max-width:70ch}
+.rahmen{background:var(--paper);margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.top{background:var(--paper);border-bottom:2px solid var(--ink)}
+.top-in{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,44px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;text-decoration:none;color:var(--ink);white-space:nowrap}
+.logo i{font-style:normal;color:var(--terra)}
+.menu{display:flex;align-items:center;gap:6px}
+.menu a{font-size:16px;color:var(--ink-2);text-decoration:none;padding:11px 12px;min-height:44px;display:flex;align-items:center}
+.menu a.cta{background:var(--terra);color:#fff;border-radius:7px;padding:11px 18px;font-weight:600}
+@media(max-width:900px){.menu a:not(.cta){display:none}}
+h1{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:-1px;line-height:1.06}
+h1 i{font-style:italic;color:var(--terra)}
+.kick{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.kick::before{content:"";width:34px;height:2px;background:var(--terra);flex:none}
+.lead{font-size:20px;color:var(--ink-2);margin:18px 0 26px;max-width:46ch}
+.btn{display:inline-flex;align-items:center;background:var(--terra);color:#fff;font-size:18px;font-weight:600;padding:15px 26px;border-radius:7px;text-decoration:none;min-height:52px}
+.btn.geist{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.ruf{display:flex;align-items:center;gap:11px;padding:14px 18px;border:1.5px solid rgba(180,85,31,.3);background:rgba(180,85,31,.06);border-radius:8px;font-size:17px;max-width:44em}
+.ruf a{color:var(--terra);font-weight:600;text-decoration:none;white-space:nowrap}
+.zahlen{display:flex;gap:clamp(26px,5vw,60px);padding:24px 0;border-top:1px solid var(--line);margin-top:30px}
+.zahl b{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;display:block;line-height:1}
+.zahl span{font-size:15px;color:var(--ink-2)}
+
+/* A */
+.a-grid{display:grid;grid-template-columns:1fr 46%;align-items:stretch;min-height:520px}
+.a-text{padding:clamp(34px,4vw,56px) clamp(18px,4vw,44px) clamp(24px,3vw,36px);display:flex;flex-direction:column;justify-content:center;max-width:700px;margin-left:auto}
+.a-bild{position:relative;overflow:hidden}
+.a-bild img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.a-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(26,20,16,.82));color:rgba(255,255,255,.9);font-size:14px;padding:34px 20px 14px}
+@media(max-width:940px){.a-grid{grid-template-columns:1fr}.a-bild{height:300px}.a-text{margin:0;max-width:none}}
+
+/* B */
+.b-buehne{position:relative;min-height:480px;display:flex;align-items:flex-end}
+.b-buehne>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.b-schleier{position:absolute;inset:0;background:linear-gradient(100deg,rgba(26,20,16,.9) 0%,rgba(26,20,16,.78) 38%,rgba(26,20,16,.15) 72%,transparent 100%)}
+.b-inhalt{position:relative;padding:clamp(34px,4vw,60px) 0;max-width:640px}
+.b-inhalt .kick{color:var(--sand)}
+.b-inhalt .kick::before{background:var(--sand)}
+.b-inhalt h1{color:#fff}
+.b-inhalt h1 i{color:var(--sand)}
+.b-inhalt .lead{color:rgba(255,255,255,.82)}
+.b-zahlen{background:var(--ink);color:#fff}
+.b-zahlen .zahlen{border-top:0;margin:0;padding:20px 0}
+.b-zahlen .zahl span{color:rgba(255,255,255,.66)}
+
+/* C */
+.c-grid{display:grid;grid-template-columns:38% 1fr;gap:clamp(26px,3.5vw,50px);padding:clamp(30px,3.5vw,50px) 0;align-items:center}
+.c-portraet img{border-radius:10px}
+.c-portraet figcaption{font-size:14px;color:var(--ink-2);margin-top:9px;line-height:1.45}
+.c-karte{background:var(--ink);color:#fff;border-radius:11px;padding:clamp(20px,2.4vw,30px);margin-top:24px}
+.c-karte .kick{color:var(--sand);margin-bottom:9px}
+.c-karte .kick::before{background:var(--sand)}
+.c-karte b{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;display:block;margin-bottom:8px}
+.c-karte p{font-size:16px;color:rgba(255,255,255,.76);margin-bottom:16px}
+@media(max-width:900px){.c-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="marke"><h2>Variante A · Wie früher, nur aufgeräumt</h2>
+<p>Text links, Foto bleibt bis an den rechten Rand stehen, so wie auf deiner alten Seite. Die Überschrift stapelt sich in drei Zeilen mit einem kursiven Wort in Terrakotta.</p></div>
+<div class="rahmen">
+  <header class="top"><div class="top-in">
+    <a class="logo" href="#">Freiweit <i>mit Nihat</i></a>
+    <nav class="menu"><a href="#">Videos</a><a href="#">Ratgeber</a><a href="#">Immobilien</a><a href="#">Beratung</a><a class="cta" href="#">Monatsrechnung</a></nav>
+  </div></header>
+  <div class="a-grid">
+    <div class="a-text">
+      <div class="kick">Seit 2018 unterwegs · 70 Länder</div>
+      <h1 style="font-size:clamp(38px,4.6vw,62px)">Leben.<br>Reisen.<br><i>Freiweit.</i></h1>
+      <p class="lead">Ich fahre hin und frage, was es wirklich kostet. Nicht nach dem Gefühl, sondern nach der Miete, der Versicherung und dem Kontostand fürs Visum.</p>
+      <div class="knoepfe">
+        <a class="btn" href="/rechnung">Was es wirklich kostet</a>
+        <a class="btn geist" href="/bibliothek">Ratgeber ansehen</a>
+      </div>
+      <div class="ruf"><span>Du lebst im Ausland oder bist zurückgekommen? <a href="/interview">Erzähl deine Geschichte</a></span></div>
+      <div class="zahlen">
+        <div class="zahl"><b>8</b><span>Jahre unterwegs</span></div>
+        <div class="zahl"><b>70</b><span>Länder</span></div>
+        <div class="zahl"><b>5.810</b><span>Abonnenten</span></div>
+      </div>
+    </div>
+    <figure class="a-bild">
+      <img src="img/bestand-1.jpg" width="900" height="600" alt="Nihat steht in den orangefarbenen Torii-Gängen des Fushimi-Inari-Schreins in Kyoto.">
+      <figcaption class="a-cap">Fushimi Inari, Kyoto.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="marke"><h2>Variante B · Foto als Bühne</h2>
+<p>Das Foto trägt die ganze Breite, der Text liegt darauf. Kräftiger und näher an einem Magazin-Titel. Die Zahlen stehen als dunkles Band direkt darunter.</p></div>
+<div class="rahmen">
+  <header class="top"><div class="top-in">
+    <a class="logo" href="#">Freiweit <i>mit Nihat</i></a>
+    <nav class="menu"><a href="#">Videos</a><a href="#">Ratgeber</a><a href="#">Immobilien</a><a href="#">Beratung</a><a class="cta" href="#">Monatsrechnung</a></nav>
+  </div></header>
+  <section class="b-buehne">
+    <img src="img/bestand-1.jpg" width="900" height="600" alt="Nihat in den orangefarbenen Torii-Gängen von Fushimi Inari in Kyoto.">
+    <div class="b-schleier"></div>
+    <div class="wrap" style="position:relative"><div class="b-inhalt">
+      <div class="kick">Fushimi Inari, Kyoto · Land 41</div>
+      <h1 style="font-size:clamp(34px,4.3vw,56px)">Ich fahre hin und frage,<br>was es <i>wirklich</i> kostet.</h1>
+      <p class="lead">Seit 2018 unterwegs, inzwischen 70 Länder. Ich setze mich zu Menschen, die den Schritt gemacht haben, und frage nach den Zahlen.</p>
+      <div class="knoepfe" style="margin-bottom:0">
+        <a class="btn" href="/rechnung">Was es wirklich kostet</a>
+        <a class="btn geist" style="color:#fff;border-color:rgba(255,255,255,.4)" href="/bibliothek">Ratgeber ansehen</a>
+      </div>
+    </div></div>
+  </section>
+  <div class="b-zahlen"><div class="wrap"><div class="zahlen">
+    <div class="zahl"><b>8</b><span>Jahre unterwegs, seit 2018</span></div>
+    <div class="zahl"><b>70</b><span>Länder, nachgezählt</span></div>
+    <div class="zahl"><b>5.810</b><span>Abonnenten auf YouTube</span></div>
+  </div></div></div>
+</div>
+
+<div class="marke"><h2>Variante C · Der Mensch zuerst</h2>
+<p>Dein Porträt trägt den Einstieg, daneben die Überschrift und direkt das kostenlose Angebot. Am persönlichsten, und das Angebot ist ohne Scrollen sichtbar.</p></div>
+<div class="rahmen">
+  <header class="top"><div class="top-in">
+    <a class="logo" href="#">Freiweit <i>mit Nihat</i></a>
+    <nav class="menu"><a href="#">Videos</a><a href="#">Ratgeber</a><a href="#">Immobilien</a><a href="#">Beratung</a><a class="cta" href="#">Monatsrechnung</a></nav>
+  </div></header>
+  <div class="wrap"><div class="c-grid">
+    <figure class="c-portraet">
+      <img src="img/bestand-2.jpg" width="1326" height="1187" alt="Porträt von Nihat im weißen Hemd vor einer Skyline in der Abenddämmerung.">
+      <figcaption>ORT BITTE ERGÄNZEN. Abends vor der Skyline, eines von 70 Ländern.</figcaption>
+    </figure>
+    <div>
+      <div class="kick">Seit 2018 unterwegs · 70 Länder</div>
+      <h1 style="font-size:clamp(32px,3.9vw,50px)">Ich frage die Leute,<br>was sie <i>wirklich</i> zahlen.</h1>
+      <p class="lead">Auf meinem Kanal sitze ich bei Menschen am Tisch, die den Schritt gemacht haben. Keine Hochglanzgeschichten, sondern Miete, Versicherung und der Kontostand fürs Visum.</p>
+      <div class="c-karte">
+        <div class="kick">Kostenlos · 30 Seiten</div>
+        <b>Die echte Monatsrechnung</b>
+        <p>Bangkok und Pattaya komplett durchgerechnet, jede Zahl mit Quelle, dazu meine eigene Rechnung aus Da Nang.</p>
+        <a class="btn" href="/rechnung">Kostenlos herunterladen</a>
+      </div>
+      <div class="zahlen">
+        <div class="zahl"><b>8</b><span>Jahre unterwegs</span></div>
+        <div class="zahl"><b>70</b><span>Länder</span></div>
+        <div class="zahl"><b>5.810</b><span>Abonnenten</span></div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+</body>
+</html>
