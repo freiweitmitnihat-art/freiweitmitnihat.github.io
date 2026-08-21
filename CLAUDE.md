@@ -114,8 +114,12 @@ Anleitung: `README-brevo.md`. Mailtexte: `outputs/_bausteine/brevo-mails.md`.
 **`?via=` Konvention:** `qr` · `yt` · `pinned` · `web`. Wird als QUELLE
 mitgeschickt, damit sichtbar wird, welcher Kanal Anmeldungen bringt.
 
-**Offen, das kann nur Nihat:** Formular in Brevo anlegen, Serve-Adresse in
-`js/brevo.js` eintragen.
+**Erledigt am 20.08.2026:** Liste `Newsletter` (ID 3), Formular `Website Anmeldung`,
+Double-Opt-in, Weiterleitung auf `/danke`. Live geprueft: EMAIL, VORNAME, QUELLE und
+MAGNET werden angenommen, nur EMAIL ist Pflicht.
+
+**Merker:** Brevo speichert den Design-Schritt eines Formulars erst, wenn man sich bis
+**Fertig** durchklickt. Wer nach dem Ziehen die Seite verlaesst, verliert alles.
 
 ---
 
@@ -125,8 +129,13 @@ Liegen als Datei in `homepage/img/`, **nicht mehr base64 eingebettet**.
 Neue Bilder: max. 1600 px Breite, JPEG 82 bis 88 %, immer `alt` und
 immer eine `<figcaption>` mit Ort und Situation.
 
-Fehlen noch: drei Beitragsbilder im Blog
-(`bang-saray-beach.png`, `jomtien-oliver-lalana.png`, `pattaya-ralph-interview.png`).
+**Fotos immer als JPEG, nie als PNG.** Am 20.08.2026 wurden 22 Blog-PNGs (48 MB) in JPEG
+umgerechnet (Qualitaet 70, max. 1400 px): jetzt 7 MB. PNG nur bei Transparenz oder harten
+Kanten wie Logos.
+
+Fehlende Beitragsbilder gibt es keine mehr. Drei Artikel bekamen am 20.08.2026 das
+YouTube-Vorschaubild des zugehoerigen Videos plus einen Video-Kasten (`.vid-karte`),
+der auf das konkrete Video zeigt statt nur auf den Kanal.
 
 ---
 
@@ -137,6 +146,18 @@ grep -c '—' *.html blog/*.html          # muss überall 0 sein
 ```
 Dazu: alle internen Links auflösen, jedes `<img>` hat `alt`, jedes Foto hat
 `<figcaption>`, Kontrast im Fließtext mindestens 7:1, Klickflächen mindestens 48 px.
+
+---
+
+## SICHERHEIT UND SAUBERKEIT (am 20.08.2026 geprueft)
+
+Kein Schluessel im Code, kein XSS, keine unverschluesselten Links, alle `target="_blank"`
+mit `rel="noopener"`. Vor jedem Abschluss zusaetzlich pruefen: keine sichtbaren Platzhalter
+(`SCREENSHOT`, `TODO`, `Nach Upload`) ausserhalb von HTML-Kommentaren, und ob `og:image`
+auf eine Datei zeigt, die es wirklich gibt.
+
+Neue Entwurfsseiten: `404.html` (live), `danke.html` (live), `kachelstart.html` und
+`hero-varianten.html` (beide noindex, nur zum Vergleichen).
 
 ---
 
