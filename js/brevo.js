@@ -84,6 +84,11 @@ function brevoSubscribe(o) {
   /* Info-Mail an Nihat, wenn gewuenscht (z.B. Reality-Check-Auswertung).
      Laeuft nebenher und darf die Anmeldung nicht blockieren. */
   var notify = function () {
+    /* Anmeldung in der Statistik zaehlen. Wichtigste Kennzahl der Seite,
+       deshalb hier zentral und nicht auf jeder Seite einzeln. */
+    if (typeof zaehle === 'function') {
+      zaehle('newsletter-anmeldung', { magnet: magnet, quelle: quelle });
+    }
     if (o.notify && brevoConfigured() && typeof w3fSend === 'function') {
       w3fSend({
         subject:   o.betreff || ('Neue Anmeldung (' + magnet + ')'),
