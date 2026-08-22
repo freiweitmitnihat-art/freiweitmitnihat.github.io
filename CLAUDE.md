@@ -4,8 +4,10 @@
 Lies diese Datei vollständig bevor du irgendetwas änderst.
 Zuerst die Root-CLAUDE.md, dann diese hier.
 
-**Stand: 20.08.2026. Startseite komplett neu gebaut, alte Fassung liegt als
-`index-alt.html` daneben und unter `/Volumes/Extreme Pro/Claude/homepage-backup-*`.**
+**Stand: 22.08.2026. Startseite neu gebaut (20.08.). Die alten Fassungen `index-alt.html`
+und `index-vorher-b.html` wurden am 22.08.2026 geloescht. Sicherungen liegen unter
+`/Volumes/Extreme Pro/Claude/homepage-backup-20260820-1754/` und als Einzelkopien in
+`/Volumes/Extreme Pro/Claude/Video-Pakete-Archiv/`.**
 
 ---
 
@@ -81,7 +83,6 @@ Die Palette bleibt, aber sie darf nie allein tragen. Was den Unterschied macht:
 | Datei | Zweck | Status |
 |---|---|---|
 | `index.html` | Startseite, 9 Abschnitte | neu, 20.08.2026 |
-| `index-alt.html` | alte Startseite, nur als Fundus | löschbar, sobald alles steht |
 | `rechnung.html` | Landingpage Lead Magnet, ein Feld, ein Button | live |
 | `r.html` / `b.html` | Kurzweiterleitungen für die QR-Codes | **Ziel nie ändern** |
 | `ratgeber.html` | leitet auf `/rechnung` weiter | Weiterleitung |
@@ -91,8 +92,11 @@ Die Palette bleibt, aber sie darf nie allein tragen. Was den Unterschied macht:
 | `beratung.html` | 97 € Beratungsgespräch, Cal.eu | live |
 | `immobilien.html` `interview.html` `kontakt.html` | | live |
 | `reality-check.html` | Selbsttest, 10 Fragen | live |
-| `city-guides.html` | Maps-Guides | wartet auf Guides |
-| `blog/` | 50 Artikel plus `blog/index.html` | live |
+| `city-guides.html` | Maps Guide Pattaya, 29 EUR, Kauf ueber Stripe | live seit 22.08.2026 |
+| `pattaya-maps-zugang-57651b.html` | Zugangsseite nach der Zahlung, **nicht verlinken**, noindex | live |
+| `agb.html` | AGB und Widerrufsbelehrung fuer die digitalen Produkte | live seit 22.08.2026 |
+| `blog/` | 44 Artikel plus `blog/index.html` | live |
+| `blog/blog-template.html` | Vorlage fuer `auto-blog.py`, **nicht loeschen, nicht verschieben** | noindex |
 | `impressum.html` `datenschutz.html` | | live |
 
 ### Aufbau index.html
@@ -156,9 +160,63 @@ mit `rel="noopener"`. Vor jedem Abschluss zusaetzlich pruefen: keine sichtbaren 
 (`SCREENSHOT`, `TODO`, `Nach Upload`) ausserhalb von HTML-Kommentaren, und ob `og:image`
 auf eine Datei zeigt, die es wirklich gibt.
 
-Neue Entwurfsseiten: `404.html` (live), `danke.html` (live), `kachelstart.html` und
-`hero-varianten.html` (beide noindex, nur zum Vergleichen).
+Neue Entwurfsseiten: `404.html` (live), `danke.html` (live).
+`kachelstart.html`, `hero-varianten.html`, `hero-b-plus.html` und `startseite-b.html`
+sind nicht mehr vorhanden.
 
 ---
 
-*Letzte Aktualisierung: 20.08.2026*
+## RESSOURCEN-BLOCK IN DEN BLOG-ARTIKELN (seit 22.08.2026)
+
+**Befund:** Von 46 Artikeln verlinkten 31 auf die Beratung, aber nur 2 auf die kostenlose
+Monatsrechnung und kein einziger auf Bibliothek, City Guides, Freiweit-Woche,
+Interview-Bewerbung oder Hotels. Die groesste Flaeche der Website leitete alles in das
+teuerste Angebot mit der hoechsten Huerde.
+
+**Loesung:** `tools/ressourcen-block.py` setzt ueber der Autorenbox (bzw. vor der Fusszeile
+auf den acht Seiten ohne Autorenbox) einen Block mit fuenf themenpassenden Verweisen.
+
+| Ziel | vorher | nachher |
+|---|---|---|
+| `/rechnung` | 2 | 44 |
+| `/interview` | 0 | 44 |
+| `/bibliothek` | 0 | 38 |
+| `/city-guides` | 0 | 30 |
+| `/immobilien` | 2 | 19 |
+| `/reality-check` | 0 | 18 |
+| `/freiweit-woche` | 0 | 15 |
+| `/hotel-reise` | 0 | 6 |
+| `/beratung` | 31 | 33 |
+
+Das Skript ist idempotent, ein zweiter Lauf aendert nichts. Neue Artikel bekommen den Block
+mit `python3 tools/ressourcen-block.py`. Mit `--pruefen` sieht man die Verteilung, ohne zu
+schreiben. Klassen-Praefix ist `fw-res`, das CSS liegt in jeder Artikeldatei.
+
+**Achtung Sitemap:** `bibliothek`, `city-guides`, `freiweit-woche` und `hilfe` stehen auf
+`noindex` und gehoeren deshalb **nicht** in die Sitemap. Der Ressourcen-Block verlinkt sie
+trotzdem, das ist richtig: Der Block ist fuer Leser da, nicht fuer Suchmaschinen. Sobald
+die Produkte freigegeben und die Rechtspruefung durch ist, beides zusammen umstellen:
+`noindex` raus **und** in die Sitemap rein.
+
+---
+
+*Letzte Aktualisierung: 22.08.2026*
+
+---
+
+## MAPS GUIDE PATTAYA (Stand 22.08.2026)
+
+Verkauf laeuft ueber **Stripe Payment Link**, nicht ueber Digistore24.
+Kette: `city-guides.html` (Kaufknopf) → Stripe Checkout → Weiterleitung auf
+`pattaya-maps-zugang-57651b.html` → sieben geteilte Google-Maps-Listen.
+
+- Zahlungslink: `https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00`
+- Kurz-URL `/g` zeigt auf `/city-guides?via=qr`
+- 50 Orte in sieben Listen. Die Zahl steht an fuenf Stellen in `city-guides.html`
+  und in den Untertiteln der Zugangsseite. Bei Aenderung **ueberall** nachziehen,
+  ausserdem im Stripe-Produkt (Beschreibung) und im Produktbild.
+- Produktbild: `daten/maps-orte/produktion/produktbild/cover-A-dunkel.png`
+- Die Maps-Listen liegen im Google-Konto `nyhattalk@gmail.com`, Anzeigename
+  „Freiweit mit Nihat". Listen lassen sich zwischen Konten **nicht** umziehen.
+- Die Teilen-Links bleiben gueltig, auch wenn Orte in den Listen geaendert werden.
+  Nur beim Loeschen und Neuanlegen einer Liste bricht der Link.

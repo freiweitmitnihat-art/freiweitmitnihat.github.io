@@ -90,20 +90,21 @@ footer a{color:var(--mid);margin-right:16px}
   </div>
 
   <p class="hilfe">Etwas funktioniert nicht, oder ein Ort stimmt nicht mehr? <a href="/kontakt">Schreib mir</a>, ich antworte selbst und bessere es nach.</p>
+  <p class="hilfe">Diese Seite verloren? Schreib mir von der E-Mail-Adresse, mit der du bezahlt hast, dann schicke ich dir den Zugang noch einmal. Kostet nichts.</p>
 </main>
 
-<footer><div class="wrap"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div></footer>
+<footer><div class="wrap"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/agb">AGB</a></div></footer>
 
 <script>
 /* ===== LISTEN: hier die geteilten Google-Maps-Links eintragen ===== */
 const LISTEN = [
-  ["Essen und Trinken",              "8 Orte · lokale Küche, Buffets, Cafés",                 ""],
-  ["Deutsch, österreichisch, türkisch","12 Orte · Restaurant, Bäckereien, Döner",              ""],
-  ["Märkte und Supermärkte",         "8 Orte · Alltagseinkauf und deutsche Produkte",          ""],
-  ["Massage, Friseur, Sport",        "6 Orte · was du jeden Monat brauchst",                   ""],
-  ["Arzt, Pflege, Behörden",         "4 Orte · Krankenhaus, Immigration, Honorarkonsulat",     ""],
-  ["Strände",                        "6 Orte · ehrlich eingeordnet",                           ""],
-  ["Sehenswertes und Ausflüge",      "7 Orte · mit Eintrittspreis",                            ""]
+  ["Essen und Trinken",              "9 Orte · lokale Küche, Buffets, Cafés",                 "https://maps.app.goo.gl/ezMaU2iCwyMidRvM8"],
+  ["Deutsch, österreichisch, türkisch","11 Orte · Restaurant, Bäckereien, Döner",              "https://maps.app.goo.gl/hLGbAmHckm2dxgTy7"],
+  ["Märkte und Supermärkte",         "8 Orte · Alltagseinkauf und deutsche Produkte",          "https://maps.app.goo.gl/2wrWwD4jME5gSV7m7"],
+  ["Massage, Friseur, Sport",        "6 Orte · was du jeden Monat brauchst",                   "https://maps.app.goo.gl/FUXQyY2uVQq9Fwez5"],
+  ["Arzt, Pflege, Behörden",         "4 Orte · Krankenhaus, Immigration, Honorarkonsulat",     "https://maps.app.goo.gl/v1ynkoM9bnFGTDyw7"],
+  ["Strände",                        "6 Orte · ehrlich eingeordnet",                           "https://maps.app.goo.gl/V8nDh62jWVWEbfZz9"],
+  ["Sehenswertes und Ausflüge",      "6 Orte · mit Eintrittspreis",                            "https://maps.app.goo.gl/zfLefsuRQj3taDRd6"]
 ];
 /* ================================================================= */
 document.getElementById('listen').innerHTML = LISTEN.map(function(l){
