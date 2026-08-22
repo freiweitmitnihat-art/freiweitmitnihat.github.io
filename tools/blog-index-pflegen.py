@@ -129,6 +129,13 @@ def main():
         neu += 1
         print('  ergaenzt:', name)
 
+    # Karten entfernen, deren Artikel geloescht wurde oder auf noindex steht
+    entfallen = [n for n in list(vorhanden)
+                 if n not in alle and n not in ('index.html', 'blog-template.html')]
+    for n in entfallen:
+        del vorhanden[n]
+        print('  entfernt:', n)
+
     def sortierschluessel(name):
         return daten.get(name, '0000-00-00')
 
