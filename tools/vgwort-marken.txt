@@ -1,0 +1,59 @@
+# ============================================================
+# VG WORT ZAEHLMARKEN
+# ------------------------------------------------------------
+# So gehst du vor:
+#   1. Wahrnehmungsvertrag bei der VG WORT abschliessen (kostenlos)
+#   2. Im Portal T.O.M. unter METIS Zaehlmarken bestellen
+#   3. Pro Artikel EINE Marke, die Adresse hier hinter den Dateinamen
+#   4. python3 tools/vgwort-einbau.py ausfuehren
+#
+# Wichtig: nur eigene Texte melden. Reine KI-Texte ohne eigene
+# Bearbeitung sind kein Werk und duerfen nicht gemeldet werden.
+#
+# Format: dateiname.html   https://vg0X.met.vgwort.de/na/DEIN-CODE
+# ============================================================
+
+2026-06-16-thomas-loft-pattaya.html           
+7-fehler-auswandern.html                      
+bang-saen-villa-1.html                        
+bang-saray-beach.html                         
+bang-saray-resort.html                        
+bangkok-mats-tunnel.html                      
+bangkok-matz-interview-1.html                 
+bangkok-matz-interview-2.html                 
+bangkok-matz-interview-3.html                 
+bonus-suki-si-racha.html                      
+casey-papagei-maklerin.html                   
+chris-interview-huahin.html                   
+da-nang-vietnam-entdeckt.html                 
+excel-hideaway-sukhumvit-71.html              
+grab-app-einrichten.html                      
+interview-bang-saen-nico-2.html               
+interview-bang-saen-nico.html                 
+jomtien-oliver-lalana.html                    
+koh-loi-streetfood-sriracha.html              
+ladda-condoview.html                          
+lebenshaltungskosten-thailand.html            
+lebenshaltungskosten-vietnam.html             
+pattaya-kosten-2026.html                      
+pattaya-ralph-interview.html                  
+riviera-ocean-drive.html                      
+samusorn-bangkok-eis.html                     
+sharmonyx-sriracha-wohnungen.html             
+si-racha-baan-talay-cafe.html                 
+si-racha-barber-boxer.html                    
+si-racha-immobilie.html                       
+si-racha-j-park-2.html                        
+si-racha-koh-loi.html                         
+si-racha-the-near-residence.html              
+si-racha-the-strand.html                      
+sim-karte-thailand.html                       
+sim-karte-vietnam.html                        
+sri-racha-the-complete.html                   
+thailand-e-visum.html                         
+thailand-tdac.html                            
+the-complete-sriracha-2.html                  
+trio-town-si-racha.html                       
+vietnam-behoerden.html                        
+vietnam-e-visum.html                          
+wattana-panich-bangkok.html                   
