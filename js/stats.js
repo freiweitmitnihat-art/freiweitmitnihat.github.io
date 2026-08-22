@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
    ------------------------------------------------------------ */
 var ZIELE = [
   ['cal.eu',             'beratung-buchen'],
-  ['beratung.html',      'beratung-seite'],
   ['digistore24',        'kauf-klick'],
   ['checkout-ds24',      'kauf-klick'],
   ['bit.ly/nihathotels', 'affiliate-hotels'],
@@ -87,10 +86,22 @@ var ZIELE = [
   ['youtube.com',        'youtube-klick'],
   ['youtu.be',           'youtube-klick'],
   ['instagram.com',      'instagram-klick'],
+  ['mailto:',            'mail-klick'],
+  ['/beratung',          'beratung-seite'],
+  ['/interview',         'interview-bewerbung'],
+  ['/immobilien',        'immobilien-seite'],
+  ['/rechnung',          'monatsrechnung'],
+  ['/reality-check',     'reality-check'],
+  ['/city-guides',       'city-guides'],
+  ['/bibliothek',        'bibliothek'],
+  ['/hotel-reise',       'reise-angebot'],
+  ['/reise-buchen',      'reise-angebot'],
+  ['/freiweit-woche',    'freiweit-woche'],
+  ['/kontakt',           'kontakt-seite'],
+  ['beratung.html',      'beratung-seite'],
   ['interview.html',     'interview-bewerbung'],
   ['immobilien.html',    'immobilien-seite'],
-  ['rechnung.html',      'monatsrechnung'],
-  ['mailto:',            'mail-klick']
+  ['rechnung.html',      'monatsrechnung']
 ];
 
 function markiereLinks() {
