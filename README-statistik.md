@@ -95,6 +95,8 @@ Artikel beruhen auf deinen eigenen Drehs, Gesprächen und Zahlen. Geh sie trotzd
 vor der Veröffentlichung selbst durch und schreib sie in deiner Sprache um, dann ist
 die Meldung sauber.
 
+Die vollständige Anleitung mit allen Schritten steht in `README-vgwort.md`.
+
 Welche Artikel die Zeichengrenze schaffen, zeigt:
 ```
 python3 tools/vgwort-check.py
@@ -112,6 +114,43 @@ Stand heute: alle 44 Artikel liegen darüber, der kürzeste knapp.
 | `python3 tools/blog-index-pflegen.py` | Trägt neue Artikel in die Blog-Übersicht ein |
 | `python3 tools/vgwort-check.py` | Zeigt Zeichenzahl je Artikel |
 | `python3 tools/vgwort-einbau.py` | Setzt die Zählmarken |
+| `python3 tools/statistik-bericht.py` | Holt die Besucherzahlen aus Umami |
+| `python3 tools/gedankenstriche.py` | Findet und ersetzt lange Striche im Text |
 
 **Nach jedem neuen Blogartikel** die ersten drei laufen lassen, in dieser Reihenfolge.
 Alle Skripte kann man beliebig oft ausführen, sie doppeln nichts.
+
+---
+
+## 7 · Die Zahlen abfragen
+
+Drei Wege, je nach Situation:
+
+**A) Du fragst mich.** Sag „zeig mir die Zahlen" oder „wie lief die Woche". Ich führe
+`python3 tools/statistik-bericht.py` aus und erkläre dir, was auffällt. Dafür brauche
+ich einmalig einen Schlüssel:
+
+1. In Umami auf *Settings* → *API Keys* → *Create key*
+2. Den Schlüssel in den Schlüsselbund legen (er landet so nicht in einer Datei
+   und nicht in der Terminal-Historie):
+   `security add-generic-password -U -a "$USER" -s UMAMI_API_KEY -w`
+3. Fertig. Ab dann kann ich die Zahlen jederzeit abrufen.
+
+**B) Selbst nachsehen.** cloud.umami.is öffnen. Das Dashboard zeigt Besucher, Seiten,
+Herkunft und unter *Events* die Klicks und Anmeldungen.
+
+**C) Automatisch jede Woche.** Wenn du willst, richte ich einen wöchentlichen Lauf ein,
+der montags den Bericht erzeugt und dir die drei wichtigsten Änderungen schreibt.
+
+**Was du wirklich beobachten solltest**, alles andere ist Beiwerk:
+
+| Kennzahl | wo | warum |
+|---|---|---|
+| Newsletter-Anmeldungen | Umami, Ereignis `newsletter-anmeldung` | dein Fundament laut Monetarisierungsplan |
+| Klicks auf Beratung | Ereignis `beratung-buchen` | direktes Geld |
+| Herkunft YouTube | Umami, *Referrers* und Ereignis `herkunft` | zeigt, welche Videos ziehen |
+| Suchbegriffe und Position | Search Console, *Leistung* | zeigt, wofür Google dich überhaupt zeigt |
+| Meistgelesene Artikel | Umami, *Pages* | sagt dir, welche Themen du ausbauen solltest |
+
+Ein Blick pro Woche reicht. Tägliches Draufschauen führt bei kleinen Zahlen nur zu
+Fehlschlüssen, weil einzelne Besucher die Quote stark schwanken lassen.
