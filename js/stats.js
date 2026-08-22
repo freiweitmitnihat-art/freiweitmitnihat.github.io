@@ -11,7 +11,7 @@
    2. Website "freiweitmitnihat.com" hinzufuegen
    3. Die Website-ID (sieht aus wie 1a2b3c4d-...) hier einsetzen
    ----------------------------------------------------------- */
-var UMAMI_ID  = 'TODO-UMAMI-ID';
+var UMAMI_ID  = 'd7f43baf-1cee-4bbb-aae6-74d680202c71';
 var UMAMI_SRC = 'https://cloud.umami.is/script.js';
 
 /* Steht die Kennung schon drin? */
