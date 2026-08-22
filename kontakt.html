@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+:root{--earth:#1a1410;--terra:#A44A18;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth);min-height:100vh}
 a{text-decoration:none;color:inherit}
 
@@ -103,6 +103,16 @@ textarea.f-input{resize:vertical;min-height:90px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:40px}.wizard-card{position:static}.cat-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:400px){.cat-grid{grid-template-columns:1fr}}
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/kontakt.html">

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
-  --ink:#1A1410; --ink-2:#4A4238; --terra:#B4551F; --sand:#C8A97E;
+  --ink:#1A1410; --ink-2:#4A4238; --terra:#A44A18; --sand:#C8A97E;
   --paper:#FAF8F5; --paper-2:#F1ECE4; --line:rgba(26,20,16,0.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -69,6 +69,16 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:16px;color:var(
 footer a{color:var(--ink-2);margin-right:18px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media(max-width:640px){body{font-size:19px}main{padding:44px 0 60px}}
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
 </head>

@@ -24,8 +24,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --sand:#C8A97E;--earth:#1A1410;--terra:#C4622D;--olive:#6B7C45;
-  --cream:#FAF9F6;--cream2:#F2EDE5;--mid:#8A7E74;
+  --sand:#C8A97E;--earth:#1A1410;--terra:#A44A18;--olive:#6B7C45;
+  --cream:#FAF9F6;--cream2:#F2EDE5;--mid:#6B5E52;
   --glass:rgba(250,249,246,0.72);
   --r-sm:12px;--r-md:20px;--r-lg:28px;--r-xl:40px;
 }
@@ -201,6 +201,16 @@ footer{background:var(--earth);padding:32px clamp(20px,5vw,80px);border-top:1px 
   .form-row{grid-template-columns:1fr}
   .filter-inner{gap:8px}
 }
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/immobilien.html">

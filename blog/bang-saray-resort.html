@@ -16,7 +16,7 @@
 <!-- VG WORT ZÄHLMARKE: HIER PIXEL EINBAUEN NACH REGISTRATION BEI VGWORT.DE -->
   <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+:root{--earth:#1a1410;--terra:#A44A18;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
 body{background:var(--cream);color:var(--earth);font-family:Inter,sans-serif;font-size:16px;line-height:1.7}
 a{color:inherit;text-decoration:none}
 nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(247,243,238,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);z-index:200}
@@ -49,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .author-avatar{width:56px;height:56px;border-radius:50%;background:var(--earth);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0}
 .author-name{font-weight:700;color:var(--earth);margin-bottom:3px}
 .author-bio{font-size:13px;color:var(--mid);line-height:1.6}
-.beratung-box{background:linear-gradient(135deg,#2d1505,#7a3a12,#c4622d);border-radius:12px;padding:32px 28px;margin:40px 0;color:white}
+.beratung-box{background:linear-gradient(135deg,#2d1505,#7a3a12,#A44A18);border-radius:12px;padding:32px 28px;margin:40px 0;color:white}
 .beratung-box h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:10px}
 .beratung-box p{color:rgba(255,255,255,0.75);font-size:15px;margin-bottom:20px}
 .beratung-box a{display:inline-block;background:white;color:var(--earth);padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;transition:opacity .2s;margin-bottom:10px}
@@ -71,7 +71,17 @@ footer a{color:rgba(255,255,255,0.45)}
 footer a:hover{color:white}
 @media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}.stat-row{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.more-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}}
-  </style>
+  
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+</style>
   <script defer src="/js/stats.js"></script>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
 {
@@ -276,7 +286,7 @@ footer a:hover{color:white}
       </div>
     </a>
     <a href="si-racha-immobilie.html" class="more-card">
-      <div class="more-thumb" style="background:linear-gradient(135deg,#2d1505,#7a3a12,#c4622d)"></div>
+      <div class="more-thumb" style="background:linear-gradient(135deg,#2d1505,#7a3a12,#A44A18)"></div>
       <div class="more-card-body">
         <div class="more-badge">Si Racha &middot; Immobilien</div>
         <div class="more-card-title">164 m&sup2; Haus in Thailand f&uuml;r 124.000&euro;</div>

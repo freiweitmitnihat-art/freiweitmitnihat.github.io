@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--earth:#1A1410;--terra:#C4622D;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#7A7068;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
+:root{--earth:#1A1410;--terra:#A44A18;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#6B5E52;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;overflow-x:hidden;font-size:18px;line-height:1.7}
 
@@ -160,7 +160,7 @@ h1 em{font-style:italic;color:var(--sand)}
 footer{background:var(--earth);padding:28px clamp(24px,5vw,80px);border-top:1px solid rgba(255,255,255,0.06)}
 .f-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .f-bottom p{font-size:14px;color:rgba(255,255,255,0.2)}
-.f-bottom a{color:rgba(255,255,255,0.2);text-decoration:none;font-size:14px;transition:color .2s}
+.f-bottom a{color:rgba(255,255,255,0.68);text-decoration:none;font-size:14px;transition:color .2s}
 .f-bottom a:hover{color:white}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -180,6 +180,16 @@ body{background:white;font-size:12pt}
   .res-title{color:black}
   .res-text{color:#333}
 }
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/reality-check.html">
@@ -612,7 +622,7 @@ opts: [
 ];
 
 var DIMS = {
-geld:    { name: 'Geld und Absicherung', max: 6,  color: '#C4622D' },
+geld:    { name: 'Geld und Absicherung', max: 6,  color: '#A44A18' },
 praxis:  { name: 'Praxis und Alltag', max: 15, color: '#6B7C45' },
 bindung: { name: 'Was zu Hause bleibt',  max: 3,  color: '#C8A97E' },
 motiv:   { name: 'Motiv und Zeitplan', max: 6,  color: '#7A7068' }
@@ -752,7 +762,9 @@ return 'D';
 
 function showResult(){
 var s = scores();
-var type = TYPES[pickType(s)];
+var rcTyp = pickType(s);
+window.RC_TYP = rcTyp;
+var type = TYPES[rcTyp];
 el('p-fill').style.width = '100%';
 el('quiz-wrap').style.display = 'none';
 el('result').style.display = 'block';
@@ -893,7 +905,7 @@ brevoSubscribe({
 email: email,
 vorname: name,
 quelle:  brevoQuelle('Reality-Check'),
-magnet:  'Reality-Check',
+magnet:  'Reality-Check-' + (window.RC_TYP || 'X'),
 notify:  true,
 betreff: 'Reality-Check Auswertung angefordert',
 text:    'Neue Anforderung aus dem Reality-Check\n\n' + (window.RC_SUMMARY || '')

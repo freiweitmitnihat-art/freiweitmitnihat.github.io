@@ -10,7 +10,7 @@
   <link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
-:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#B4551F;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
+:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#A44A18;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:20px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .wrap{max-width:720px;margin:0 auto;padding:0 24px}
@@ -31,6 +31,16 @@ li a:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
 footer{border-top:1px solid var(--line);padding:26px 0;font-size:16px;color:var(--ink-2)}
 footer a{color:var(--ink-2);margin-right:18px}
 @media (max-width:600px){body{font-size:19px}main{padding:44px 0 56px}}
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
 </head>

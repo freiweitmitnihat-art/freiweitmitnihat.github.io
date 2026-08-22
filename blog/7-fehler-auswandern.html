@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--earth:#1a1410;--terra:#C4622D;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
+:root{--earth:#1a1410;--terra:#A44A18;--cream:#f7f3ee;--mid:#6b5e52;--light:#ece8e2}
 body{background:var(--cream);color:var(--earth);font-family:Inter,sans-serif;font-size:16px;line-height:1.7}
 a{color:inherit;text-decoration:none}
 nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(247,243,238,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--light);z-index:200}
@@ -78,6 +78,16 @@ footer a{color:rgba(255,255,255,0.45)}
 footer a:hover{color:white}
 @media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.more-grid{grid-template-columns:1fr}}
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
@@ -262,7 +272,7 @@ footer a:hover{color:white}
     <p class="more-sub">Mehr aus dem Freiweit-Blog</p>
     <div class="more-grid">
       <a href="pattaya-kosten-2026.html" class="more-card">
-        <div class="more-thumb" style="background:linear-gradient(135deg,#2d1505,#7a3a12,#c4622d)"></div>
+        <div class="more-thumb" style="background:linear-gradient(135deg,#2d1505,#7a3a12,#A44A18)"></div>
         <div class="more-card-body">
           <div class="more-badge">Thailand</div>
           <div class="more-card-title">Lebenshaltungskosten Pattaya 2026: Was es wirklich kostet</div>
@@ -278,7 +288,7 @@ footer a:hover{color:white}
         </div>
       </a>
       <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer" class="more-card">
-        <div class="more-thumb" style="background:linear-gradient(135deg,#1a0a00,#c4622d,#ffd700)"></div>
+        <div class="more-thumb" style="background:linear-gradient(135deg,#1a0a00,#A44A18,#ffd700)"></div>
         <div class="more-card-body">
           <div class="more-badge">YouTube</div>
           <div class="more-card-title">Alle Videos auf YouTube</div>
@@ -295,7 +305,7 @@ footer a:hover{color:white}
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3.8vw,38px);font-weight:700;line-height:1.15;letter-spacing:-1px;color:#fff;margin:0 0 18px">Fehler eins ist der teuerste. Rechne ihn durch.</h2>
     <p style="font-size:19px;line-height:1.75;color:rgba(255,255,255,0.65);margin:0 0 14px">Die meisten rechnen mit Miete und Essen und vergessen den Rest. Ich habe alle Kosten für Bangkok und Pattaya zusammengetragen, in Baht und Euro, jede Zahl mit Quelle. Dazu die Posten, die fast jeder vergisst: Visum, Krankenversicherung, Heimflüge, Kaution.</p>
     <p style="font-size:19px;line-height:1.75;color:rgba(255,255,255,0.65);margin:0 0 26px">Und am Ende eine Vorlage, mit der du deine eigene Monatsrechnung machst. 30 Seiten, kostenlos.</p>
-    <a href="../rechnung.html" style="display:inline-flex;align-items:center;gap:10px;background:#C4622D;color:#fff;font-size:18px;font-weight:600;padding:17px 32px;border-radius:9px;text-decoration:none;min-height:56px">Die echte Monatsrechnung holen</a>
+    <a href="../rechnung.html" style="display:inline-flex;align-items:center;gap:10px;background:#A44A18;color:#fff;font-size:18px;font-weight:600;padding:17px 32px;border-radius:9px;text-decoration:none;min-height:56px">Die echte Monatsrechnung holen</a>
   </div>
 </section>
 

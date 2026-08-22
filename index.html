@@ -16,7 +16,7 @@
   <link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
-:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#B4551F;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
+:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#A44A18;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14)}
 *{margin:0;padding:0;box-sizing:border-box}
 img{max-width:100%;height:auto;display:block}
 body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:20px;line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -180,6 +180,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(38px,4vw,
 @media(max-width:820px){.fspalten{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.fspalten{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
+header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
+.more-badge{color:var(--sand,#C8A97E)}
+.more-card-meta{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/">
