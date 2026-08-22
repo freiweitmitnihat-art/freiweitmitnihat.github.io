@@ -126,21 +126,23 @@ Alle Skripte kann man beliebig oft ausführen, sie doppeln nichts.
 
 Drei Wege, je nach Situation:
 
-**A) Du fragst mich.** Sag „zeig mir die Zahlen" oder „wie lief die Woche". Ich führe
-`python3 tools/statistik-bericht.py` aus und erkläre dir, was auffällt. Dafür brauche
-ich einmalig einen Schlüssel:
+**A) Du fragst mich: `/zahlen`.** Tipp `/` und wähle den Befehl. Ich öffne dein
+Umami-Dashboard im Browser, lese die Zahlen ab und sage dir in drei Sätzen, was
+los ist. Dafür muss die Chrome-Erweiterung verbunden sein.
 
-1. In Umami auf *Settings* → *API Keys* → *Create key*
-2. Den Schlüssel in den Schlüsselbund legen (er landet so nicht in einer Datei
-   und nicht in der Terminal-Historie):
-   `security add-generic-password -U -a "$USER" -s UMAMI_API_KEY -w`
-3. Fertig. Ab dann kann ich die Zahlen jederzeit abrufen.
+**B) Selbst nachsehen.** cloud.umami.is öffnen, auf `freiweitmitnihat.com` klicken.
+Links im Menü: *Overview* für Besucher, *Events* für Anmeldungen und Klicks,
+*Breakdown* für die meistgelesenen Seiten.
 
-**B) Selbst nachsehen.** cloud.umami.is öffnen. Das Dashboard zeigt Besucher, Seiten,
-Herkunft und unter *Events* die Klicks und Anmeldungen.
+**Wichtig zum Tarif:** Der kostenlose Umami-Tarif (100.000 Ereignisse im Monat,
+mehr als genug) hat **keine Schnittstelle und keine E-Mail-Berichte**, beides
+setzt den Pro-Tarif für 20 Dollar im Monat voraus. Deshalb läuft `/zahlen` über
+das Dashboard im Browser und nicht über eine Abfrage. Der Datenexport unter
+*Settings, Data* ist dagegen auch kostenlos.
 
-**C) Automatisch jede Woche.** Wenn du willst, richte ich einen wöchentlichen Lauf ein,
-der montags den Bericht erzeugt und dir die drei wichtigsten Änderungen schreibt.
+Falls du später doch auf Pro wechselst: `homepage/tools/statistik-bericht.py`
+liegt fertig bereit, dann braucht es nur noch den Schlüssel im Schlüsselbund
+(`security add-generic-password -U -a "$USER" -s UMAMI_API_KEY -w`).
 
 **Was du wirklich beobachten solltest**, alles andere ist Beiwerk:
 

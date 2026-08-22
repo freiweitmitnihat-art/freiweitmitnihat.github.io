@@ -71,7 +71,7 @@ CSS = """
 .fw-res b{font-size:16.5px;font-weight:600;color:#1a1410;white-space:nowrap}
 .fw-res span{font-size:15px;color:#6b5e52;line-height:1.5}
 .fw-res .fw-res-p{margin-left:auto;color:#A44A18;font-weight:700;flex-shrink:0}
-@media(max-width:600px){.fw-res a{flex-wrap:wrap;gap:3px}.fw-res b{white-space:normal}.fw-res .fw-res-p{display:none}}
+@media(max-width:600px){.fw-res a{flex-wrap:wrap;gap:2px}.fw-res b{white-space:normal;flex:1 1 100%;min-width:0}.fw-res span{flex:1 1 100%;min-width:0;overflow-wrap:anywhere}.fw-res .fw-res-p{display:none}}
 """
 
 
