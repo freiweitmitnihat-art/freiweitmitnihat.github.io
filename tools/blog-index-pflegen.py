@@ -117,7 +117,8 @@ def main():
     vorhanden = {re.search(r'href="([^"]+)"', s).group(1): s for s in stuecke}
 
     alle = sorted(p.name for p in BLOG.glob('*.html')
-                  if p.name not in ('index.html', 'blog-template.html'))
+                  if p.name not in ('index.html', 'blog-template.html')
+                  and 'noindex' not in (BLOG / p.name).read_text(encoding='utf-8'))
     neu = 0
     for name in alle:
         if name in vorhanden:
