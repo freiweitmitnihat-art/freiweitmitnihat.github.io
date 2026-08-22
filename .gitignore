@@ -8,3 +8,7 @@ index-alt.html
 index-neu.html
 
 index-vorher-b.html
+
+# Python-Zwischendateien
+__pycache__/
+*.pyc
