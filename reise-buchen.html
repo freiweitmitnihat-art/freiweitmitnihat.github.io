@@ -44,7 +44,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.1;letter-spacing:-1px;max-width:720px;margin:0 auto 20px}
 .hero h1 em{color:var(--sand);font-style:normal}
-.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto;line-height:1.75}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto;line-height:1.75}
 
 /* Options grid */
 .options-sec{padding:clamp(56px,7vw,90px) clamp(20px,5vw,80px)}
@@ -78,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 
 .opt-features{list-style:none;margin-bottom:28px}
 .opt-features li{font-size:13.5px;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--light);display:flex;align-items:center;gap:10px}
-.opt-card.highlight .opt-features li{color:rgba(255,255,255,0.7);border-bottom-color:rgba(255,255,255,0.08)}
+.opt-card.highlight .opt-features li{color:rgba(255,255,255,0.7);border-bottom-color:rgba(255,255,255,0.72)}
 .opt-features li:last-child{border-bottom:none}
 .feat-dot{width:6px;height:6px;border-radius:50%;background:var(--terra);flex-shrink:0}
 .opt-card.highlight .feat-dot{background:var(--sand)}
@@ -109,24 +109,25 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 /* CTA band */
 .cta-band{background:var(--earth);color:white;padding:clamp(48px,6vw,80px) clamp(20px,5vw,80px);text-align:center}
 .cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-0.5px;margin-bottom:16px}
-.cta-band p{font-size:15px;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-band p{font-size:15px;color:rgba(255,255,255,0.72);max-width:480px;margin:0 auto 36px;line-height:1.7}
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .cta-btn-p{background:var(--terra);color:white;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:700;transition:opacity .2s}.cta-btn-p:hover{opacity:.88}
 .cta-btn-s{background:rgba(255,255,255,0.08);color:white;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.12);transition:all .2s}.cta-btn-s:hover{background:rgba(255,255,255,0.14)}
 
 /* Footer */
-footer{background:var(--earth);border-top:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.45);font-size:13px;padding:24px clamp(20px,5vw,80px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-footer a{color:rgba(255,255,255,0.45);transition:color .2s}.footer a:hover{color:white}
+footer{background:var(--earth);border-top:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.72);font-size:13px;padding:24px clamp(20px,5vw,80px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer a{color:rgba(255,255,255,0.72);transition:color .2s}.footer a:hover{color:white}
 
-/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
-.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
-header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
-.more-badge{color:var(--sand,#C8A97E)}
-.more-card-meta{color:#A9A39D}
-.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
 .pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
 .cta-sec p,.cta-box p{color:#FFF}
 .block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+.hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
 </style>
   <script defer src="/js/stats.js"></script>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">

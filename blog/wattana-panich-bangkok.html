@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .article-hero{margin-top:60px;background:var(--earth);color:white;padding:clamp(48px,8vw,100px) clamp(20px,5vw,80px) clamp(40px,6vw,80px);text-align:center}
 .article-hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
 .article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.15;letter-spacing:-1px;max-width:800px;margin:0 auto 20px}
-.article-hero .meta{font-size:13px;color:rgba(255,255,255,0.55);letter-spacing:0.5px}
+.article-hero .meta{font-size:13px;color:rgba(255,255,255,0.72);letter-spacing:0.5px}
 .hero-thumb{width:100%;max-height:420px;object-fit:cover}
 .hero-color-block{width:100%;height:280px}
 
@@ -72,7 +72,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 /* MORE ARTICLES */
 .more-section{background:var(--earth);padding:clamp(48px,6vw,80px) clamp(20px,5vw,80px)}
 .more-section h2{font-family:'Playfair Display',serif;font-size:28px;color:white;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
-.more-section .more-sub{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:36px}
+.more-section .more-sub{color:rgba(255,255,255,0.72);font-size:14px;margin-bottom:36px}
 .more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .more-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:background .2s}
 .more-card:hover{background:rgba(255,255,255,0.09)}
@@ -80,24 +80,25 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .more-card-body{padding:16px}
 .more-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
 .more-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:white;line-height:1.4;margin-bottom:8px}
-.more-card-meta{font-size:12px;color:rgba(255,255,255,0.4)}
+.more-card-meta{font-size:12px;color:rgba(255,255,255,0.72)}
 @media(max-width:700px){.more-grid{grid-template-columns:1fr 1fr}.stat-row{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.more-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}}
 
 /* FOOTER */
-footer{background:#0e0b08;color:rgba(255,255,255,0.5);text-align:center;padding:32px 20px;font-size:13px}
-footer a{color:rgba(255,255,255,0.5);text-decoration:none}
+footer{background:#0e0b08;color:rgba(255,255,255,0.72);text-align:center;padding:32px 20px;font-size:13px}
+footer a{color:rgba(255,255,255,0.72);text-decoration:none}
 footer a:hover{color:white}
 
-/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
-.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
-header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
-.more-badge{color:var(--sand,#C8A97E)}
-.more-card-meta{color:#A9A39D}
-.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
 .pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
 .cta-sec p,.cta-box p{color:#FFF}
 .block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+.hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
 </style>
   <script defer src="/js/stats.js"></script>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">

@@ -57,29 +57,29 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 clam
 /* WIZARD CARD */
 .wizard-card{background:#16120e;border-radius:20px;padding:32px;color:white;position:sticky;top:80px}
 .wizard-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-.wizard-back{font-size:13px;color:rgba(255,255,255,0.45);cursor:pointer;transition:color .2s;background:none;border:none;padding:0}
+.wizard-back{font-size:13px;color:rgba(255,255,255,0.72);cursor:pointer;transition:color .2s;background:none;border:none;padding:0}
 .wizard-back:hover{color:rgba(255,255,255,0.8)}
 .progress-dots{display:flex;gap:6px}
 .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15)}
 .dot.active{background:var(--terra)}
 .dot.done{background:rgba(255,255,255,0.5)}
 .wizard-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;line-height:1.25}
-.wizard-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:24px}
+.wizard-sub{font-size:13px;color:rgba(255,255,255,0.72);margin-bottom:24px}
 .q-block{margin-bottom:20px}
-.q-label{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px}
+.q-label{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:10px}
 .chip-row{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);cursor:pointer;background:transparent;transition:all .2s}
-.chip:hover{border-color:rgba(255,255,255,0.4);color:white}
+.chip:hover{border-color:rgba(255,255,255,0.72);color:white}
 .chip.selected{border-color:var(--terra);background:rgba(196,98,45,0.15);color:white}
 .btn-weiter{width:100%;background:white;color:#16120e;font-size:14px;font-weight:700;padding:14px;border-radius:10px;border:none;cursor:pointer;margin-top:20px;transition:all .2s;opacity:0.35;pointer-events:none}
 .btn-weiter.ready{opacity:1;pointer-events:all}
 .btn-weiter.ready:hover{background:#f0ede8}
 /* Step 2 form */
 .f-field{margin-bottom:14px}
-.f-label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px}
+.f-label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.72);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px}
 .f-input{width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;color:white;outline:none;transition:border .2s}
-.f-input::placeholder{color:rgba(255,255,255,0.25)}
-.f-input:focus{border-color:rgba(255,255,255,0.35)}
+.f-input::placeholder{color:rgba(255,255,255,0.72)}
+.f-input:focus{border-color:rgba(255,255,255,0.72)}
 .f-input.err{border-color:#e55;}
 textarea.f-input{resize:vertical;min-height:90px}
 .err-msg{font-size:12px;color:#ff8a8a;margin-top:5px;display:none}
@@ -104,12 +104,12 @@ textarea.f-input{resize:vertical;min-height:90px}
 @media(max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:400px){.cat-grid{grid-template-columns:1fr}}
 
-/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
-.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
-header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
-.more-badge{color:var(--sand,#C8A97E)}
-.more-card-meta{color:#A9A39D}
-.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
 .pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
 .cta-sec p,.cta-box p{color:#FFF}
 .block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
@@ -278,8 +278,8 @@ header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#
   </div>
 </section>
 
-<footer style="background:#0e0b08;color:rgba(255,255,255,0.4);text-align:center;padding:28px 20px;font-size:13px">
-  <p><a href="index.html" style="color:rgba(255,255,255,0.4)">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp; &copy; 2026 Nihat Bucakli</p>
+<footer style="background:#0e0b08;color:rgba(255,255,255,0.72);text-align:center;padding:28px 20px;font-size:13px">
+  <p><a href="index.html" style="color:rgba(255,255,255,0.72)">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp; &copy; 2026 Nihat Bucakli</p>
 </footer>
 
 <script>
@@ -362,7 +362,7 @@ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
 function renderWizard(){
 var w=document.getElementById('wizard');
 if(!state.cat){
-w.innerHTML='<div style="text-align:center;padding:32px 0"><p style="color:rgba(255,255,255,0.35);font-size:14px;line-height:1.75">Wähle eine Kategorie unten<br>, dann geht es hier weiter.</p><div style="margin-top:24px;font-size:32px">&#8595;</div></div>';
+w.innerHTML='<div style="text-align:center;padding:32px 0"><p style="color:rgba(255,255,255,0.72);font-size:14px;line-height:1.75">Wähle eine Kategorie unten<br>, dann geht es hier weiter.</p><div style="margin-top:24px;font-size:32px">&#8595;</div></div>';
 return;
   }
 var cat=CATS[state.cat];
@@ -397,7 +397,7 @@ if(cat.extraFields){
 extraF='<div class="f-field"><label class="f-label">Unternehmen / Agentur</label><input class="f-input" type="text" id="f-firma" placeholder="GmbH / Agentur / Sender" oninput="syncState()" value="'+escH(state.firma)+'"></div>'
              +'<div class="f-field"><label class="f-label">Details &amp; Budget</label><textarea class="f-input" id="f-details" placeholder="Budget, Zeitraum, Kampagneninfos..." oninput="syncState()">'+escH(state.details)+'</textarea></div>';
     }
-var msgCounter='<span id="msg-count" style="float:right;font-size:10px;color:rgba(255,255,255,0.3);font-weight:400">0 / 400</span>';
+var msgCounter='<span id="msg-count" style="float:right;font-size:10px;color:rgba(255,255,255,0.72);font-weight:400">0 / 400</span>';
 w.innerHTML='<div class="wizard-top"><button class="wizard-back" onclick="prevStep()">&#8592; Zurück</button><div class="progress-dots">'+dotsHTML+'</div></div>'
       +'<div class="wizard-title">Fast geschafft.</div>'
       +'<div class="wizard-sub">Damit ich dir persönlich antworten kann:</div>'
@@ -469,7 +469,7 @@ replyto:state.email,
 message:message,
 from_name:'Freiweit Website'
   }).catch(function(e){console.error('Form error:',e);});
-document.getElementById('wizard').innerHTML='<div style="text-align:center;padding:40px 10px"><div style="font-size:40px;margin-bottom:16px">&#10003;</div><p style="font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px">Danke, '+escH(state.name)+'!</p><p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7">Ich habe deine Anfrage erhalten<br>und melde mich persönlich bei dir.</p></div>';
+document.getElementById('wizard').innerHTML='<div style="text-align:center;padding:40px 10px"><div style="font-size:40px;margin-bottom:16px">&#10003;</div><p style="font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px">Danke, '+escH(state.name)+'!</p><p style="color:rgba(255,255,255,0.72);font-size:14px;line-height:1.7">Ich habe deine Anfrage erhalten<br>und melde mich persönlich bei dir.</p></div>';
   ['beratung','nomade','mieten','kaufen','hotel','business','guides','ratgeber'].forEach(function(id){var c=document.getElementById('cc-'+id);if(c)c.classList.remove('active-cat');});
 }
 

@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--earth:#1A1410;--terra:#A44A18;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#6B5E52;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.82)}
+:root{--earth:#1A1410;--terra:#A44A18;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#6B5E52;--sand:#C8A97E;--olive:#6B7C45;--glass:rgba(250,250,248,0.96)}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:60px;display:flex;align-items:center;justify-content:space-between}
@@ -44,10 +44,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);back
 .eyebrow::before.eyebrow::after{content:'';width:24px;height:1px;background:var(--sand)}
 h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,68px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:white;margin-bottom:24px}
 h1 em{font-style:italic;color:var(--sand)}
-.hero-sub{font-size:17px;color:rgba(255,255,255,0.45);line-height:1.75;max-width:580px;margin:0 auto 40px;letter-spacing:-0.1px}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.72);line-height:1.75;max-width:580px;margin:0 auto 40px;letter-spacing:-0.1px}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:44px}
 .htag{font-size:12px;font-weight:500;color:rgba(200,169,126,0.7);background:rgba(200,169,126,0.08);border:1px solid rgba(200,169,126,0.15);padding:6px 16px;border-radius:5px;letter-spacing:-0.1px}
-.scroll-cta{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:13px;font-weight:500;letter-spacing:-0.1px;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Inter',sans-serif}
+.scroll-cta{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.72);font-size:13px;font-weight:500;letter-spacing:-0.1px;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Inter',sans-serif}
 .scroll-cta:hover{color:white}
 
 /* HOW IT WORKS */
@@ -105,14 +105,14 @@ h1 em{font-style:italic;color:var(--sand)}
 .prev-thumb img{width:100%;height:100%;object-fit:cover}
 .prev-body{padding:20px}
 .prev-name{font-size:15px;font-weight:600;color:white;margin-bottom:4px;letter-spacing:-0.1px}
-.prev-meta{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:12px}
-.prev-quote{font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.65;font-style:italic;letter-spacing:-0.1px}
+.prev-meta{font-size:12px;color:rgba(255,255,255,0.72);margin-bottom:12px}
+.prev-quote{font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.65;font-style:italic;letter-spacing:-0.1px}
 .prev-link{display:inline-flex;align-items:center;gap:5px;color:var(--sand);font-size:13px;font-weight:500;text-decoration:none;margin-top:14px;transition:gap .2s}
 .prev-link:hover{gap:9px}
 
 footer{background:var(--earth);padding:28px clamp(24px,5vw,80px);border-top:1px solid rgba(255,255,255,0.06)}
 .f-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.f-bottom p{font-size:13px;color:rgba(255,255,255,0.2)}
+.f-bottom p{font-size:13px;color:rgba(255,255,255,0.72)}
 .f-bottom a{color:rgba(255,255,255,0.68);text-decoration:none;font-size:13px;transition:color .2s}
 .f-bottom a:hover{color:white}
 
@@ -126,15 +126,16 @@ footer{background:var(--earth);padding:28px clamp(24px,5vw,80px);border-top:1px 
   .prev-grid{grid-template-columns:1fr}
 }
 
-/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
-.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
-header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
-.more-badge{color:var(--sand,#C8A97E)}
-.more-card-meta{color:#A9A39D}
-.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
 .pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
 .cta-sec p,.cta-box p{color:#FFF}
 .block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+.hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/interview.html">
@@ -277,29 +278,29 @@ header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#
   <div style="max-width:1000px;margin:0 auto">
     <div class="sec-eyebrow reveal" style="color:var(--sand)"><span style="background:var(--sand);width:24px;height:1px;display:inline-block;vertical-align:middle;margin-right:10px"></span>Eigene Reihe</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:white;margin-bottom:0;line-height:1.1" class="reveal d1">Du bist zurückgekommen?<br><em style="font-style:italic;color:var(--terra)">Dann suche ich genau dich.</em></h2>
-    <p style="font-size:16px;color:rgba(255,255,255,0.55);line-height:1.8;margin-top:20px;max-width:640px;letter-spacing:-0.1px" class="reveal d2">Es gibt tausend Videos darüber, wie jemand auswandert. Fast keins darüber, wie jemand zurückkommt.
+    <p style="font-size:16px;color:rgba(255,255,255,0.72);line-height:1.8;margin-top:20px;max-width:640px;letter-spacing:-0.1px" class="reveal d2">Es gibt tausend Videos darüber, wie jemand auswandert. Fast keins darüber, wie jemand zurückkommt.
 Dabei passiert genau das ständig, und diese Geschichten geben die ehrlichsten Antworten auf die Frage,
 die alle beschäftigt: Was, wenn es nicht funktioniert?
     </p>
-    <p style="font-size:16px;color:rgba(255,255,255,0.55);line-height:1.8;margin-top:16px;max-width:640px;letter-spacing:-0.1px" class="reveal d2">Deshalb baue ich eine eigene Reihe daraus. Ohne Vorwurf, ohne „hab ich ja gesagt". Wer es probiert hat,
+    <p style="font-size:16px;color:rgba(255,255,255,0.72);line-height:1.8;margin-top:16px;max-width:640px;letter-spacing:-0.1px" class="reveal d2">Deshalb baue ich eine eigene Reihe daraus. Ohne Vorwurf, ohne „hab ich ja gesagt". Wer es probiert hat,
 hat mehr gewagt als die meisten. Genau so wird das Gespräch auch geführt.
     </p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:44px">
       <div class="reveal d1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,126,0.14);border-radius:14px;padding:24px">
         <div style="font-size:15px;font-weight:600;color:white;margin-bottom:8px;letter-spacing:-0.1px">Zurückgekehrt</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:-0.1px">Du warst draußen und lebst wieder in Deutschland, Österreich oder der Schweiz. Egal ob nach einem Jahr oder nach fünfzehn.</div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.7;letter-spacing:-0.1px">Du warst draußen und lebst wieder in Deutschland, Österreich oder der Schweiz. Egal ob nach einem Jahr oder nach fünfzehn.</div>
       </div>
       <div class="reveal d2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,126,0.14);border-radius:14px;padding:24px">
         <div style="font-size:15px;font-weight:600;color:white;margin-bottom:8px;letter-spacing:-0.1px">Kurz davor</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:-0.1px">Du bist noch vor Ort, aber es kippt gerade. Geld, Visum, Gesundheit, Einsamkeit. Auch das ist eine Geschichte, die zählt.</div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.7;letter-spacing:-0.1px">Du bist noch vor Ort, aber es kippt gerade. Geld, Visum, Gesundheit, Einsamkeit. Auch das ist eine Geschichte, die zählt.</div>
       </div>
       <div class="reveal d3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,126,0.14);border-radius:14px;padding:24px">
         <div style="font-size:15px;font-weight:600;color:white;margin-bottom:8px;letter-spacing:-0.1px">Geblieben statt gegangen</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:-0.1px">Du warst kurz davor aufzugeben und bist doch geblieben. Was du geändert hast, hilft anderen am meisten.</div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.7;letter-spacing:-0.1px">Du warst kurz davor aufzugeben und bist doch geblieben. Was du geändert hast, hilft anderen am meisten.</div>
       </div>
       <div class="reveal d3" style="background:rgba(196,98,45,0.1);border:1px solid rgba(196,98,45,0.3);border-radius:14px;padding:24px">
         <div style="font-size:15px;font-weight:600;color:white;margin-bottom:8px;letter-spacing:-0.1px">Auch anonym möglich</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.55);line-height:1.7;letter-spacing:-0.1px">Nur Vorname, Gesicht muss nicht ins Bild, Ort nur ungefähr. Bei sensiblen Themen zeige ich dir den Schnitt vor der Veröffentlichung.</div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,0.72);line-height:1.7;letter-spacing:-0.1px">Nur Vorname, Gesicht muss nicht ins Bild, Ort nur ungefähr. Bei sensiblen Themen zeige ich dir den Schnitt vor der Veröffentlichung.</div>
       </div>
     </div>
     <button class="scroll-cta reveal d3" style="margin-top:40px;color:var(--sand)" onclick="document.getElementById('bewerbung').scrollIntoView({behavior:'smooth'})">Geschichte erzählen
@@ -460,7 +461,7 @@ hat mehr gewagt als die meisten. Genau so wird das Gespräch auch geführt.
   <div class="prev-inner">
     <div class="sec-eyebrow reveal" style="color:var(--sand)"><span style="background:var(--sand);width:24px;height:1px;display:inline-block;vertical-align:middle;margin-right:10px"></span>Bisherige Interviews</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:white;margin-bottom:0;line-height:1.1" class="reveal d1">Echte Geschichten.<br><em style="font-style:italic;color:var(--sand)">Echte Menschen.</em></h2>
-    <p style="font-size:15px;color:rgba(255,255,255,0.35);line-height:1.75;margin-top:14px;max-width:520px;letter-spacing:-0.1px" class="reveal d2">Alle Interviews sind auf YouTube verfügbar, schau rein und lass dich inspirieren.</p>
+    <p style="font-size:15px;color:rgba(255,255,255,0.72);line-height:1.75;margin-top:14px;max-width:520px;letter-spacing:-0.1px" class="reveal d2">Alle Interviews sind auf YouTube verfügbar, schau rein und lass dich inspirieren.</p>
     <div class="prev-grid">
       <!-- Platzhalter, werden durch echte Videos ersetzt -->
       <div class="prev-card reveal d1">

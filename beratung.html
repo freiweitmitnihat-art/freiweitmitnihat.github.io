@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:cen
 .ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:18px}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-1px;max-width:760px;margin:0 auto 20px}
 .hero h1 em{color:var(--sand);font-style:normal}
-.hero-sub{font-size:17px;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto 40px;line-height:1.75}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.72);max-width:560px;margin:0 auto 40px;line-height:1.75}
 .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:white;padding:15px 36px;border-radius:10px;font-size:15px;font-weight:700;transition:opacity .2s}
 .hero-cta:hover{opacity:.85}
 .price-badge{display:inline-block;background:rgba(184,150,90,0.15);border:1px solid rgba(184,150,90,0.35);color:var(--sand);padding:8px 22px;border-radius:20px;font-size:14px;font-weight:700;margin-bottom:28px;letter-spacing:.5px}
@@ -63,10 +63,10 @@ strong{color:var(--earth)}
 /* Price box */
 .price-box{background:var(--earth);color:white;border-radius:16px;padding:36px 40px;margin:44px 0;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .pb-left h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:8px}
-.pb-left p{color:rgba(255,255,255,0.5);font-size:15px;margin:0}
+.pb-left p{color:rgba(255,255,255,0.72);font-size:15px;margin:0}
 .pb-price{text-align:center;flex-shrink:0}
 .pb-price .amount{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--sand);line-height:1}
-.pb-price .once{font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px}
+.pb-price .once{font-size:13px;color:rgba(255,255,255,0.72);margin-top:4px}
 .pb-btn{display:inline-block;background:var(--terra);color:white;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;margin-top:24px;transition:opacity .2s;white-space:nowrap}
 .pb-btn:hover{opacity:.85}
 @media(max-width:600px){.price-box{flex-direction:column;padding:28px 24px}.pb-price{order:-1}}
@@ -95,27 +95,28 @@ blockquote{border-left:3px solid var(--terra);padding:14px 22px;background:white
 /* Related */
 .ms{background:var(--earth);padding:clamp(44px,6vw,72px) clamp(20px,5vw,80px)}
 .ms h2{font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:700;margin-bottom:6px}
-.msub{color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:28px}
+.msub{color:rgba(255,255,255,0.72);font-size:14px;margin-bottom:28px}
 .mg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .mc{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;text-decoration:none;transition:background .2s}
 .mc:hover{background:rgba(255,255,255,0.1)}.mt2{height:90px}.mcb{padding:14px}
 .mbg{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
 .mct{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.35;margin-bottom:4px}
-.mcm{font-size:12px;color:rgba(255,255,255,0.35)}
-footer{background:#0e0b08;color:rgba(255,255,255,0.4);text-align:center;padding:26px 20px;font-size:13px}
-footer a{color:rgba(255,255,255,0.4)}footer a:hover{color:white}
+.mcm{font-size:12px;color:rgba(255,255,255,0.72)}
+footer{background:#0e0b08;color:rgba(255,255,255,0.72);text-align:center;padding:26px 20px;font-size:13px}
+footer a{color:rgba(255,255,255,0.72)}footer a:hover{color:white}
 @media(max-width:700px){.mg{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.mg{grid-template-columns:1fr}}
 
-/* Lesbarkeit v2 (WCAG AA, Zielgruppe 55+) */
-.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow,
-header.hero .eyebrow,.hero .eyebrow,header.hero .ey,.hero .ey{color:var(--sand,#C8A97E)}
-.more-badge{color:var(--sand,#C8A97E)}
-.more-card-meta{color:#A9A39D}
-.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p{color:rgba(255,255,255,.72)}
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
 .pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
 .cta-sec p,.cta-box p{color:#FFF}
 .block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+.hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
 </style>
   <script defer src="/js/stats.js"></script>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
