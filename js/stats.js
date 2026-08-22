@@ -6,10 +6,10 @@
 // Anleitung: ../README-statistik.md
 // ============================================================
 
-/* ---- HIER EINTRAGEN ---------------------------------------
-   1. Konto auf cloud.umami.is anlegen, Region EU (Deutschland)
-   2. Website "freiweitmitnihat.com" hinzufuegen
-   3. Die Website-ID (sieht aus wie 1a2b3c4d-...) hier einsetzen
+/* ---- Kennung ----------------------------------------------
+   Website-ID aus dem Umami-Konto. Oeffentlich sichtbar, das ist
+   so vorgesehen und kein Geheimnis. Bei einem Kontowechsel hier
+   austauschen, sonst nirgends.
    ----------------------------------------------------------- */
 var UMAMI_ID  = 'd7f43baf-1cee-4bbb-aae6-74d680202c71';
 var UMAMI_SRC = 'https://cloud.umami.is/script.js';
@@ -69,35 +69,51 @@ document.addEventListener('DOMContentLoaded', function () {
    Kein zusaetzlicher Code in den Seiten noetig: erkannt wird
    am Ziel-Link. Wer eigene Ereignisse setzen will, schreibt
    data-zaehl="name" an den Link.
+
+   Umgesetzt ueber Umamis eigenes Attribut data-umami-event.
+   Wichtig, weil der Browser bei einem Klick auf einen externen
+   Link sofort wegspringt: Umami haelt die Navigation so lange
+   zurueck, bis das Ereignis gesendet ist. Ein eigener
+   Klick-Zaehler wuerde dabei abgeschnitten.
    ------------------------------------------------------------ */
-document.addEventListener('click', function (ev) {
-  var a = ev.target && ev.target.closest ? ev.target.closest('a') : null;
-  if (!a) return;
+var ZIELE = [
+  ['cal.eu',             'beratung-buchen'],
+  ['beratung.html',      'beratung-seite'],
+  ['digistore24',        'kauf-klick'],
+  ['checkout-ds24',      'kauf-klick'],
+  ['bit.ly/nihathotels', 'affiliate-hotels'],
+  ['bit.ly/nihat-safe',  'affiliate-versicherung'],
+  ['buymeacoffee',       'kaffee-klick'],
+  ['youtube.com',        'youtube-klick'],
+  ['youtu.be',           'youtube-klick'],
+  ['instagram.com',      'instagram-klick'],
+  ['interview.html',     'interview-bewerbung'],
+  ['immobilien.html',    'immobilien-seite'],
+  ['rechnung.html',      'monatsrechnung'],
+  ['mailto:',            'mail-klick']
+];
 
-  var eigen = a.getAttribute('data-zaehl');
-  if (eigen) { zaehle(eigen, { seite: window.location.pathname }); return; }
-
-  var href = (a.getAttribute('href') || '').toLowerCase();
-  if (!href) return;
-
-  var regeln = [
-    ['cal.eu',            'beratung-buchen'],
-    ['digistore24',       'kauf-klick'],
-    ['checkout-ds24',     'kauf-klick'],
-    ['bit.ly/nihathotels','affiliate-hotels'],
-    ['bit.ly/nihat-safe', 'affiliate-versicherung'],
-    ['buymeacoffee',      'kaffee-klick'],
-    ['youtube.com',       'youtube-klick'],
-    ['youtu.be',          'youtube-klick'],
-    ['instagram.com',     'instagram-klick'],
-    ['interview.html',    'interview-bewerbung'],
-    ['mailto:',           'mail-klick']
-  ];
-
-  for (var i = 0; i < regeln.length; i++) {
-    if (href.indexOf(regeln[i][0]) !== -1) {
-      zaehle(regeln[i][1], { seite: window.location.pathname, ziel: href.slice(0, 120) });
-      return;
+function markiereLinks() {
+  var links = document.querySelectorAll('a[href]:not([data-umami-event])');
+  for (var i = 0; i < links.length; i++) {
+    var a = links[i];
+    var name = a.getAttribute('data-zaehl');
+    if (!name) {
+      var href = (a.getAttribute('href') || '').toLowerCase();
+      if (!href) continue;
+      for (var j = 0; j < ZIELE.length; j++) {
+        if (href.indexOf(ZIELE[j][0]) !== -1) { name = ZIELE[j][1]; break; }
+      }
     }
+    if (!name) continue;
+    a.setAttribute('data-umami-event', name);
+    a.setAttribute('data-umami-event-seite', window.location.pathname);
   }
-}, true);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  markiereLinks();
+  // Nachladen abfangen: manche Seiten bauen Inhalte per JavaScript auf
+  setTimeout(markiereLinks, 1200);
+  setTimeout(markiereLinks, 4000);
+});
