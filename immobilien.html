@@ -217,6 +217,22 @@ footer{background:var(--earth);padding:32px clamp(20px,5vw,80px);border-top:1px 
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/immobilien.html">
+<style data-quelle="faq-block">
+.fw-faq-sek{background:#F1ECE4;padding:clamp(38px,5vw,64px) 0;color:#1A1410;font-family:Inter,-apple-system,sans-serif}
+.fw-faq-in{max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.fw-faq-in>.kicker{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#4A4238;margin-bottom:12px}
+.fw-faq-in>h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.6px;line-height:1.12;font-size:clamp(26px,2.9vw,36px);margin:0 0 18px;color:#1A1410}
+.fw-faq{border-top:3px solid #1A1410}
+.fw-faq details{border-bottom:1px solid rgba(26,20,16,.14)}
+.fw-faq summary{cursor:pointer;padding:16px 0;font-size:19px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline;min-height:48px;color:#1A1410}
+.fw-faq summary::-webkit-details-marker{display:none}
+.fw-faq summary::after{content:"+";color:#A44A18;font-size:24px;line-height:1;flex:none}
+.fw-faq details[open] summary::after{content:"\2212"}
+.fw-faq .antwort{padding:0 0 18px;color:#4A4238;font-size:18px;line-height:1.65}
+.fw-faq .antwort p{margin:0;max-width:68ch;color:#4A4238}
+.fw-faq-knopf{display:inline-flex;align-items:center;justify-content:center;margin-top:26px;background:#A44A18;color:#fff;font-size:18px;font-weight:600;padding:15px 26px;border-radius:8px;text-decoration:none;min-height:54px}
+.fw-faq-knopf:hover{background:#96430f;color:#fff}
+</style>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
 {
   "@context": "https://schema.org",
@@ -248,6 +264,59 @@ footer{background:var(--earth);padding:32px clamp(20px,5vw,80px);border-top:1px 
           "@type": "ListItem",
           "position": 2,
           "name": "Immobilien in Thailand & Vietnam"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Nimmst du eine Provision, wenn ich miete oder kaufe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Ich bin kein Makler und verdiene nichts an deinem Abschluss. Ich habe die Objekte besucht und gefilmt und stelle dir den Kontakt zum jeweiligen Anbieter her, mehr nicht."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wem gehören die Objekte auf dieser Seite?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nicht mir. Es sind Angebote der jeweiligen Eigentümer, Bauträger oder Makler vor Ort. Ich habe sie mit der Kamera besucht, damit du siehst, wie es dort wirklich aussieht, nicht nur die Hochglanzfotos aus dem Prospekt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind die Preise noch aktuell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Preise sind die, die mir vor Ort am Tag der Aufnahme genannt wurden. Ob ein Objekt heute noch frei ist und ob der Preis noch stimmt, weiß ich nicht. Schreib mir, welches dich interessiert, dann frage ich für dich nach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich als Ausländer in Thailand eine Immobilie kaufen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eine Eigentumswohnung ja, wenn sie in der sogenannten Foreign Quota liegt. Land kannst du als Ausländer nicht auf deinen eigenen Namen kaufen. Konstruktionen, die das umgehen sollen, halten im Streitfall oft nicht. Vor einem Kauf gehört ein Anwalt vor Ort dazu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sollte ich erst mieten oder gleich kaufen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Erst mieten. Das sagen mir fast alle, die schon länger dort sind, und zwar mit derselben Begründung: Du kennst den Ort noch nicht gut genug, um zu wissen, wo du wirklich leben willst. Zwei Straßen weiter kann eine ganz andere Gegend sein. Mindestens eine Saison zur Miete, dann entscheiden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ich habe ein Objekt, das du zeigen sollst.",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gern, schreib mir über das Kontaktformular. Ich filme nur, was ich selbst besichtigen kann, und ich sage im Video auch, was mir nicht gefällt."
+          }
         }
       ]
     },
@@ -518,7 +587,33 @@ footer{background:var(--earth);padding:32px clamp(20px,5vw,80px);border-top:1px 
   </div>
 </div>
 </div>
-</section> <!-- SUBMIT CTA -->
+</section> 
+<section class="fw-faq-sek"><div class="fw-faq-in">
+  <div class="kicker">Häufige Fragen</div>
+  <h2>Was du hier bekommst, und was nicht</h2>
+  <div class="fw-faq" data-faq>
+    <details><summary>Nimmst du eine Provision, wenn ich miete oder kaufe?</summary>
+      <div class="antwort"><p>Nein. Ich bin kein Makler und verdiene nichts an deinem Abschluss. Ich habe die Objekte besucht und gefilmt und stelle dir den Kontakt zum jeweiligen Anbieter her, mehr nicht.</p></div>
+    </details>
+    <details><summary>Wem gehören die Objekte auf dieser Seite?</summary>
+      <div class="antwort"><p>Nicht mir. Es sind Angebote der jeweiligen Eigentümer, Bauträger oder Makler vor Ort. Ich habe sie mit der Kamera besucht, damit du siehst, wie es dort wirklich aussieht, nicht nur die Hochglanzfotos aus dem Prospekt.</p></div>
+    </details>
+    <details><summary>Sind die Preise noch aktuell?</summary>
+      <div class="antwort"><p>Die Preise sind die, die mir vor Ort am Tag der Aufnahme genannt wurden. Ob ein Objekt heute noch frei ist und ob der Preis noch stimmt, weiß ich nicht. Schreib mir, welches dich interessiert, dann frage ich für dich nach.</p></div>
+    </details>
+    <details><summary>Kann ich als Ausländer in Thailand eine Immobilie kaufen?</summary>
+      <div class="antwort"><p>Eine Eigentumswohnung ja, wenn sie in der sogenannten Foreign Quota liegt. Land kannst du als Ausländer nicht auf deinen eigenen Namen kaufen. Konstruktionen, die das umgehen sollen, halten im Streitfall oft nicht. Vor einem Kauf gehört ein Anwalt vor Ort dazu.</p></div>
+    </details>
+    <details><summary>Sollte ich erst mieten oder gleich kaufen?</summary>
+      <div class="antwort"><p>Erst mieten. Das sagen mir fast alle, die schon länger dort sind, und zwar mit derselben Begründung: Du kennst den Ort noch nicht gut genug, um zu wissen, wo du wirklich leben willst. Zwei Straßen weiter kann eine ganz andere Gegend sein. Mindestens eine Saison zur Miete, dann entscheiden.</p></div>
+    </details>
+    <details><summary>Ich habe ein Objekt, das du zeigen sollst.</summary>
+      <div class="antwort"><p>Gern, schreib mir über das Kontaktformular. Ich filme nur, was ich selbst besichtigen kann, und ich sage im Video auch, was mir nicht gefällt.</p></div>
+    </details>
+  </div>
+  <a class="fw-faq-knopf" href="kontakt.html">Kontakt aufnehmen</a>
+</div></section>
+<!-- SUBMIT CTA -->
 <div class="submit-cta"><h2 class="reveal">Du hast ein <em>konkretes Objekt</em> im Sinn?</h2> <p class="reveal reveal-delay-1">Schreib mir, ich helfe dir das passende zu finden oder vermittle den Kontakt zu meinem Netzwerk vor Ort.</p> <button class="btn-contact reveal reveal-delay-2" onclick="openModal('Allgemeine Immobilien-Anfrage')" style="display:inline-flex;max-width:280px;justify-content:center">Anfrage stellen </button>
 </div> <!-- FOOTER -->
 <footer> <div class="footer-bottom"><div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><a href="index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;font-family:'Playfair Display',serif;font-weight:700">Freiweit <span style="color:var(--sand)">mit Nihat</span></a> <a href="index.html"> Startseite</a> <a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a> </div> <p>© 2026 Freiweit mit Nihat &nbsp;&middot;&nbsp; <a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p> </div>

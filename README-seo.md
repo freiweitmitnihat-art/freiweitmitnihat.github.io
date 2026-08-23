@@ -257,3 +257,57 @@ Strukturdaten überein, und die Blog-Übersicht bekommt 45 interne Verweise.
 und **kein** `<nav>`. Zwei der drei Artikel-Vorlagen haben eine nackte CSS-Regel
 `nav{position:fixed;height:60px}`, die jedes `nav` in die Kopfleiste zieht. Beim ersten
 Versuch am 23.08.2026 hat genau das die Seite zerlegt.
+
+
+---
+
+## Übersichtsseiten (Pillar Pages, seit 24.08.2026)
+
+Einzelne Artikel ranken für lange, spezifische Suchen („162 Euro Miete Si Racha").
+Für die kurzen, umkämpften Suchen („auswandern thailand") braucht es eine starke
+Übersichtsseite, auf die viele Artikel zeigen. Genau das sind:
+
+| Seite | Cluster | Verweise aus Artikeln |
+|---|---|---|
+| `auswandern-thailand.html` | Kosten, Visum, Wohnen, Versicherung, Alltag, Interviews | 39 |
+| `auswandern-vietnam.html` | Kosten, E-Visum, Wohnen, Alltag | 6 |
+
+Die Verweise setzt `tools/ressourcen-block.py` automatisch. Es erkennt am Text, ob ein
+Artikel eher Thailand oder Vietnam ist, und setzt den passenden Übersichts-Link an die
+erste Stelle des Blocks. Bei neuen Artikeln passiert das von allein. Wenn sich die
+Angebotsliste ändert, alle Blöcke erneuern mit:
+
+```bash
+python3 homepage/tools/ressourcen-block.py --erneuern
+```
+
+**Titel-Regel:** Übersichtsseiten tragen **keinen** Marken-Zusatz im Titel, wie
+Blogartikel auch. Sonst schneidet Google den Titel mitten im Keyword ab. Der Prüfer
+kennt sie über die Liste `UEBERSICHT` in `tools/seo-pruefen.py`. Neue Übersichtsseiten
+dort eintragen.
+
+---
+
+## FAQ-Blöcke
+
+Eine Seite bekommt automatisch `FAQPage`-Auszeichnung, sobald sie einen sichtbaren
+Block dieser Form enthält:
+
+```html
+<div class="fw-faq" data-faq>
+  <details><summary>Frage?</summary>
+    <div class="antwort"><p>Antwort.</p></div>
+  </details>
+</div>
+```
+
+`seo-strukturdaten.py` liest ihn aus. Aufklappbar ist erlaubt, die Fragen müssen aber
+im Seitentext stehen, nicht per JavaScript nachgeladen werden.
+
+Aktuell auf fünf Seiten: `auswandern-thailand`, `auswandern-vietnam`, `beratung`,
+`immobilien`, `rechnung`.
+
+**Ehrliche Einordnung:** Google zeigt FAQ-Ausklapper in der Trefferliste seit August
+2023 fast nur noch für Behörden- und Gesundheitsseiten. Der Block bringt trotzdem
+etwas, nur an anderer Stelle: KI-Antworten und die Rubrik „Ähnliche Fragen" greifen
+darauf zu, und für Leser beantwortet er die Fragen, die sonst per Mail kommen.

@@ -109,6 +109,22 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
 </style>
   <script defer src="/js/stats.js"></script>
   <link rel="canonical" href="https://freiweitmitnihat.com/rechnung.html">
+<style data-quelle="faq-block">
+.fw-faq-sek{background:#F1ECE4;padding:clamp(38px,5vw,64px) 0;color:#1A1410;font-family:Inter,-apple-system,sans-serif}
+.fw-faq-in{max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.fw-faq-in>.kicker{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#4A4238;margin-bottom:12px}
+.fw-faq-in>h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.6px;line-height:1.12;font-size:clamp(26px,2.9vw,36px);margin:0 0 18px;color:#1A1410}
+.fw-faq{border-top:3px solid #1A1410}
+.fw-faq details{border-bottom:1px solid rgba(26,20,16,.14)}
+.fw-faq summary{cursor:pointer;padding:16px 0;font-size:19px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline;min-height:48px;color:#1A1410}
+.fw-faq summary::-webkit-details-marker{display:none}
+.fw-faq summary::after{content:"+";color:#A44A18;font-size:24px;line-height:1;flex:none}
+.fw-faq details[open] summary::after{content:"\2212"}
+.fw-faq .antwort{padding:0 0 18px;color:#4A4238;font-size:18px;line-height:1.65}
+.fw-faq .antwort p{margin:0;max-width:68ch;color:#4A4238}
+.fw-faq-knopf{display:inline-flex;align-items:center;justify-content:center;margin-top:26px;background:#A44A18;color:#fff;font-size:18px;font-weight:600;padding:15px 26px;border-radius:8px;text-decoration:none;min-height:54px}
+.fw-faq-knopf:hover{background:#96430f;color:#fff}
+</style>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
 {
   "@context": "https://schema.org",
@@ -140,6 +156,43 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
           "@type": "ListItem",
           "position": 2,
           "name": "Die echte Monatsrechnung"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was kostet der Guide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nichts. Du bekommst ihn als PDF per E-Mail, ohne Zahlung und ohne Abo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was steht drin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bangkok und Pattaya komplett durchgerechnet, alle Preise in Baht und Euro. Dazu die Posten, die fast jeder vergisst: Visum, Krankenversicherung, Heimflüge, Kaution und Wechselkurs. Als Bonus eine eigene Monatsrechnung aus Da Nang in Vietnam, auf den Euro genau. Und eine Vorlage, mit der du deine eigene Rechnung Posten für Posten aufstellst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was passiert mit meiner E-Mail-Adresse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sie wird für den Versand des Guides und für gelegentliche Post zum Thema Leben im Ausland genutzt. Keine Weitergabe an Dritte. Abmelden kannst du dich über den Link in jeder Mail, mit einem Klick."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie schnell kommt die Mail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sofort nach der Bestätigung. Wenn sie nicht auftaucht, schau in den Spam-Ordner und zieh sie in den Posteingang, dann kommen auch die nächsten an."
+          }
         }
       ]
     },
@@ -254,6 +307,25 @@ Versand ueber Web3Forms (js/w3f.js) an das Postfach von Nihat.
   </div>
 </section>
 
+
+<section class="fw-faq-sek"><div class="fw-faq-in">
+  <div class="kicker">Häufige Fragen</div>
+  <h2>Kurz beantwortet</h2>
+  <div class="fw-faq" data-faq>
+    <details><summary>Was kostet der Guide?</summary>
+      <div class="antwort"><p>Nichts. Du bekommst ihn als PDF per E-Mail, ohne Zahlung und ohne Abo.</p></div>
+    </details>
+    <details><summary>Was steht drin?</summary>
+      <div class="antwort"><p>Bangkok und Pattaya komplett durchgerechnet, alle Preise in Baht und Euro. Dazu die Posten, die fast jeder vergisst: Visum, Krankenversicherung, Heimflüge, Kaution und Wechselkurs. Als Bonus eine eigene Monatsrechnung aus Da Nang in Vietnam, auf den Euro genau. Und eine Vorlage, mit der du deine eigene Rechnung Posten für Posten aufstellst.</p></div>
+    </details>
+    <details><summary>Was passiert mit meiner E-Mail-Adresse?</summary>
+      <div class="antwort"><p>Sie wird für den Versand des Guides und für gelegentliche Post zum Thema Leben im Ausland genutzt. Keine Weitergabe an Dritte. Abmelden kannst du dich über den Link in jeder Mail, mit einem Klick.</p></div>
+    </details>
+    <details><summary>Wie schnell kommt die Mail?</summary>
+      <div class="antwort"><p>Sofort nach der Bestätigung. Wenn sie nicht auftaucht, schau in den Spam-Ordner und zieh sie in den Posteingang, dann kommen auch die nächsten an.</p></div>
+    </details>
+  </div>
+</div></section>
 <footer>
   <div class="f-bottom">
     <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">

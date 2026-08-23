@@ -21,13 +21,19 @@ Eigenschaften:
   · eigener Klassen-Praefix fw-res, kollidiert mit nichts
   · --pruefen zeigt nur die Verteilung, ohne zu schreiben
 
-Aufruf:  python3 tools/ressourcen-block.py [--pruefen]
+Aufruf:  python3 tools/ressourcen-block.py [--pruefen] [--erneuern]
+
+--erneuern ersetzt einen bereits vorhandenen Block, noetig wenn sich die
+Angebotsliste geaendert hat.
 """
 import glob, os, re, sys, collections
 
 BLOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "blog")
 NUR_PRUEFEN = "--pruefen" in sys.argv
-MAX_EINTRAEGE = 5
+ERNEUERN = "--erneuern" in sys.argv   # bestehenden Block ersetzen statt ueberspringen
+# 6 statt 5 seit 23.08.2026: der Verweis auf die Uebersichtsseite kommt dazu,
+# er soll den anderen Zielen keine Plaetze wegnehmen.
+MAX_EINTRAEGE = 6
 
 ANGEBOTE = {
     "rechnung":   ("/rechnung",       "Die echte Monatsrechnung",      "Was das Leben wirklich kostet, gratis als PDF"),
@@ -39,7 +45,31 @@ ANGEBOTE = {
     "reise":      ("/hotel-reise",    "Hotels und Versicherung",       "Was ich selbst buche, wenn ich unterwegs bin"),
     "quiz":       ("/reality-check",  "Der Reality-Check",             "Zehn Fragen, ehrliche Auswertung"),
     "beratung":   ("/beratung",       "Beratungsgespr&auml;ch",        "60 Minuten, nur deine Situation"),
+    "ueberblick-th": ("/auswandern-thailand", "Auswandern nach Thailand",
+                      "Kosten, Visum, Wohnen, alles auf einer Seite"),
+    "ueberblick-vn": ("/auswandern-vietnam",  "Auswandern nach Vietnam",
+                      "Kosten, E-Visum, Da Nang, alles auf einer Seite"),
 }
+
+# Land des Artikels, damit jeder Text auf die passende Uebersichtsseite zeigt.
+# Das ist der Verweis, der SEO-technisch zaehlt: viele Einzelartikel, die auf
+# eine starke Uebersichtsseite deuten.
+VIETNAM_WOERTER = ["vietnam", "da nang", "danang", "hanoi", "ho chi minh",
+                   "ho-chi-minh", "hoi an", "viettel", "dich vu cong"]
+THAILAND_WOERTER = ["thailand", "pattaya", "bangkok", "jomtien", "si racha",
+                    "sri racha", "sriracha", "hua hin", "bang saray", "bang saen",
+                    "isaan", "chiang mai", "baht"]
+
+
+def land(text):
+    klein = text.lower()
+    vn = sum(klein.count(w) for w in VIETNAM_WOERTER)
+    th = sum(klein.count(w) for w in THAILAND_WOERTER)
+    if vn > th and vn > 2:
+        return "ueberblick-vn"
+    if th > 2:
+        return "ueberblick-th"
+    return None
 
 # Reihenfolge = Prioritaet bei der Auswahl
 THEMEN = [
@@ -78,10 +108,14 @@ CSS = """
 def waehle(dateiname, text, lauf):
     """Fuenf Verweise: immer die Monatsrechnung, dann Thema, dann Rotation."""
     klein = text.lower()
-    gewaehlt = ["rechnung"]
+    gewaehlt = []
+    ueberblick = land(text)
+    if ueberblick:
+        gewaehlt.append(ueberblick)
+    gewaehlt.append("rechnung")
     MAX_THEMEN = 2
     for schluessel, woerter in THEMEN:
-        if len(gewaehlt) >= 1 + MAX_THEMEN:
+        if len(gewaehlt) >= len(gewaehlt[:2]) + MAX_THEMEN:
             break
         if schluessel in gewaehlt:
             continue
@@ -124,7 +158,9 @@ def main():
         if len(t) < 3000:
             print(f"  uebersprungen (Weiterleitung): {name}"); uebersprungen += 1; continue
         if 'class="fw-res"' in t:
-            print(f"  schon vorhanden: {name}"); uebersprungen += 1; continue
+            if not ERNEUERN:
+                print(f"  schon vorhanden: {name}"); uebersprungen += 1; continue
+            t = re.sub(r'<div class="fw-res">.*?</div>\s*\n\n', '', t, count=1, flags=re.S)
 
         auswahl = waehle(name, t, lauf)
         for s in auswahl:

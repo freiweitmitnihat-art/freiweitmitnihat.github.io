@@ -222,7 +222,23 @@ YouTube-Videotiteln und bleiben absichtlich stehen.
 
 ---
 
-*Letzte Aktualisierung: 23.08.2026*
+## ÜBERSICHTSSEITEN UND FAQ (24.08.2026)
+
+Neu: `auswandern-thailand.html` und `auswandern-vietnam.html`. Das sind Übersichtsseiten
+für die kurzen, umkämpften Suchbegriffe, auf die die Einzelartikel zeigen (39 bzw. 6
+Verweise, gesetzt von `tools/ressourcen-block.py`). Sie folgen der Artikel-Regel und
+tragen **keinen** Marken-Zusatz im Titel.
+
+Beide Seiten und `beratung`, `immobilien`, `rechnung` haben einen FAQ-Block
+(`<div class="fw-faq" data-faq>` mit `<details>`), aus dem `seo-strukturdaten.py`
+automatisch `FAQPage` baut. Details und die ehrliche Einordnung dazu in `README-seo.md`.
+
+Beim Immobilien-FAQ gelten die Leitplanken: **keine Provision bei Abschluss**, Objekte
+immer als Fremdangebot ausweisen, kein Auftreten als Makler.
+
+---
+
+*Letzte Aktualisierung: 24.08.2026*
 
 ---
 

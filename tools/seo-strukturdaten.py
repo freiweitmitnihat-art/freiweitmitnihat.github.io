@@ -10,6 +10,15 @@
 #                     YouTube-Video eingebunden ist)
 #   uebrige Seiten  : WebPage + BreadcrumbList
 #
+# FAQPage entsteht automatisch, wenn eine Seite einen Block
+#   <div class="fw-faq" data-faq> ... <details><summary>Frage</summary>
+#   <div class="antwort">Antwort</div></details> ... </div>
+# enthaelt. Die Fragen muessen auf der Seite sichtbar sein, aufklappbar
+# reicht Google. Hinweis: Seit 2023 zeigt Google FAQ-Ausklapper in der
+# Trefferliste fast nur noch fuer Behoerden- und Gesundheitsseiten. Der
+# Block bleibt trotzdem sinnvoll, weil KI-Antworten und die Rubrik
+# "Ähnliche Fragen" ihn auswerten.
+#
 # VideoObject ist der Hebel, damit die Videos selbst in der Google-Suche
 # und in der Google-Videosuche auftauchen. Upload-Datum und Laufzeit sind
 # Pflichtangaben und stehen echt in tools/videodaten.json. Diese Datei neu
@@ -103,6 +112,37 @@ def videos_aktualisieren():
     print('videodaten.json: %d Videos aktualisiert' % neu)
 
 
+def nur_text(roh):
+    """HTML raus, Entities aufloesen, Leerraum normalisieren."""
+    s = re.sub(r'<br\s*/?>', ' ', roh)
+    s = re.sub(r'</p>\s*<p[^>]*>', ' ', s)
+    s = re.sub(r'<[^>]+>', '', s)
+    return re.sub(r'\s+', ' ', html.unescape(s)).strip()
+
+
+def faqblock(t):
+    """Baut FAQPage aus einem sichtbaren <div class="fw-faq" data-faq>-Block."""
+    m = re.search(r'<div[^>]*\bdata-faq\b[^>]*>(.*?)</section>', t, re.S)
+    if not m:
+        return None
+    fragen = []
+    for d in re.finditer(r'<details[^>]*>(.*?)</details>', m.group(1), re.S):
+        roh = d.group(1)
+        f = re.search(r'<summary[^>]*>(.*?)</summary>', roh, re.S)
+        a = re.search(r'<div class="antwort"[^>]*>(.*?)</div>\s*$', roh.strip(), re.S)
+        if not a:
+            a = re.search(r'</summary>(.*)', roh, re.S)
+        if not (f and a):
+            continue
+        frage, antwort = nur_text(f.group(1)), nur_text(a.group(1))
+        if frage and antwort:
+            fragen.append({"@type": "Question", "name": frage,
+                           "acceptedAnswer": {"@type": "Answer", "text": antwort}})
+    if not fragen:
+        return None
+    return {"@type": "FAQPage", "mainEntity": fragen}
+
+
 def laufzeit(sek):
     """825 -> PT13M45S, wie Schema.org es verlangt."""
     if not sek:
@@ -163,7 +203,12 @@ def datum_der_datei(pfad, lastmod):
             return aus.stdout.strip()
     except Exception:
         pass
-    return datetime.date.fromtimestamp(pfad.stat().st_mtime).isoformat()
+    # pfad ist relativ zum Projekt, nicht zum Arbeitsverzeichnis. Ohne BASIS
+    # bricht das bei jeder Seite ab, die noch nicht in der Sitemap steht.
+    voll = BASIS / pfad
+    if voll.exists():
+        return datetime.date.fromtimestamp(voll.stat().st_mtime).isoformat()
+    return datetime.date.today().isoformat()
 
 
 def lastmod_aus_sitemap():
@@ -216,15 +261,22 @@ def bloecke_fuer(pfad, t, lastmod, videos):
         vb = videoblock(t, url, besch, videos)
         if vb:
             bloecke.append(vb)
+        fb = faqblock(t)
+        if fb:
+            bloecke.append(fb)
         return bloecke
 
-    return [
+    bloecke = [
         {"@type": "WebPage", "@id": url, "url": url, "name": name,
          "description": besch, "inLanguage": "de-DE",
          "isPartOf": {"@id": ROOT + "#website"},
          "publisher": {"@id": ROOT + "#organisation"}},
         krumen(pfad, name)
     ]
+    fb = faqblock(t)
+    if fb:
+        bloecke.append(fb)
+    return bloecke
 
 
 def main():
@@ -236,6 +288,7 @@ def main():
     ohne = {'404.html', 'index-alt.html', 'index-vorher-b.html', 'blog-template.html'}
     n = 0
     mit_video = 0
+    mit_faq = 0
     for f in seiten:
         rel = f.relative_to(BASIS)
         t = f.read_text(encoding='utf-8')
@@ -256,7 +309,10 @@ def main():
         n += 1
         if any(b.get('@type') == 'VideoObject' for b in graph):
             mit_video += 1
-    print('Strukturdaten geschrieben in %d Seiten, davon %d mit VideoObject' % (n, mit_video))
+        if any(b.get('@type') == 'FAQPage' for b in graph):
+            mit_faq += 1
+    print('Strukturdaten geschrieben in %d Seiten, davon %d mit VideoObject und %d mit FAQPage'
+          % (n, mit_video, mit_faq))
 
 
 if __name__ == '__main__':

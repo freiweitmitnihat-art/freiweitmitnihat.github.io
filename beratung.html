@@ -119,6 +119,22 @@ footer a{color:rgba(255,255,255,0.72)}footer a:hover{color:white}
 .hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
 </style>
   <script defer src="/js/stats.js"></script>
+<style data-quelle="faq-block">
+.fw-faq-sek{background:#F1ECE4;padding:clamp(38px,5vw,64px) 0;color:#1A1410;font-family:Inter,-apple-system,sans-serif}
+.fw-faq-in{max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+.fw-faq-in>.kicker{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#4A4238;margin-bottom:12px}
+.fw-faq-in>h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.6px;line-height:1.12;font-size:clamp(26px,2.9vw,36px);margin:0 0 18px;color:#1A1410}
+.fw-faq{border-top:3px solid #1A1410}
+.fw-faq details{border-bottom:1px solid rgba(26,20,16,.14)}
+.fw-faq summary{cursor:pointer;padding:16px 0;font-size:19px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline;min-height:48px;color:#1A1410}
+.fw-faq summary::-webkit-details-marker{display:none}
+.fw-faq summary::after{content:"+";color:#A44A18;font-size:24px;line-height:1;flex:none}
+.fw-faq details[open] summary::after{content:"\2212"}
+.fw-faq .antwort{padding:0 0 18px;color:#4A4238;font-size:18px;line-height:1.65}
+.fw-faq .antwort p{margin:0;max-width:68ch;color:#4A4238}
+.fw-faq-knopf{display:inline-flex;align-items:center;justify-content:center;margin-top:26px;background:#A44A18;color:#fff;font-size:18px;font-weight:600;padding:15px 26px;border-radius:8px;text-decoration:none;min-height:54px}
+.fw-faq-knopf:hover{background:#96430f;color:#fff}
+</style>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
 {
   "@context": "https://schema.org",
@@ -150,6 +166,51 @@ footer a{color:rgba(255,255,255,0.72)}footer a:hover{color:white}
           "@type": "ListItem",
           "position": 2,
           "name": "1:1 Beratung mit Nihat: Auswandern, Thailand, Visa, Kosten"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was kostet das Gespräch und wie lange dauert es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das Gespräch dauert 60 Minuten und kostet einmalig 97 Euro. Kein Abo, keine Folgekosten. Bezahlt wird bei der Buchung über Stripe, den Termin wählst du selbst im Kalender."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für wen lohnt es sich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Für dich, wenn du konkret planst und nicht weißt, wo du anfangen sollst, wenn du zwischen zwei Ländern abwägst, wenn du kurz vor der Rente stehst und die Kosten verstehen willst, oder wenn du beim Visum unsicher bist. Wer nur allgemein neugierig ist, findet die Antworten kostenlos in den Videos und Artikeln."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie läuft das ab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Du wählst Datum und Uhrzeit und bekommst sofort eine Bestätigung per Mail. Wenn du magst, schickst du mir vorab zwei, drei Zeilen zu deiner Situation, dann bin ich vorbereitet. Wir sprechen 60 Minuten über Zoom oder Google Meet, auf Deutsch. Danach kannst du offene Punkte per Mail nachreichen, ich antworte innerhalb von 48 Stunden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist das eine Rechts- oder Steuerberatung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, und das sage ich dir lieber vorher. Ich gebe weiter, was ich in acht Jahren unterwegs und in vielen Gesprächen mit Auswanderern gelernt habe. Für Visumsrecht, Steuern und Verträge gehört ein Fachmann dazu. Was ich leisten kann, ist dir zu sagen, welche Fragen du diesem Fachmann stellen musst und wo die Fallen liegen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was, wenn mir der Termin doch nicht passt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Schreib mir einfach, dann verschieben wir. Der Kalender lässt eine Umbuchung bis kurz vor dem Termin zu."
+          }
         }
       ]
     },
@@ -191,7 +252,30 @@ footer a{color:rgba(255,255,255,0.72)}footer a:hover{color:white}
 <body>
 <nav> <a href="index.html" class="nl">Freiweit <span>mit Nihat</span></a> <a href="index.html" class="nb">&#8592; Startseite</a> <div class="lang-switcher"><button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button> <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button> </div> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="nc">Jetzt buchen</a>
 </nav> <header class="hero"> <div class="ey">1:1 Beratung &nbsp;&middot;&nbsp; 60 Minuten &nbsp;&middot;&nbsp; Deutsch</div> <div class="price-badge">97 &euro; einmalig &nbsp;&middot;&nbsp; kein Abo &nbsp;&middot;&nbsp; sofort buchbar</div> <h1>Dein Schritt ins Ausland.<br><em>Mein Wissen. Dein Plan.</em></h1> <p class="hero-sub">Acht Jahre Reisen, 70 L&auml;nder, 6 Sprachen und ein klares Bild davon, was beim Auswandern wirklich z&auml;hlt. Im 60-Minuten-Call bekommst du konkrete Antworten auf deine Fragen, keine allgemeinen Tipps aus dem Internet.</p> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="hero-cta">Termin buchen: 97 &euro; &nbsp;&#8594;</a>
-</header> <div class="wrap"><h2>Was wir im Call besprechen</h2> <p>Der Call ist dein Raum, kein Skript, kein Standardprogramm. Du bringst deine Situation mit, ich bringe acht Jahre Erfahrung. In 60 Minuten klären wir, was wirklich wichtig ist für deinen nächsten Schritt.</p> <div class="topics-grid"><div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Visa &amp; Aufenthaltsrecht</div> <div class="tc-desc">Thailand-Touristenvisum, LTR Visa, Vietnam E-Visum, welche Option passt zu deiner Situation?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Lebenshaltungskosten</div> <div class="tc-desc">Was kostet ein Monat in Pattaya, Chiang Mai, Da Nang wirklich? Inkl. Wohnen, Essen, Versicherung.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Wohnen &amp; Mieten</div> <div class="tc-desc">Wie findet man eine gute Wohnung? Was zahlt man wo? Worauf achten beim Mietvertrag?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Thailand vs. Vietnam</div> <div class="tc-desc">Welches Land passt besser zu dir? Ich war in beiden Monate am St&uuml;ck und kenne die Unterschiede.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Erste Schritte</div> <div class="tc-desc">Was musst du in Deutschland abmelden? Was brauchst du am ersten Tag? Schritt f&uuml;r Schritt.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Versicherung &amp; Absicherung</div> <div class="tc-desc">Krankenversicherung im Ausland, SafetyWing, DKV International, was macht Sinn f&uuml;r dich?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Geo-Arbitrage &amp; Finanzen</div> <div class="tc-desc">Wie finanzierst du das Leben im Ausland? Rente, Kapital, Remote-Arbeit, eigene Projekte.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Deine Fragen</div> <div class="tc-desc">Kein Thema ist zu spezifisch. Der Call ist f&uuml;r genau deine Situation, nicht f&uuml;r den Durchschnitt.</div> </div> </div> <blockquote>&bdquo;Ich sage dir, was wirklich funktioniert und was nicht. Kein Schönreden, keine Werbeversprechen. Nur das, was ich selbst erlebt habe.&ldquo;</blockquote> <h2>So läuft der Call ab</h2> <div class="steps"><div class="step"><div class="step-num">1</div> <div class="step-body"><h4>Termin buchen</h4> <p>W&auml;hle ein Datum &amp; Zeit &uuml;ber meinen Kalender. Du erh&auml;ltst sofort eine Best&auml;tigung per Mail.</p> </div> </div> <div class="step"><div class="step-num">2</div> <div class="step-body"><h4>Kurz vorstellen (optional)</h4> <p>Wenn du m&ouml;chtest, schick mir vorab 2-3 Zeilen zu deiner Situation, dann bin ich noch besser vorbereitet.</p> </div> </div> <div class="step"><div class="step-num">3</div> <div class="step-body"><h4>60 Minuten Video-Call</h4> <p>Wir sprechen &uuml;ber Zoom oder Google Meet. Du bekommst klare Antworten, konkrete Empfehlungen und einen Plan.</p> </div> </div> <div class="step"><div class="step-num">4</div> <div class="step-body"><h4>Nachfragen erlaubt</h4> <p>Nach dem Call kannst du mir noch offene Punkte per Mail schicken, ich antworte innerhalb von 48 Stunden.</p> </div> </div> </div> <div class="price-box"><div class="pb-left"><h3>1:1 Beratung: 60 Minuten</h3> <p>Video-Call auf Deutsch &middot; Zoom oder Google Meet<br>Buchung &uuml;ber Kalender &middot; Zahlung via Stripe</p> </div> <div class="pb-price"><div class="amount">97 &euro;</div> <div class="once">einmalig &middot; kein Abo</div> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="pb-btn">Jetzt buchen &nbsp;&#8594;</a> </div> </div> <h2>Für wen ist das?</h2> <p>F&uuml;r alle, die konkrete Antworten wollen, nicht noch mehr allgemeine Ratgeber-Artikel. Der Call lohnt sich besonders wenn du:</p> <ul style="margin:0 0 24px 22px"> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">schon konkret planst auszuwandern und wei&szlig;t nicht wo du anfangen sollst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">zwischen Thailand und Vietnam abw&auml;gst und eine ehrliche Einsch&auml;tzung brauchst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">Rentner oder kurz davor bist und die Kosten im Ausland verstehen willst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">dir nicht sicher bist welches Visum das richtige f&uuml;r dich ist</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">jemanden willst, der dir geradeheraus sagt wie es ist, ohne Filter</li> </ul> <div class="cta-sec"><h3>Bereit f&uuml;r deinen n&auml;chsten Schritt?</h3> <p>W&auml;hle einen Termin, ich freue mich auf das Gespr&auml;ch.</p> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="cta-btn">Termin buchen: 97 &euro; &nbsp;&#8594;</a> </div> <div class="ab"><div class="av">N</div> <div><div style="font-weight:700;margin-bottom:3px">Nihat Bucakli</div> <div style="font-size:13px;color:var(--mid);line-height:1.6">Acht Jahre Reisen &middot; 70 L&auml;nder &middot; immer wieder in Thailand &amp; Vietnam &middot; 6 Sprachen</div> </div> </div> </div> <section class="ms"><div style="max-width:1100px;margin:0 auto"><h2>Das k&ouml;nnte dich auch interessieren</h2><p class="msub">Kostenlose Infos vorab</p>
+</header> <div class="wrap"><h2>Was wir im Call besprechen</h2> <p>Der Call ist dein Raum, kein Skript, kein Standardprogramm. Du bringst deine Situation mit, ich bringe acht Jahre Erfahrung. In 60 Minuten klären wir, was wirklich wichtig ist für deinen nächsten Schritt.</p> <div class="topics-grid"><div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Visa &amp; Aufenthaltsrecht</div> <div class="tc-desc">Thailand-Touristenvisum, LTR Visa, Vietnam E-Visum, welche Option passt zu deiner Situation?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Lebenshaltungskosten</div> <div class="tc-desc">Was kostet ein Monat in Pattaya, Chiang Mai, Da Nang wirklich? Inkl. Wohnen, Essen, Versicherung.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Wohnen &amp; Mieten</div> <div class="tc-desc">Wie findet man eine gute Wohnung? Was zahlt man wo? Worauf achten beim Mietvertrag?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Thailand vs. Vietnam</div> <div class="tc-desc">Welches Land passt besser zu dir? Ich war in beiden Monate am St&uuml;ck und kenne die Unterschiede.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Erste Schritte</div> <div class="tc-desc">Was musst du in Deutschland abmelden? Was brauchst du am ersten Tag? Schritt f&uuml;r Schritt.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Versicherung &amp; Absicherung</div> <div class="tc-desc">Krankenversicherung im Ausland, SafetyWing, DKV International, was macht Sinn f&uuml;r dich?</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Geo-Arbitrage &amp; Finanzen</div> <div class="tc-desc">Wie finanzierst du das Leben im Ausland? Rente, Kapital, Remote-Arbeit, eigene Projekte.</div> </div> <div class="topic-card"><div class="tc-icon"></div> <div class="tc-title">Deine Fragen</div> <div class="tc-desc">Kein Thema ist zu spezifisch. Der Call ist f&uuml;r genau deine Situation, nicht f&uuml;r den Durchschnitt.</div> </div> </div> <blockquote>&bdquo;Ich sage dir, was wirklich funktioniert und was nicht. Kein Schönreden, keine Werbeversprechen. Nur das, was ich selbst erlebt habe.&ldquo;</blockquote> <h2>So läuft der Call ab</h2> <div class="steps"><div class="step"><div class="step-num">1</div> <div class="step-body"><h4>Termin buchen</h4> <p>W&auml;hle ein Datum &amp; Zeit &uuml;ber meinen Kalender. Du erh&auml;ltst sofort eine Best&auml;tigung per Mail.</p> </div> </div> <div class="step"><div class="step-num">2</div> <div class="step-body"><h4>Kurz vorstellen (optional)</h4> <p>Wenn du m&ouml;chtest, schick mir vorab 2-3 Zeilen zu deiner Situation, dann bin ich noch besser vorbereitet.</p> </div> </div> <div class="step"><div class="step-num">3</div> <div class="step-body"><h4>60 Minuten Video-Call</h4> <p>Wir sprechen &uuml;ber Zoom oder Google Meet. Du bekommst klare Antworten, konkrete Empfehlungen und einen Plan.</p> </div> </div> <div class="step"><div class="step-num">4</div> <div class="step-body"><h4>Nachfragen erlaubt</h4> <p>Nach dem Call kannst du mir noch offene Punkte per Mail schicken, ich antworte innerhalb von 48 Stunden.</p> </div> </div> </div> <div class="price-box"><div class="pb-left"><h3>1:1 Beratung: 60 Minuten</h3> <p>Video-Call auf Deutsch &middot; Zoom oder Google Meet<br>Buchung &uuml;ber Kalender &middot; Zahlung via Stripe</p> </div> <div class="pb-price"><div class="amount">97 &euro;</div> <div class="once">einmalig &middot; kein Abo</div> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="pb-btn">Jetzt buchen &nbsp;&#8594;</a> </div> </div> <h2>Für wen ist das?</h2> <p>F&uuml;r alle, die konkrete Antworten wollen, nicht noch mehr allgemeine Ratgeber-Artikel. Der Call lohnt sich besonders wenn du:</p> <ul style="margin:0 0 24px 22px"> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">schon konkret planst auszuwandern und wei&szlig;t nicht wo du anfangen sollst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">zwischen Thailand und Vietnam abw&auml;gst und eine ehrliche Einsch&auml;tzung brauchst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">Rentner oder kurz davor bist und die Kosten im Ausland verstehen willst</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">dir nicht sicher bist welches Visum das richtige f&uuml;r dich ist</li> <li style="font-size:16px;color:#333;line-height:1.8;margin-bottom:8px">jemanden willst, der dir geradeheraus sagt wie es ist, ohne Filter</li> </ul> 
+<section class="fw-faq-sek"><div class="fw-faq-in">
+  <div class="kicker">Häufige Fragen</div>
+  <h2>Bevor du buchst</h2>
+  <div class="fw-faq" data-faq>
+    <details><summary>Was kostet das Gespräch und wie lange dauert es?</summary>
+      <div class="antwort"><p>Das Gespräch dauert 60 Minuten und kostet einmalig 97 Euro. Kein Abo, keine Folgekosten. Bezahlt wird bei der Buchung über Stripe, den Termin wählst du selbst im Kalender.</p></div>
+    </details>
+    <details><summary>Für wen lohnt es sich?</summary>
+      <div class="antwort"><p>Für dich, wenn du konkret planst und nicht weißt, wo du anfangen sollst, wenn du zwischen zwei Ländern abwägst, wenn du kurz vor der Rente stehst und die Kosten verstehen willst, oder wenn du beim Visum unsicher bist. Wer nur allgemein neugierig ist, findet die Antworten kostenlos in den Videos und Artikeln.</p></div>
+    </details>
+    <details><summary>Wie läuft das ab?</summary>
+      <div class="antwort"><p>Du wählst Datum und Uhrzeit und bekommst sofort eine Bestätigung per Mail. Wenn du magst, schickst du mir vorab zwei, drei Zeilen zu deiner Situation, dann bin ich vorbereitet. Wir sprechen 60 Minuten über Zoom oder Google Meet, auf Deutsch. Danach kannst du offene Punkte per Mail nachreichen, ich antworte innerhalb von 48 Stunden.</p></div>
+    </details>
+    <details><summary>Ist das eine Rechts- oder Steuerberatung?</summary>
+      <div class="antwort"><p>Nein, und das sage ich dir lieber vorher. Ich gebe weiter, was ich in acht Jahren unterwegs und in vielen Gesprächen mit Auswanderern gelernt habe. Für Visumsrecht, Steuern und Verträge gehört ein Fachmann dazu. Was ich leisten kann, ist dir zu sagen, welche Fragen du diesem Fachmann stellen musst und wo die Fallen liegen.</p></div>
+    </details>
+    <details><summary>Was, wenn mir der Termin doch nicht passt?</summary>
+      <div class="antwort"><p>Schreib mir einfach, dann verschieben wir. Der Kalender lässt eine Umbuchung bis kurz vor dem Termin zu.</p></div>
+    </details>
+  </div>
+  <a class="fw-faq-knopf" href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach">Termin buchen: 97 €</a>
+</div></section>
+<div class="cta-sec"><h3>Bereit f&uuml;r deinen n&auml;chsten Schritt?</h3> <p>W&auml;hle einen Termin, ich freue mich auf das Gespr&auml;ch.</p> <a href="https://cal.eu/nihat-bucakli-g3dqk2/beratungsgesprach" target="_blank" rel="noopener noreferrer" class="cta-btn">Termin buchen: 97 &euro; &nbsp;&#8594;</a> </div> <div class="ab"><div class="av">N</div> <div><div style="font-weight:700;margin-bottom:3px">Nihat Bucakli</div> <div style="font-size:13px;color:var(--mid);line-height:1.6">Acht Jahre Reisen &middot; 70 L&auml;nder &middot; immer wieder in Thailand &amp; Vietnam &middot; 6 Sprachen</div> </div> </div> </div> <section class="ms"><div style="max-width:1100px;margin:0 auto"><h2>Das k&ouml;nnte dich auch interessieren</h2><p class="msub">Kostenlose Infos vorab</p>
 <div class="mg"><a href="blog/lebenshaltungskosten-thailand.html" class="mc"><div class="mt2" style="background:url('blog/images/lebenshaltungskosten-thailand.jpg') center/cover no-repeat, linear-gradient(135deg,#0a1a05,#2a5a10,#6b7c45)"></div><div class="mcb"><div class="mbg">Thailand</div><div class="mct">Lebenshaltungskosten Thailand</div><div class="mcm">Pattaya, Chiang Mai, Bangkok</div></div></a> <a href="blog/lebenshaltungskosten-vietnam.html" class="mc"><div class="mt2" style="background:url('blog/images/lebenshaltungskosten-vietnam.jpg') center/cover no-repeat, linear-gradient(135deg,#0d2010,#1a5c20,#6b7c45)"></div><div class="mcb"><div class="mbg">Vietnam</div><div class="mct">Lebenshaltungskosten Vietnam</div><div class="mcm">Da Nang, Hanoi, Ho-Chi-Minh</div></div></a> <a href="blog/thailand-e-visum.html" class="mc"><div class="mt2" style="background:url('blog/images/thailand-e-visum.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#7a3a12,#A44A18)"></div><div class="mcb"><div class="mbg">Thailand</div><div class="mct">Thailand E-Visum 2026</div><div class="mcm">Alle Visa-Optionen erkl&auml;rt</div></div></a>
 </div></div></section>
 <footer><p style="margin-bottom:8px"><a href="index.html">freiweitmitnihat.com</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer">YouTube</a> &nbsp;&middot;&nbsp; <a href="kontakt.html">Kontakt</a></p><p>&copy; 2026 Nihat Bucakli &middot; Freiweit mit Nihat &nbsp;&middot;&nbsp; <a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p></footer>

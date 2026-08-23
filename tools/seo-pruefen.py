@@ -36,6 +36,11 @@ BILD_GRENZE = 250 * 1024
 TITEL_GRENZE = 65   # gilt fuer den Inhalt ohne Marken-Zusatz
 MARKE = re.compile(r'\s*[·|:]\s*Freiweit mit Nihat\s*$')
 
+# Uebersichtsseiten sind Inhalt, keine Funktionsseiten. Sie folgen deshalb der
+# Artikel-Regel: kein Marken-Zusatz im Titel, damit Google den Titel nicht
+# mitten im Keyword abschneidet. Neue Uebersichtsseiten hier eintragen.
+UEBERSICHT = {'auswandern-thailand.html', 'auswandern-vietnam.html'}
+
 NOINDEX = re.compile(
     r'<meta[^>]+name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
 PLATZHALTER = ('[VIDEO-ID]', 'DIGISTORE-ID-', 'LOREM IPSUM', 'TODO:')
@@ -195,7 +200,8 @@ def main():
         if not mt:
             continue
         ti = mt.group(1).strip()
-        artikel = f.parent.name == 'blog' and f.name != 'index.html'
+        artikel = ((f.parent.name == 'blog' and f.name != 'index.html')
+                   or f.name in UEBERSICHT)
         if artikel and MARKE.search(ti):
             marke.append('%s: Artikel traegt den Marken-Zusatz noch' % rel)
         if not artikel and 'Freiweit mit Nihat' not in ti:
