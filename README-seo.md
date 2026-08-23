@@ -17,6 +17,7 @@ python3 homepage/tools/blog-index-pflegen.py
 python3 homepage/tools/og-bilder.py --schreiben
 python3 homepage/tools/vorschaubilder.py --schreiben
 python3 homepage/tools/kopfbilder.py --schreiben
+python3 homepage/tools/titel-marke.py --schreiben
 python3 homepage/tools/gedankenstriche.py
 python3 homepage/tools/rechtslinks.py --schreiben
 python3 homepage/tools/brotkrumen.py --schreiben
@@ -32,6 +33,7 @@ python3 homepage/tools/seo-pruefen.py
 | `vorschaubilder.py` | füllt die Kacheln der Blog-Übersicht und der „Weitere Artikel"-Kästen | nur mit `--schreiben` |
 | `kopfbilder.py` | legt das Artikelbild in das Banner unter der Überschrift | nur mit `--schreiben` |
 | `gedankenstriche.py` | ersetzt lange Striche durch normale Satzzeichen | nur mit `--schreiben` |
+| `titel-marke.py` | nimmt den Marken-Zusatz aus Artikel-Titeln, Funktionsseiten behalten ihn | nur mit `--schreiben` |
 | `rechtslinks.py` | hängt Impressum und Datenschutz an jede Fußzeile, wo sie fehlen | nur mit `--schreiben` |
 | `brotkrumen.py` | setzt den sichtbaren Pfad „Startseite › Blog › Artikel" in jeden Artikel | nur mit `--schreiben` |
 | `seo-pruefen.py` | reiner Bericht, findet die Fehler, die man nicht sieht | nein |
@@ -127,10 +129,25 @@ Das ist das einzige Fremdbild auf der Website. Alles andere stammt von Nihat sel
 
 ## Titel
 
-Muster: **Inhalt · Freiweit mit Nihat**. Der Trenner ist immer das Mittelpunkt-Zeichen,
-nie Doppelpunkt und nie senkrechter Strich. Dass der Marken-Zusatz bei Google
-hinten abgeschnitten wird, ist normal und stört nicht. `seo-pruefen.py` misst
-deshalb nur den Teil davor und meldet ab 65 Zeichen.
+**Regel seit dem 23.08.2026, zwei Fälle:**
+
+| Seitenart | Muster | Beispiel |
+|---|---|---|
+| Blogartikel | **ohne** Marken-Zusatz, Schlüsselwort vorne | `Haus in Thailand kaufen: 164 m² für 124.000 €` |
+| Funktionsseiten | **mit** ` · Freiweit mit Nihat` | `Impressum · Freiweit mit Nihat` |
+
+Warum der Unterschied: Google zeigt rund 60 Zeichen. Bei einem Artikel sind
+21 Zeichen für „ · Freiweit mit Nihat" genau die Stelle, an der das Schlüsselwort
+stehen sollte. Den Kanalnamen setzt Google bei bekannten Seiten ohnehin selbst dazu.
+Bei „Impressum" oder „Kontakt" dagegen ist die Marke der Inhalt: ohne sie wäre der
+Treffer nicht zuzuordnen.
+
+Vorher galt bis zum Vormittag des 23.08.2026 die umgekehrte Regel, mit Zusatz überall.
+`titel-marke.py` hat die Umstellung gemacht, `seo-pruefen.py` meldet jede Abweichung.
+Wo ein Trenner nötig ist, ist es das Mittelpunkt-Zeichen, nie Doppelpunkt oder
+senkrechter Strich.
+
+`seo-pruefen.py` misst außerdem die Länge und meldet ab 65 Zeichen.
 
 ---
 

@@ -34,7 +34,7 @@ BASIS = pathlib.Path(__file__).resolve().parent.parent
 ROOT = 'https://freiweitmitnihat.com/'
 BILD_GRENZE = 250 * 1024
 TITEL_GRENZE = 65   # gilt fuer den Inhalt ohne Marken-Zusatz
-MARKE = re.compile(r'\s*[·|]\s*Freiweit mit Nihat\s*$')
+MARKE = re.compile(r'\s*[·|:]\s*Freiweit mit Nihat\s*$')
 
 NOINDEX = re.compile(
     r'<meta[^>]+name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
@@ -184,6 +184,38 @@ def main():
             lang.append('%3d  %s  (%s)' % (len(kern), kern[:70], v[0]))
     melde('Titel-Kern ueber %d Zeichen, wird mitten im Satz abgeschnitten'
           % TITEL_GRENZE, sorted(lang, reverse=True))
+
+    # Seit 23.08.2026: Blogartikel ohne Marken-Zusatz, Funktionsseiten mit.
+    marke = []
+    for f, t in texte.items():
+        if not oeffentlich(f, t):
+            continue
+        rel = str(f.relative_to(BASIS))
+        mt = re.search(r'<title>(.*?)</title>', t, re.S)
+        if not mt:
+            continue
+        ti = mt.group(1).strip()
+        artikel = f.parent.name == 'blog' and f.name != 'index.html'
+        if artikel and MARKE.search(ti):
+            marke.append('%s: Artikel traegt den Marken-Zusatz noch' % rel)
+        if not artikel and 'Freiweit mit Nihat' not in ti:
+            marke.append('%s: Funktionsseite ohne Marke im Titel' % rel)
+    melde('Marken-Zusatz im Titel falsch gesetzt', marke)
+
+    # title und og:title duerfen verschieden formuliert sein, das ist eine
+    # Entscheidung. Sie sollten es aber absichtlich sein und nicht, weil bei
+    # einer Umbenennung nur eins von beiden angefasst wurde.
+    drift = []
+    for f, t in texte.items():
+        if not oeffentlich(f, t):
+            continue
+        mt = re.search(r'<title>(.*?)</title>', t, re.S)
+        mo = re.search(r'og:title["\'][^>]*content=["\']([^"\']*)', t, re.I)
+        if mt and mo and mt.group(1).strip() != mo.group(1).strip():
+            drift.append('%s\n        title: %s\n        og   : %s'
+                         % (str(f.relative_to(BASIS)), mt.group(1).strip()[:60],
+                            mo.group(1).strip()[:60]))
+    melde('title und og:title verschieden formuliert (pruefen, ob gewollt)', drift)
 
     # 8. Sitemap
     sm = BASIS / 'sitemap.xml'
