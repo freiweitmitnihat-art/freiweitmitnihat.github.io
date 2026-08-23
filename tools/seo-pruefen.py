@@ -18,6 +18,7 @@
 #      Marken-Zusatz, denn dass » · Freiweit mit Nihat« hinten
 #      abgeschnitten wird, ist normal und stoert nicht
 #   8. Sitemap gegen den Dateibestand
+#   8b. Impressum und Datenschutz von jeder Seite erreichbar
 #   9. Bilder: welche sind zu gross, welche liegen ungenutzt
 #      herum. Ungenutzt heisst: keine oeffentliche Seite bindet
 #      sie ein. Das ist kein Fehler, aber es sammelt sich an.
@@ -203,6 +204,26 @@ def main():
     else:
         smfehler.append('sitemap.xml fehlt ganz')
     melde('Sitemap', smfehler)
+
+    # 8b. Rechtslinks
+    def rechtslink(text, wort):
+        for treffer in re.findall(r'href=["\']([^"\']*%s[^"\']*)["\']' % wort,
+                                  text, re.I):
+            if 'vgwort' in treffer or '#' in treffer:
+                continue
+            return True
+        return False
+
+    recht = []
+    for f, t in texte.items():
+        if not oeffentlich(f, t):
+            continue
+        rel = str(f.relative_to(BASIS))
+        for wort, name in (('impressum', 'Impressum'),
+                           ('datenschutz', 'Datenschutz')):
+            if not rechtslink(t, wort):
+                recht.append('%s: kein Link auf %s' % (rel, name))
+    melde('Pflichtangaben nicht von jeder Seite erreichbar', recht)
 
     # 9. Bilder
     bildverweis = re.compile(

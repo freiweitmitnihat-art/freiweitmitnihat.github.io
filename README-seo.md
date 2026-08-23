@@ -16,6 +16,7 @@ python3 homepage/tools/seo-strukturdaten.py
 python3 homepage/tools/blog-index-pflegen.py
 python3 homepage/tools/og-bilder.py --schreiben
 python3 homepage/tools/gedankenstriche.py
+python3 homepage/tools/rechtslinks.py --schreiben
 python3 homepage/tools/seo-pruefen.py
 ```
 
@@ -26,6 +27,7 @@ python3 homepage/tools/seo-pruefen.py
 | `blog-index-pflegen.py` | trägt neue Artikel in die Blog-Übersicht ein, neueste zuerst | ja |
 | `og-bilder.py` | setzt das echte Artikelbild als Teilen-Bild, zieht die Maße nach | nur mit `--schreiben` |
 | `gedankenstriche.py` | ersetzt lange Striche durch normale Satzzeichen | nur mit `--schreiben` |
+| `rechtslinks.py` | hängt Impressum und Datenschutz an jede Fußzeile, wo sie fehlen | nur mit `--schreiben` |
 | `seo-pruefen.py` | reiner Bericht, findet die Fehler, die man nicht sieht | nein |
 
 Nach dem Push gehören zwei Handgriffe in der Search Console dazu:
@@ -57,6 +59,24 @@ diese Seiten automatisch draußen.
 Bis zum 23.08.2026 reichte das bloße Wort „noindex" irgendwo in der Datei, auch
 in einem Kommentar. Dadurch ist `city-guides.html` bei jedem Lauf still aus der
 Sitemap geflogen, obwohl die Seite verkauft. Der Fehler ist behoben.
+
+---
+
+## Impressum und Datenschutz
+
+Beide müssen von **jeder** Seite aus erreichbar sein, nicht nur von der Startseite.
+Seit die Website verkauft (Beratung, Digistore, Stripe), zählt das doppelt.
+
+Am 23.08.2026 fehlten die Links auf 25 von 60 öffentlichen Seiten, darunter
+`beratung.html`, `kontakt.html`, `mediakit.html` und die ganze Blog-Übersicht.
+`immobilien.html` zeigte auf `index.html#impressum` und `index.html#datenschutz`,
+diese Sprungmarken gibt es auf der Startseite gar nicht. `mediakit.html` hatte
+überhaupt keine Fußzeile. Alles behoben, `rechtslinks.py` hält es künftig sauber
+und `seo-pruefen.py` schlägt Alarm, wenn wieder eine Seite ohne die beiden Links
+dazukommt.
+
+Der Standard in der Fußzeile lautet:
+`© 2026 Nihat Bucakli · Freiweit mit Nihat · Impressum · Datenschutz`
 
 ---
 
