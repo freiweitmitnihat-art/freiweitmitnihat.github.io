@@ -18,6 +18,7 @@ python3 homepage/tools/og-bilder.py --schreiben
 python3 homepage/tools/vorschaubilder.py --schreiben
 python3 homepage/tools/kopfbilder.py --schreiben
 python3 homepage/tools/titel-marke.py --schreiben
+python3 homepage/tools/kurz-gesagt.py --schreiben
 python3 homepage/tools/gedankenstriche.py
 python3 homepage/tools/rechtslinks.py --schreiben
 python3 homepage/tools/brotkrumen.py --schreiben
@@ -33,6 +34,7 @@ python3 homepage/tools/seo-pruefen.py
 | `vorschaubilder.py` | füllt die Kacheln der Blog-Übersicht und der „Weitere Artikel"-Kästen | nur mit `--schreiben` |
 | `kopfbilder.py` | legt das Artikelbild in das Banner unter der Überschrift | nur mit `--schreiben` |
 | `gedankenstriche.py` | ersetzt lange Striche durch normale Satzzeichen | nur mit `--schreiben` |
+| `kurz-gesagt.py` | setzt den Antwort-Kasten oben in die Ratgeber-Artikel | nur mit `--schreiben` |
 | `titel-marke.py` | nimmt den Marken-Zusatz aus Artikel-Titeln, Funktionsseiten behalten ihn | nur mit `--schreiben` |
 | `rechtslinks.py` | hängt Impressum und Datenschutz an jede Fußzeile, wo sie fehlen | nur mit `--schreiben` |
 | `brotkrumen.py` | setzt den sichtbaren Pfad „Startseite › Blog › Artikel" in jeden Artikel | nur mit `--schreiben` |
@@ -67,6 +69,34 @@ diese Seiten automatisch draußen.
 Bis zum 23.08.2026 reichte das bloße Wort „noindex" irgendwo in der Datei, auch
 in einem Kommentar. Dadurch ist `city-guides.html` bei jedem Lauf still aus der
 Sitemap geflogen, obwohl die Seite verkauft. Der Fehler ist behoben.
+
+---
+
+## „Kurz gesagt": die Antwort steht oben
+
+Seit dem 23.08.2026 beginnt jeder Ratgeber-Artikel mit einem Kasten, der die Frage
+des Artikels in drei bis vier Zeilen beantwortet, mit den Zahlen fett.
+
+**Warum das der wichtigste Hebel ist:** Google beantwortet inzwischen etwa jede fünfte
+Suche direkt in der KI-Übersicht, und ChatGPT, Perplexity und Gemini lesen dabei den
+**sichtbaren** Text einer Seite. Die Strukturdaten werden in dieser Phase ignoriert.
+Zitiert wird, wer die Antwort oben hinschreibt, statt sie in einen langen Fließtext zu
+vergraben. Und Zitiertwerden zahlt sich aus: Marken, die in einer KI-Übersicht genannt
+werden, bekommen deutlich mehr Klicks als Marken auf derselben Trefferliste, die nicht
+genannt werden.
+
+Der zweite Grund ist die Zielgruppe: 55+, ein Drittel schaut auf dem Fernseher. Die
+wollen die Antwort nicht erst suchen.
+
+**Regel:** Jede Zahl im Kasten muss so auch im Artikel stehen. Die Kästen liegen im
+Klartext in `tools/kurz-gesagt.py`. Wer eine Zahl ändert, ändert sie an beiden Stellen.
+Aktuell haben ihn die elf Ratgeber, bei denen Google eine KI-Übersicht zeigt: Kosten
+Thailand, Kosten Vietnam, Kosten Pattaya, Visum Thailand, Visum Vietnam, TDAC,
+SIM Thailand, SIM Vietnam, Grab, Vietnam-Behörden und die 7 Fehler.
+
+**Was wir bewusst NICHT gemacht haben:** eine `llms.txt`. Google hat bestätigt, dass
+kein Suchsystem die Datei liest, und OpenAI, Anthropic, Google und Meta haben sich
+bis heute nicht darauf festgelegt, sie zu benutzen. Der Aufwand bringt nichts.
 
 ---
 
