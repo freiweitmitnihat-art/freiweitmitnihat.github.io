@@ -58,13 +58,15 @@ Deshalb wurde `/h` für die Hefte neu angelegt und die falsche Zeile korrigiert.
 
 ## Freie Buchstaben
 
-`a c d e f j k l m n o p q s t u v x y z`
+`a c d e f j k l m n p q s t u v x y z`
 
 Vorgemerkt für wahrscheinliche Ziele, damit sie niemand anders belegt:
 
 - `q` → Reality-Check (**Q**uiz), `/reality-check`
-- `m` → I**m**mobilien, `/immobilien`
 - `k` → **K**ontakt, `/kontakt`
+
+`m` war bis zum 23.08.2026 für Immobilien vorgemerkt. Seit `/o` vergeben ist,
+ist die Vormerkung hinfällig und `m` wieder frei.
 
 ---
 
