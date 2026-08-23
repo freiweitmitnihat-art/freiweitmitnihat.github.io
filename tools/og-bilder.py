@@ -63,11 +63,24 @@ def masse_setzen(text, breite, hoehe):
                   lambda m: m.group(1) + str(hoehe), text, flags=re.I)
 
 
-def artikelbild(text):
-    """Erstes Bild aus blog/images/, das im Text steht und existiert."""
+def artikelbild(datei, text):
+    """Das Bild des Artikels selbst.
+
+    Zuerst die Datei, die genauso heisst wie der Artikel. Das ist die
+    Regel im Projekt. Erst wenn es die nicht gibt, wird das erste Bild
+    aus dem Fliesstext genommen, aber nur aus dem Teil vor den
+    "Weitere Artikel"-Kacheln. Sonst landet das Bild eines fremden
+    Artikels als Teilen-Bild, so geschehen am 23.08.2026.
+    """
+    eigen = datei.stem + '.jpg'
+    if (BASIS / 'blog' / 'images' / eigen).exists():
+        return eigen
+
+    schnitt = re.search(r'class="more-sec"|class="more-grid"|<footer', text)
+    fliess = text[:schnitt.start()] if schnitt else text
     for name in dict.fromkeys(re.findall(
-            r'images/([A-Za-z0-9._-]+\.(?:jpg|jpeg|png|webp))', text)):
-        if (BASIS / 'blog' / 'images' / name).exists():
+            r'images/([A-Za-z0-9._-]+\.(?:jpg|jpeg|png|webp))', fliess)):
+        if name == datei.stem + '.jpg' or (BASIS / 'blog' / 'images' / name).exists():
             return name
     return None
 
@@ -87,7 +100,7 @@ def main():
             continue
 
         if m.group(2) == ALLGEMEIN:
-            bild = artikelbild(t)
+            bild = artikelbild(f, t)
             if not bild:
                 ohne_bild.append((f.name, 'kein eigenes Bild vorhanden'))
                 continue

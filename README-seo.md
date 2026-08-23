@@ -15,6 +15,8 @@ python3 homepage/tools/sitemap-bauen.py
 python3 homepage/tools/seo-strukturdaten.py
 python3 homepage/tools/blog-index-pflegen.py
 python3 homepage/tools/og-bilder.py --schreiben
+python3 homepage/tools/vorschaubilder.py --schreiben
+python3 homepage/tools/kopfbilder.py --schreiben
 python3 homepage/tools/gedankenstriche.py
 python3 homepage/tools/rechtslinks.py --schreiben
 python3 homepage/tools/seo-pruefen.py
@@ -26,6 +28,8 @@ python3 homepage/tools/seo-pruefen.py
 | `seo-strukturdaten.py` | schreibt die Schema-Blöcke in jede Seite | ja |
 | `blog-index-pflegen.py` | trägt neue Artikel in die Blog-Übersicht ein, neueste zuerst | ja |
 | `og-bilder.py` | setzt das echte Artikelbild als Teilen-Bild, zieht die Maße nach | nur mit `--schreiben` |
+| `vorschaubilder.py` | füllt die Kacheln der Blog-Übersicht und der „Weitere Artikel"-Kästen | nur mit `--schreiben` |
+| `kopfbilder.py` | legt das Artikelbild in das Banner unter der Überschrift | nur mit `--schreiben` |
 | `gedankenstriche.py` | ersetzt lange Striche durch normale Satzzeichen | nur mit `--schreiben` |
 | `rechtslinks.py` | hängt Impressum und Datenschutz an jede Fußzeile, wo sie fehlen | nur mit `--schreiben` |
 | `seo-pruefen.py` | reiner Bericht, findet die Fehler, die man nicht sieht | nein |
@@ -87,11 +91,31 @@ Beim Teilen auf Facebook, WhatsApp und Co. zeigt jede Seite das Bild aus
 aus. `og-bilder.py` setzt stattdessen das echte Artikelbild und zieht
 `og:image:width` und `:height` auf die tatsächlichen Maße.
 
-Zehn Ratgeber-Artikel haben kein eigenes Bild und behalten das allgemeine:
-7-fehler-auswandern, da-nang-vietnam-entdeckt, grab-app-einrichten,
-lebenshaltungskosten-thailand, sim-karte-thailand, stefan-bramburi-pattaya-naklua,
-thailand-e-visum, thailand-tdac, vietnam-behoerden, vietnam-e-visum.
-Wer dort ein Bild nachlegt, führt das Werkzeug einfach noch einmal aus.
+**Seit dem 23.08.2026 hat jeder der 45 Artikel sein eigenes Bild.** Vorher fehlte
+zehn Ratgeber-Artikeln eines. Sie haben jetzt das Vorschaubild des thematisch
+passenden Kanal-Videos bekommen:
+
+| Artikel | Bildquelle (Video auf dem Kanal) |
+|---|---|
+| stefan-bramburi-pattaya-naklua | „Ich lebte von 150 Euro die Woche" (eigenes Thumbnail von der Extreme Pro) |
+| da-nang-vietnam-entdeckt | Da Nang: Vor- & Nachteile, nach 7 Jahren Weltreise |
+| lebenshaltungskosten-thailand | Thailand Kosten 2026, warum viele falsch rechnen |
+| sim-karte-thailand | Thailand 2026: 1 € SIM-Karte |
+| thailand-tdac | Einreise Thailand 2026, alle Änderungen |
+| thailand-e-visum | Muss ich raus? Thai-Visum verlängern |
+| 7-fehler-auswandern | Niemand sagt dir das, an alles gedacht? |
+| grab-app-einrichten | Die erste Stunde in Thailand: SIM, BTS, Taxi |
+| vietnam-e-visum | Ich muss Vietnam verlassen |
+| vietnam-behoerden | Geld abheben in Vietnam |
+
+Die Bilder liegen als 1280x720 in `blog/images/` und heißen genau wie der Artikel.
+Das ist die Regel: **`blog/images/<artikelname>.jpg`**, daran erkennt `og-bilder.py`
+das richtige Bild. Wer ein besseres Foto hat, überschreibt einfach die Datei.
+
+Ein Sonderfall bleibt: **`vietnam-behoerden`** behandelt das Online-Portal Dich Vu Cong,
+und dazu gibt es auf dem Kanal kein Video. Das ATM-Vorschaubild ist nur der nächste
+Nachbar, damit die Kachel nicht leer aussieht. Sobald ein passenderes Bild da ist,
+sollte es ersetzt werden.
 
 ---
 
