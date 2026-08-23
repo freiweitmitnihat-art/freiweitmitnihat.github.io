@@ -200,7 +200,29 @@ die Produkte freigegeben und die Rechtspruefung durch ist, beides zusammen umste
 
 ---
 
-*Letzte Aktualisierung: 22.08.2026*
+## SEO-STAND 23.08.2026
+
+Die Prüfkette meldete vorher 41 Punkte, jetzt 16, und die 16 sind nur ungenutzte
+Bilddateien (Favicons und die Kaufhilfe-Screenshots auf der noindex-Seite), keine Fehler.
+
+Was an dem Tag dazukam:
+
+- **`VideoObject` in 36 Artikeln.** Vorher hatte kein einziger Artikel Video-Markup,
+  obwohl 36 ein Video einbinden. Upload-Datum und Laufzeit stehen echt in
+  `tools/videodaten.json`. Details in `README-seo.md`.
+- **Sichtbarer Pfad in 45 Artikeln** über `tools/brotkrumen.py`. Wichtig für später:
+  **kein `<nav>` benutzen**, zwei Vorlagen haben `nav{position:fixed}`.
+- **17 Seitentitel gekürzt** auf unter 60 Zeichen und keyword-zuerst gestellt. Die H1
+  im Artikel blieb jeweils unverändert, nur der `<title>` wurde umgeschrieben.
+- **20 Meta-Beschreibungen** von über 165 auf 135 bis 156 Zeichen gekürzt.
+- **8 Bilder** von 2.170 KB auf 1.910 KB gebracht, alle jetzt unter 250 KB.
+
+Die sechs Gedankenstriche, die `gedankenstriche.py` meldet, stehen alle in echten
+YouTube-Videotiteln und bleiben absichtlich stehen.
+
+---
+
+*Letzte Aktualisierung: 23.08.2026*
 
 ---
 

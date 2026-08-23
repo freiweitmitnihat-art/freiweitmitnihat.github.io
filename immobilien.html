@@ -84,6 +84,8 @@ cursor:pointer;transition:all .2s;color:var(--earth);font-family:'Inter',sans-se
 .listings{padding:clamp(60px,8vh,100px) clamp(20px,5vw,80px)}
 .listings-inner{max-width:1200px;margin:0 auto}
 .listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:40px}
+.prop-hinweis{max-width:760px;margin:0 auto 32px;font-size:15px;line-height:1.75;color:var(--mid);text-align:center}
+
 
 /* PROPERTY CARD */
 .prop-card{
@@ -286,11 +288,236 @@ footer{background:var(--earth);padding:32px clamp(20px,5vw,80px);border-top:1px 
 </head>
 <body> <nav> <a href="index.html" class="nav-logo">Freiweit <span>mit Nihat</span></a> <a href="index.html" class="nav-back"> Zurück zur Startseite</a> <div class="lang-switcher"><button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button> <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button> </div>
 </nav> <!-- HERO -->
-<div class="hero"><div class="hero-inner"><span class="hero-label reveal">Immobilien in Asien</span> <h1 class="hero-title reveal reveal-delay-1">Mieten & Kaufen.<br><em>Aus erster Hand.</em></h1> <p class="hero-sub reveal reveal-delay-2">Echte Objekte die ich in meinen Videos gezeigt habe, mit Eckdaten, echten Preisen und direktem Kontakt. Keine versteckten Kosten, keine Überraschungen.</p> <div class="hero-stats reveal reveal-delay-3"><div><div class="stat-num">Thailand</div><div class="stat-label">Pattaya · Bangkok · Chiang Mai</div></div> <div><div class="stat-num">Vietnam</div><div class="stat-label">Da Nang · Mehr folgt</div></div> </div> </div>
+<div class="hero"><div class="hero-inner"><span class="hero-label reveal">Immobilien in Asien</span> <h1 class="hero-title reveal reveal-delay-1">Mieten & Kaufen.<br><em>Aus erster Hand.</em></h1> <p class="hero-sub reveal reveal-delay-2">Echte Objekte die ich in meinen Videos gezeigt habe, mit Eckdaten, echten Preisen und direktem Kontakt. Keine versteckten Kosten, keine Überraschungen.</p> <div class="hero-stats reveal reveal-delay-3"><div><div class="stat-num">13</div><div class="stat-label">Objekte, alle selbst gefilmt</div></div> <div><div class="stat-num">162 € bis 230.000 €</div><div class="stat-label">Si Racha · Pattaya · Bangkok · Bang Saray</div></div> </div> </div>
 </div> <!-- FILTER -->
 <div class="filter-bar"><div class="filter-inner"><button class="filter-btn active" onclick="filterProps('alle',this)">Alle</button> <button class="filter-btn" onclick="filterProps('mieten',this)">Mieten</button> <button class="filter-btn" onclick="filterProps('kaufen',this)">Kaufen</button> <div class="filter-sep"></div> <button class="filter-btn" onclick="filterProps('thailand',this)"> Thailand</button> <button class="filter-btn" onclick="filterProps('vietnam',this)"> Vietnam</button> </div>
 </div> <!-- LISTINGS -->
-<section class="listings"> <div class="listings-inner"><div class="listings-grid" id="props-grid"><!-- Objekt 1 --> <div class="prop-card reveal" data-type="mieten" data-country="thailand"><div class="prop-thumb"><div class="prop-thumb-placeholder"></div> <span class="prop-badge badge-mieten">Mieten</span> <div class="prop-price">480€ / Monat</div> </div> <div class="prop-body"><div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pattaya · Jomtien Beach</div> <h3 class="prop-title">1-Zimmer-Apartment mit Meerblick</h3> <div class="prop-specs"><div class="spec"><strong>1 Zimmer</strong></div> <div class="spec"><strong>45 m²</strong></div> <div class="spec"><strong>Pool</strong></div> <div class="spec"><strong>Fiber WLAN</strong></div> </div> <p class="prop-desc">Ruhige Lage direkt am Jomtien Beach. Vollmöbliert, Reinigung 2x/Woche inklusive. Ideal für Langzeitaufenthalt ab 3 Monaten.</p> <!-- TODO (Nihat): echte Video-URLs je Objekt eintragen + Verfügbarkeit prüfen: Links zeigen aktuell auf Kanal-Suche (Audit 07/2026) --> <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://www.youtube.com/@FreiweitmitNihat/search?query=lebenshaltungskosten%20pattaya" target="_blank" rel="noopener noreferrer">Lebenshaltungskosten Pattaya 2026</a></div> <div class="prop-actions"><button class="btn-contact" onclick="openModal('1-Zimmer-Apartment Pattaya Jomtien, 480€/Monat')">Kontakt aufnehmen</button> <a href="https://www.youtube.com/@FreiweitmitNihat/videos" target="_blank" rel="noopener noreferrer" class="btn-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Video</a> </div> </div> </div> <!-- Objekt 2 --> <div class="prop-card reveal reveal-delay-1" data-type="mieten" data-country="thailand"><div class="prop-thumb"><div class="prop-thumb-placeholder"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:5px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> <span class="prop-badge badge-mieten">Mieten</span> <div class="prop-price">850€ / Monat</div> </div> <div class="prop-body"><div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chiang Mai · Nimman</div> <h3 class="prop-title">2-Zimmer-Wohnung im Trendviertel</h3> <div class="prop-specs"><div class="spec"><strong>2 Zimmer</strong></div> <div class="spec"><strong>65 m²</strong></div> <div class="spec"><strong>Gym</strong></div> <div class="spec"><strong>Ruhige Lage</strong></div> </div> <p class="prop-desc">Modernes Apartment im Herzen des Nimman-Viertels. Perfekt für digitale Nomaden: Co-working Spaces fußläufig, beste Cafés vor der Tür.</p> <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://www.youtube.com/@FreiweitmitNihat/search?query=chiang%20mai" target="_blank" rel="noopener noreferrer">Leben in Chiang Mai 2026</a></div> <div class="prop-actions"><button class="btn-contact" onclick="openModal('2-Zimmer Chiang Mai Nimman, 850€/Monat')">Kontakt aufnehmen</button> <a href="https://www.youtube.com/@FreiweitmitNihat/videos" target="_blank" rel="noopener noreferrer" class="btn-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Video</a> </div> </div> </div> <!-- Objekt 3 --> <div class="prop-card reveal reveal-delay-2" data-type="kaufen" data-country="thailand"><div class="prop-thumb"><div class="prop-thumb-placeholder"></div> <span class="prop-badge badge-kaufen">Kaufen</span> <div class="prop-price">89.000€</div> </div> <div class="prop-body"><div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pattaya · Pratumnak Hill</div> <h3 class="prop-title">Condo mit Meerblick: Pratumnak</h3> <div class="prop-specs"><div class="spec"><strong>1 Zimmer</strong></div> <div class="spec"><strong>52 m²</strong></div> <div class="spec"><strong>Meerblick</strong></div> <div class="spec"><strong>Ausländer-Eigentum</strong></div> </div> <p class="prop-desc">Condo in ruhiger Lage auf dem Pratumnak Hill. Als Ausländer kaufbar (Freehold). Gute Lage zwischen Pattaya und Jomtien.</p> <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://www.youtube.com/@FreiweitmitNihat/search?query=immobilien%20pattaya" target="_blank" rel="noopener noreferrer">Immobilien Pattaya: Was ist möglich?</a></div> <div class="prop-actions"><button class="btn-contact" onclick="openModal('Condo Pratumnak Hill Pattaya, 89.000€')">Kontakt aufnehmen</button> <a href="https://www.youtube.com/@FreiweitmitNihat/videos" target="_blank" rel="noopener noreferrer" class="btn-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Video</a> </div> </div> </div> <!-- Objekt 4 --> <div class="prop-card reveal reveal-delay-1" data-type="mieten" data-country="vietnam"><div class="prop-thumb"><div class="prop-thumb-placeholder"></div> <span class="prop-badge badge-mieten">Mieten</span> <div class="prop-price">380€ / Monat</div> </div> <div class="prop-body"><div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Da Nang · My Khe Beach</div> <h3 class="prop-title">Modernes Studio direkt am Strand</h3> <div class="prop-specs"><div class="spec"><strong>Studio</strong></div> <div class="spec"><strong>38 m²</strong></div> <div class="spec"><strong>Strandnah</strong></div> <div class="spec"><strong>Schnelles WLAN</strong></div> </div> <p class="prop-desc">Neubau-Studio 200m vom My Khe Beach. Vollmöbliert, Balkon, Reinigung inklusive. Ideal für Erstaufenthalt in Da Nang.</p> <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://www.youtube.com/@FreiweitmitNihat/search?query=da%20nang" target="_blank" rel="noopener noreferrer">Mein Leben in Da Nang</a></div> <div class="prop-actions"><button class="btn-contact" onclick="openModal('Studio Da Nang My Khe Beach, 380€/Monat')">Kontakt aufnehmen</button> <a href="https://www.youtube.com/@FreiweitmitNihat/videos" target="_blank" rel="noopener noreferrer" class="btn-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Video</a> </div> </div> </div> <!-- Objekt 5: Platzhalter --> <div class="prop-card reveal reveal-delay-2" style="opacity:.5;pointer-events:none"><div class="prop-thumb" style="background:linear-gradient(135deg,#1a1a2e,#2d2d4a)"><div class="prop-thumb-placeholder"></div> </div> <div class="prop-body"><div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Demnächst</div> <h3 class="prop-title">Dein Objekt hier</h3> <p class="prop-desc">Ich zeige regelmäßig neue Immobilien in meinen Videos. Schreib mir wenn du ein konkretes Objekt suchst.</p> <div class="prop-actions"><button class="btn-contact" style="opacity:.5" disabled>Demnächst</button> </div> </div> </div> </div> </div>
+<section class="listings"> <div class="listings-inner">
+<p class="prop-hinweis">Alle Objekte hier habe ich selbst besucht und gefilmt. Die Preise sind die, die mir vor Ort genannt wurden, am Tag der Aufnahme. Ob eine Wohnung heute noch frei ist und ob der Preis noch stimmt, wei&szlig; ich nicht. Schreib mir, welches Objekt dich interessiert, dann frage ich f&uuml;r dich nach und stelle den Kontakt her.</p>
+<div class="listings-grid" id="props-grid">
+  <div class="prop-card reveal" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/riviera-ocean-drive.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">550 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pattaya · Jomtien</div>
+      <h3 class="prop-title">Riviera Ocean Drive</h3>
+      <div class="prop-specs"><div class="spec"><strong>35 m²</strong></div> <div class="spec"><strong>14. Stock</strong></div> <div class="spec"><strong>Pool + Gym</strong></div> <div class="spec"><strong>512 Einheiten</strong></div> </div>
+      <p class="prop-desc">Apartment im 14. Stock. Im 43. Stock liegt ein Partyraum mit 360-Grad-Panorama über Jomtien.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/37Hdj6TEnsc" target="_blank" rel="noopener noreferrer">550€ Luxus-Apartment in Pattaya</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Riviera Ocean Drive, Pattaya · Jomtien, 550 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/riviera-ocean-drive.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-1" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/si-racha-the-strand.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">216 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">The Strand Indeed Condo</h3>
+      <div class="prop-specs"><div class="spec"><strong>Studio 24 m²</strong></div> <div class="spec"><strong>Infinity Pool</strong></div> <div class="spec"><strong>Meerblick</strong></div> <div class="spec"><strong>644 Einheiten</strong></div> </div>
+      <p class="prop-desc">Ein Jahr altes Haus. Das Studio kostet 216 €, die 2-Zimmer-Wohnung mit 42 m² liegt bei 405 €.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/oku-DtFgi2s" target="_blank" rel="noopener noreferrer">216€ Miete: Infinity Pool + Meerblick</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('The Strand Indeed Condo, Si Racha · Chonburi, 216 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/si-racha-the-strand.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-2" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/si-racha-the-near-residence.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">162 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">The Near Residence</h3>
+      <div class="prop-specs"><div class="spec"><strong>35 m²</strong></div> <div class="spec"><strong>1 Schlafzimmer</strong></div> <div class="spec"><strong>Balkon</strong></div> <div class="spec"><strong>2 Min. zum Meer</strong></div> </div>
+      <p class="prop-desc">6.000 Baht Monatsmiete. Kaufen ginge auch, rund 27.000 € und verhandelbar.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/rfXQrw8Jak4" target="_blank" rel="noopener noreferrer">162€ Miete, 35m², 2 Minuten vom Meer</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('The Near Residence, Si Racha · Chonburi, 162 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/si-racha-the-near-residence.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/sharmonyx-sriracha-wohnungen.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">186 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">Sharmonyx Komplex</h3>
+      <div class="prop-specs"><div class="spec"><strong>Studio 24 m²</strong></div> <div class="spec"><strong>12-Monats-Vertrag</strong></div> <div class="spec"><strong>2-Zimmer ab 430 €</strong></div> <div class="spec"><strong>Kauf ab 52.000 €</strong></div> </div>
+      <p class="prop-desc">Der günstigste Einstieg von allen Objekten, die ich in Si Racha gefilmt habe.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/24Qr5o9Daxk" target="_blank" rel="noopener noreferrer">Für 186€ eine Wohnung in Thailand mieten</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Sharmonyx Komplex, Si Racha · Chonburi, 186 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/sharmonyx-sriracha-wohnungen.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-1" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/excel-hideaway-sukhumvit-71.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">270 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok · Sukhumvit 71</div>
+      <h3 class="prop-title">Excel Hideaway</h3>
+      <div class="prop-specs"><div class="spec"><strong>28 m²</strong></div> <div class="spec"><strong>1 Schlafzimmer</strong></div> <div class="spec"><strong>Aktionspreis</strong></div> <div class="spec"><strong>BTS-Nähe</strong></div> </div>
+      <p class="prop-desc">270 € im Monat mitten in Bangkok, allerdings als Aktionspreis. Parkplätze gibt es nur für ein Drittel der Wohnungen.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/I3UkZc_5Kw8" target="_blank" rel="noopener noreferrer">270€ im Monat in Bangkok</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Excel Hideaway, Bangkok · Sukhumvit 71, 270 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/excel-hideaway-sukhumvit-71.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-2" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/ladda-condoview.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">ab 270 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">Ladda Condo View</h3>
+      <div class="prop-specs"><div class="spec"><strong>Studio 34 m²</strong></div> <div class="spec"><strong>Sea View 60 m² für 486 €</strong></div> <div class="spec"><strong>5 Wohnungen gezeigt</strong></div> <div class="spec"><strong>14 Jahre alt</strong></div> </div>
+      <p class="prop-desc">Das älteste Condo in Si Racha. Ich habe fünf verschiedene Wohnungen im selben Haus angesehen.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/NLff81oOszA" target="_blank" rel="noopener noreferrer">5 Wohnungen in Thailand ab 270€, mit Meerblick</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Ladda Condo View, Si Racha · Chonburi, ab 270 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/ladda-condoview.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/jomtien-oliver-lalana.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">ab 300 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pattaya · Jomtien</div>
+      <h3 class="prop-title">Baan Suan Lalana</h3>
+      <div class="prop-specs"><div class="spec"><strong>Studio 40,5 m²</strong></div> <div class="spec"><strong>Eckwohnung 101 m² ~600 €</strong></div> <div class="spec"><strong>700 m zum Strand</strong></div> <div class="spec"><strong>Meerblick möglich</strong></div> </div>
+      <p class="prop-desc">Oliver (61) lebt seit 24 Jahren in dieser Anlage und hat mir seine Wohnung gezeigt.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/Z3kywyVFbPY" target="_blank" rel="noopener noreferrer">24 Jahre in derselben Anlage</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Baan Suan Lalana, Pattaya · Jomtien, ab 300 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/jomtien-oliver-lalana.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-1" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/trio-town-si-racha.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">675 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">Trio Town Reihenhaus</h3>
+      <div class="prop-specs"><div class="spec"><strong>3 Schlafzimmer</strong></div> <div class="spec"><strong>3 Bäder</strong></div> <div class="spec"><strong>2 Parkplätze</strong></div> <div class="spec"><strong>25.000 Baht</strong></div> </div>
+      <p class="prop-desc">Ein ganzes Haus statt einer Wohnung, für den Preis eines besseren Studios in Deutschland.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/pK7QcxVW_BI" target="_blank" rel="noopener noreferrer">3 Zimmer, 3 Bäder, 2 Parkplätze</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Trio Town Reihenhaus, Si Racha · Chonburi, 675 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/trio-town-si-racha.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-2" data-type="mieten" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/the-complete-sriracha-2.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-mieten">Mieten</span>
+      <div class="prop-price">917 € / Monat</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">The Complete Sriracha, Haus</h3>
+      <div class="prop-specs"><div class="spec"><strong>220 m² Gesamtfläche</strong></div> <div class="spec"><strong>3 Schlafzimmer</strong></div> <div class="spec"><strong>Wohnanlage</strong></div> <div class="spec"><strong>Miete</strong></div> </div>
+      <p class="prop-desc">220 Quadratmeter zur Miete. So wohnt man in Si Racha, wenn Platz wichtiger ist als Lage.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/55m1PmXN0YY" target="_blank" rel="noopener noreferrer">917€ für 220 Quadratmeter Haus in Thailand</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('The Complete Sriracha, Haus, Si Racha · Chonburi, 917 € / Monat')">Kontakt aufnehmen</button>
+        <a href="blog/the-complete-sriracha-2.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal" data-type="kaufen" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/2026-06-16-thomas-loft-pattaya.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-kaufen">Kaufen</span>
+      <div class="prop-price">78.000 €</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pattaya · Jomtien</div>
+      <h3 class="prop-title">Loft-Condo, 82 m²</h3>
+      <div class="prop-specs"><div class="spec"><strong>82 m² Loft</strong></div> <div class="spec"><strong>2,95 Mio. Baht</strong></div> <div class="spec"><strong>800 m zum Strand</strong></div> <div class="spec"><strong>Thomas zeigt es selbst</strong></div> </div>
+      <p class="prop-desc">Thomas lebt seit 12 Jahren in Pattaya und hat mir sein Loft-Condo aufgemacht.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/vC8koLcoFyU" target="_blank" rel="noopener noreferrer">82m² Loft-Condo in Pattaya für 78.000€</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Loft-Condo, 82 m², Pattaya · Jomtien, 78.000 €')">Kontakt aufnehmen</button>
+        <a href="blog/2026-06-16-thomas-loft-pattaya.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-1" data-type="kaufen" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/si-racha-immobilie.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-kaufen">Kaufen</span>
+      <div class="prop-price">124.000 €</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>zwischen Pattaya und Si Racha</div>
+      <h3 class="prop-title">Doppelhaushälfte, Neubau</h3>
+      <div class="prop-specs"><div class="spec"><strong>164 m²</strong></div> <div class="spec"><strong>Neubau</strong></div> <div class="spec"><strong>Reihenhaus ab 80.000 €</strong></div> <div class="spec"><strong>Miete ab 540 € möglich</strong></div> </div>
+      <p class="prop-desc">Drei Häuser im Vergleich, vom Reihenhaus für 80.000 € bis zur Doppelhaushälfte für 124.000 €.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/x2e6BfM_btA" target="_blank" rel="noopener noreferrer">164 m² Haus in Thailand für 124.000€</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Doppelhaushälfte, Neubau, zwischen Pattaya und Si Racha, 124.000 €')">Kontakt aufnehmen</button>
+        <a href="blog/si-racha-immobilie.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal reveal-delay-2" data-type="kaufen" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/sri-racha-the-complete.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-kaufen">Kaufen</span>
+      <div class="prop-price">230.000 €</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Si Racha · Chonburi</div>
+      <h3 class="prop-title">Haus in The Complete Sriracha</h3>
+      <div class="prop-specs"><div class="spec"><strong>Kauf 230.000 €</strong></div> <div class="spec"><strong>Miete 1.200 €/Monat</strong></div> <div class="spec"><strong>Wohnanlage</strong></div> <div class="spec"><strong>Beide Wege gerechnet</strong></div> </div>
+      <p class="prop-desc">Kaufen oder mieten? Für dieses Haus habe ich beide Rechnungen aufgemacht.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/wQuAyUNlniE" target="_blank" rel="noopener noreferrer">230.000€ für dieses Haus in Thailand</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Haus in The Complete Sriracha, Si Racha · Chonburi, 230.000 €')">Kontakt aufnehmen</button>
+        <a href="blog/sri-racha-the-complete.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+  <div class="prop-card reveal" data-type="kaufen" data-country="thailand">
+    <div class="prop-thumb" style="background:url('blog/images/bang-saray-resort.jpg') center/cover no-repeat, linear-gradient(135deg,#2d1505,#A44A18)">
+      <span class="prop-badge badge-kaufen">Kaufen</span>
+      <div class="prop-price">ca. 1,35 Mio. €</div>
+    </div>
+    <div class="prop-body">
+      <div class="prop-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-1.5px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bang Saray · Chonburi</div>
+      <h3 class="prop-title">Resort mit 24 Einheiten</h3>
+      <div class="prop-specs"><div class="spec"><strong>51 Mio. Baht Gutachten</strong></div> <div class="spec"><strong>11 Apartments</strong></div> <div class="spec"><strong>4 Häuser mit Pool</strong></div> <div class="spec"><strong>Flughafen Rayong ab 2030</strong></div> </div>
+      <p class="prop-desc">Kein Wohnobjekt, sondern ein laufendes Resort. Für alle, die größer denken.</p>
+      <div class="prop-video"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:4px"><polygon points="6 4 20 12 6 20"/></svg>Gezeigt in: <a href="https://youtu.be/INsG5ONr9Hw" target="_blank" rel="noopener noreferrer">Resort kaufen in Thailand</a></div>
+      <div class="prop-actions">
+        <button class="btn-contact" onclick="openModal('Resort mit 24 Einheiten, Bang Saray · Chonburi, ca. 1,35 Mio. €')">Kontakt aufnehmen</button>
+        <a href="blog/bang-saray-resort.html" class="btn-video">Zum Artikel</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </section> <!-- SUBMIT CTA -->
 <div class="submit-cta"><h2 class="reveal">Du hast ein <em>konkretes Objekt</em> im Sinn?</h2> <p class="reveal reveal-delay-1">Schreib mir, ich helfe dir das passende zu finden oder vermittle den Kontakt zu meinem Netzwerk vor Ort.</p> <button class="btn-contact reveal reveal-delay-2" onclick="openModal('Allgemeine Immobilien-Anfrage')" style="display:inline-flex;max-width:280px;justify-content:center">Anfrage stellen </button>
 </div> <!-- FOOTER -->
@@ -314,6 +541,27 @@ const c = card.dataset.country;
 const show = type === 'alle' || t === type || c === type;
 card.style.display = show ? '' : 'none';
   });
+zeigeLeerHinweis();
+}
+
+// Wenn ein Filter nichts trifft, sagen wir warum. Aus Vietnam gibt es
+// noch kein gefilmtes Objekt, das soll man nicht raten muessen.
+function zeigeLeerHinweis() {
+const gitter = document.getElementById('props-grid');
+const sichtbar = [...gitter.querySelectorAll('.prop-card')]
+  .filter(k => k.style.display !== 'none').length;
+let hinweis = document.getElementById('leer-hinweis');
+if (!hinweis) {
+  hinweis = document.createElement('p');
+  hinweis.id = 'leer-hinweis';
+  hinweis.className = 'prop-hinweis';
+  hinweis.style.gridColumn = '1 / -1';
+  hinweis.innerHTML = 'Dazu habe ich noch kein Objekt gefilmt. In Vietnam war ich '
+    + 'unterwegs, aber noch nicht in einer Wohnung, die ich hier zeigen k&ouml;nnte. '
+    + 'Schreib mir trotzdem, wenn du dort etwas suchst.';
+  gitter.appendChild(hinweis);
+}
+hinweis.style.display = sichtbar ? 'none' : '';
 }
 
 // Modal

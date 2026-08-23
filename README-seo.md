@@ -19,19 +19,21 @@ python3 homepage/tools/vorschaubilder.py --schreiben
 python3 homepage/tools/kopfbilder.py --schreiben
 python3 homepage/tools/gedankenstriche.py
 python3 homepage/tools/rechtslinks.py --schreiben
+python3 homepage/tools/brotkrumen.py --schreiben
 python3 homepage/tools/seo-pruefen.py
 ```
 
 | Werkzeug | Was es macht | Ändert Dateien |
 |---|---|---|
 | `sitemap-bauen.py` | baut `sitemap.xml` aus dem echten Dateibestand | ja |
-| `seo-strukturdaten.py` | schreibt die Schema-Blöcke in jede Seite | ja |
+| `seo-strukturdaten.py` | schreibt die Schema-Blöcke in jede Seite, inklusive `VideoObject` | ja |
 | `blog-index-pflegen.py` | trägt neue Artikel in die Blog-Übersicht ein, neueste zuerst | ja |
 | `og-bilder.py` | setzt das echte Artikelbild als Teilen-Bild, zieht die Maße nach | nur mit `--schreiben` |
 | `vorschaubilder.py` | füllt die Kacheln der Blog-Übersicht und der „Weitere Artikel"-Kästen | nur mit `--schreiben` |
 | `kopfbilder.py` | legt das Artikelbild in das Banner unter der Überschrift | nur mit `--schreiben` |
 | `gedankenstriche.py` | ersetzt lange Striche durch normale Satzzeichen | nur mit `--schreiben` |
 | `rechtslinks.py` | hängt Impressum und Datenschutz an jede Fußzeile, wo sie fehlen | nur mit `--schreiben` |
+| `brotkrumen.py` | setzt den sichtbaren Pfad „Startseite › Blog › Artikel" in jeden Artikel | nur mit `--schreiben` |
 | `seo-pruefen.py` | reiner Bericht, findet die Fehler, die man nicht sieht | nein |
 
 Nach dem Push gehören zwei Handgriffe in der Search Console dazu:
@@ -112,10 +114,14 @@ Die Bilder liegen als 1280x720 in `blog/images/` und heißen genau wie der Artik
 Das ist die Regel: **`blog/images/<artikelname>.jpg`**, daran erkennt `og-bilder.py`
 das richtige Bild. Wer ein besseres Foto hat, überschreibt einfach die Datei.
 
-Ein Sonderfall bleibt: **`vietnam-behoerden`** behandelt das Online-Portal Dich Vu Cong,
-und dazu gibt es auf dem Kanal kein Video. Das ATM-Vorschaubild ist nur der nächste
-Nachbar, damit die Kachel nicht leer aussieht. Sobald ein passenderes Bild da ist,
-sollte es ersetzt werden.
+**Ein Bild kommt nicht vom Kanal:** `vietnam-behoerden` behandelt das Online-Portal
+Dich Vu Cong, dazu gibt es kein Video und auch kein eigenes Foto. Dort liegt jetzt eine
+Aufnahme eines vietnamesischen Behördenhauses aus Wikimedia Commons:
+„Thạch Bàn government office (2017)" von Donald Trung, CC BY-SA 4.0, zugeschnitten.
+**Die Lizenz verlangt die Nennung**, deshalb steht der Nachweis sichtbar unter dem
+Artikeltext. Wer das Bild austauscht, muss den Nachweis mit entfernen.
+
+Das ist das einzige Fremdbild auf der Website. Alles andere stammt von Nihat selbst.
 
 ---
 
@@ -164,3 +170,43 @@ hochlädt. Erst ab dieser Größenordnung lohnt sich Handarbeit.
    Die Kaufhilfe-Bilder gehören zu `hilfe.html` und sind nur deshalb dabei,
    weil die Seite auf noindex steht. Der Rest sind Reste alter Entwürfe.
    Nichts davon schadet, aufräumen ist eine Aufgabe für einen ruhigen Tag.
+
+
+---
+
+## VideoObject: damit die Videos selbst gefunden werden (seit 23.08.2026)
+
+36 Blogartikel binden ein YouTube-Video ein. Bis zum 23.08.2026 stand in keinem
+einzigen ein `VideoObject`, Google konnte die Videos also nicht als Videos erkennen.
+Seitdem schreibt `seo-strukturdaten.py` den Block automatisch mit.
+
+Upload-Datum und Laufzeit sind bei Google **Pflichtangaben**. Beides steht echt in
+`homepage/tools/videodaten.json`, geholt direkt von der jeweiligen YouTube-Seite.
+Geschätzte Daten wären wertlos, Google prüft sie gegen YouTube.
+
+```bash
+python3 homepage/tools/seo-strukturdaten.py --videos-aktualisieren
+```
+
+Das ergänzt fehlende Videos in der Datei und lässt vorhandene stehen. Nötig ist es
+nur, wenn ein Artikel mit einem neuen Video dazugekommen ist.
+
+Kontrolle nach dem Push: Google Rich Results Test auf eine Artikel-URL, dort muss
+„Video" als erkannter Typ auftauchen. In der Search Console kommt danach der Bericht
+„Videos" dazu, dort sieht man, wie viele Videos indexiert sind.
+
+---
+
+## Sichtbarer Pfad (Brotkrumen, seit 23.08.2026)
+
+Die Strukturdaten behaupteten in jedem Artikel einen Pfad „Startseite › Blog › Artikel",
+auf der Seite war davon nichts zu sehen. Dazu bekam `blog/index.html` nur 5 interne
+Verweise, obwohl 45 Artikel darunter hängen.
+
+`tools/brotkrumen.py` setzt den Pfad oben in den Textbereich. Damit stimmen Anzeige und
+Strukturdaten überein, und die Blog-Übersicht bekommt 45 interne Verweise.
+
+**Merker für spätere Änderungen:** Der Pfad ist bewusst ein `<div role="navigation">`
+und **kein** `<nav>`. Zwei der drei Artikel-Vorlagen haben eine nackte CSS-Regel
+`nav{position:fixed;height:60px}`, die jedes `nav` in die Kopfleiste zieht. Beim ersten
+Versuch am 23.08.2026 hat genau das die Seite zerlegt.

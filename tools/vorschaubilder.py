@@ -26,10 +26,14 @@ SCHREIBEN = '--schreiben' in sys.argv
 
 # <a href="artikel.html" ... class="...card"> ... <div class="...thumb..."
 #   style="background:linear-gradient(...)">
+# Die Kacheln heissen in aelteren Artikeln kuerzer: mc statt more-card,
+# mt bzw. mt2 statt more-thumb. Beide Schreibweisen muessen rein, sonst
+# bleiben 34 Kacheln als Farbverlauf stehen.
 KACHEL = re.compile(
-    r'(<a\s+href="(?:\.\./blog/|blog/)?([a-z0-9._-]+)\.html"[^>]*class="[^"]*card[^"]*"[^>]*>'
+    r'(<a\s+href="(?:\.\./blog/|blog/)?([a-z0-9._-]+)\.html"[^>]*'
+    r'class="(?:[^"]*card[^"]*|mc)"[^>]*>'
     r'(?:(?!</a>).){0,400}?'
-    r'class="(?:blog-thumb-grad|more-thumb|prev-thumb)"\s+style="background:)'
+    r'class="(?:blog-thumb-grad|more-thumb|prev-thumb|mt|mt2)"\s+style="background:)'
     r'(linear-gradient)',
     re.S)
 
