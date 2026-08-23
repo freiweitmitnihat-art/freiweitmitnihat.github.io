@@ -111,7 +111,9 @@ def main():
         print('Keine Karten gefunden, nichts geaendert')
         return
     letzte = stuecke_m[-1].end()
-    grid, schwanz = rest[:letzte], rest[letzte:]
+    # Fuehrende Leerzeichen im Rest abschneiden. Sonst haengt jeder Lauf
+    # zwei weitere an und die Datei aendert sich, obwohl sich nichts geaendert hat.
+    grid, schwanz = rest[:letzte], rest[letzte:].lstrip(' \t')
 
     stuecke = [m.group(0) for m in stuecke_m]
     vorhanden = {re.search(r'href="([^"]+)"', s).group(1): s for s in stuecke}
