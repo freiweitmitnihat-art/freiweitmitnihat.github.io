@@ -2,26 +2,17 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<!-- ============================================================
-DIE MAPS GUIDES · Verkaufsseite
-Neu gebaut 22.08.2026, ersetzt die alte City-Guides-Seite.
-Ziel der Kurz-URL /g. Adresse nie aendern, siehe KURZ-URLS.md.
-
-VOR DEM LIVESCHALTEN:
-1. Stripe-Zahlungslink anlegen (Produkt "Maps Guide Pattaya", 29 EUR,
-   Weiterleitung nach Zahlung auf /pattaya-maps-zugang-57651b).
-2. Unten die eine Zeile mit KAUFLINK-PATTAYA durch die Stripe-Adresse ersetzen.
-3. Die sieben Listen-Links in pattaya-maps-zugang-57651b.html eintragen.
-4. noindex hier UND auf der Zugangsseite pruefen: hier entfernen,
-   auf der Zugangsseite stehen lassen.
-     ============================================================ -->
-<meta name="robots" content="noindex, nofollow">
+<!-- Verkaufsseite Maps Guide Pattaya, 29 EUR ueber Stripe.
+     Stand 22.08.2026: Stripe-Link aktiv, sieben Listen auf der Zugangsseite
+     hinterlegt, noindex entfernt, in der Sitemap eingetragen.
+     Die Zugangsseite pattaya-maps-zugang-57651b.html bleibt auf noindex. -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Der Maps Guide Pattaya · Freiweit mit Nihat</title>
+<link rel="canonical" href="https://freiweitmitnihat.com/city-guides.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Freiweit mit Nihat">
 <meta property="og:title" content="Der Maps Guide Pattaya">
@@ -131,6 +122,62 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
 .f-bottom a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px}
 .f-bottom a:hover{color:var(--sand)}
 .f-bottom p{color:rgba(255,255,255,0.72);font-size:13.5px}
+
+/* Kauf-Wege, ergaenzt 22.08.2026.
+   Grund: Die Seite war auf dem Handy 11,7 Bildschirme lang und hatte einen
+   einzigen Kaufknopf bei 6,8 Bildschirmen. Wer den QR aus einem Video scannt,
+   weiss schon was er will und sucht den Knopf, nicht den Text. */
+.hero-kauf{margin-top:30px;max-width:420px}
+.hero-kauf .btn{width:100%}
+.hero-kauf .hk-note{margin-top:12px;font-size:16px;color:rgba(255,255,255,.62);line-height:1.5}
+.hero-kauf .hk-note a{color:var(--sand,#C8A97E);text-decoration:underline}
+
+.kauf-wieder{margin:40px auto 0;max-width:420px;text-align:center}
+.kauf-wieder .btn{width:100%}
+.kauf-wieder small{display:block;margin-top:10px;font-size:15.5px;color:var(--mid,#6b5e52)}
+
+/* Klebeleiste: Preis und Knopf bleiben immer erreichbar.
+   Wird ausgeblendet, solange der grosse Kaufblock im Bild ist, sonst doppelt es sich. */
+.kaufleiste{position:fixed;left:0;right:0;bottom:0;z-index:400;display:flex;align-items:center;
+  gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(26,20,16,.97);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.14);
+  transform:translateY(110%);transition:transform .28s ease;}
+.kaufleiste.an{transform:translateY(0)}
+.kaufleiste .kl-preis{flex-shrink:0;color:#fff;line-height:1.15}
+.kaufleiste .kl-preis b{display:block;font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
+.kaufleiste .kl-preis span{font-size:14px;color:rgba(255,255,255,.6)}
+.kaufleiste .btn{flex:1;min-height:54px;font-size:18px;padding:14px 20px;width:auto}
+@media(prefers-reduced-motion:reduce){.kaufleiste{transition:none}}
+@media(min-width:900px){.kaufleiste{justify-content:center}.kaufleiste .btn{flex:0 0 auto;min-width:320px}}
+
+/* Auf dem Handy muss der Kaufknopf auf den ersten Bildschirm.
+   Dafuer: Kennzahlen einreihig statt umbrechend, engere Abstaende oben.
+   Gemessen vorher 809 px, das lag genau auf der Kante von 844 px. */
+@media(max-width:640px){
+  .hero{padding-top:78px;padding-bottom:44px}
+  .hero-lead{font-size:18.5px;line-height:1.62;margin-bottom:14px}
+  .hero-sub{font-size:16.5px;line-height:1.6}
+  .hero-zahlen{gap:0;flex-wrap:nowrap;margin-top:22px;padding-top:18px;justify-content:space-between}
+  .hz{flex:1 1 0;min-width:0}
+  .hz b{font-size:27px}
+  .hz span{font-size:13.5px;line-height:1.35;display:block}
+  .hero-kauf{margin-top:20px}
+  .hero-kauf .hk-note{font-size:14.5px;line-height:1.45;margin-top:10px}
+}
+
+/* Cross-Sell, ergaenzt 22.08.2026. Vorher verlinkten Verkaufs- und Zugangsseite
+   nur Recht und Kontakt, kein einziges anderes Angebot. */
+.fw-mehr{max-width:740px;margin:0 auto;padding:0 clamp(20px,5vw,40px) 56px}
+.fw-mehr-k{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:12px;padding:24px 26px}
+.fw-mehr-t{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#A44A18;margin-bottom:14px}
+.fw-mehr a{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid rgba(0,0,0,.07);text-decoration:none;transition:color .2s}
+.fw-mehr a:last-child{border-bottom:none;padding-bottom:0}
+.fw-mehr a:hover{color:#A44A18}
+.fw-mehr b{font-size:16.5px;font-weight:600;color:#1a1410;white-space:nowrap}
+.fw-mehr span{font-size:15px;color:#6b5e52;line-height:1.5}
+.fw-mehr .p{margin-left:auto;color:#A44A18;font-weight:700;flex-shrink:0}
+@media(max-width:600px){.fw-mehr a{flex-wrap:wrap;gap:2px}.fw-mehr b{white-space:normal;flex:1 1 100%;min-width:0}.fw-mehr span{flex:1 1 100%;min-width:0;overflow-wrap:anywhere}.fw-mehr .p{display:none}}
 </style>
   <script defer src="/js/stats.js"></script>
 </head>
@@ -154,6 +201,12 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
       <div class="hz"><b>7</b><span>Listen nach Thema</span></div>
       <div class="hz"><b>29 €</b><span>einmalig, kein Abo</span></div>
     </div>
+    <div class="hero-kauf">
+      <a class="btn" href="https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00">Maps Guide Pattaya kaufen</a>
+      <p class="hk-note">Einmalig 29 Euro, kein Abo. Zahlung über Stripe, auch mit PayPal oder Karte.
+      Direkt nach der Zahlung öffnet sich die Seite mit deinen sieben Listen.
+      Es gelten die <a href="agb.html">AGB und die Widerrufsbelehrung</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -168,7 +221,12 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
       <div class="schritt"><div><b>Die Orte bleiben in deiner Karte</b><p>Ab jetzt findest du alles unter Gespeichert. Die Orte liegen als farbige Punkte auf der Karte, auch unterwegs, auch in einem Jahr noch.</p></div></div>
     </div>
   </div>
-</section>
+
+    <div class="kauf-wieder">
+      <a class="btn" href="https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00">Maps Guide Pattaya kaufen, 29 €</a>
+      <small>Einmalig, kein Abo. Direkt nach der Zahlung hast du die sieben Listen.</small>
+    </div>
+  </section>
 
 <section class="listen">
   <div class="inner">
@@ -193,7 +251,12 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
       <div class="zeile"><div class="ort">Golden Orchidee</div><div class="txt">Deutsches Restaurant in Naklua. Montags geschlossen. Der Klassiker, wenn dir nach zu Hause ist.</div></div>
     </div>
   </div>
-</section>
+
+    <div class="kauf-wieder">
+      <a class="btn" href="https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00">Die sieben Listen holen, 29 €</a>
+      <small>Einmalig, kein Abo. Aktualisierungen dieser Stadt lebenslang gratis.</small>
+    </div>
+  </section>
 
 <section>
   <div class="inner">
@@ -249,7 +312,12 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
     <div class="q"><h4>Gibt es das auch als PDF zum Ausdrucken?</h4>
       <p>Der Ratgeber Pattaya kommt als eigenes Heft mit Kosten, Stadtteilen, Visum und Wohnungssuche. Das ist ein eigenes Produkt und keine Bedingung für die Karte. Trag dich in den Newsletter ein, dann sage ich Bescheid, sobald er fertig ist.</p></div>
   </div>
-</section>
+
+    <div class="kauf-wieder">
+      <a class="btn" href="https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00">Alles klar? Dann hol dir die Karte</a>
+      <small>29 € einmalig · Aktualisierungen dieser Stadt lebenslang gratis · Zahlung über Stripe</small>
+    </div>
+  </section>
 
 <section>
   <div class="inner">
@@ -265,6 +333,14 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   </div>
 </section>
 
+
+<div class="fw-mehr"><div class="fw-mehr-k">
+  <div class="fw-mehr-t">Vielleicht auch interessant</div>
+    <a href="/rechnung"><b>Die echte Monatsrechnung</b><span>Was das Leben in Thailand kostet, gratis als PDF</span><span class="p">&#8594;</span></a>
+    <a href="/bibliothek"><b>Meine Ratgeber</b><span>Visum, Wohnung, Krankenversicherung, Rückkehr</span><span class="p">&#8594;</span></a>
+    <a href="/reality-check"><b>Der Reality-Check</b><span>Zehn Fragen, ehrliche Auswertung</span><span class="p">&#8594;</span></a>
+    <a href="/blog/"><b>Alle Artikel und Videos</b><span>Pattaya, Bangkok, Vietnam, mit echten Zahlen</span><span class="p">&#8594;</span></a>
+</div></div>
 <footer>
   <div class="f-bottom">
     <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
@@ -278,5 +354,46 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   </div>
 </footer>
 
+
+<div class="kaufleiste" id="kaufleiste" aria-hidden="true">
+  <div class="kl-preis"><b>29 €</b><span>einmalig</span></div>
+  <a class="btn" href="https://buy.stripe.com/9B67sLe6a6edaYIeQj3Ru00">Jetzt kaufen</a>
+</div>
+<script>
+(function(){
+  var leiste = document.getElementById('kaufleiste');
+  var hero   = document.querySelector('.hero-kauf');
+  var block  = document.getElementById('kaufen');
+  if (!leiste) return;
+
+  function pruefen(){
+    // Ab wann: sobald der Hero-Knopf durchgescrollt ist.
+    // Bewusst mit offsetTop gerechnet statt mit getBoundingClientRect,
+    // das ist unabhaengig von Zoom und funktioniert auch, wenn der Browser
+    // die Fenstergroesse verspaetet meldet.
+    var schwelle = hero ? (hero.offsetTop + hero.offsetHeight) : 600;
+    var vorbei   = (window.pageYOffset || document.documentElement.scrollTop || 0) > schwelle;
+
+    // Wieder ausblenden, solange der grosse Kaufblock im Bild steht,
+    // sonst steht zweimal derselbe Knopf untereinander.
+    var blockDa = false;
+    if (block){
+      var b = block.getBoundingClientRect();
+      var hoehe = window.innerHeight || document.documentElement.clientHeight || 0;
+      blockDa = (b.top < hoehe && b.bottom > 0);
+    }
+
+    var an = vorbei && !blockDa;
+    leiste.classList.toggle('an', an);
+    leiste.setAttribute('aria-hidden', an ? 'false' : 'true');
+  }
+
+  addEventListener('scroll', pruefen, {passive:true});
+  addEventListener('resize', pruefen, {passive:true});
+  addEventListener('load', pruefen);
+  document.addEventListener('DOMContentLoaded', pruefen);
+  pruefen();
+})();
+</script>
 </body>
 </html>

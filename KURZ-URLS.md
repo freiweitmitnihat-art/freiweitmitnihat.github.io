@@ -34,8 +34,14 @@ Daraus folgt:
 | `freiweitmitnihat.com/i` | `i.html` | `/interview?via=qr` | 22.08.2026 | **I**nterview-Bewerbung, eigene Geschichte erzählen |
 | `freiweitmitnihat.com/w` | `w.html` | `/freiweit-woche?via=qr` | 22.08.2026 | Die Freiweit-**W**oche, Seminarwoche vor Ort |
 | `freiweitmitnihat.com/g` | `g.html` | `/city-guides?via=qr` | 22.08.2026 | Die City **G**uides |
+| `freiweitmitnihat.com/o` | `o.html` | `/immobilien?via=qr` | 23.08.2026 | Immobilien in Asien, **O**bjekte zum Mieten und Kaufen |
 
 **Merkregel:** ein Kleinbuchstabe, und zwar der Anfangsbuchstabe des Ziels.
+
+**Ausnahme `/o`:** Immobilien fängt mit I an, aber `/i` ist seit dem 22.08.2026 mit
+der Interview-Bewerbung belegt und darf nach Regel 2 nicht umgebogen werden.
+Deshalb steht `o` für **O**bjekte, so heißt die Seite inhaltlich auch.
+Angelegt am 23.08.2026, noch bevor der erste QR-Code damit gerendert wurde.
 
 ---
 

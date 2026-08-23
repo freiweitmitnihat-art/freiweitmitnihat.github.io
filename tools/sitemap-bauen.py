@@ -23,8 +23,18 @@ WICHTIG = {
     'index.html': '1.0', 'beratung.html': '0.9', 'immobilien.html': '0.9',
     'interview.html': '0.9', 'city-guides.html': '0.9', 'ratgeber.html': '0.8',
     'kontakt.html': '0.7', 'mediakit.html': '0.7', 'reality-check.html': '0.8',
-    'rechnung.html': '0.8', 'blog/index.html': '0.8',
+    'rechnung.html': '0.8', 'blog/index.html': '0.8', 'agb.html': '0.3',
 }
+
+
+# Nur ein echtes robots-Meta zaehlt. Das blosse Wort "noindex" in einem
+# HTML-Kommentar hat frueher fertige Seiten aus der Sitemap geworfen.
+NOINDEX = re.compile(
+    r'<meta[^>]+name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
+
+
+def hat_noindex(text):
+    return bool(NOINDEX.search(text))
 
 
 def alte_daten():
@@ -59,7 +69,7 @@ def main():
     for f in seiten:
         rel = str(f.relative_to(BASIS))
         t = f.read_text(encoding='utf-8')
-        if rel in AUS or f.name in AUS or 'noindex' in t:
+        if rel in AUS or f.name in AUS or hat_noindex(t):
             raus.append(rel)
             continue
         url = ROOT if rel == 'index.html' else ROOT + rel

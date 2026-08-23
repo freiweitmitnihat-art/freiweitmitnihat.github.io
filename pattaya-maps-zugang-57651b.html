@@ -59,6 +59,19 @@ text-decoration:none;color:var(--earth);min-height:72px}
 .hilfe a{color:var(--terra)}
 footer{border-top:1px solid rgba(26,20,16,0.14);padding:24px 0;font-size:15px;color:var(--mid)}
 footer a{color:var(--mid);margin-right:16px}
+
+/* Cross-Sell, ergaenzt 22.08.2026. Vorher verlinkten Verkaufs- und Zugangsseite
+   nur Recht und Kontakt, kein einziges anderes Angebot. */
+.fw-mehr{max-width:740px;margin:0 auto;padding:0 clamp(20px,5vw,40px) 56px}
+.fw-mehr-k{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:12px;padding:24px 26px}
+.fw-mehr-t{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#A44A18;margin-bottom:14px}
+.fw-mehr a{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid rgba(0,0,0,.07);text-decoration:none;transition:color .2s}
+.fw-mehr a:last-child{border-bottom:none;padding-bottom:0}
+.fw-mehr a:hover{color:#A44A18}
+.fw-mehr b{font-size:16.5px;font-weight:600;color:#1a1410;white-space:nowrap}
+.fw-mehr span{font-size:15px;color:#6b5e52;line-height:1.5}
+.fw-mehr .p{margin-left:auto;color:#A44A18;font-weight:700;flex-shrink:0}
+@media(max-width:600px){.fw-mehr a{flex-wrap:wrap;gap:2px}.fw-mehr b{white-space:normal;flex:1 1 100%;min-width:0}.fw-mehr span{flex:1 1 100%;min-width:0;overflow-wrap:anywhere}.fw-mehr .p{display:none}}
 </style>
 </head>
 <body>
@@ -93,6 +106,14 @@ footer a{color:var(--mid);margin-right:16px}
   <p class="hilfe">Diese Seite verloren? Schreib mir von der E-Mail-Adresse, mit der du bezahlt hast, dann schicke ich dir den Zugang noch einmal. Kostet nichts.</p>
 </main>
 
+
+<div class="fw-mehr"><div class="fw-mehr-k">
+  <div class="fw-mehr-t">Danke. Das könnte dir auch helfen</div>
+    <a href="/rechnung"><b>Die echte Monatsrechnung</b><span>Was der Monat wirklich kostet, gratis als PDF</span><span class="p">&#8594;</span></a>
+    <a href="/bibliothek"><b>Meine Ratgeber</b><span>Visum, Wohnung, Krankenversicherung, Rückkehr</span><span class="p">&#8594;</span></a>
+    <a href="/freiweit-woche"><b>Die Freiweit-Woche</b><span>Eine Woche vor Ort, kleine Gruppe</span><span class="p">&#8594;</span></a>
+    <a href="/interview"><b>Deine Geschichte</b><span>Erzähl sie auf dem Kanal, auf Wunsch anonym</span><span class="p">&#8594;</span></a>
+</div></div>
 <footer><div class="wrap"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/agb">AGB</a></div></footer>
 
 <script>
