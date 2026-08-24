@@ -34,6 +34,7 @@ Daraus folgt:
 | `freiweitmitnihat.com/i` | `i.html` | `/interview?via=qr` | 22.08.2026 | **I**nterview-Bewerbung, eigene Geschichte erzählen |
 | `freiweitmitnihat.com/w` | `w.html` | `/freiweit-woche?via=qr` | 22.08.2026 | Die Freiweit-**W**oche, Seminarwoche vor Ort |
 | `freiweitmitnihat.com/g` | `g.html` | `/city-guides?via=qr` | 22.08.2026 | Die City **G**uides |
+| `/hh` | `/hua-hin` | Maps Guide Hua Hin | 24.08.2026 |
 | `freiweitmitnihat.com/o` | `o.html` | `/immobilien?via=qr` | 23.08.2026 | Immobilien in Asien, **O**bjekte zum Mieten und Kaufen |
 
 **Merkregel:** ein Kleinbuchstabe, und zwar der Anfangsbuchstabe des Ziels.
