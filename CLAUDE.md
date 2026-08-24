@@ -87,13 +87,16 @@ Die Palette bleibt, aber sie darf nie allein tragen. Was den Unterschied macht:
 | `r.html` / `b.html` | Kurzweiterleitungen für die QR-Codes | **Ziel nie ändern** |
 | `ratgeber.html` | leitet auf `/rechnung` weiter | Weiterleitung |
 | `bibliothek.html` | Ratgeber kaufen, 6 Hefte plus Paket | **komplett live seit 24.08.2026**, alle sieben Produkte kaufbar, indexierbar, in der Sitemap |
-| `hilfe.html` | Kaufhilfe, „wo ist mein Download-Ordner" | live, am 24.08.2026 komplett aktualisiert (Text und Screenshot 3) |
+| `hilfe.html` | Kaufhilfe **nur fuer die Ratgeber**, Digistore und PDF | live, am 24.08.2026 komplett aktualisiert (Text und Screenshot 3) |
 | `freiweit-woche.html` | Programmwoche vor Ort | `noindex` bis Rechtsprüfung |
 | `beratung.html` | 97 € Beratungsgespräch, Cal.eu | live |
 | `immobilien.html` `interview.html` `kontakt.html` | | live |
 | `reality-check.html` | Selbsttest, 10 Fragen | live |
 | `city-guides.html` | Maps Guide Pattaya, 29 EUR, Kauf ueber Stripe | live seit 22.08.2026 |
 | `pattaya-maps-zugang-57651b.html` | Zugangsseite nach der Zahlung, **nicht verlinken**, noindex | live |
+| `hua-hin.html` | Maps Guide Hua Hin, 29 EUR, Kauf ueber Stripe | **Verkauf pausiert seit 24.08.2026**, noindex, Listen fehlen |
+| `huahin-maps-zugang-5893a3.html` | Zugangsseite nach der Zahlung, **nicht verlinken**, noindex | 0 von 8 Listen-Links |
+| `maps-hilfe.html` | Kaufhilfe fuer die Maps Guides, Stripe und Google Maps | live seit 24.08.2026, 4 Screenshots fehlen |
 | `agb.html` | AGB und Widerrufsbelehrung fuer die digitalen Produkte | live seit 22.08.2026 |
 | `blog/` | 44 Artikel plus `blog/index.html` | live |
 | `blog/blog-template.html` | Vorlage fuer `auto-blog.py`, **nicht loeschen, nicht verschieben** | noindex |
@@ -258,3 +261,47 @@ Kette: `city-guides.html` (Kaufknopf) → Stripe Checkout → Weiterleitung auf
   „Freiweit mit Nihat". Listen lassen sich zwischen Konten **nicht** umziehen.
 - Die Teilen-Links bleiben gueltig, auch wenn Orte in den Listen geaendert werden.
   Nur beim Loeschen und Neuanlegen einer Liste bricht der Link.
+
+---
+
+## MAPS GUIDE HUA HIN (Stand 24.08.2026)
+
+Gleiche Mechanik wie Pattaya, eigenes Stripe-Produkt, eigene Zugangsseite.
+Kette: `hua-hin.html` (Kaufknopf) → Stripe Checkout → Weiterleitung auf
+`huahin-maps-zugang-5893a3.html` → acht geteilte Google-Maps-Listen.
+
+- Zahlungslink: `https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01`
+- Kurz-URL `/hh` zeigt auf `/hua-hin?via=qr`
+- 100 Orte in acht Listen, davon 23 in der Liste Arzt, Pflege, Behoerden.
+  Die Zahlen stehen an mehreren Stellen in `hua-hin.html` und in den
+  Untertiteln der Zugangsseite. Bei Aenderung **ueberall** nachziehen,
+  ausserdem im Stripe-Produkt und im Produktbild.
+- Produktbild: `daten/maps-orte/produktion/produktbild/cover-huahin.png`
+- **Vier Orte sind selbst gefilmt** (German Corner, My Baker, Jasmine Garden,
+  La Moon Massage), die anderen 96 sind recherchiert. Das steht so auf der
+  Verkaufsseite und darf nicht hochgeredet werden. Die vier tragen in der
+  Notiz einen Haken.
+
+### ⚠️ Verkauf pausiert
+
+Die acht Listen sind noch nicht in Google Maps angelegt, die Zugangsseite hat
+null von acht Links. Ein Kauf waere nicht lieferbar, deshalb sind am
+24.08.2026 alle sechs Kaufknoepfe stillgelegt und die Seite steht auf noindex.
+
+**Wieder aufmachen:** Anleitung Schritt fuer Schritt steht im Kopfkommentar
+von `hua-hin.html`. Vorher die acht Teilen-Links in den Block `LISTEN` der
+Zugangsseite eintragen.
+
+**Listen anlegen:** `daten/maps-orte/produktion/klick-helfer-huahin.html` im
+Browser oeffnen. Er fuehrt durch alle 100 Orte, merkt sich den Fortschritt und
+liefert je Liste den Namen zum Kopieren (`Freiweit Hua Hin 1 · Essen und Trinken`).
+Einzige Datenquelle ist `daten/maps-orte/produktion/huahin_orte.py`, aus der
+werden Klick-Helfer und Ortsliste erzeugt, beides nie von Hand aendern.
+
+### Zwei Kaufhilfen, nicht verwechseln
+
+- `hilfe.html` gehoert den **Ratgebern**: Digistore24, PDF, Download-Ordner.
+- `maps-hilfe.html` gehoert den **Maps Guides**: Stripe, kein Download,
+  einer Liste folgen, Wiederfinden unter Gespeichert.
+
+Beide Maps-Guide-Seiten und beide Zugangsseiten verweisen auf `maps-hilfe.html`.

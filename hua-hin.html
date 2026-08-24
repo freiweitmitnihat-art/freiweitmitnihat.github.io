@@ -2,10 +2,29 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<!-- Verkaufsseite Maps Guide Pattaya, 29 EUR ueber Stripe.
-     Stand 22.08.2026: Stripe-Link aktiv, sieben Listen auf der Zugangsseite
-     hinterlegt, noindex entfernt, in der Sitemap eingetragen.
-     Die Zugangsseite pattaya-maps-zugang-57651b.html bleibt auf noindex. -->
+<!-- ============================================================
+     VERKAUF PAUSIERT seit 24.08.2026.
+     Grund: die acht Google-Maps-Listen sind noch nicht angelegt, die
+     Zugangsseite huahin-maps-zugang-5893a3.html hat null von acht Links.
+     Ein Kauf waere nicht lieferbar.
+
+     SO MACHST DU DEN VERKAUF WIEDER AUF, in dieser Reihenfolge:
+     1. Alle acht Teilen-Links im Block LISTEN der Zugangsseite eintragen.
+     2. In dieser Datei nach BALD suchen. An jeder Fundstelle steht der
+        Originalknopf als Kommentar daneben, einfach zurucktauschen.
+     3. Die Klebeleiste unten wieder einblenden (style display none raus).
+     4. robots wieder auf index setzen und
+        python3 tools/sitemap-bauen.py laufen lassen.
+     Stripe-Link zum Wiedereinsetzen: https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01
+     ============================================================ -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Verkaufsseite Maps Guide Hua Hin, 29 EUR ueber Stripe.
+     Stand 24.08.2026: Stripe-Link aktiv, noindex entfernt, in der Sitemap
+     eingetragen, Kurz-URL /hh zeigt hierher.
+     OFFEN: Die acht Maps-Listen sind noch nicht angelegt, deshalb stehen sie
+     auf der Zugangsseite noch ohne Link. Erst wenn alle acht Teilen-Links dort
+     eingetragen sind, darf hier beworben werden, dass es sofort losgeht.
+     Die Zugangsseite huahin-maps-zugang-5893a3.html bleibt auf noindex. -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -17,7 +36,7 @@
 <meta property="og:site_name" content="Freiweit mit Nihat">
 <meta property="og:title" content="Maps Guide Hua Hin · 100 Orte für deine Google-Maps-App">
 <meta property="og:description" content="100 Orte in Hua Hin, direkt in deiner Google-Maps-App. Mit einer Notiz an jedem Ort, warum er drin ist.">
-<meta property="og:url" content="https://freiweitmitnihat.com/city-guides">
+<meta property="og:url" content="https://freiweitmitnihat.com/hua-hin.html">
 <meta property="og:image" content="https://freiweitmitnihat.com/og-image.jpg">
 <meta property="og:locale" content="de_DE">
 <meta name="description" content="Der Maps Guide Hua Hin: 100 ausgesuchte Orte in acht Listen, direkt in deiner Google-Maps-App. Beide Immigration-Büros, deutschsprachiges Krankenhaus, Pflege, Golf, Strände.">
@@ -94,6 +113,13 @@ p.lead strong{color:var(--earth);font-weight:600}
 .kauf-note{font-size:16px;color:var(--sand);font-weight:600;margin-bottom:24px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--terra);color:white;border:none;font-family:'Inter',sans-serif;font-size:19px;font-weight:600;padding:18px 34px;border-radius:9px;cursor:pointer;min-height:62px;text-decoration:none;width:100%}
 .btn:hover{background:#96430f}
+/* BALD: Knopf im Pausenzustand, nicht klickbar. Siehe Kopfkommentar. */
+.btn-aus{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.92);
+  border:1.5px solid rgba(200,169,126,0.45);font-family:'Inter',sans-serif;
+  font-size:19px;font-weight:600;padding:18px 34px;border-radius:9px;
+  min-height:62px;width:100%;cursor:default}
+.kauf-wieder .btn-aus,.hero-kauf .btn-aus{width:100%}
 .kauf small{display:block;margin-top:14px;font-size:15.5px;color:rgba(255,255,255,0.72)}
 .kauf small a{color:var(--sand)}
 
@@ -202,9 +228,10 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
       <div class="hz"><b>29 €</b><span>einmalig, kein Abo</span></div>
     </div>
     <div class="hero-kauf">
-      <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen</a>
-      <p class="hk-note">Einmalig 29 Euro, kein Abo. Zahlung über Stripe, auch mit PayPal oder Karte.
-      Direkt nach der Zahlung öffnet sich die Seite mit deinen acht Listen.
+      <!-- BALD, Original: <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen</a> -->
+      <span class="btn-aus">Noch nicht zu haben</span>
+      <p class="hk-note">Die acht Listen lege ich gerade in Google Maps an. Solange das nicht fertig ist, verkaufe ich den Guide nicht.
+      <a href="index.html#newsletter">Trag dich hier ein</a>, dann schreibe ich dir, sobald er steht.
       Es gelten die <a href="agb.html">AGB und die Widerrufsbelehrung</a>.</p>
     </div>
   </div>
@@ -214,7 +241,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   <div class="inner">
     <div class="sec-eyebrow">So läuft es ab</div>
     <h2>Drei Schritte, dann ist es auf deinem Handy</h2>
-    <p class="lead">Wenn du Google Maps schon einmal benutzt hast, kannst du das. Wenn nicht, gehe ich mit dir Schritt für Schritt durch die <a href="hilfe.html" style="color:var(--terra)">Kaufhilfe</a>.</p>
+    <p class="lead">Wenn du Google Maps schon einmal benutzt hast, kannst du das. Wenn nicht, gehe ich mit dir Schritt für Schritt durch die <a href="maps-hilfe.html" style="color:var(--terra)">Kaufhilfe</a>.</p>
     <div class="schritte">
       <div class="schritt"><div><b>Du kaufst und landest auf deiner Seite</b><p>Direkt nach der Zahlung öffnet sich die Seite mit deinen acht Listen. Lege sie dir als Lesezeichen an, dann findest du sie immer wieder.</p></div></div>
       <div class="schritt"><div><b>Du tippst die Listen an</b><p>Jede Liste öffnet sich in deiner Google-Maps-App. Ein Tipp auf Folgen, fertig. Das machst du acht Mal, es dauert keine drei Minuten.</p></div></div>
@@ -223,8 +250,9 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   </div>
 
     <div class="kauf-wieder">
-      <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen, 29 €</a>
-      <small>Einmalig, kein Abo. Direkt nach der Zahlung hast du die acht Listen.</small>
+      <!-- BALD, Original: <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen, 29 €</a> -->
+      <span class="btn-aus">Noch nicht zu haben</span>
+      <small>Die Listen sind im Aufbau. <a href="index.html#newsletter" style="color:var(--terra)">Sag mir Bescheid</a>, dann melde ich mich, sobald der Guide fertig ist.</small>
     </div>
   </section>
 
@@ -254,8 +282,9 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   </div>
 
     <div class="kauf-wieder">
-      <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Die acht Listen holen, 29 €</a>
-      <small>Einmalig, kein Abo. Aktualisierungen dieser Stadt lebenslang gratis.</small>
+      <!-- BALD, Original: <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Die acht Listen holen, 29 €</a> -->
+      <span class="btn-aus">Noch nicht zu haben</span>
+      <small>Die Listen sind im Aufbau. Preis steht fest: 29 € einmalig, Aktualisierungen dieser Stadt lebenslang gratis.</small>
     </div>
   </section>
 
@@ -274,8 +303,9 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="preis"><span class="now">29 €</span><span class="unit">einmalig</span></div>
         <div class="kauf-note">Zahlung über Stripe, auch mit PayPal oder Karte</div>
-        <a class="btn" id="kaufen" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen</a>
-        <small>Direkt nach der Zahlung landest du auf der Seite mit deinen acht Listen. Lege sie dir als Lesezeichen an. Fragen vorher: <a href="kontakt.html">schreib mir kurz</a>. Es gelten die <a href="agb.html">AGB und die Widerrufsbelehrung</a>.</small>
+        <!-- BALD, Original: <a class="btn" id="kaufen" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Maps Guide Hua Hin kaufen</a> -->
+        <span class="btn-aus" id="kaufen">Noch nicht zu haben</span>
+        <small>Die acht Listen lege ich gerade an. Sobald sie stehen, kannst du hier kaufen und landest direkt auf der Seite mit deinen Listen. Fragen vorher: <a href="kontakt.html">schreib mir kurz</a>. Es gelten die <a href="agb.html">AGB und die Widerrufsbelehrung</a>.</small>
       </div>
     </div>
 
@@ -303,7 +333,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
       <p>Ja. Die Listen sind die eingebaute Speicherfunktion von Google Maps, nicht eine eigene Karte. Deshalb läuft es auf iPhone und Android gleich.</p></div>
 
     <div class="q"><h4>Ich kenne mich mit dem Handy nicht gut aus.</h4>
-      <p>Dann nimm dir die <a href="hilfe.html">Kaufhilfe</a> daneben. Dort steht jeder Schritt mit Bild. Und wenn es klemmt, schreib mir, ich antworte selbst.</p></div>
+      <p>Dann nimm dir die <a href="maps-hilfe.html">Kaufhilfe</a> daneben. Dort steht jeder Schritt mit Bild. Und wenn es klemmt, schreib mir, ich antworte selbst.</p></div>
 
     <div class="q"><h4>Was passiert, wenn ein Laden zumacht?</h4>
       <p>Dann nehme ich ihn raus oder ersetze ihn, und du siehst das automatisch. Genau deshalb ist es eine Karte und kein PDF. Bei einem PDF müsstest du dir eine neue Datei holen.</p></div>
@@ -316,8 +346,9 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   </div>
 
     <div class="kauf-wieder">
-      <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Alles klar? Dann hol dir die Karte</a>
-      <small>29 € einmalig · Aktualisierungen dieser Stadt lebenslang gratis · Zahlung über Stripe</small>
+      <!-- BALD, Original: <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Alles klar? Dann hol dir die Karte</a> -->
+      <span class="btn-aus">Noch nicht zu haben</span>
+      <small>29 € einmalig · Aktualisierungen dieser Stadt lebenslang gratis · <a href="index.html#newsletter" style="color:var(--terra)">sag mir Bescheid</a>, wenn er fertig sein soll</small>
     </div>
   </section>
 
@@ -348,7 +379,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
     <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
       <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:white">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
       <a href="index.html">Startseite</a>
-      <a href="hilfe.html">Kaufhilfe</a>
+      <a href="maps-hilfe.html">Kaufhilfe</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="agb.html">AGB und Widerruf</a>
     </div>
@@ -357,7 +388,8 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
 </footer>
 
 
-<div class="kaufleiste" id="kaufleiste" aria-hidden="true">
+<!-- BALD: Klebeleiste ausgeblendet, solange nicht verkauft wird. display none raus zum Wiedereinschalten. -->
+<div class="kaufleiste" id="kaufleiste" aria-hidden="true" style="display:none">
   <div class="kl-preis"><b>29 €</b><span>einmalig</span></div>
   <a class="btn" href="https://buy.stripe.com/28E5kD4vA7iheaU37B3Ru01">Jetzt kaufen</a>
 </div>

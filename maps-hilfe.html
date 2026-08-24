@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<!-- ============================================================
+MAPS-HILFE · Kaufanleitung fuer die Maps Guides (Pattaya, Hua Hin)
+Erreichbar unter freiweitmitnihat.com/maps-hilfe
+Bewusst getrennt von hilfe.html: die Ratgeber laufen ueber Digistore24
+und liefern eine PDF-Datei, die Maps Guides laufen ueber Stripe und
+liefern Google-Maps-Listen. Zwei Produkte, zwei Wege, zwei Seiten.
+NOCH EINZUSETZEN: echte Screenshots aus einem Testkauf an den Stellen
+mit der Markierung SCREENSHOT-1 bis SCREENSHOT-4.
+Bis dahin funktioniert die Seite als reine Textanleitung.
+     ============================================================ -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilfe zum Maps Guide · Freiweit mit Nihat</title>
+<meta name="description" content="Schritt für Schritt erklärt: So kaufst du einen Maps Guide, so legst du die Listen in deiner Google-Maps-App ab, und so findest du sie wieder.">
+  <link rel="preload" href="/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--earth:#1A1410;--terra:#A44A18;--cream:#FAFAF8;--cream2:#F4EFE8;--mid:#4A4238;--sand:#C8A97E;--glass:rgba(250,250,248,0.96)}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--earth);font-family:'Inter',sans-serif;overflow-x:hidden;font-size:19px;line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,169,126,0.15);padding:0 clamp(20px,5vw,80px);height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--earth);text-decoration:none}
+.nav-logo span{color:var(--terra)}
+.nav-back{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--mid);font-size:16px;font-weight:500;transition:color .2s;min-height:48px;align-items:center;display:flex}
+.nav-back:hover{color:var(--terra)}
+
+.hero{background:var(--earth);padding:clamp(105px,13vh,146px) clamp(24px,5vw,80px) clamp(52px,7vh,78px)}
+.hero-inner{max-width:760px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--sand)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,54px);font-weight:700;line-height:1.09;letter-spacing:-1.3px;color:white;margin-bottom:20px}
+.hero-lead{font-size:20px;color:rgba(255,255,255,0.72);line-height:1.72}
+
+section{padding:clamp(50px,7vh,78px) clamp(24px,5vw,80px)}
+.inner{max-width:760px;margin:0 auto}
+.sec-eyebrow{font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(27px,3.8vw,38px);font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:18px}
+p.lead{font-size:19px;color:var(--mid);line-height:1.8;margin-bottom:16px}
+p.lead strong{color:var(--earth);font-weight:600}
+
+/* SCHRITTE */
+.step{background:white;border:1px solid rgba(26,20,16,0.09);border-radius:18px;padding:clamp(24px,3.4vw,34px);margin-bottom:18px;display:flex;gap:24px;align-items:flex-start}
+.step-n{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--earth);color:white;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step-body h3{font-size:21px;font-weight:600;margin-bottom:10px;letter-spacing:-0.2px;line-height:1.35}
+.step-body p{font-size:18px;color:var(--mid);line-height:1.75}
+.step-body p+p{margin-top:10px}
+.step-body strong{color:var(--earth);font-weight:600}
+.shot{background:var(--cream2);border:1px dashed rgba(26,20,16,0.2);border-radius:12px;padding:22px;margin-top:16px;font-size:16px;color:var(--mid);text-align:center}
+
+.sees{background:rgba(196,98,45,0.06);border-left:4px solid var(--terra);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:14px;font-size:17.5px;color:var(--earth)}
+
+/* GERAETE */
+.dev{background:white;border:1px solid rgba(26,20,16,0.09);border-radius:16px;padding:24px 26px;margin-bottom:14px}
+.dev h4{font-size:19px;font-weight:600;margin-bottom:8px}
+.dev p{font-size:18px;color:var(--mid);line-height:1.75}
+
+.help-box{background:var(--earth);border-radius:20px;padding:clamp(26px,4vw,42px);margin-top:28px}
+.help-box h3{font-family:'Playfair Display',serif;font-size:clamp(24px,3.2vw,32px);font-weight:700;color:white;margin-bottom:16px;letter-spacing:-0.7px}
+.help-box p{font-size:18.5px;color:rgba(255,255,255,0.66);line-height:1.78;margin-bottom:14px}
+.help-box a{color:var(--sand)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--terra);color:white;border:none;font-family:'Inter',sans-serif;font-size:18px;font-weight:600;padding:17px 30px;border-radius:9px;cursor:pointer;transition:all .2s;min-height:56px;text-decoration:none;margin-top:8px}
+.btn:hover{background:#a9521f;transform:translateY(-1px)}
+/* Auf dem Handy nimmt der Nummernkreis dem Text die halbe Breite.
+   Zielgruppe ueber 55 liest das hier auf dem Handy, waehrend sie die
+   Schritte mitmacht, also bekommt der Text die volle Zeile. */
+@media(max-width:600px){
+  .step{flex-direction:column;gap:14px;padding:22px 20px}
+  .step-n{width:44px;height:44px;font-size:23px}
+  .step-body h3{font-size:20px}
+  .shot{padding:18px 14px}
+}
+
+footer{background:var(--earth);padding:34px clamp(20px,5vw,80px);border-top:1px solid rgba(200,169,126,0.12)}
+.f-bottom{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.f-bottom a{color:rgba(255,255,255,0.68);text-decoration:none;font-size:15px;transition:color .2s;display:inline-block;padding:8px 0}
+.f-bottom a:hover{color:var(--sand)}
+.f-bottom p{color:rgba(255,255,255,0.68);font-size:14.5px}
+.shotbild{margin:14px 0 4px;border:1px solid var(--line,rgba(26,20,16,.14));border-radius:9px;overflow:hidden;background:#fff}
+.shotbild img{width:100%;height:auto;display:block}
+
+
+/* Lesbarkeit v3 (WCAG AA, Zielgruppe 55+) */
+.article-hero .eyebrow,.blog-hero .eyebrow,.article-header .eyebrow{color:var(--sand,#C8A97E)}
+.more-badge,.mbg{color:var(--sand,#C8A97E)}
+.more-card-meta,.mcm{color:#A9A39D}
+.f-bottom p,.f-bottom a,.footer-bottom a,.footer-bottom p,footer p,footer p a,footer a,footer p,footer small{color:rgba(255,255,255,.72)}
+.pb-price .once,.once,.msub{color:rgba(255,255,255,.72)}
+.cta-sec p,.cta-box p{color:#FFF}
+.block p a,.article-body p a,article p a{text-decoration:underline;text-underline-offset:2px}
+.hero .eyebrow,header.hero .eyebrow,.hero .ey,header.hero .ey{color:var(--sand,#C8A97E)}
+</style>
+  <script defer src="/js/stats.js"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Freiweit <span>mit Nihat</span></a>
+  <a class="nav-back" href="city-guides.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Zu den Maps Guides
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Hilfe</div>
+    <h1>So kommst du an deine Karte</h1>
+    <p class="hero-lead">Beim Maps Guide bekommst du keine Datei zum Herunterladen, sondern Listen, die in deiner Google-Maps-App liegen bleiben. Hier steht jeder Schritt, vom Kauf bis zu dem Punkt, an dem die Orte auf deiner Karte stehen.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-eyebrow">Der Kauf</div>
+    <h2>Was passiert, wenn du auf den Knopf drückst.</h2>
+    <p class="lead">Damit du weißt, was kommt, bevor du klickst. Es dauert insgesamt etwa zwei Minuten.</p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <h3>Du klickst auf „Maps Guide kaufen"</h3>
+        <p>Es öffnet sich ein Bezahlformular. Das kommt nicht von mir, sondern von <strong>Stripe</strong>, dem Zahlungsdienst, über den ich abrechne. Deshalb sieht die Seite anders aus als meine.</p>
+        <p>Oben auf dem Formular steht noch einmal, welchen Guide du bekommst und was er kostet. Du legst dabei <strong>kein Konto</strong> an und musst dir <strong>kein Passwort</strong> merken.</p>
+        <div class="shot">SCREENSHOT-1: das Stripe-Formular mit dem Namen des Guides und dem Preis</div>
+        <div class="sees">Du siehst: eine Seite mit dem Namen des Guides, dem Preis und Feldern für die Bezahlung.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <h3>Du trägst deine E-Mail-Adresse ein und wählst, wie du zahlen willst</h3>
+        <p>Mehr wird nicht gefragt. Zur Auswahl stehen Kreditkarte und PayPal. Je nach Gerät zeigt Stripe zusätzlich Apple Pay oder Google Pay an. Was dir angezeigt wird, hängt von deinem Handy und deinem Browser ab.</p>
+        <p><strong>Die E-Mail-Adresse ist der wichtigste Punkt.</strong> Dorthin geht die Zahlungsbestätigung, und über diese Adresse finde ich deinen Kauf wieder, falls du später einmal nicht mehr an deine Listen kommst. Schreib sie bitte in Ruhe ab und prüfe sie einmal.</p>
+        <div class="sees">Du siehst: ein Feld für die E-Mail-Adresse, darunter die Bezahlfelder.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <h3>Du landest direkt auf deiner Seite mit den Listen</h3>
+        <p>Sofort nach der Zahlung öffnet sich die Seite, auf der deine Listen stehen. Nichts wird heruntergeladen, es gibt keine Datei.</p>
+        <p><strong>Der wichtigste Handgriff überhaupt: Leg dir diese Seite als Lesezeichen an.</strong> Auf dem iPhone tippst du unten auf das Symbol mit dem Pfeil nach oben und dann auf „Zu Favoriten". Auf Android tippst du oben rechts auf die drei Punkte und dann auf den Stern. Am Computer drückst du gleichzeitig Strg und D, auf dem Mac Befehlstaste und D.</p>
+        <p>Wenn du das einmal machst, kommst du für immer wieder an deine Listen. Und falls du es vergisst, ist es auch nicht schlimm: weiter unten steht, was dann zu tun ist.</p>
+        <div class="shot">SCREENSHOT-2: die Zugangsseite mit den Listen untereinander</div>
+        <div class="sees">Du siehst: eine Seite mit deinem Stadtnamen oben und den Listen als Kacheln darunter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream2)">
+  <div class="inner">
+    <div class="sec-eyebrow">Die Listen aufs Handy holen</div>
+    <h2>Der Teil, um den es eigentlich geht.</h2>
+    <p class="lead">Das machst du am besten <strong>auf dem Handy</strong>, nicht am Computer. Denn dort willst du die Orte ja später haben, wenn du vor Ort stehst. Rechne mit drei Minuten für alle Listen zusammen.</p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <h3>Melde dich vorher in Google Maps an</h3>
+        <p>Das ist die eine Voraussetzung, an der es sonst scheitert. Öffne die Google-Maps-App und schau oben rechts: Steht dort dein Bild oder dein Anfangsbuchstabe in einem Kreis, bist du angemeldet und alles ist gut.</p>
+        <p>Steht dort nichts oder ein graues Männchen, tippe darauf und melde dich mit deinem Google-Konto an. <strong>Ohne Anmeldung kann Google Maps die Listen nicht behalten.</strong> Das ist eine Regel von Google, daran kann ich nichts ändern.</p>
+        <p>Merk dir, mit welchem Konto du das machst. Die Orte liegen später genau in diesem Konto, nicht in einem anderen.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <h3>Tippe auf deiner Seite die erste Liste an</h3>
+        <p>Google Maps öffnet sich und zeigt dir die Liste mit allen Orten darin. Wenn sich statt der App der Browser öffnet, such nach dem Hinweis „In der App öffnen" und tippe darauf. In der App ist es später bequemer.</p>
+        <div class="shot">SCREENSHOT-3: die geöffnete Liste in der Google-Maps-App</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <h3>Tippe auf „Folgen"</h3>
+        <p>Das ist der entscheidende Klick. Der Knopf sitzt bei der Liste oben und heißt je nach Version deines Handys <strong>„Folgen"</strong> oder <strong>„Speichern"</strong>, manchmal steht auch nur ein Lesezeichen-Symbol dort. Ein Tipp darauf, fertig.</p>
+        <p>Ab diesem Moment gehört die Liste zu deinem Konto. Sie bleibt dort, auch wenn du das Handy ausschaltest, auch in einem Jahr noch, und auch wenn du ein neues Handy bekommst und dich dort mit demselben Konto anmeldest.</p>
+        <div class="sees">Du siehst: der Knopf ändert sich und zeigt danach an, dass du der Liste folgst.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body">
+        <h3>Zurück auf meine Seite, nächste Liste, dasselbe noch einmal</h3>
+        <p>Tippe unten links den Zurück-Pfeil oder wechsle wieder in den Browser. Dann die nächste Liste antippen und wieder auf „Folgen". Das machst du so oft, wie deine Stadt Listen hat.</p>
+        <p>Du musst das nicht in einem Rutsch erledigen. Wer nach drei Listen genug hat, macht morgen weiter. Deine Seite bleibt ja im Lesezeichen.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-body">
+        <h3>So findest du die Orte ab jetzt wieder</h3>
+        <p>Öffne die Google-Maps-App und tippe unten in der Leiste auf <strong>„Gespeichert"</strong>. Dort stehen deine Listen. Je nach Version musst du noch einmal auf „Listen" tippen oder ein Stück nach unten wischen, bis der Bereich für Listen kommt, denen du folgst.</p>
+        <p>Tippst du eine Liste an, liegen die Orte als farbige Punkte auf der Karte. Tippst du einen Punkt an, erscheint unten der Ort und darunter <strong>meine Notiz</strong>: was er ist, was er kostet, wann er offen hat. Von dort kannst du wie bei jedem anderen Ort auf „Route" tippen.</p>
+        <div class="shot">SCREENSHOT-4: die Orte als Punkte auf der Karte, darunter eine aufgeklappte Notiz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-eyebrow">Wenn etwas klemmt</div>
+    <h2>Die vier Sachen, die erfahrungsgemäß schiefgehen.</h2>
+
+    <div class="dev">
+      <h4>Ich finde die Seite mit meinen Listen nicht mehr</h4>
+      <p>Kein Drama, dafür ist nichts verloren. Schau zuerst in der Verlaufsliste deines Browsers nach, dort steht sie noch. Wenn du sie nicht findest, schreib mir an <strong>freiweit.mit.nihat@gmail.com</strong> und nenn mir die E-Mail-Adresse, mit der du gekauft hast. Dann schicke ich dir den Link noch einmal.</p>
+    </div>
+
+    <div class="dev">
+      <h4>Ich habe auf „Folgen" getippt, aber unter „Gespeichert" steht nichts</h4>
+      <p>Fast immer liegt es daran, dass Google Maps nicht angemeldet war oder dass ein anderes Google-Konto aktiv ist als gedacht. Tipp in Maps oben rechts auf den Kreis und schau nach, welches Konto dort steht. Melde dich mit dem richtigen an und tippe die Listen noch einmal an.</p>
+    </div>
+
+    <div class="dev">
+      <h4>Ich sehe die Orte, aber keine Notizen</h4>
+      <p>Die Notiz erscheint erst, wenn du einen Ort antippst. Sie steht dann unten im aufgeklappten Bereich unter dem Namen des Ortes. Auf der Karte selbst siehst du nur den Punkt, sonst wäre alles zugedeckt.</p>
+    </div>
+
+    <div class="dev">
+      <h4>Ich habe kein Google-Konto</h4>
+      <p>Dann brauchst du eines, sonst kann Google Maps die Listen nicht behalten. Ein Konto ist kostenlos, und wenn du ein Android-Handy hast, hast du in aller Regel längst eines. Beim iPhone ist es meistens nicht vorhanden. Wenn du dabei Hilfe brauchst, schreib mir, dann gehen wir das zusammen durch.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream2)">
+  <div class="inner">
+    <div class="sec-eyebrow">Wenn gar nichts klappt</div>
+    <h2>Dann schreib mir einfach.</h2>
+    <p class="lead">Das ist keine Floskel. Wenn irgendetwas hakt, der Knopf nicht reagiert, die Liste sich nicht öffnet oder du dir schlicht unsicher bist: <strong>Schreib mir an freiweit.mit.nihat@gmail.com.</strong></p>
+    <p class="lead">Ich antworte dir am selben Tag. Schreib dazu, welche Stadt du gekauft hast, mit welcher E-Mail-Adresse, und ob du ein iPhone oder ein Android-Handy hast. Dann kann ich dir gleich richtig antworten, statt erst zurückfragen zu müssen.</p>
+    <p class="lead">Und falls du das Gefühl hast, dich zu blamieren: <strong>Tust du nicht.</strong> Diese Fragen bekomme ich ständig, und meistens liegt es an der Technik, nicht an dir.</p>
+    <a class="btn" href="kontakt.html">Schreib mir</a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-bottom">
+    <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:17px;color:white;text-decoration:none">Freiweit <span style="color:var(--sand)">mit Nihat</span></a>
+      <a href="index.html">Startseite</a>
+      <a href="city-guides.html">Maps Guides</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p>© 2026 Freiweit mit Nihat</p>
+  </div>
+</footer>
+
+</body>
+</html>

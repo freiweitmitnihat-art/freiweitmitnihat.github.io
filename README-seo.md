@@ -55,10 +55,12 @@ diese Seiten automatisch draußen.
 | `bibliothek.html` | Ratgeber warten auf die Digistore-Freigabe | nach der Freigabe |
 | `freiweit-woche.html` | Programmwoche noch nicht verkauft | beim Liveschalten |
 | `pattaya-maps-zugang-57651b.html` | Zugangsseite für Käufer | nie |
+| `huahin-maps-zugang-5893a3.html` | Zugangsseite für Käufer | nie |
 | `danke.html` | Dankeseite nach dem Kauf | nie |
-| `hilfe.html` | Kaufhilfe mit Screenshots | nie |
+| `hilfe.html` | Kaufhilfe für die Ratgeber, Digistore und PDF | nie |
+| `maps-hilfe.html` | Kaufhilfe für die Maps Guides, Stripe und Google Maps | nie |
 | `ratgeber.html` | alte Seite, leitet auf `/rechnung` | nie |
-| `r b h i g w o .html` | Kurz-URLs für QR-Codes, reine Weiterleitungen | nie |
+| `r b h i g w o hh .html` | Kurz-URLs für QR-Codes, reine Weiterleitungen | nie |
 | `blog/bang-saen-villa-1.html` | Artikel zurückgezogen | nie |
 | `blog/bang-saray-villa-pool.html` | Artikel zurückgezogen | nie |
 | `blog/blog-template.html` | Vorlage, kein Artikel | nie |
