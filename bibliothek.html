@@ -72,7 +72,6 @@ p.lead strong{color:var(--earth);font-weight:600}
 .card-foot{border-top:1px solid rgba(26,20,16,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .price{display:flex;align-items:baseline;gap:9px}
 .price .now{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;letter-spacing:-0.8px}
-.price .was{font-size:16px;color:var(--mid);text-decoration:line-through}
 .price .unit{font-size:14.5px;color:var(--mid)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--earth);color:white;border:none;font-family:'Inter',sans-serif;font-size:18px;font-weight:600;padding:16px 28px;border-radius:9px;cursor:pointer;transition:all .2s;min-height:56px;text-decoration:none}
 .btn:hover{background:var(--terra);transform:translateY(-1px)}
@@ -91,7 +90,6 @@ p.lead strong{color:var(--earth);font-weight:600}
 .bundle-list svg{width:18px;height:18px;stroke:var(--sand);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:3px}
 .bundle-price{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
 .bundle-price .now{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:white;letter-spacing:-1.4px}
-.bundle-price .was{font-size:19px;color:rgba(255,255,255,0.72);text-decoration:line-through}
 .bundle-save{font-size:16px;color:var(--sand);font-weight:600;margin-bottom:24px}
 
 /* ANTWORTEN */
@@ -154,8 +152,6 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
   <div class="inner">
     <div class="sec-eyebrow">Einzeln erhältlich</div>
     <h2>Sechs Hefte, sechs Fragen.</h2>
-      <div class="bald">Der Visum-Ratgeber ist da und sofort zum Herunterladen. Die anderen Hefte schalte ich in den nächsten Tagen frei, sobald die Bezahlung dafür freigegeben ist. Trag dich ein, dann sage ich dir Bescheid.<a href="/rechnung?via=bibliothek">Bescheid geben lassen</a>
-      </div>
 
     <p class="lead">Alle als PDF zum Sofort-Herunterladen, zum Lesen am Bildschirm und zum Ausdrucken. <strong>Kein Abo, keine Folgekosten. Wenn ich ein Heft aktualisiere, bekommst du die neue Fassung kostenlos.</strong></p>
 
@@ -189,7 +185,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="card-foot">
           <div class="price"><span class="now">19 €</span></div>
-          <span class="btn wartet">Bald verfügbar</span>
+          <a class="btn" href="https://www.checkout-ds24.com/product/724580" rel="noopener">Jetzt kaufen · 19 €</a>
         </div>
       </div>
 
@@ -205,7 +201,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="card-foot">
           <div class="price"><span class="now">19 €</span></div>
-          <span class="btn wartet">Bald verfügbar</span>
+          <a class="btn" href="https://www.checkout-ds24.com/product/724581" rel="noopener">Jetzt kaufen · 19 €</a>
         </div>
       </div>
 
@@ -221,7 +217,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="card-foot">
           <div class="price"><span class="now">19 €</span></div>
-          <span class="btn wartet">Bald verfügbar</span>
+          <a class="btn" href="https://www.checkout-ds24.com/product/724582" rel="noopener">Jetzt kaufen · 19 €</a>
         </div>
       </div>
 
@@ -237,7 +233,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="card-foot">
           <div class="price"><span class="now">19 €</span></div>
-          <span class="btn wartet">Bald verfügbar</span>
+          <a class="btn" href="https://www.checkout-ds24.com/product/724584" rel="noopener">Jetzt kaufen · 19 €</a>
         </div>
       </div>
 
@@ -253,7 +249,7 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         </ul>
         <div class="card-foot">
           <div class="price"><span class="now">19 €</span></div>
-          <span class="btn wartet">Bald verfügbar</span>
+          <a class="btn" href="https://www.checkout-ds24.com/product/724588" rel="noopener">Jetzt kaufen · 19 €</a>
         </div>
       </div>
 
@@ -275,8 +271,9 @@ footer{background:var(--earth);padding:34px clamp(20px,5vw,80px)}
         <div class="bundle-price">
           <span class="now">59 €</span>
         </div>
-        <div class="bundle-save">Einzeln kosten die sechs Hefte zusammen 114 Euro. Aktualisierungen deiner Hefte bekommst du 24 Monate lang kostenlos. Und du hast 30 Tage Rückgaberecht.</div>
-        <span class="btn btn-big wartet">Bald verfügbar</span>
+        <div class="bundle-save">Alle sechs Hefte in einem Paket, 176 Seiten. Aktualisierungen bekommst du 24 Monate lang kostenlos, und du hast 30 Tage Rückgaberecht.</div>
+        <span class="btn btn-big wartet">Paket bald verfügbar</span>
+        <p style="font-size:16px;color:rgba(255,255,255,0.72);line-height:1.65;margin-top:14px;text-align:center">Die sechs Hefte sind einzeln schon zu haben. Das Paket schalte ich frei, sobald die Bezahlung dafür freigegeben ist.</p>
         <p style="font-size:16px;color:rgba(255,255,255,0.72);line-height:1.65;margin-top:16px;text-align:center">Unsicher, ob das Paket zu dir passt? Schreib mir an freiweit.mit.nihat@gmail.com, ich antworte dir am selben Tag.</p>
       </div>
     </div>
