@@ -86,8 +86,8 @@ Die Palette bleibt, aber sie darf nie allein tragen. Was den Unterschied macht:
 | `rechnung.html` | Landingpage Lead Magnet, ein Feld, ein Button | live |
 | `r.html` / `b.html` | Kurzweiterleitungen für die QR-Codes | **Ziel nie ändern** |
 | `ratgeber.html` | leitet auf `/rechnung` weiter | Weiterleitung |
-| `bibliothek.html` | Ratgeber kaufen, 6 Hefte plus Paket | Digistore-IDs fehlen |
-| `hilfe.html` | Kaufhilfe, „wo ist mein Download-Ordner" | 4 Screenshots fehlen |
+| `bibliothek.html` | Ratgeber kaufen, 6 Hefte plus Paket | **komplett live seit 24.08.2026**, alle sieben Produkte kaufbar, indexierbar, in der Sitemap |
+| `hilfe.html` | Kaufhilfe, „wo ist mein Download-Ordner" | live, am 24.08.2026 komplett aktualisiert (Text und Screenshot 3) |
 | `freiweit-woche.html` | Programmwoche vor Ort | `noindex` bis Rechtsprüfung |
 | `beratung.html` | 97 € Beratungsgespräch, Cal.eu | live |
 | `immobilien.html` `interview.html` `kontakt.html` | | live |
