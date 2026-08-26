@@ -52,7 +52,7 @@ diese Seiten automatisch draußen.
 
 | Seite | Warum | Wann fällt es weg |
 |---|---|---|
-| `bibliothek.html` | Ratgeber warten auf die Digistore-Freigabe | nach der Freigabe |
+| `hua-hin.html` | Verkauf pausiert, die acht Maps-Listen fehlen noch | wenn die Listen stehen |
 | `freiweit-woche.html` | Programmwoche noch nicht verkauft | beim Liveschalten |
 | `pattaya-maps-zugang-57651b.html` | Zugangsseite für Käufer | nie |
 | `huahin-maps-zugang-5893a3.html` | Zugangsseite für Käufer | nie |
