@@ -12,3 +12,9 @@ index-vorher-b.html
 # Python-Zwischendateien
 __pycache__/
 *.pyc
+
+# Schluessel, falls doch mal einer versehentlich hier landet. Der richtige Ort
+# ist ~/.config/freiweit/, siehe README-search-console.md
+search-console.json
+*-service-account*.json
+*.pem
