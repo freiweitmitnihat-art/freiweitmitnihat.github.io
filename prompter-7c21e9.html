@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<!-- Teleprompter fuer Nihat. Nicht verlinken, nicht in die Sitemap.
+     Unauffaellige Adresse plus noindex, gleiches Muster wie die Maps-Zugangsseiten.
+     Quelle: tools/teleprompter/freiweit-prompter.html, dort aendern und wieder kopieren. -->
+<title>Freiweit Prompter</title>
+<style>
+  :root{
+    --bg:#000; --fg:#fff; --dim:rgba(255,255,255,.30); --gold:#FFD700;
+    --panel:rgba(17,17,19,.94); --line:rgba(255,255,255,.10);
+    --size:52px; --width:70ch; --lh:1.45;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{height:100%; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow:hidden}
+
+  /* ---------- Startbildschirm ---------- */
+  #setup{position:fixed; inset:0; overflow:auto; padding:32px; display:flex;
+    justify-content:center; align-items:flex-start; background:#0a0a0b}
+  .card{width:100%; max-width:900px; background:var(--panel); border:1px solid var(--line);
+    border-radius:24px; padding:28px 30px 30px}
+  h1{font-size:26px; font-weight:650; letter-spacing:-.01em; margin-bottom:4px}
+  h1 span{color:var(--gold)}
+  .sub{color:rgba(255,255,255,.55); font-size:15px; margin-bottom:22px; line-height:1.5}
+  label{display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:rgba(255,255,255,.45); margin:18px 0 7px}
+  textarea{width:100%; height:210px; background:#111113; color:#fff; border:1px solid var(--line);
+    border-radius:14px; padding:14px 16px; font-size:15px; line-height:1.55; resize:vertical;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .row{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-top:6px}
+  .fld{flex:1 1 170px; min-width:150px}
+  input[type=range]{width:100%; accent-color:var(--gold)}
+  .val{font-variant-numeric:tabular-nums; color:var(--gold); font-size:14px; font-weight:600}
+  .btn{appearance:none; border:1px solid var(--line); background:#1a1a1d; color:#fff;
+    border-radius:999px; padding:11px 20px; font-size:15px; cursor:pointer; font-weight:500}
+  .btn:hover{background:#232327}
+  .btn.primary{background:var(--gold); color:#000; border-color:var(--gold); font-weight:650}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .checks{display:flex; gap:22px; flex-wrap:wrap; margin-top:16px}
+  .chk{display:flex; align-items:center; gap:9px; font-size:15px; cursor:pointer;
+    color:rgba(255,255,255,.85)}
+  .chk input{width:19px; height:19px; accent-color:var(--gold); cursor:pointer}
+  .actions{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap}
+  .hint{font-size:13.5px; color:rgba(255,255,255,.42); line-height:1.6; margin-top:20px;
+    border-top:1px solid var(--line); padding-top:16px}
+  .hint b{color:rgba(255,255,255,.72); font-weight:600}
+  kbd{background:#1e1e22; border:1px solid var(--line); border-bottom-width:2px; border-radius:6px;
+    padding:1px 7px; font-size:12.5px; font-family:inherit; color:#fff}
+
+  /* ---------- Prompter ---------- */
+  #stage{position:fixed; inset:0; display:none}
+  #stage.on{display:block}
+  #scroll{position:absolute; inset:0; overflow:hidden}
+  #text{position:absolute; left:50%; transform:translateX(-50%); width:min(var(--width),92vw);
+    font-size:var(--size); line-height:var(--lh); font-weight:600; letter-spacing:-.005em;
+    padding:0 10px; will-change:transform}
+  #text.mirror{transform:translateX(-50%) scaleX(-1)}
+  .w{color:var(--dim); transition:color .18s linear}
+  .w.said{color:var(--dim)}
+  .w.now{color:var(--gold)}
+  .w.ahead{color:var(--fg)}
+  .chap{display:block; font-size:.42em; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold); opacity:.65; margin:1.6em 0 .5em; font-weight:700}
+  .para{display:block; margin-bottom:.72em}
+
+  /* Lesemarke */
+  #mark{position:absolute; left:0; right:0; pointer-events:none; display:none}
+  #mark.on{display:block}
+  #mark .ln{position:absolute; height:2px; background:rgba(255,215,0,.30); left:0; right:0}
+  #mark .tri{position:absolute; width:0; height:0; border-top:11px solid transparent;
+    border-bottom:11px solid transparent; border-left:16px solid var(--gold); opacity:.8}
+
+  /* HUD */
+  #hud{position:absolute; left:0; right:0; bottom:0; padding:12px 18px;
+    display:flex; gap:18px; align-items:center; justify-content:space-between;
+    background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+    font-size:14px; color:rgba(255,255,255,.6); font-variant-numeric:tabular-nums;
+    transition:opacity .3s}
+  #hud.hide{opacity:0}
+  #hud .grp{display:flex; gap:16px; align-items:center}
+  #hud b{color:var(--gold); font-weight:650}
+  #bar{position:absolute; left:0; top:0; height:3px; background:var(--gold); width:0}
+  .dot{width:9px; height:9px; border-radius:50%; background:#555; display:inline-block;
+    margin-right:7px; vertical-align:-1px}
+  .dot.live{background:#2ecc71; box-shadow:0 0 9px #2ecc71}
+  .dot.err{background:#e74c3c}
+</style>
+</head>
+<body>
+
+<div id="setup">
+  <div class="card">
+    <h1>Freiweit <span>Prompter</span></h1>
+    <p class="sub">Läuft komplett im Browser, ohne Konto und ohne Installation.
+      Der Sprachmodus folgt dir beim Sprechen, statt stur weiterzuscrollen.</p>
+
+    <label for="src">Skript</label>
+    <textarea id="src" placeholder="Text hier einfügen, oder unten eine .txt-Datei laden.
+
+Zeilen aus ===== werden als Kapitelmarke erkannt, die Zeile danach wird zur Überschrift.
+So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
+
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="load">Datei laden</button>
+      <input type="file" id="file" accept=".txt,.md,.srt" hidden>
+      <button class="btn" id="demo">Beispieltext</button>
+      <button class="btn" id="clear">Leeren</button>
+    </div>
+
+    <div class="row" style="margin-top:22px">
+      <div class="fld">
+        <label>Schriftgröße <span class="val" id="vSize">52</span></label>
+        <input type="range" id="rSize" min="24" max="110" value="52">
+      </div>
+      <div class="fld">
+        <label>Zeilenbreite <span class="val" id="vWidth">70</span></label>
+        <input type="range" id="rWidth" min="30" max="110" value="70">
+      </div>
+      <div class="fld">
+        <label>Tempo <span class="val" id="vSpeed">1.0</span></label>
+        <input type="range" id="rSpeed" min="20" max="260" value="100">
+      </div>
+    </div>
+
+    <div class="checks">
+      <label class="chk"><input type="checkbox" id="cVoice" checked> Sprachmodus</label>
+      <label class="chk"><input type="checkbox" id="cMark" checked> Lesemarke</label>
+      <label class="chk"><input type="checkbox" id="cMirror"> Spiegeln</label>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="start">Prompter starten</button>
+    </div>
+
+    <p class="hint">
+      <b>Steuerung.</b>
+      <kbd>Leertaste</kbd> Start und Pause ·
+      <kbd>↑</kbd><kbd>↓</kbd> Tempo ·
+      <kbd>←</kbd><kbd>→</kbd> ein Satz zurück und vor ·
+      <kbd>R</kbd> an den Anfang ·
+      <kbd>M</kbd> spiegeln ·
+      <kbd>H</kbd> Anzeige unten aus ·
+      <kbd>Esc</kbd> zurück<br><br>
+      <b>Sprachmodus.</b> Chrome nötig. Beim ersten Start fragt der Browser nach dem Mikrofon.
+      Der Text folgt dann deinem Sprechen. Setzt die Erkennung mal aus, scrollt er ruhig weiter
+      und fängt dich wieder ein, sobald er dich versteht. Zum Erkennen schickt Chrome Ton an
+      Google. Wenn dir das nicht recht ist, Haken raus und mit festem Tempo arbeiten.<br><br>
+      <b>Aufbau.</b> Bildschirm direkt unter die Kamera, ungefähr zwei Meter Abstand.
+      Bei Beam-Splitter-Glas den Haken bei Spiegeln setzen.
+    </p>
+  </div>
+</div>
+
+<div id="stage">
+  <div id="scroll"><div id="text"></div></div>
+  <div id="mark"><div class="ln"></div><div class="tri"></div></div>
+  <div id="hud">
+    <div class="grp">
+      <span><span class="dot" id="dot"></span><span id="mode">bereit</span></span>
+      <span>Tempo <b id="hSpeed">1.0</b></span>
+    </div>
+    <div class="grp">
+      <span id="hChap"></span>
+      <span>noch <b id="hLeft">--:--</b></span>
+      <span><b id="hPct">0</b>%</span>
+    </div>
+    <div id="bar"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  const $ = s => document.querySelector(s);
+  const setup=$('#setup'), stage=$('#stage'), textEl=$('#text'), scrollEl=$('#scroll'),
+        markEl=$('#mark'), hud=$('#hud'), bar=$('#bar'), dot=$('#dot');
+
+  const LS='freiweit-prompter';
+  const cfg = Object.assign(
+    {size:52, width:70, speed:100, voice:true, mark:true, mirror:false, text:''},
+    JSON.parse(localStorage.getItem(LS) || '{}')
+  );
+  const save = () => { try{ localStorage.setItem(LS, JSON.stringify(cfg)); }catch(e){} };
+
+  /* ---------- Startbildschirm ---------- */
+  $('#src').value = cfg.text;
+  $('#rSize').value = cfg.size;  $('#vSize').textContent = cfg.size;
+  $('#rWidth').value = cfg.width; $('#vWidth').textContent = cfg.width;
+  $('#rSpeed').value = cfg.speed; $('#vSpeed').textContent = (cfg.speed/100).toFixed(1);
+  $('#cVoice').checked = cfg.voice; $('#cMark').checked = cfg.mark; $('#cMirror').checked = cfg.mirror;
+
+  $('#rSize').oninput  = e => { cfg.size=+e.target.value;  $('#vSize').textContent=cfg.size; applyStyle(); save(); };
+  $('#rWidth').oninput = e => { cfg.width=+e.target.value; $('#vWidth').textContent=cfg.width; applyStyle(); save(); };
+  $('#rSpeed').oninput = e => { cfg.speed=+e.target.value; $('#vSpeed').textContent=(cfg.speed/100).toFixed(1); showSpeed(); save(); };
+  $('#cVoice').onchange  = e => { cfg.voice=e.target.checked; save(); };
+  $('#cMark').onchange   = e => { cfg.mark=e.target.checked; markEl.classList.toggle('on',cfg.mark); save(); };
+  $('#cMirror').onchange = e => { cfg.mirror=e.target.checked; textEl.classList.toggle('mirror',cfg.mirror); save(); };
+
+  $('#load').onclick  = () => $('#file').click();
+  $('#file').onchange = e => {
+    const f = e.target.files[0]; if(!f) return;
+    const r = new FileReader();
+    r.onload = ev => { $('#src').value = ev.target.result; cfg.text = ev.target.result; save(); };
+    r.readAsText(f, 'utf-8');
+  };
+  $('#clear').onclick = () => { $('#src').value=''; cfg.text=''; save(); };
+  $('#demo').onclick  = () => {
+    $('#src').value =
+`=====================================================
+PROBE
+=====================================================
+
+Hi, mein Name ist Nihat.
+Schön, dass du eingeschaltet hast.
+
+Ich bin seit sieben Jahren unterwegs, über siebzig Länder,
+und ein großer Teil davon war Südostasien.
+
+Sprich einfach mit. Der Text sollte dir folgen.
+Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
+    cfg.text = $('#src').value; save();
+  };
+
+  function applyStyle(){
+    document.documentElement.style.setProperty('--size', cfg.size+'px');
+    document.documentElement.style.setProperty('--width', cfg.width+'ch');
+  }
+  applyStyle();
+
+  /* ---------- Text aufbereiten ---------- */
+  let words=[];        // {el, norm} nur echte Wörter
+  let chapters=[];     // {name, wordIndex}
+  let pos=0;           // Index des nächsten erwarteten Wortes
+
+  const norm = s => s.toLowerCase()
+    .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss')
+    .replace(/[^a-z0-9]/g,'');
+
+  function build(raw){
+    textEl.innerHTML=''; words=[]; chapters=[]; pos=0;
+    const lines = raw.replace(/\r/g,'').split('\n');
+    let para=null;
+
+    const flush = () => { para=null; };
+    const newPara = () => { para=document.createElement('span'); para.className='para'; textEl.appendChild(para); };
+
+    for(let i=0;i<lines.length;i++){
+      const line = lines[i];
+      // Trennlinie: die Zeile danach ist der Kapitelname
+      if(/^=+\s*$/.test(line)){
+        const name = (lines[i+1]||'').trim();
+        if(name && !/^=+\s*$/.test(name)){
+          const c=document.createElement('span'); c.className='chap'; c.textContent=name;
+          textEl.appendChild(c);
+          chapters.push({name, wordIndex:words.length});
+          i++;                                  // Namenszeile überspringen
+          while(/^=+\s*$/.test(lines[i+1]||'')) i++;  // schließende Linie überspringen
+        }
+        flush(); continue;
+      }
+      if(!line.trim()){ flush(); continue; }
+      if(/^#/.test(line.trim())){ flush(); continue; }   // Kommentarzeile, wird nicht gesprochen
+
+      if(!para) newPara();
+      const toks = line.trim().split(/\s+/);
+      for(const t of toks){
+        const n = norm(t);
+        const w = document.createElement('span');
+        w.className='w ahead'; w.textContent=t+' ';
+        para.appendChild(w);
+        if(n) words.push({el:w, norm:n});
+        else  w.classList.remove('ahead');
+      }
+      para.appendChild(document.createTextNode(' '));
+    }
+    paint(true);
+  }
+
+  /* ---------- Darstellung ---------- */
+  let offset=0;           // aktueller Scroll in px
+  const markY = () => window.innerHeight*0.40;
+
+  function paint(hard){
+    for(let i=0;i<words.length;i++){
+      const c = words[i].el.classList;
+      const want = i<pos ? 'said' : (i<pos+1 ? 'now' : 'ahead');
+      if(!c.contains(want)){ c.remove('said','now','ahead'); c.add(want); }
+    }
+    if(hard) center(true);
+    updateHud();
+  }
+
+  function targetOffset(){
+    const w = words[Math.min(pos, words.length-1)];
+    if(!w) return offset;
+    const r = w.el.getBoundingClientRect();
+    return offset + (r.top - markY()) + r.height/2;
+  }
+
+  function center(hard){
+    const t = targetOffset();
+    if(hard){ offset=t; apply(); }
+    else glideTo = t;
+  }
+
+  let glideTo=null;
+  function apply(){ textEl.style.transform =
+    `translateX(-50%) translateY(${-offset}px)` + (cfg.mirror?' scaleX(-1)':''); }
+
+  /* ---------- Lauf ---------- */
+  let running=false, last=0, wpmEst=145;
+
+  function loop(ts){
+    if(!running){ last=ts; requestAnimationFrame(loop); return; }
+    const dt = Math.min(0.05, (ts-last)/1000); last=ts;
+
+    if(glideTo!==null){
+      // weich zur Sprechposition ziehen
+      offset += (glideTo-offset) * Math.min(1, dt*4.5);
+      if(Math.abs(glideTo-offset) < 0.5){ offset=glideTo; glideTo=null; }
+    } else {
+      // ruhiges Grundtempo, damit es nie einfriert
+      const px = cfg.size * cfg.lhFactor * (cfg.speed/100) * (wpmEst/60) / 9;
+      offset += px * dt * 60 / 60 * 1.0;
+    }
+    apply(); updateHud();
+    requestAnimationFrame(loop);
+  }
+  cfg.lhFactor = 1.45;
+
+  function updateHud(){
+    const pct = words.length ? Math.min(100, Math.round(pos/words.length*100)) : 0;
+    $('#hPct').textContent = pct;
+    bar.style.width = pct+'%';
+    const left = Math.max(0, (words.length-pos)/ (wpmEst/60));
+    $('#hLeft').textContent = String(Math.floor(left/60)).padStart(2,'0')+':'+String(Math.floor(left%60)).padStart(2,'0');
+    let cur=''; for(const c of chapters){ if(c.wordIndex<=pos) cur=c.name; }
+    $('#hChap').textContent = cur;
+  }
+  function showSpeed(){ $('#hSpeed').textContent = (cfg.speed/100).toFixed(1); }
+
+  /* ---------- Sprachmodus ---------- */
+  let rec=null, recOn=false;
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  function startVoice(){
+    if(!SR){ setMode('kein Sprachmodus in diesem Browser', 'err'); return; }
+    try{
+      rec = new SR();
+      rec.lang='de-DE'; rec.continuous=true; rec.interimResults=true; rec.maxAlternatives=1;
+      rec.onstart = () => { recOn=true; setMode('hört zu','live'); };
+      rec.onerror = e => {
+        if(e.error==='not-allowed'){ setMode('Mikrofon nicht erlaubt','err'); recOn=false; return; }
+        setMode('Erkennung gestört','err');
+      };
+      rec.onend = () => { if(recOn && running){ try{ rec.start(); }catch(e){} } };
+      rec.onresult = ev => {
+        let heard='';
+        for(let i=ev.resultIndex;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
+        match(heard);
+      };
+      rec.start();
+    }catch(e){ setMode('Sprachmodus nicht verfügbar','err'); }
+  }
+  function stopVoice(){ recOn=false; if(rec){ try{ rec.stop(); }catch(e){} } }
+
+  function setMode(t, cls){
+    $('#mode').textContent=t;
+    dot.className='dot'+(cls?' '+cls:'');
+  }
+
+  // die zuletzt gehörten Wörter im Text ab der aktuellen Stelle wiederfinden
+  function match(heard){
+    const hw = heard.split(/\s+/).map(norm).filter(Boolean);
+    if(!hw.length) return;
+    const WIN = 90;                       // wie weit nach vorne gesucht wird
+    const BACK = 12;                      // etwas Toleranz nach hinten
+    const from = Math.max(0, pos-BACK), to = Math.min(words.length, pos+WIN);
+
+    for(let n=Math.min(5,hw.length); n>=2; n--){
+      const tail = hw.slice(-n);
+      for(let i=to-n; i>=from; i--){      // rückwärts, damit die späteste Stelle gewinnt
+        let ok=true;
+        for(let k=0;k<n;k++){ if(words[i+k].norm !== tail[k]){ ok=false; break; } }
+        if(ok){ advance(i+n); return; }
+      }
+    }
+    // einzelnes seltenes Wort als Notanker
+    const one = hw[hw.length-1];
+    if(one.length>=7){
+      for(let i=to-1;i>=from;i--) if(words[i].norm===one){ advance(i+1); return; }
+    }
+  }
+
+  function advance(newPos){
+    if(newPos<=pos) return;
+    pos = Math.min(newPos, words.length);
+    paint(false); center(false);
+  }
+
+  /* ---------- Start und Tasten ---------- */
+  $('#start').onclick = () => {
+    const raw = $('#src').value.trim();
+    if(!raw){ $('#src').focus(); return; }
+    cfg.text = raw; save();
+    setup.style.display='none'; stage.classList.add('on');
+    textEl.classList.toggle('mirror', cfg.mirror);
+    markEl.classList.toggle('on', cfg.mark);
+    positionMark(); showSpeed();
+    build(raw);
+    running=false; setMode('bereit mit Leertaste');
+    requestAnimationFrame(loop);
+    if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+  };
+
+  function positionMark(){
+    const y = markY();
+    markEl.querySelector('.ln').style.top = y+'px';
+    markEl.querySelector('.tri').style.top = (y-11)+'px';
+    markEl.querySelector('.tri').style.left = '14px';
+  }
+  window.addEventListener('resize', () => { positionMark(); center(true); });
+
+  function toggle(){
+    running = !running;
+    if(running){
+      if(cfg.voice) startVoice(); else setMode('läuft','live');
+    } else {
+      stopVoice(); setMode('Pause');
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if(!stage.classList.contains('on')) return;
+    switch(e.key){
+      case ' ': e.preventDefault(); toggle(); break;
+      case 'ArrowUp':   e.preventDefault(); cfg.speed=Math.min(260,cfg.speed+10); showSpeed(); save(); break;
+      case 'ArrowDown': e.preventDefault(); cfg.speed=Math.max(20, cfg.speed-10); showSpeed(); save(); break;
+      case 'ArrowRight':e.preventDefault(); jump(+1); break;
+      case 'ArrowLeft': e.preventDefault(); jump(-1); break;
+      case 'r': case 'R': pos=0; paint(true); break;
+      case 'm': case 'M': cfg.mirror=!cfg.mirror; textEl.classList.toggle('mirror',cfg.mirror); apply(); save(); break;
+      case 'h': case 'H': hud.classList.toggle('hide'); break;
+      case 'Escape':
+        running=false; stopVoice();
+        stage.classList.remove('on'); setup.style.display='flex';
+        if(document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+        break;
+    }
+  });
+
+  // einen Satz vor oder zurück
+  function jump(dir){
+    let i = pos + dir;
+    const end = w => /[.!?:]$/.test(w.el.textContent.trim());
+    while(i>0 && i<words.length && !end(words[i-1])) i += dir;
+    pos = Math.max(0, Math.min(words.length, i));
+    paint(false); center(false);
+  }
+
+  // Klick im Prompter setzt die Stelle
+  scrollEl.addEventListener('click', e => {
+    const t = e.target;
+    if(!t.classList || !t.classList.contains('w')) return;
+    const i = words.findIndex(w => w.el===t);
+    if(i>=0){ pos=i; paint(false); center(false); }
+  });
+})();
+</script>
+</body>
+</html>
