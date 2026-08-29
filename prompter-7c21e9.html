@@ -82,7 +82,10 @@
     font-size:14px; color:rgba(255,255,255,.6); font-variant-numeric:tabular-nums;
     transition:opacity .3s}
   #hud.hide{opacity:0}
-  #hud .grp{display:flex; gap:16px; align-items:center}
+  #hud .grp{display:flex; gap:16px; align-items:center; min-width:0}
+  .heard{color:rgba(255,255,255,.34); font-style:italic; white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis; max-width:44vw}
+  .heard.treffer{color:var(--gold)}
   #hud b{color:var(--gold); font-weight:650}
   #bar{position:absolute; left:0; top:0; height:3px; background:var(--gold); width:0}
   .dot{width:9px; height:9px; border-radius:50%; background:#555; display:inline-block;
@@ -163,6 +166,7 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
     <div class="grp">
       <span><span class="dot" id="dot"></span><span id="mode">bereit</span></span>
       <span>Tempo <b id="hSpeed">1.0</b></span>
+      <span id="hHeard" class="heard"></span>
     </div>
     <div class="grp">
       <span id="hChap"></span>
@@ -238,9 +242,60 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   let chapters=[];     // {name, wordIndex}
   let pos=0;           // Index des nächsten erwarteten Wortes
 
-  const norm = s => s.toLowerCase()
+  // Chrome schreibt Zahlen fast immer als Ziffern, das Skript schreibt sie aus.
+  // Ohne Uebersetzung reisst die Erkennung genau an den Zahlen ab.
+  const EINER = ['null','eins','zwei','drei','vier','fuenf','sechs','sieben','acht','neun',
+                 'zehn','elf','zwoelf','dreizehn','vierzehn','fuenfzehn','sechzehn',
+                 'siebzehn','achtzehn','neunzehn'];
+  const ZEHNER = {20:'zwanzig',30:'dreissig',40:'vierzig',50:'fuenfzig',60:'sechzig',
+                  70:'siebzig',80:'achtzig',90:'neunzig'};
+  function zahlWort(n){
+    if(n < 20) return EINER[n] || '';
+    if(n < 100){
+      const z = Math.floor(n/10)*10, e = n%10;
+      if(!ZEHNER[z]) return '';
+      return e ? (EINER[e]==='eins'?'ein':EINER[e]) + 'und' + ZEHNER[z] : ZEHNER[z];
+    }
+    if(n===100) return 'hundert';
+    if(n===1000) return 'tausend';
+    return '';
+  }
+
+  const grund = s => s.toLowerCase()
     .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss')
     .replace(/[^a-z0-9]/g,'');
+
+  const norm = s => {
+    const g = grund(s);
+    if(/^\d+$/.test(g)){
+      const w = zahlWort(parseInt(g,10));
+      if(w) return w;
+    }
+    return g;
+  };
+
+  // Haeufige Funktionswoerter kommen in jedem Satz vor. Wenn sie voll zaehlen,
+  // findet die Suche ueberall einen Treffer und der Text springt wild umher.
+  // Sie stoeren nicht, sie tragen nur nichts bei.
+  const FUELL = new Set(('der die das den dem des ein eine einen einem einer und oder aber ' +
+    'ich du er sie es wir ihr mir mich dir dich ihm ihn uns euch ' +
+    'ist sind war hat hab habe haben wird werden kann kannst muss musst ' +
+    'in im an am auf aus bei mit von vor zu zum zur nach ueber unter fuer ' +
+    'nicht auch noch nur schon mal so wie was wenn dass denn da dann als ' +
+    'sich sein seine ihre man es gibt hier dort jetzt').split(' '));
+
+  const traegt = w => w.length >= 4 && !FUELL.has(w);
+
+  // Zwei Woerter gelten als dasselbe, wenn sie sich am Anfang decken.
+  // Die Spracherkennung verschluckt oft Endungen.
+  function gleich(a,b){
+    if(!a || !b) return false;
+    if(a === b) return true;
+    const n = Math.min(a.length, b.length);
+    if(n >= 5 && a.slice(0,5) === b.slice(0,5)) return true;
+    if(n >= 4 && (a.startsWith(b) || b.startsWith(a))) return true;
+    return false;
+  }
 
   function build(raw){
     textEl.innerHTML=''; words=[]; chapters=[]; pos=0;
@@ -361,9 +416,14 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       };
       rec.onend = () => { if(recOn && running){ try{ rec.start(); }catch(e){} } };
       rec.onresult = ev => {
+        // Alles nehmen, was gerade im Fluss ist. Nur den letzten Brocken zu
+        // betrachten war der Fehler: dort steht oft ein halbes Wort.
         let heard='';
-        for(let i=ev.resultIndex;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
-        match(heard);
+        for(let i=0;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
+        const w = heard.split(/\s+/).map(norm).filter(Boolean);
+        gehoert = w.slice(-14);
+        zeigeGehoert(heard.split(/\s+/).slice(-7).join(' '));
+        match();
       };
       rec.start();
     }catch(e){ setMode('Sprachmodus nicht verfügbar','err'); }
@@ -375,26 +435,60 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     dot.className='dot'+(cls?' '+cls:'');
   }
 
-  // die zuletzt gehörten Wörter im Text ab der aktuellen Stelle wiederfinden
-  function match(heard){
-    const hw = heard.split(/\s+/).map(norm).filter(Boolean);
-    if(!hw.length) return;
-    const WIN = 90;                       // wie weit nach vorne gesucht wird
-    const BACK = 12;                      // etwas Toleranz nach hinten
-    const from = Math.max(0, pos-BACK), to = Math.min(words.length, pos+WIN);
+  var gehoert = [];
 
-    for(let n=Math.min(5,hw.length); n>=2; n--){
-      const tail = hw.slice(-n);
-      for(let i=to-n; i>=from; i--){      // rückwärts, damit die späteste Stelle gewinnt
-        let ok=true;
-        for(let k=0;k<n;k++){ if(words[i+k].norm !== tail[k]){ ok=false; break; } }
-        if(ok){ advance(i+n); return; }
+  function zeigeGehoert(s, treffer){
+    const el = $('#hHeard');
+    el.textContent = s ? '\u201e' + s + '\u201c' : '';
+    el.classList.toggle('treffer', !!treffer);
+  }
+
+  // Sucht die Stelle im Text, an der das Gehoerte am besten anliegt.
+  // Bewusst nachsichtig: verschluckte Endungen, ausgelassene Woerter und
+  // Fehlerkennungen duerfen den Faden nicht abreissen lassen.
+  function match(){
+    if(gehoert.length < 2 || !words.length) return;
+
+    const VOR = 140;                        // so weit nach vorne wird gesucht
+    const ZURUECK = 20;                     // etwas Toleranz nach hinten
+    const from = Math.max(0, pos - ZURUECK);
+    const to   = Math.min(words.length, pos + VOR);
+
+    let bestEnde = -1, bestPunkte = 0;
+
+    for(let i = from; i < to; i++){
+      let punkte = 0, luecken = 0, wi = i, letzterTreffer = -1;
+
+      let inhalt = 0;                     // Treffer, die wirklich etwas aussagen
+
+      for(let hi = 0; hi < gehoert.length && wi < words.length; hi++){
+        const h = gehoert[hi];
+        let treffer = 0;
+        if(gleich(words[wi].norm, h)){
+          treffer = 1; letzterTreffer = wi; wi++;
+        } else if(luecken < 3 && wi + 1 < words.length && gleich(words[wi+1].norm, h)){
+          // ein Wort im Skript uebersprungen, etwa weil es verschluckt wurde
+          treffer = 1; luecken++; letzterTreffer = wi + 1; wi += 2;
+        }
+        // sonst: das gehoerte Wort passt hier nicht, es wird ignoriert
+        if(treffer){
+          if(traegt(h)){ punkte += 1; inhalt++; }
+          else { punkte += 0.25; }        // Fuellwort passt, sagt aber wenig
+        }
+      }
+
+      // spaetere Stellen leicht bevorzugen, damit der Text mitwandert
+      const gewichtet = punkte + (i - from) * 0.001;
+      // Mindestens zwei tragende Woerter, sonst ist es Zufall
+      if(inhalt >= 2 && punkte >= 2.5 && gewichtet > bestPunkte){
+        bestPunkte = gewichtet;
+        bestEnde = letzterTreffer + 1;
       }
     }
-    // einzelnes seltenes Wort als Notanker
-    const one = hw[hw.length-1];
-    if(one.length>=7){
-      for(let i=to-1;i>=from;i--) if(words[i].norm===one){ advance(i+1); return; }
+
+    if(bestEnde > pos){
+      advance(bestEnde);
+      $('#hHeard').classList.add('treffer');
     }
   }
 
@@ -463,6 +557,19 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     pos = Math.max(0, Math.min(words.length, i));
     paint(false); center(false);
   }
+
+  // Pruefschnittstelle: erlaubt es, die Worterkennung ohne Mikrofon zu testen.
+  // window.__pp.sprich("ein satz aus dem skript") schiebt die Position weiter.
+  window.__pp = {
+    sprich(s){
+      gehoert = s.split(/\s+/).map(norm).filter(Boolean).slice(-14);
+      const vorher = pos; match();
+      return {vorher, nachher: pos, wort: words[pos] ? words[pos].el.textContent.trim() : null};
+    },
+    get pos(){ return pos; },
+    set pos(v){ pos = v; paint(true); },
+    get anzahl(){ return words.length; },
+  };
 
   // Klick im Prompter setzt die Stelle
   scrollEl.addEventListener('click', e => {
