@@ -22,7 +22,7 @@ AUS   = {'404.html', 'index-alt.html', 'index-vorher-b.html', 'blog-template.htm
 WICHTIG = {
     'index.html': '1.0', 'beratung.html': '0.9', 'immobilien.html': '0.9',
     'interview.html': '0.9', 'city-guides.html': '0.9', 'ratgeber.html': '0.8',
-    'kontakt.html': '0.7', 'mediakit.html': '0.7', 'reality-check.html': '0.8',
+    'kontakt.html': '0.7', 'reality-check.html': '0.8',
     'rechnung.html': '0.8', 'blog/index.html': '0.8', 'agb.html': '0.3',
 }
 
