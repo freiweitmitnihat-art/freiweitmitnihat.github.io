@@ -15,21 +15,12 @@ Getestet am 20.08.2026: POST liefert HTTP 200 und die eigene Erfolgsmeldung zuru
 Der Kontakt erscheint erst nach Klick auf den Bestaetigungslink in der Liste, das ist
 bei Double-Opt-in so gewollt.
 
-## Noch offen: drei Felder im Brevo-Formular
+## Erledigt: VORNAME, QUELLE, MAGNET kommen an (geprueft 02.09.2026)
 
-Das Formular nimmt aktuell nur `EMAIL` an. `VORNAME`, `QUELLE` und `MAGNET` werden von
-der Website zwar mitgeschickt, aber von Brevo verworfen, weil sie nicht im Formular stehen.
-Die Attribute selbst sind angelegt, es fehlt nur das Einfuegen ins Formular.
-
-So wird es nachgeholt (etwa eine Minute):
-1. Brevo, Marketing, Formulare, `Website Anmeldung` oeffnen
-2. Schritt **Design**
-3. Aus der linken Spalte den Block **Attribut** dreimal in das Formular ziehen
-   (ziehen, nicht klicken) und je einmal `VORNAME`, `QUELLE`, `MAGNET` auswaehlen
-4. `QUELLE` und `MAGNET` auf versteckt stellen, die soll niemand ausfuellen
-5. Durch die Schritte klicken bis **Fertig**
-
-Danach landen Vorname und Herkunft automatisch mit, am Code aendert sich nichts.
+`VORNAME`, `QUELLE` und `MAGNET` stehen inzwischen im Brevo-Formular `Website Anmeldung`
+und werden korrekt uebernommen. Live am Kontakt "Stefan" geprueft: VORNAME "Stefan",
+QUELLE "Monatsrechnung-QR", MAGNET "Monatsrechnung", alle drei korrekt befuellt.
+Am Code aendert sich nichts, das Formular nimmt die Felder wie vorgesehen an.
 
 ---
 
