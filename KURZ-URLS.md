@@ -36,6 +36,8 @@ Daraus folgt:
 | `freiweitmitnihat.com/g` | `g.html` | `/city-guides?via=qr` | 22.08.2026 | Die City **G**uides |
 | `/hh` | `/hua-hin` | Maps Guide Hua Hin | 24.08.2026 |
 | `freiweitmitnihat.com/o` | `o.html` | `/immobilien?via=qr` | 23.08.2026 | Immobilien in Asien, **O**bjekte zum Mieten und Kaufen |
+| `freiweitmitnihat.com/k` | `k.html` | `/community?via=qr` | 29.08.2026 | Der Freiweit-**K**reis, die feste Runde mit Live-Stunde |
+| `freiweitmitnihat.com/l` | `l.html` | `/links?via=ig` | 02.09.2026 | Alle **L**inks, Instagram-Bio-Ersatz für Beacons |
 
 **Merkregel:** ein Kleinbuchstabe, und zwar der Anfangsbuchstabe des Ziels.
 
@@ -59,7 +61,7 @@ Deshalb wurde `/h` für die Hefte neu angelegt und die falsche Zeile korrigiert.
 
 ## Freie Buchstaben
 
-`a c d e f j k l m n p q s t u v x y z`
+`a c d e f j k m n p q s t u v x y z`
 
 Vorgemerkt für wahrscheinliche Ziele, damit sie niemand anders belegt:
 

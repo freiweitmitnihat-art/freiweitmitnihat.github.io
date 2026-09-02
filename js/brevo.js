@@ -31,7 +31,8 @@ function brevoQuelle(prefix) {
       qr:     'QR',
       yt:     'YouTube-Beschreibung',
       pinned: 'Pinned-Comment',
-      web:    'Website'
+      web:    'Website',
+      ig:     'Instagram-Bio'
     };
     var quelle = map[via] || via.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40);
     return name + '-' + quelle;

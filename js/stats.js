@@ -101,7 +101,8 @@ var ZIELE = [
   ['beratung.html',      'beratung-seite'],
   ['interview.html',     'interview-bewerbung'],
   ['immobilien.html',    'immobilien-seite'],
-  ['rechnung.html',      'monatsrechnung']
+  ['rechnung.html',      'monatsrechnung'],
+  ['reise.html',         'reise-warteliste']
 ];
 
 function markiereLinks() {
