@@ -2,60 +2,96 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <!-- Teleprompter fuer Nihat. Nicht verlinken, nicht in die Sitemap.
      Unauffaellige Adresse plus noindex, gleiches Muster wie die Maps-Zugangsseiten.
      Quelle: tools/teleprompter/freiweit-prompter.html, dort aendern und wieder kopieren. -->
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Prompter">
 <title>Freiweit Prompter</title>
 <style>
   :root{
-    --bg:#000; --fg:#fff; --dim:rgba(255,255,255,.30); --gold:#FFD700;
+    --bg:#000; --fg:#fff; --dim:rgba(255,255,255,.28); --gold:#FFD700;
     --panel:rgba(17,17,19,.94); --line:rgba(255,255,255,.10);
     --size:52px; --width:70ch; --lh:1.45;
+    --safeT:env(safe-area-inset-top,0px);  --safeB:env(safe-area-inset-bottom,0px);
+    --safeL:env(safe-area-inset-left,0px); --safeR:env(safe-area-inset-right,0px);
+    --pad:30px;
   }
-  *{box-sizing:border-box; margin:0; padding:0}
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent}
   html,body{height:100%; background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
-    -webkit-font-smoothing:antialiased; overflow:hidden}
+    -webkit-font-smoothing:antialiased; overflow:hidden; overscroll-behavior:none;
+    touch-action:manipulation}
+  button,input,textarea,select{font-family:inherit}
 
   /* ---------- Startbildschirm ---------- */
-  #setup{position:fixed; inset:0; overflow:auto; padding:32px; display:flex;
+  #setup{position:fixed; inset:0; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    padding:24px 16px calc(24px + var(--safeB)); display:flex;
     justify-content:center; align-items:flex-start; background:#0a0a0b}
   .card{width:100%; max-width:900px; background:var(--panel); border:1px solid var(--line);
-    border-radius:24px; padding:28px 30px 30px}
+    border-radius:24px; padding:26px var(--pad) 30px; overflow:hidden}
   h1{font-size:26px; font-weight:650; letter-spacing:-.01em; margin-bottom:4px}
   h1 span{color:var(--gold)}
-  .sub{color:rgba(255,255,255,.55); font-size:15px; margin-bottom:22px; line-height:1.5}
+  .sub{color:rgba(255,255,255,.55); font-size:15px; margin-bottom:20px; line-height:1.5}
   label{display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
     color:rgba(255,255,255,.45); margin:18px 0 7px}
-  textarea{width:100%; height:210px; background:#111113; color:#fff; border:1px solid var(--line);
-    border-radius:14px; padding:14px 16px; font-size:15px; line-height:1.55; resize:vertical;
+  textarea{width:100%; height:190px; background:#111113; color:#fff; border:1px solid var(--line);
+    border-radius:14px; padding:14px 16px; font-size:16px; line-height:1.55; resize:vertical;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .row{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-top:6px}
-  .fld{flex:1 1 170px; min-width:150px}
-  input[type=range]{width:100%; accent-color:var(--gold)}
+  .row{display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; margin-top:6px}
+  .fld{flex:1 1 210px; min-width:150px}
+  input[type=range]{width:100%; accent-color:var(--gold); height:34px}
   .val{font-variant-numeric:tabular-nums; color:var(--gold); font-size:14px; font-weight:600}
   .btn{appearance:none; border:1px solid var(--line); background:#1a1a1d; color:#fff;
-    border-radius:999px; padding:11px 20px; font-size:15px; cursor:pointer; font-weight:500}
-  .btn:hover{background:#232327}
+    border-radius:999px; padding:13px 20px; font-size:15px; cursor:pointer; font-weight:500;
+    min-height:46px}
+  .btn:active{background:#2a2a2f}
   .btn.primary{background:var(--gold); color:#000; border-color:var(--gold); font-weight:650}
-  .btn.primary:hover{filter:brightness(1.08)}
-  .checks{display:flex; gap:22px; flex-wrap:wrap; margin-top:16px}
-  .chk{display:flex; align-items:center; gap:9px; font-size:15px; cursor:pointer;
-    color:rgba(255,255,255,.85)}
-  .chk input{width:19px; height:19px; accent-color:var(--gold); cursor:pointer}
-  .actions{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap}
-  .hint{font-size:13.5px; color:rgba(255,255,255,.42); line-height:1.6; margin-top:20px;
+  .checks{display:flex; gap:14px 22px; flex-wrap:wrap; margin-top:18px}
+  .chk{display:flex; align-items:center; gap:10px; font-size:16px; cursor:pointer;
+    color:rgba(255,255,255,.85); min-height:44px}
+  .chk input{width:22px; height:22px; accent-color:var(--gold); cursor:pointer}
+  .actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+  .hint{font-size:14px; color:rgba(255,255,255,.44); line-height:1.62; margin-top:20px;
     border-top:1px solid var(--line); padding-top:16px}
   .hint b{color:rgba(255,255,255,.72); font-weight:600}
   kbd{background:#1e1e22; border:1px solid var(--line); border-bottom-width:2px; border-radius:6px;
     padding:1px 7px; font-size:12.5px; font-family:inherit; color:#fff}
 
+  /* Segmentierte Auswahl (Vorlauf) */
+  .seg{display:flex; gap:8px; flex-wrap:wrap}
+  .seg button{flex:1 1 60px; min-height:46px; border-radius:12px; border:1px solid var(--line);
+    background:#151517; color:rgba(255,255,255,.75); font-size:15px; cursor:pointer}
+  .seg button.sel{background:var(--gold); color:#000; border-color:var(--gold); font-weight:650}
+
+  /* Vorschau in echter Bühnenbreite */
+  #pvWrap{margin:16px calc(var(--pad) * -1) 0; background:#000; padding:16px 0 14px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden}
+  #pvLbl{font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:rgba(255,255,255,.35); padding:0 var(--pad) 10px}
+  #pvLbl i{color:var(--gold); font-style:normal}
+  #pv{width:min(var(--width),92vw); margin:0 auto; font-size:var(--size); line-height:var(--lh);
+    font-weight:600; letter-spacing:-.005em; padding:0 10px;
+    max-height:4.5em; overflow:hidden}
+  #pv.mirror{transform:scaleX(-1)}
+  #pv .a{color:var(--gold)} #pv .b{color:#fff} #pv .c{color:var(--dim)}
+  #meas{position:absolute; visibility:hidden; white-space:pre; font-size:var(--size);
+    font-weight:600; letter-spacing:-.005em; left:-9999px; top:0}
+
+  .warn{margin-top:16px; border:1px solid rgba(255,215,0,.28); background:rgba(255,215,0,.06);
+    border-radius:14px; padding:13px 15px; font-size:14.5px; line-height:1.55;
+    color:rgba(255,255,255,.72)}
+  .warn b{color:var(--gold); font-weight:650}
+
   /* ---------- Prompter ---------- */
-  #stage{position:fixed; inset:0; display:none}
+  #stage{position:fixed; inset:0; display:none; user-select:none; -webkit-user-select:none}
   #stage.on{display:block}
-  #scroll{position:absolute; inset:0; overflow:hidden}
+  #scroll{position:absolute; inset:0; overflow:hidden; cursor:pointer; touch-action:none}
   #text{position:absolute; left:50%; transform:translateX(-50%); width:min(var(--width),92vw);
     font-size:var(--size); line-height:var(--lh); font-weight:600; letter-spacing:-.005em;
     padding:0 10px; will-change:transform}
@@ -71,18 +107,20 @@
   /* Lesemarke */
   #mark{position:absolute; left:0; right:0; pointer-events:none; display:none}
   #mark.on{display:block}
-  #mark .ln{position:absolute; height:2px; background:rgba(255,215,0,.30); left:0; right:0}
+  #mark .ln{position:absolute; height:2px; background:rgba(255,215,0,.26); left:0; right:0}
   #mark .tri{position:absolute; width:0; height:0; border-top:11px solid transparent;
     border-bottom:11px solid transparent; border-left:16px solid var(--gold); opacity:.8}
+  #mark .tri.r{border-left:0; border-right:16px solid var(--gold)}
 
   /* HUD */
-  #hud{position:absolute; left:0; right:0; bottom:0; padding:12px 18px;
-    display:flex; gap:18px; align-items:center; justify-content:space-between;
-    background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+  #hud{position:absolute; left:0; right:0; bottom:0;
+    padding:10px calc(16px + var(--safeR)) calc(10px + var(--safeB)) calc(16px + var(--safeL));
+    display:flex; gap:8px 18px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.55) 60%,transparent);
     font-size:14px; color:rgba(255,255,255,.6); font-variant-numeric:tabular-nums;
-    transition:opacity .3s}
-  #hud.hide{opacity:0}
-  #hud .grp{display:flex; gap:16px; align-items:center; min-width:0}
+    transition:opacity .3s; pointer-events:none}
+  #hud.hide{opacity:.3}
+  #hud .grp{display:flex; gap:14px; align-items:center; min-width:0}
   .heard{color:rgba(255,255,255,.34); font-style:italic; white-space:nowrap;
     overflow:hidden; text-overflow:ellipsis; max-width:44vw}
   .heard.treffer{color:var(--gold)}
@@ -92,6 +130,82 @@
     margin-right:7px; vertical-align:-1px}
   .dot.live{background:#2ecc71; box-shadow:0 0 9px #2ecc71}
   .dot.err{background:#e74c3c}
+
+  /* ---------- Tippleiste (Handy und Tablet) ---------- */
+  #touch{position:absolute; left:0; right:0; bottom:calc(40px + var(--safeB));
+    display:none; flex-direction:column; align-items:center; gap:9px;
+    padding:38px calc(10px + var(--safeR)) 10px calc(10px + var(--safeL));
+    background:linear-gradient(to top,rgba(0,0,0,.95) 0,rgba(0,0,0,.95) calc(100% - 40px),rgba(0,0,0,0) 100%);
+    transition:opacity .25s, transform .25s}
+  body.touchui #touch{display:flex}
+  /* Beim Laufen werden nur die Knoepfe blass, die dunkle Flaeche bleibt.
+     So ist das X immer erreichbar, ohne dass der Text darunter durchscheint. */
+  #touch.hide{background:linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,.8) calc(100% - 40px),rgba(0,0,0,0) 100%)}
+  #touch.hide .tbtn{opacity:.3}
+  #touch.hide .tbtn.big{opacity:.38}
+  #touch .tbtn{transition:opacity .25s}
+  .tb{display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap}
+  .tbtn{width:58px; height:58px; border-radius:50%; border:1px solid rgba(255,255,255,.16);
+    background:rgba(24,24,27,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;
+    flex:0 0 auto}
+  .tbtn:active{background:rgba(52,52,58,.95); transform:scale(.94)}
+  .tbtn svg{width:24px; height:24px; fill:currentColor}
+  .tbtn svg.aus{display:none}
+  .tbtn.big{width:78px; height:78px; background:var(--gold); border-color:var(--gold); color:#000}
+  .tbtn.big svg{width:32px; height:32px}
+  .tbtn.sm{width:auto; min-width:46px; height:44px; border-radius:999px; padding:0 14px;
+    font-size:14.5px; font-weight:600; letter-spacing:.01em; color:rgba(255,255,255,.85);
+    white-space:nowrap}
+  .tbtn.sm svg{width:19px; height:19px}
+  .tbtn.sm.on{background:var(--gold); border-color:var(--gold); color:#000}
+
+  /* Countdown */
+  #cd{position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+    justify-content:center; gap:6px; background:rgba(0,0,0,.94); z-index:8;
+    font-variant-numeric:tabular-nums}
+  #cd.on{display:flex}
+  #cdN{font-size:min(38vh,38vw,200px); font-weight:700; color:var(--gold);
+    letter-spacing:-.04em; line-height:1}
+  #cd small{font-size:16px; font-weight:500; color:rgba(255,255,255,.55); text-align:center;
+    padding:0 24px}
+
+  /* Kurzhinweis mittig, z. B. beim Pausieren */
+  #toast{position:absolute; left:50%; top:calc(12px + var(--safeT)); transform:translateX(-50%);
+    background:rgba(0,0,0,.75); border:1px solid var(--line); border-radius:999px;
+    padding:9px 18px; font-size:15px; color:rgba(255,255,255,.85); opacity:0;
+    transition:opacity .25s; pointer-events:none; white-space:nowrap; z-index:4}
+  #toast.on{opacity:1}
+
+  /* ---------- schmale Bildschirme ---------- */
+  @media (max-width:760px){
+    :root{--pad:18px}
+    #setup{padding:14px 12px calc(20px + var(--safeB))}
+    .card{border-radius:20px; padding:22px var(--pad) 26px}
+    h1{font-size:23px}
+    .sub{font-size:14.5px; margin-bottom:16px}
+    textarea{height:150px}
+    .fld{flex:1 1 100%}
+    .card{padding-bottom:108px}
+    .actions{position:fixed; left:0; right:0; bottom:0; margin:0; z-index:6;
+      padding:12px 14px calc(12px + var(--safeB));
+      background:rgba(10,10,11,.94); border-top:1px solid var(--line);
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px)}
+    .actions .btn{flex:1 1 100%}
+    .checks{display:grid; grid-template-columns:1fr 1fr; gap:6px 14px}
+    .btn.primary{font-size:17px; min-height:54px}
+    #hud{font-size:12.5px; gap:6px 12px; padding-bottom:calc(8px + var(--safeB))}
+    .heard{max-width:52vw}
+    #touch{bottom:calc(38px + var(--safeB)); padding-top:34px}
+    .tbtn.sm{font-size:13.5px; padding:0 12px; height:42px}
+  }
+  /* Handy quer: Platz ist knapp, Leiste kompakter */
+  @media (max-height:480px){
+    .tbtn{width:50px; height:50px} .tbtn.big{width:64px; height:64px}
+    .tbtn svg{width:21px; height:21px} .tbtn.big svg{width:27px; height:27px}
+    .tbtn.sm{height:38px; padding:0 13px; font-size:13.5px}
+    #touch{gap:8px; bottom:calc(36px + var(--safeB)); padding-top:26px}
+  }
 </style>
 </head>
 <body>
@@ -101,6 +215,8 @@
     <h1>Freiweit <span>Prompter</span></h1>
     <p class="sub">Läuft komplett im Browser, ohne Konto und ohne Installation.
       Der Sprachmodus folgt dir beim Sprechen, statt stur weiterzuscrollen.</p>
+
+    <div id="tip" class="warn" hidden></div>
 
     <label for="src">Skript</label>
     <textarea id="src" placeholder="Text hier einfügen, oder unten eine .txt-Datei laden.
@@ -115,53 +231,91 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
       <button class="btn" id="clear">Leeren</button>
     </div>
 
-    <div class="row" style="margin-top:22px">
+    <div class="row" style="margin-top:18px">
       <div class="fld">
         <label>Schriftgröße <span class="val" id="vSize">52</span></label>
-        <input type="range" id="rSize" min="24" max="110" value="52">
+        <input type="range" id="rSize" min="18" max="130" value="52">
       </div>
       <div class="fld">
         <label>Zeilenbreite <span class="val" id="vWidth">70</span></label>
-        <input type="range" id="rWidth" min="30" max="110" value="70">
+        <input type="range" id="rWidth" min="12" max="110" value="70">
       </div>
       <div class="fld">
         <label>Tempo <span class="val" id="vSpeed">1.0</span></label>
         <input type="range" id="rSpeed" min="20" max="260" value="100">
       </div>
+      <div class="fld">
+        <label>Lesezeile von oben <span class="val" id="vMarkY">40</span>%</label>
+        <input type="range" id="rMarkY" min="18" max="62" value="40">
+      </div>
+    </div>
+
+    <div id="pvWrap">
+      <div id="pvLbl">Vorschau in echter Größe · <i id="cpl">–</i></div>
+      <div id="pv"></div>
+    </div>
+    <span id="meas">abcdefghijklmnopqrstuvwxyz</span>
+
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="fitPhone">Auf dieses Gerät einstellen</button>
+    </div>
+
+    <label style="margin-top:20px">Vorlauf bis zum Start</label>
+    <div class="seg" id="segLead">
+      <button data-v="0">sofort</button>
+      <button data-v="3">3 s</button>
+      <button data-v="5">5 s</button>
+      <button data-v="10">10 s</button>
     </div>
 
     <div class="checks">
       <label class="chk"><input type="checkbox" id="cVoice" checked> Sprachmodus</label>
       <label class="chk"><input type="checkbox" id="cMark" checked> Lesemarke</label>
       <label class="chk"><input type="checkbox" id="cMirror"> Spiegeln</label>
+      <label class="chk"><input type="checkbox" id="cAwake" checked> Bildschirm an</label>
     </div>
 
     <div class="actions">
       <button class="btn primary" id="start">Prompter starten</button>
     </div>
 
-    <p class="hint">
-      <b>Steuerung.</b>
-      <kbd>Leertaste</kbd> Start und Pause ·
-      <kbd>↑</kbd><kbd>↓</kbd> Tempo ·
-      <kbd>←</kbd><kbd>→</kbd> ein Satz zurück und vor ·
-      <kbd>R</kbd> an den Anfang ·
-      <kbd>M</kbd> spiegeln ·
-      <kbd>H</kbd> Anzeige unten aus ·
-      <kbd>Esc</kbd> zurück<br><br>
-      <b>Sprachmodus.</b> Chrome nötig. Beim ersten Start fragt der Browser nach dem Mikrofon.
-      Der Text folgt dann deinem Sprechen. Setzt die Erkennung mal aus, scrollt er ruhig weiter
-      und fängt dich wieder ein, sobald er dich versteht. Zum Erkennen schickt Chrome Ton an
-      Google. Wenn dir das nicht recht ist, Haken raus und mit festem Tempo arbeiten.<br><br>
-      <b>Aufbau.</b> Bildschirm direkt unter die Kamera, ungefähr zwei Meter Abstand.
-      Bei Beam-Splitter-Glas den Haken bei Spiegeln setzen.
-    </p>
+    <p class="hint" id="hintBox"></p>
   </div>
 </div>
 
 <div id="stage">
   <div id="scroll"><div id="text"></div></div>
   <div id="mark"><div class="ln"></div><div class="tri"></div></div>
+
+  <div id="cd"><span id="cdN">3</span><small>Handy hinstellen, gleich geht es los</small></div>
+  <div id="toast"></div>
+  <video id="wachVideo" muted playsinline loop
+         style="position:absolute;width:2px;height:2px;opacity:.01;pointer-events:none;left:0;top:0"></video>
+
+  <div id="touch">
+    <div class="tb">
+      <button class="tbtn sm" data-a="size-">A&#8202;−</button>
+      <button class="tbtn sm" data-a="size+">A&#8202;+</button>
+      <button class="tbtn sm" data-a="speed-">Tempo&#8202;−</button>
+      <button class="tbtn sm" data-a="speed+">Tempo&#8202;+</button>
+      <button class="tbtn sm" data-a="mirror" aria-label="Spiegeln" title="Spiegeln">
+        <svg viewBox="0 0 24 24"><path d="M11 2h2v20h-2zM9 5v14H3L9 5zm6 0l6 14h-6V5z"/></svg></button>
+    </div>
+    <div class="tb">
+      <button class="tbtn" data-a="restart" aria-label="An den Anfang">
+        <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+      <button class="tbtn" data-a="prev" aria-label="Satz zurück">
+        <svg viewBox="0 0 24 24"><path d="M18 6v12l-9-6 9-6zM7 6h2v12H7z"/></svg></button>
+      <button class="tbtn big" data-a="play" aria-label="Start und Pause">
+        <svg id="icPlay" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>
+        <svg id="icPause" class="aus" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+      <button class="tbtn" data-a="next" aria-label="Satz vor">
+        <svg viewBox="0 0 24 24"><path d="M6 6l9 6-9 6V6zM15 6h2v12h-2z"/></svg></button>
+      <button class="tbtn" data-a="exit" aria-label="Zurück zum Start">
+        <svg viewBox="0 0 24 24"><path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
+    </div>
+  </div>
+
   <div id="hud">
     <div class="grp">
       <span><span class="dot" id="dot"></span><span id="mode">bereit</span></span>
@@ -183,37 +337,97 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
 
   const $ = s => document.querySelector(s);
   const setup=$('#setup'), stage=$('#stage'), textEl=$('#text'), scrollEl=$('#scroll'),
-        markEl=$('#mark'), hud=$('#hud'), bar=$('#bar'), dot=$('#dot');
+        markEl=$('#mark'), hud=$('#hud'), bar=$('#bar'), dot=$('#dot'),
+        touchBar=$('#touch'), cdEl=$('#cd'), toastEl=$('#toast'), pv=$('#pv');
 
+  /* ---------- Gerät erkennen ---------- */
+  // Die Emulation mancher Browser meldet Touch erst kurz nach dem Laden.
+  // Deshalb wird hier nicht einmal geprueft, sondern spaeter nachgezogen.
+  const istTouch = () => window.matchMedia('(pointer:coarse)').matches ||
+                         window.matchMedia('(any-pointer:coarse)').matches ||
+                         navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+  const IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const klein = () => Math.min(window.innerWidth, window.innerHeight) < 820;
+  let COARSE = istTouch();
+  let PHONE  = COARSE && klein();
+
+  /* ---------- Einstellungen ---------- */
   const LS='freiweit-prompter';
-  const cfg = Object.assign(
-    {size:52, width:70, speed:100, voice:true, mark:true, mirror:false, text:''},
-    JSON.parse(localStorage.getItem(LS) || '{}')
-  );
-  const save = () => { try{ localStorage.setItem(LS, JSON.stringify(cfg)); }catch(e){} };
+  let gespeichert={};
+  try{ gespeichert = JSON.parse(localStorage.getItem(LS) || '{}'); }catch(e){}
+
+  const STANDARD = {
+    size:   PHONE ? 38 : 52,
+    width:  PHONE ? 26 : 70,
+    speed:  100,
+    markY:  PHONE ? 32 : 40,
+    lead:   PHONE ? 5  : 0,
+    voice:  !IOS,          // auf dem iPhone laeuft die Erkennung unzuverlaessig
+    mark:   true,
+    mirror: false,
+    awake:  true,
+    text:   ''
+  };
+  const cfg = Object.assign({}, STANDARD, gespeichert);
+  cfg.lhFactor = 1.45;
+  const save = () => { try{
+    const {lhFactor, ...rest} = cfg; localStorage.setItem(LS, JSON.stringify(rest));
+  }catch(e){} };
+
+  function geraeteWerte(){
+    // Zielgroesse: so viele Zeichen pro Zeile, dass es auf Sitzabstand ruhig liest.
+    const quer = window.innerWidth > window.innerHeight;
+    const breite = Math.min(window.innerWidth, window.innerHeight * 1.9) * 0.92;
+    // Hochkant passen weniger Zeichen in die Zeile, dafuer darf die Schrift groesser sein.
+    const ziel = PHONE ? (quer ? 26 : 19) : 46;
+    const proZeichen = breite / ziel;
+    cfg.size  = Math.round(Math.max(18, Math.min(130, proZeichen / 0.50)));
+    cfg.width = PHONE ? 26 : 70;
+    cfg.markY = PHONE ? 32 : 40;
+    if(PHONE && !cfg.lead) cfg.lead = 5;
+    schreibeFelder(); applyStyle(); vorschau(); save();
+  }
+
+  function schreibeFelder(){
+    $('#rSize').value = cfg.size;   $('#vSize').textContent = cfg.size;
+    $('#rWidth').value = cfg.width; $('#vWidth').textContent = cfg.width;
+    $('#rSpeed').value = cfg.speed; $('#vSpeed').textContent = (cfg.speed/100).toFixed(1);
+    $('#rMarkY').value = cfg.markY; $('#vMarkY').textContent = cfg.markY;
+    $('#cVoice').checked = cfg.voice; $('#cMark').checked = cfg.mark;
+    $('#cMirror').checked = cfg.mirror; $('#cAwake').checked = cfg.awake;
+    [...$('#segLead').children].forEach(b => b.classList.toggle('sel', +b.dataset.v === cfg.lead));
+  }
 
   /* ---------- Startbildschirm ---------- */
   $('#src').value = cfg.text;
-  $('#rSize').value = cfg.size;  $('#vSize').textContent = cfg.size;
-  $('#rWidth').value = cfg.width; $('#vWidth').textContent = cfg.width;
-  $('#rSpeed').value = cfg.speed; $('#vSpeed').textContent = (cfg.speed/100).toFixed(1);
-  $('#cVoice').checked = cfg.voice; $('#cMark').checked = cfg.mark; $('#cMirror').checked = cfg.mirror;
+  schreibeFelder();
 
-  $('#rSize').oninput  = e => { cfg.size=+e.target.value;  $('#vSize').textContent=cfg.size; applyStyle(); save(); };
-  $('#rWidth').oninput = e => { cfg.width=+e.target.value; $('#vWidth').textContent=cfg.width; applyStyle(); save(); };
+  const geschraubt = () => { nutzerHatGeschraubt = true; };
+  $('#rSize').oninput  = e => { geschraubt(); cfg.size=+e.target.value;  $('#vSize').textContent=cfg.size; applyStyle(); vorschau(); save(); };
+  $('#rWidth').oninput = e => { geschraubt(); cfg.width=+e.target.value; $('#vWidth').textContent=cfg.width; applyStyle(); vorschau(); save(); };
   $('#rSpeed').oninput = e => { cfg.speed=+e.target.value; $('#vSpeed').textContent=(cfg.speed/100).toFixed(1); showSpeed(); save(); };
+  $('#rMarkY').oninput = e => { geschraubt(); cfg.markY=+e.target.value; $('#vMarkY').textContent=cfg.markY; positionMark(); save(); };
   $('#cVoice').onchange  = e => { cfg.voice=e.target.checked; save(); };
   $('#cMark').onchange   = e => { cfg.mark=e.target.checked; markEl.classList.toggle('on',cfg.mark); save(); };
-  $('#cMirror').onchange = e => { cfg.mirror=e.target.checked; textEl.classList.toggle('mirror',cfg.mirror); save(); };
+  $('#cMirror').onchange = e => { cfg.mirror=e.target.checked; setMirror(cfg.mirror); save(); };
+  $('#cAwake').onchange  = e => { cfg.awake=e.target.checked; save(); };
+  $('#fitPhone').onclick = () => { nutzerHatGeschraubt = true; geraeteWerte(); };
+  $('#segLead').onclick = e => {
+    const b = e.target.closest('button'); if(!b) return;
+    cfg.lead = +b.dataset.v; schreibeFelder(); save();
+  };
 
   $('#load').onclick  = () => $('#file').click();
   $('#file').onchange = e => {
     const f = e.target.files[0]; if(!f) return;
     const r = new FileReader();
-    r.onload = ev => { $('#src').value = ev.target.result; cfg.text = ev.target.result; save(); };
+    r.onload = ev => { $('#src').value = ev.target.result; cfg.text = ev.target.result; save(); vorschau(); };
     r.readAsText(f, 'utf-8');
   };
-  $('#clear').onclick = () => { $('#src').value=''; cfg.text=''; save(); };
+  $('#clear').onclick = () => { $('#src').value=''; cfg.text=''; save(); vorschau(); };
+  $('#src').oninput = () => { cfg.text = $('#src').value; vorschau(); };
   $('#demo').onclick  = () => {
     $('#src').value =
 `=====================================================
@@ -223,12 +437,12 @@ PROBE
 Hi, mein Name ist Nihat.
 Schön, dass du eingeschaltet hast.
 
-Ich bin seit sieben Jahren unterwegs, über siebzig Länder,
+Ich bin seit acht Jahren unterwegs, über siebzig Länder,
 und ein großer Teil davon war Südostasien.
 
 Sprich einfach mit. Der Text sollte dir folgen.
 Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
-    cfg.text = $('#src').value; save();
+    cfg.text = $('#src').value; save(); vorschau();
   };
 
   function applyStyle(){
@@ -236,6 +450,119 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     document.documentElement.style.setProperty('--width', cfg.width+'ch');
   }
   applyStyle();
+
+  function setMirror(an){
+    textEl.classList.toggle('mirror', an);
+    pv.classList.toggle('mirror', an);
+    markEl.querySelector('.tri').classList.toggle('r', an);
+    positionMark(); apply();
+  }
+
+  /* ---------- Vorschau im Startbildschirm ---------- */
+  function vorschau(){
+    // Kapitelnamen stehen direkt unter einer =====-Zeile und gehoeren nicht in die Vorschau
+    const zeilen = ($('#src').value || '').replace(/\r/g,'').split('\n');
+    const roh = [];
+    for(let i=0;i<zeilen.length;i++){
+      const z = zeilen[i].trim();
+      if(!z || /^#/.test(z)) continue;
+      if(/^=+$/.test(z)){ while(i+1<zeilen.length && !/^=+$/.test(zeilen[i+1].trim())) i++; i++; continue; }
+      roh.push(z);
+    }
+    const satz = roh.length ? roh.slice(0,3).join(' ')
+      : 'So groß steht dein Text nachher auf dem Bildschirm.';
+    const w = satz.split(/\s+/).slice(0,26);
+    const teil = n => w.slice(n[0],n[1]).join(' ');
+    pv.innerHTML = '<span class="c">'+esc(teil([0,4]))+' </span>' +
+                   '<span class="a">'+esc(teil([4,7]))+' </span>' +
+                   '<span class="b">'+esc(teil([7,26]))+'</span>';
+    zeichenProZeile();
+  }
+  const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  function zeichenProZeile(){
+    const m = $('#meas');
+    const proZeichen = m.getBoundingClientRect().width / 26;
+    const breite = pv.getBoundingClientRect().width - 20;
+    const n = proZeichen > 0 ? Math.round(breite / proZeichen) : 0;
+    $('#cpl').textContent = n ? ('ca. ' + n + ' Zeichen pro Zeile') : '–';
+  }
+
+  /* ---------- Hinweise je nach Gerät ---------- */
+  function hinweise(){
+    const tip = $('#tip'); const t = [];
+    if(PHONE){
+      t.push('<b>Handy neben die Kamera.</b> Quer gedreht passen deutlich mehr Wörter in eine Zeile. ' +
+             'Stell mit „Auf dieses Gerät einstellen“ die Größe passend, dann sieh in der Vorschau nach, ' +
+             'ob du es aus deinem Sitzabstand entspannt liest.');
+      if(IOS && !SR) t.push('Der Sprachmodus geht auf diesem Gerät nicht. Nimm festes Tempo, ' +
+                            'zum Nachsteuern die Pfeiltasten unten.');
+      else if(IOS) t.push('Auf dem iPhone bricht die Spracherkennung oft ab. Er ist deshalb aus. ' +
+                          'Wenn du ihn probieren willst, Haken setzen.');
+    }
+    tip.hidden = !t.length;
+    if(t.length) tip.innerHTML = t.join('<br><br>');
+  }
+
+  function bedienhinweis(){
+  $('#hintBox').innerHTML = COARSE ? `
+      <b>Bedienung am Handy.</b>
+      Einmal auf den Text tippen startet und pausiert ·
+      zweimal tippen springt an dieses Wort ·
+      hoch und runter wischen schiebt den Text ·
+      die runden Knöpfe werden beim Laufen blass, bleiben aber da und funktionieren weiter.<br>
+      Zurück zu diesem Startbildschirm kommst du jederzeit über das <b>✕</b> rechts unten.<br><br>
+      <b>Sprachmodus.</b> Braucht Chrome. Beim ersten Start fragt der Browser nach dem Mikrofon.
+      Der Text folgt dann deinem Sprechen. Setzt die Erkennung aus, scrollt er ruhig weiter und
+      fängt dich wieder ein, sobald er dich versteht. Chrome schickt dafür Ton an Google.
+      Wenn dir das nicht recht ist, Haken raus und mit festem Tempo arbeiten.<br><br>
+      <b>Aufbau.</b> Handy quer direkt neben oder unter das Objektiv, Höhe der Lesezeile so wählen,
+      dass dein Blick fast in die Linse geht. Für den ganzen Bildschirm ohne Adressleiste:
+      im Browser-Menü „Zum Home-Bildschirm“ und von dort starten.
+    ` : `
+      <b>Steuerung.</b>
+      <kbd>Leertaste</kbd> Start und Pause ·
+      <kbd>↑</kbd><kbd>↓</kbd> Tempo ·
+      <kbd>←</kbd><kbd>→</kbd> ein Satz zurück und vor ·
+      <kbd>R</kbd> an den Anfang ·
+      <kbd>M</kbd> spiegeln ·
+      <kbd>H</kbd> Anzeige unten aus ·
+      <kbd>Esc</kbd> zurück<br><br>
+      <b>Sprachmodus.</b> Chrome nötig. Beim ersten Start fragt der Browser nach dem Mikrofon.
+      Der Text folgt dann deinem Sprechen. Setzt die Erkennung mal aus, scrollt er ruhig weiter
+      und fängt dich wieder ein, sobald er dich versteht. Zum Erkennen schickt Chrome Ton an
+      Google. Wenn dir das nicht recht ist, Haken raus und mit festem Tempo arbeiten.<br><br>
+      <b>Aufbau.</b> Bildschirm direkt unter die Kamera, ungefähr zwei Meter Abstand.
+      Bei Beam-Splitter-Glas den Haken bei Spiegeln setzen.
+    `;
+  }
+
+  // Alles, was vom Geraet abhaengt, an einer Stelle
+  // Eine gespeicherte Fassung aus der Zeit vor der Handy-Ansicht kennt markY nicht.
+  // Die darf auf dem Handy einmalig passend gesetzt werden.
+  let nutzerHatGeschraubt = ('markY' in gespeichert);
+  function geraetPruefen(){
+    const jetzt = istTouch();
+    const neuPhone = jetzt && klein();
+    if(jetzt === COARSE && neuPhone === PHONE) return;
+    COARSE = jetzt; PHONE = neuPhone;
+    document.body.classList.toggle('touchui', COARSE);
+    hinweise(); bedienhinweis();
+    if(PHONE && !nutzerHatGeschraubt) geraeteWerte();
+  }
+  document.body.classList.toggle('touchui', COARSE);
+  hinweise(); bedienhinweis();
+  if(PHONE && !nutzerHatGeschraubt) geraeteWerte();
+  // Touch-Emulation und echte Geraete melden sich manchmal erst nach dem Laden
+  setTimeout(geraetPruefen, 300);
+  setTimeout(geraetPruefen, 1200);
+  window.addEventListener('pointerdown', e => {
+    if(e.pointerType !== 'touch' || COARSE) return;
+    COARSE = true; PHONE = klein();
+    document.body.classList.toggle('touchui', true);
+    hinweise(); bedienhinweis();
+    if(PHONE && !nutzerHatGeschraubt) geraeteWerte();
+  });
 
   /* ---------- Text aufbereiten ---------- */
   let words=[];        // {el, norm} nur echte Wörter
@@ -276,7 +603,6 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
   // Haeufige Funktionswoerter kommen in jedem Satz vor. Wenn sie voll zaehlen,
   // findet die Suche ueberall einen Treffer und der Text springt wild umher.
-  // Sie stoeren nicht, sie tragen nur nichts bei.
   const FUELL = new Set(('der die das den dem des ein eine einen einem einer und oder aber ' +
     'ich du er sie es wir ihr mir mich dir dich ihm ihn uns euch ' +
     'ist sind war hat hab habe haben wird werden kann kannst muss musst ' +
@@ -287,7 +613,6 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   const traegt = w => w.length >= 4 && !FUELL.has(w);
 
   // Zwei Woerter gelten als dasselbe, wenn sie sich am Anfang decken.
-  // Die Spracherkennung verschluckt oft Endungen.
   function gleich(a,b){
     if(!a || !b) return false;
     if(a === b) return true;
@@ -307,20 +632,19 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
     for(let i=0;i<lines.length;i++){
       const line = lines[i];
-      // Trennlinie: die Zeile danach ist der Kapitelname
       if(/^=+\s*$/.test(line)){
         const name = (lines[i+1]||'').trim();
         if(name && !/^=+\s*$/.test(name)){
           const c=document.createElement('span'); c.className='chap'; c.textContent=name;
           textEl.appendChild(c);
           chapters.push({name, wordIndex:words.length});
-          i++;                                  // Namenszeile überspringen
-          while(/^=+\s*$/.test(lines[i+1]||'')) i++;  // schließende Linie überspringen
+          i++;
+          while(/^=+\s*$/.test(lines[i+1]||'')) i++;
         }
         flush(); continue;
       }
       if(!line.trim()){ flush(); continue; }
-      if(/^#/.test(line.trim())){ flush(); continue; }   // Kommentarzeile, wird nicht gesprochen
+      if(/^#/.test(line.trim())){ flush(); continue; }
 
       if(!para) newPara();
       const toks = line.trim().split(/\s+/);
@@ -334,12 +658,16 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       }
       para.appendChild(document.createTextNode(' '));
     }
+    // Luft am Ende, damit der letzte Satz bis zur Lesezeile hochlaeuft
+    const luft = document.createElement('span');
+    luft.className='para'; luft.style.display='block'; luft.style.height='70vh';
+    textEl.appendChild(luft);
     paint(true);
   }
 
   /* ---------- Darstellung ---------- */
-  let offset=0;           // aktueller Scroll in px
-  const markY = () => window.innerHeight*0.40;
+  let offset=0;
+  const markY = () => window.innerHeight * (cfg.markY/100);
 
   function paint(hard){
     for(let i=0;i<words.length;i++){
@@ -360,7 +688,7 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
   function center(hard){
     const t = targetOffset();
-    if(hard){ offset=t; apply(); }
+    if(hard){ offset=t; glideTo=null; apply(); }
     else glideTo = t;
   }
 
@@ -368,26 +696,48 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   function apply(){ textEl.style.transform =
     `translateX(-50%) translateY(${-offset}px)` + (cfg.mirror?' scaleX(-1)':''); }
 
+  // Wort, das gerade auf der Lesezeile steht (nach dem Wischen)
+  function wortAnDerMarke(){
+    const y = markY(); let best=0, bd=1e9;
+    for(let i=0;i<words.length;i++){
+      const r = words[i].el.getBoundingClientRect();
+      const d = Math.abs(r.top + r.height/2 - y);
+      if(d < bd){ bd=d; best=i; }
+    }
+    return best;
+  }
+
   /* ---------- Lauf ---------- */
-  let running=false, last=0, wpmEst=145;
+  let running=false, last=0, wpmEst=145, rafOn=false;
 
   function loop(ts){
+    if(!stage.classList.contains('on')){ rafOn=false; return; }
     if(!running){ last=ts; requestAnimationFrame(loop); return; }
     const dt = Math.min(0.05, (ts-last)/1000); last=ts;
 
     if(glideTo!==null){
-      // weich zur Sprechposition ziehen
       offset += (glideTo-offset) * Math.min(1, dt*4.5);
       if(Math.abs(glideTo-offset) < 0.5){ offset=glideTo; glideTo=null; }
     } else {
-      // ruhiges Grundtempo, damit es nie einfriert
       const px = cfg.size * cfg.lhFactor * (cfg.speed/100) * (wpmEst/60) / 9;
-      offset += px * dt * 60 / 60 * 1.0;
+      offset += px * dt;
     }
-    apply(); updateHud();
+    apply();
+    if(!recOn) mitlaufen();
+    updateHud();
     requestAnimationFrame(loop);
   }
-  cfg.lhFactor = 1.45;
+
+  // Ohne Spracherkennung gibt der Scroll die Stelle vor: alles, was ueber die
+  // Lesezeile gewandert ist, gilt als gesprochen.
+  function mitlaufen(){
+    let n = 0;
+    while(pos < words.length && n < 40){
+      const r = words[pos].el.getBoundingClientRect();
+      if(r.top + r.height/2 < markY() - 2){ pos++; n++; } else break;
+    }
+    if(n) paint(false);
+  }
 
   function updateHud(){
     const pct = words.length ? Math.min(100, Math.round(pos/words.length*100)) : 0;
@@ -402,7 +752,6 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
   /* ---------- Sprachmodus ---------- */
   let rec=null, recOn=false;
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   function startVoice(){
     if(!SR){ setMode('kein Sprachmodus in diesem Browser', 'err'); return; }
@@ -416,8 +765,6 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       };
       rec.onend = () => { if(recOn && running){ try{ rec.start(); }catch(e){} } };
       rec.onresult = ev => {
-        // Alles nehmen, was gerade im Fluss ist. Nur den letzten Brocken zu
-        // betrachten war der Fehler: dort steht oft ein halbes Wort.
         let heard='';
         for(let i=0;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
         const w = heard.split(/\s+/).map(norm).filter(Boolean);
@@ -439,27 +786,21 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
   function zeigeGehoert(s, treffer){
     const el = $('#hHeard');
-    el.textContent = s ? '\u201e' + s + '\u201c' : '';
+    el.textContent = s ? '„' + s + '“' : '';
     el.classList.toggle('treffer', !!treffer);
   }
 
-  // Sucht die Stelle im Text, an der das Gehoerte am besten anliegt.
-  // Bewusst nachsichtig: verschluckte Endungen, ausgelassene Woerter und
-  // Fehlerkennungen duerfen den Faden nicht abreissen lassen.
   function match(){
     if(gehoert.length < 2 || !words.length) return;
 
-    const VOR = 140;                        // so weit nach vorne wird gesucht
-    const ZURUECK = 20;                     // etwas Toleranz nach hinten
+    const VOR = 140, ZURUECK = 20;
     const from = Math.max(0, pos - ZURUECK);
     const to   = Math.min(words.length, pos + VOR);
 
     let bestEnde = -1, bestPunkte = 0;
 
     for(let i = from; i < to; i++){
-      let punkte = 0, luecken = 0, wi = i, letzterTreffer = -1;
-
-      let inhalt = 0;                     // Treffer, die wirklich etwas aussagen
+      let punkte = 0, luecken = 0, wi = i, letzterTreffer = -1, inhalt = 0;
 
       for(let hi = 0; hi < gehoert.length && wi < words.length; hi++){
         const h = gehoert[hi];
@@ -467,19 +808,15 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
         if(gleich(words[wi].norm, h)){
           treffer = 1; letzterTreffer = wi; wi++;
         } else if(luecken < 3 && wi + 1 < words.length && gleich(words[wi+1].norm, h)){
-          // ein Wort im Skript uebersprungen, etwa weil es verschluckt wurde
           treffer = 1; luecken++; letzterTreffer = wi + 1; wi += 2;
         }
-        // sonst: das gehoerte Wort passt hier nicht, es wird ignoriert
         if(treffer){
           if(traegt(h)){ punkte += 1; inhalt++; }
-          else { punkte += 0.25; }        // Fuellwort passt, sagt aber wenig
+          else { punkte += 0.25; }
         }
       }
 
-      // spaetere Stellen leicht bevorzugen, damit der Text mitwandert
       const gewichtet = punkte + (i - from) * 0.001;
-      // Mindestens zwei tragende Woerter, sonst ist es Zufall
       if(inhalt >= 2 && punkte >= 2.5 && gewichtet > bestPunkte){
         bestPunkte = gewichtet;
         bestEnde = letzterTreffer + 1;
@@ -498,68 +835,237 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     paint(false); center(false);
   }
 
-  /* ---------- Start und Tasten ---------- */
+  /* ---------- Bildschirm wach halten ---------- */
+  let wakeLock=null;
+  const WACH_MP4 = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAMQbW9vdgAAAGxtdmhkAAAAAAAAAAAAAAAAAAAD6AAAA+gAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAjp0cmFrAAAAXHRraGQAAAADAAAAAAAAAAAAAAABAAAAAAAAA+gAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAEAAAABAAAAAAAAkZWR0cwAAABxlbHN0AAAAAAAAAAEAAAPoAAAAAAABAAAAAAGybWRpYQAAACBtZGhkAAAAAAAAAAAAAAAAAABAAAAAQABVxAAAAAAALWhkbHIAAAAAAAAAAHZpZGUAAAAAAAAAAAAAAABWaWRlb0hhbmRsZXIAAAABXW1pbmYAAAAUdm1oZAAAAAEAAAAAAAAAAAAAACRkaW5mAAAAHGRyZWYAAAAAAAAAAQAAAAx1cmwgAAAAAQAAAR1zdGJsAAAAuXN0c2QAAAAAAAAAAQAAAKlhdmMxAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAQABIAAAASAAAAAAAAAABFUxhdmM2Mi4yOC4xMDIgbGlieDI2NAAAAAAAAAAAAAAAGP//AAAAL2F2Y0MBQsAe/+EAF2dCwB7ZBCbARAAAAwAEAAADAAg8WLkgAQAFaMuDyyAAAAAQcGFzcAAAAAEAAAABAAAAFGJ0cnQAAAAAAAAUkAAAAAAAAAAYc3R0cwAAAAAAAAABAAAAAQAAQAAAAAAcc3RzYwAAAAAAAAABAAAAAQAAAAEAAAABAAAAFHN0c3oAAAAAAAACkgAAAAEAAAAUc3RjbwAAAAAAAAABAAADQAAAAGJ1ZHRhAAAAWm1ldGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNjIuMTIuMTAyAAAACGZyZWUAAAKabWRhdAAAAnAGBf//bNxF6b3m2Ui3lizYINkj7u94MjY0IC0gY29yZSAxNjUgcjMyMjIgYjM1NjA1YSAtIEguMjY0L01QRUctNCBBVkMgY29kZWMgLSBDb3B5bGVmdCAyMDAzLTIwMjUgLSBodHRwOi8vd3d3LnZpZGVvbGFuLm9yZy94MjY0Lmh0bWwgLSBvcHRpb25zOiBjYWJhYz0wIHJlZj0zIGRlYmxvY2s9MTowOjAgYW5hbHlzZT0weDE6MHgxMTEgbWU9aGV4IHN1Ym1lPTcgcHN5PTEgcHN5X3JkPTEuMDA6MC4wMCBtaXhlZF9yZWY9MSBtZV9yYW5nZT0xNiBjaHJvbWFfbWU9MSB0cmVsbGlzPTEgOHg4ZGN0PTAgY3FtPTAgZGVhZHpvbmU9MjEsMTEgZmFzdF9wc2tpcD0xIGNocm9tYV9xcF9vZmZzZXQ9LTIgdGhyZWFkcz0yIGxvb2thaGVhZF90aHJlYWRzPTEgc2xpY2VkX3RocmVhZHM9MCBucj0wIGRlY2ltYXRlPTEgaW50ZXJsYWNlZD0wIGJsdXJheV9jb21wYXQ9MCBjb25zdHJhaW5lZF9pbnRyYT0wIGJmcmFtZXM9MCB3ZWlnaHRwPTAga2V5aW50PTI1MCBrZXlpbnRfbWluPTEgc2NlbmVjdXQ9NDAgaW50cmFfcmVmcmVzaD0wIHJjX2xvb2thaGVhZD00MCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIzLjAgcWNvbXA9MC42MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IGlwX3JhdGlvPTEuNDAgYXE9MToxLjAwAIAAAAAaZYiEBX///w9FAAFC3ycnJ1111111111114A=';
+  async function wachAn(){
+    if(!cfg.awake) return;
+    if('wakeLock' in navigator){
+      try{ wakeLock = await navigator.wakeLock.request('screen'); return; }catch(e){}
+    }
+    // Aeltere iPhones kennen wakeLock nicht. Ein laufendes stummes Video haelt den
+    // Bildschirm trotzdem an. Das darf nur aus einer Beruehrung heraus starten.
+    const v = $('#wachVideo');
+    try{ if(!v.src) v.src = WACH_MP4; v.play().catch(()=>{}); }catch(e){}
+  }
+  function wachAus(){
+    if(wakeLock){ try{ wakeLock.release(); }catch(e){} wakeLock=null; }
+    const v = $('#wachVideo'); try{ v.pause(); }catch(e){}
+  }
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState==='visible' && stage.classList.contains('on')) wachAn();
+  });
+
+  /* ---------- Kurzhinweis ---------- */
+  let toastT=null;
+  function toast(s){
+    toastEl.textContent = s; toastEl.classList.add('on');
+    clearTimeout(toastT); toastT = setTimeout(()=>toastEl.classList.remove('on'), 1100);
+  }
+
+  /* ---------- Leiste ein- und ausblenden ---------- */
+  let hideT=null;
+  function zeigeLeiste(){
+    touchBar.classList.remove('hide'); hud.classList.remove('hide');
+    clearTimeout(hideT);
+    if(running) hideT = setTimeout(()=>{
+      touchBar.classList.add('hide'); hud.classList.add('hide');
+    }, 4000);
+  }
+
+  /* ---------- Start ---------- */
+  let cdTimer=null;
   $('#start').onclick = () => {
     const raw = $('#src').value.trim();
     if(!raw){ $('#src').focus(); return; }
     cfg.text = raw; save();
     setup.style.display='none'; stage.classList.add('on');
-    textEl.classList.toggle('mirror', cfg.mirror);
+    setMirror(cfg.mirror);
     markEl.classList.toggle('on', cfg.mark);
     positionMark(); showSpeed();
     build(raw);
-    running=false; setMode('bereit mit Leertaste');
-    requestAnimationFrame(loop);
-    if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+    running=false; setPlayIcon(); setMode(COARSE ? 'bereit, einmal tippen' : 'bereit mit Leertaste');
+    zeigeLeiste(); wachAn(); stateAn();
+    if(!rafOn){ rafOn=true; requestAnimationFrame(loop); }
+    if(!IOS && document.documentElement.requestFullscreen)
+      document.documentElement.requestFullscreen().catch(()=>{});
+    if(cfg.lead > 0) countdown(cfg.lead); 
   };
+
+  function countdown(sek){
+    let n = sek;
+    cdEl.classList.add('on'); $('#cdN').textContent = n;
+    clearInterval(cdTimer);
+    cdTimer = setInterval(() => {
+      n--;
+      if(n <= 0) cdFertig();
+      else $('#cdN').textContent = n;
+    }, 1000);
+  }
+  function cdFertig(){
+    clearInterval(cdTimer); cdTimer=null;
+    cdEl.classList.remove('on');
+    if(!running) toggle();
+  }
+  // Tippen waehrend des Vorlaufs startet sofort
+  cdEl.addEventListener('pointerup', e => { e.stopPropagation(); cdFertig(); });
+
+  // Der Prompter bekommt einen eigenen Verlaufseintrag. Damit fuehrt die
+  // Zurueck-Taste des Handys zurueck zum Startbildschirm, statt die Seite zu verlassen.
+  let stateGesetzt = false;
+  function stateAn(){ try{ history.pushState({prompter:1}, ''); stateGesetzt = true; }catch(e){} }
+  window.addEventListener('popstate', () => {
+    stateGesetzt = false;
+    if(stage.classList.contains('on')) verlassen(false);
+  });
+
+  function verlassen(zurueckDruecken){
+    if(zurueckDruecken === undefined) zurueckDruecken = true;
+    if(!stage.classList.contains('on')) return;
+    running=false; stopVoice(); wachAus();
+    clearInterval(cdTimer); cdTimer=null;
+    stage.classList.remove('on'); cdEl.classList.remove('on');
+    setup.style.display='flex';
+    schreibeFelder(); vorschau();
+    if(document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+    if(zurueckDruecken && stateGesetzt){ stateGesetzt = false; try{ history.back(); }catch(e){} }
+  }
 
   function positionMark(){
     const y = markY();
     markEl.querySelector('.ln').style.top = y+'px';
-    markEl.querySelector('.tri').style.top = (y-11)+'px';
-    markEl.querySelector('.tri').style.left = '14px';
+    const tri = markEl.querySelector('.tri');
+    tri.style.top = (y-11)+'px';
+    if(cfg.mirror){ tri.style.left='auto'; tri.style.right='14px'; }
+    else{ tri.style.right='auto'; tri.style.left='14px'; }
   }
-  window.addEventListener('resize', () => { positionMark(); center(true); });
+  let resizeT=null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { geraetPruefen(); positionMark(); center(true); vorschau(); }, 120);
+  });
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => { geraetPruefen(); positionMark(); center(true); vorschau(); }, 300);
+  });
+
+  function setPlayIcon(){
+    $('#icPlay').classList.toggle('aus', running);
+    $('#icPause').classList.toggle('aus', !running);
+  }
 
   function toggle(){
     running = !running;
+    setPlayIcon();
     if(running){
       if(cfg.voice) startVoice(); else setMode('läuft','live');
+      toast('läuft');
     } else {
-      stopVoice(); setMode('Pause');
+      stopVoice(); setMode('Pause'); toast('Pause');
     }
+    zeigeLeiste();
   }
 
+  /* ---------- Tasten ---------- */
   document.addEventListener('keydown', e => {
     if(!stage.classList.contains('on')) return;
     switch(e.key){
       case ' ': e.preventDefault(); toggle(); break;
-      case 'ArrowUp':   e.preventDefault(); cfg.speed=Math.min(260,cfg.speed+10); showSpeed(); save(); break;
-      case 'ArrowDown': e.preventDefault(); cfg.speed=Math.max(20, cfg.speed-10); showSpeed(); save(); break;
+      case 'ArrowUp':   e.preventDefault(); tempo(+10); break;
+      case 'ArrowDown': e.preventDefault(); tempo(-10); break;
       case 'ArrowRight':e.preventDefault(); jump(+1); break;
       case 'ArrowLeft': e.preventDefault(); jump(-1); break;
       case 'r': case 'R': pos=0; paint(true); break;
-      case 'm': case 'M': cfg.mirror=!cfg.mirror; textEl.classList.toggle('mirror',cfg.mirror); apply(); save(); break;
+      case 'm': case 'M': cfg.mirror=!cfg.mirror; setMirror(cfg.mirror); save(); break;
       case 'h': case 'H': hud.classList.toggle('hide'); break;
-      case 'Escape':
-        running=false; stopVoice();
-        stage.classList.remove('on'); setup.style.display='flex';
-        if(document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(()=>{});
-        break;
+      case 'Escape': verlassen(); break;
     }
   });
 
-  // einen Satz vor oder zurück
+  function tempo(d){
+    cfg.speed = Math.max(20, Math.min(260, cfg.speed + d));
+    showSpeed(); save(); toast('Tempo ' + (cfg.speed/100).toFixed(1)); zeigeLeiste();
+  }
+  function schrift(d){
+    cfg.size = Math.max(18, Math.min(130, cfg.size + d));
+    applyStyle(); center(true); toast('Schrift ' + cfg.size); save(); zeigeLeiste();
+  }
+
   function jump(dir){
     let i = pos + dir;
     const end = w => /[.!?:]$/.test(w.el.textContent.trim());
     while(i>0 && i<words.length && !end(words[i-1])) i += dir;
     pos = Math.max(0, Math.min(words.length, i));
-    paint(false); center(false);
+    paint(false); center(false); zeigeLeiste();
   }
 
-  // Pruefschnittstelle: erlaubt es, die Worterkennung ohne Mikrofon zu testen.
-  // window.__pp.sprich("ein satz aus dem skript") schiebt die Position weiter.
+  /* ---------- Tippleiste ---------- */
+  touchBar.addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    e.stopPropagation();
+    switch(b.dataset.a){
+      case 'play':    toggle(); break;
+      case 'prev':    jump(-1); break;
+      case 'next':    jump(+1); break;
+      case 'restart': pos=0; paint(true); zeigeLeiste(); toast('von vorn'); break;
+      case 'exit':    verlassen(); break;
+      case 'size-':   schrift(-3); break;
+      case 'size+':   schrift(+3); break;
+      case 'speed-':  tempo(-10); break;
+      case 'speed+':  tempo(+10); break;
+      case 'mirror':  cfg.mirror=!cfg.mirror; setMirror(cfg.mirror); save();
+                      b.classList.toggle('on', cfg.mirror);
+                      toast(cfg.mirror ? 'gespiegelt' : 'normal'); zeigeLeiste(); break;
+    }
+  });
+
+  /* ---------- Tippen und Wischen auf dem Text ---------- */
+  let pDown=null, gezogen=false, startOffset=0, tapT=null, letzterTap=0, letztesWort=null;
+
+  scrollEl.addEventListener('pointerdown', e => {
+    pDown = {x:e.clientX, y:e.clientY, t:performance.now()};
+    gezogen=false; startOffset=offset;
+    zeigeLeiste();
+  });
+
+  scrollEl.addEventListener('pointermove', e => {
+    if(!pDown) return;
+    const dy = e.clientY - pDown.y, dx = e.clientX - pDown.x;
+    if(!gezogen && Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) gezogen = true;
+    if(gezogen){
+      glideTo = null;
+      offset = startOffset - dy;
+      apply();
+    }
+  });
+
+  scrollEl.addEventListener('pointerup', e => {
+    if(!pDown) return;
+    const kurz = performance.now() - pDown.t < 500;
+    if(gezogen){
+      // Nach dem Wischen die Position auf das Wort an der Lesezeile setzen
+      pos = wortAnDerMarke(); paint(false); center(true);
+      pDown=null; gezogen=false; return;
+    }
+    pDown=null;
+    if(!kurz) return;
+
+    const wort = e.target.classList && e.target.classList.contains('w') ? e.target : null;
+    const jetzt = performance.now();
+    if(jetzt - letzterTap < 300 && wort && wort === letztesWort){
+      // Doppeltipp: an diese Stelle springen, den geplanten Einzeltipp verwerfen
+      clearTimeout(tapT); letzterTap=0; letztesWort=null;
+      const i = words.findIndex(w => w.el === wort);
+      if(i>=0){ pos=i; paint(false); center(false); toast('hier weiter'); }
+      return;
+    }
+    letzterTap = jetzt; letztesWort = wort;
+    clearTimeout(tapT);
+    tapT = setTimeout(() => { toggle(); }, 280);
+  });
+
+  scrollEl.addEventListener('pointercancel', () => { pDown=null; gezogen=false; });
+
+  /* Pruefschnittstelle: Worterkennung ohne Mikrofon testen. */
   window.__pp = {
     sprich(s){
       gehoert = s.split(/\s+/).map(norm).filter(Boolean).slice(-14);
@@ -569,15 +1075,11 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     get pos(){ return pos; },
     set pos(v){ pos = v; paint(true); },
     get anzahl(){ return words.length; },
+    get cfg(){ return cfg; },
+    toggle, geraeteWerte
   };
 
-  // Klick im Prompter setzt die Stelle
-  scrollEl.addEventListener('click', e => {
-    const t = e.target;
-    if(!t.classList || !t.classList.contains('w')) return;
-    const i = words.findIndex(w => w.el===t);
-    if(i>=0){ pos=i; paint(false); center(false); }
-  });
+  vorschau();
 })();
 </script>
 </body>
