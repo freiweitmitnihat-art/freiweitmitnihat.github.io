@@ -121,7 +121,7 @@
     transition:opacity .3s; pointer-events:none}
   #hud.hide{opacity:.3}
   #hud .grp{display:flex; gap:14px; align-items:center; min-width:0}
-  .heard{color:rgba(255,255,255,.34); font-style:italic; white-space:nowrap;
+  .heard{color:rgba(255,255,255,.5); font-style:italic; white-space:nowrap;
     overflow:hidden; text-overflow:ellipsis; max-width:44vw}
   .heard.treffer{color:var(--gold)}
   #hud b{color:var(--gold); font-weight:650}
@@ -158,6 +158,9 @@
     font-size:14.5px; font-weight:600; letter-spacing:.01em; color:rgba(255,255,255,.85);
     white-space:nowrap}
   .tbtn.sm svg{width:19px; height:19px}
+  .tbtn.sm#btnMic{gap:7px}
+  .tbtn.sm.aus{color:rgba(255,255,255,.4)}
+  .tbtn.sm.fehler{background:rgba(231,76,60,.22); border-color:rgba(231,76,60,.5); color:#fff}
   .tbtn.sm.on{background:var(--gold); border-color:var(--gold); color:#000}
 
   /* Countdown */
@@ -198,6 +201,14 @@
     .heard{max-width:52vw}
     #touch{bottom:calc(38px + var(--safeB)); padding-top:34px}
     .tbtn.sm{font-size:13.5px; padding:0 12px; height:42px}
+  }
+  /* Auf schmalen Handys muss die zweite Reihe in eine Zeile passen,
+     sonst rutscht der Ton-Knopf allein nach unten. */
+  @media (max-width:420px){
+    .tb{gap:7px}
+    .tbtn.sm{padding:0 9px; min-width:40px; font-size:13px}
+    .tbtn.sm svg{width:17px; height:17px}
+    .tbtn.sm#btnMic{gap:5px}
   }
   /* Handy quer: Platz ist knapp, Leiste kompakter */
   @media (max-height:480px){
@@ -298,8 +309,9 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
       <button class="tbtn sm" data-a="size+">A&#8202;+</button>
       <button class="tbtn sm" data-a="speed-">Tempo&#8202;−</button>
       <button class="tbtn sm" data-a="speed+">Tempo&#8202;+</button>
-      <button class="tbtn sm" data-a="mirror" aria-label="Spiegeln" title="Spiegeln">
-        <svg viewBox="0 0 24 24"><path d="M11 2h2v20h-2zM9 5v14H3L9 5zm6 0l6 14h-6V5z"/></svg></button>
+      <button class="tbtn sm" id="btnMic" data-a="mic" aria-label="Sprachmodus">
+        <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11h-2z"/></svg>
+        <span id="micTxt">Ton</span></button>
     </div>
     <div class="tb">
       <button class="tbtn" data-a="restart" aria-label="An den Anfang">
@@ -364,7 +376,7 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
     speed:  100,
     markY:  PHONE ? 32 : 40,
     lead:   PHONE ? 5  : 0,
-    voice:  !IOS,          // auf dem iPhone laeuft die Erkennung unzuverlaessig
+    voice:  true,
     mark:   true,
     mirror: false,
     awake:  true,
@@ -497,8 +509,14 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
              'ob du es aus deinem Sitzabstand entspannt liest.');
       if(IOS && !SR) t.push('Der Sprachmodus geht auf diesem Gerät nicht. Nimm festes Tempo, ' +
                             'zum Nachsteuern die Pfeiltasten unten.');
-      else if(IOS) t.push('Auf dem iPhone bricht die Spracherkennung oft ab. Er ist deshalb aus. ' +
-                          'Wenn du ihn probieren willst, Haken setzen.');
+      else if(IOS) t.push('<b>Sprachmodus am iPhone.</b> Beim Start fragt Safari nach dem Mikrofon, ' +
+                          'das musst du erlauben. Unten im Prompter zeigt der Knopf „hört“, wenn wirklich ' +
+                          'zugehört wird. Safari bricht die Erkennung nach Sprechpausen ab, der Prompter ' +
+                          'wirft sie selbst wieder an. Läuft der Text trotzdem nur stur weiter, tippe ' +
+                          'unten auf den Ton-Knopf.');
+      if(IOS && window.navigator.standalone)
+        t.push('<b>Achtung.</b> Du hast den Prompter vom Home-Bildschirm gestartet. Dort gibt Safari ' +
+               'das Mikrofon oft nicht frei. Für den Sprachmodus die Seite direkt in Safari öffnen.');
     }
     tip.hidden = !t.length;
     if(t.length) tip.innerHTML = t.join('<br><br>');
@@ -763,7 +781,8 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
         if(e.error==='not-allowed'){ setMode('Mikrofon nicht erlaubt','err'); recOn=false; return; }
         setMode('Erkennung gestört','err');
       };
-      rec.onend = () => { if(recOn && running){ try{ rec.start(); }catch(e){} } };
+      // Safari beendet die Erkennung nach jeder Sprechpause. Sofort wieder anwerfen.
+      rec.onend = () => { if(recOn){ try{ rec.start(); }catch(e){ setMode('Erkennung gestoppt','err'); } } };
       rec.onresult = ev => {
         let heard='';
         for(let i=0;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
@@ -780,6 +799,17 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   function setMode(t, cls){
     $('#mode').textContent=t;
     dot.className='dot'+(cls?' '+cls:'');
+    micKnopf(cls);
+  }
+
+  // Der Knopf zeigt, ob wirklich zugehoert wird. Sonst raetselt man,
+  // warum der Text nicht mitlaeuft.
+  function micKnopf(cls){
+    const b = $('#btnMic'); if(!b) return;
+    b.classList.toggle('on', !!cfg.voice && recOn && cls !== 'err');
+    b.classList.toggle('aus', !cfg.voice);
+    b.classList.toggle('fehler', cls === 'err');
+    $('#micTxt').textContent = !cfg.voice ? 'Ton aus' : (recOn ? 'hört' : 'Ton');
   }
 
   var gehoert = [];
@@ -885,10 +915,12 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     positionMark(); showSpeed();
     build(raw);
     running=false; setPlayIcon(); setMode(COARSE ? 'bereit, einmal tippen' : 'bereit mit Leertaste');
+    micKnopf();
     zeigeLeiste(); wachAn(); stateAn();
     if(!rafOn){ rafOn=true; requestAnimationFrame(loop); }
     if(!IOS && document.documentElement.requestFullscreen)
       document.documentElement.requestFullscreen().catch(()=>{});
+    if(cfg.voice) startVoice();          // noch in der Beruehrung, sonst kein Mikrofon
     if(cfg.lead > 0) countdown(cfg.lead); 
   };
 
@@ -957,7 +989,8 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     running = !running;
     setPlayIcon();
     if(running){
-      if(cfg.voice) startVoice(); else setMode('läuft','live');
+      if(cfg.voice && !recOn) startVoice();
+      else if(!cfg.voice) setMode('läuft','live');
       toast('läuft');
     } else {
       stopVoice(); setMode('Pause'); toast('Pause');
@@ -1012,9 +1045,11 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       case 'size+':   schrift(+3); break;
       case 'speed-':  tempo(-10); break;
       case 'speed+':  tempo(+10); break;
-      case 'mirror':  cfg.mirror=!cfg.mirror; setMirror(cfg.mirror); save();
-                      b.classList.toggle('on', cfg.mirror);
-                      toast(cfg.mirror ? 'gespiegelt' : 'normal'); zeigeLeiste(); break;
+      case 'mic':
+        cfg.voice = !cfg.voice; save();
+        if(cfg.voice){ startVoice(); toast('Sprachmodus an'); }
+        else { stopVoice(); setMode(running ? 'läuft' : 'Pause', running ? 'live' : ''); toast('Sprachmodus aus'); }
+        micKnopf(); zeigeLeiste(); break;
     }
   });
 
