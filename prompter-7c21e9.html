@@ -54,7 +54,8 @@
   .btn.primary{background:var(--gold); color:#000; border-color:var(--gold); font-weight:650}
   .checks{display:flex; gap:14px 22px; flex-wrap:wrap; margin-top:18px}
   .chk{display:flex; align-items:center; gap:10px; font-size:16px; cursor:pointer;
-    color:rgba(255,255,255,.85); min-height:44px}
+    color:rgba(255,255,255,.88); min-height:44px;
+    text-transform:none; letter-spacing:normal; margin:0}
   .chk input{width:22px; height:22px; accent-color:var(--gold); cursor:pointer}
   .actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
   .hint{font-size:14px; color:rgba(255,255,255,.44); line-height:1.62; margin-top:20px;
@@ -130,6 +131,7 @@
     margin-right:7px; vertical-align:-1px}
   .dot.live{background:#2ecc71; box-shadow:0 0 9px #2ecc71}
   .dot.err{background:#e74c3c}
+  .dot.warte{background:var(--gold); box-shadow:0 0 9px rgba(255,215,0,.7)}
 
   /* ---------- Tippleiste (Handy und Tablet) ---------- */
   #touch{position:absolute; left:0; right:0; bottom:calc(40px + var(--safeB));
@@ -195,7 +197,8 @@
       background:rgba(10,10,11,.94); border-top:1px solid var(--line);
       backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px)}
     .actions .btn{flex:1 1 100%}
-    .checks{display:grid; grid-template-columns:1fr 1fr; gap:6px 14px}
+    .checks{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:4px 14px}
+    .chk{font-size:15px}
     .btn.primary{font-size:17px; min-height:54px}
     #hud{font-size:12.5px; gap:6px 12px; padding-bottom:calc(8px + var(--safeB))}
     .heard{max-width:52vw}
@@ -282,6 +285,8 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
     <div class="checks">
       <label class="chk"><input type="checkbox" id="cVoice" checked> Sprachmodus</label>
       <label class="chk"><input type="checkbox" id="cMark" checked> Lesemarke</label>
+      <label class="chk"><input type="checkbox" id="cStille" checked> Bei Stille anhalten</label>
+      <label class="chk"><input type="checkbox" id="cBefehle" checked> Sprachbefehle</label>
       <label class="chk"><input type="checkbox" id="cMirror"> Spiegeln</label>
       <label class="chk"><input type="checkbox" id="cAwake" checked> Bildschirm an</label>
     </div>
@@ -378,6 +383,8 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
     lead:   PHONE ? 5  : 0,
     voice:  true,
     mark:   true,
+    stille: true,          // anhalten, wenn er nichts mehr hoert
+    befehle:true,          // auf gesprochene Befehle reagieren
     mirror: false,
     awake:  true,
     text:   ''
@@ -408,6 +415,7 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
     $('#rSpeed').value = cfg.speed; $('#vSpeed').textContent = (cfg.speed/100).toFixed(1);
     $('#rMarkY').value = cfg.markY; $('#vMarkY').textContent = cfg.markY;
     $('#cVoice').checked = cfg.voice; $('#cMark').checked = cfg.mark;
+    $('#cStille').checked = cfg.stille; $('#cBefehle').checked = cfg.befehle;
     $('#cMirror').checked = cfg.mirror; $('#cAwake').checked = cfg.awake;
     [...$('#segLead').children].forEach(b => b.classList.toggle('sel', +b.dataset.v === cfg.lead));
   }
@@ -425,6 +433,8 @@ So funktioniert die Sprechfassung aus dem Video-Ordner direkt."></textarea>
   $('#cMark').onchange   = e => { cfg.mark=e.target.checked; markEl.classList.toggle('on',cfg.mark); save(); };
   $('#cMirror').onchange = e => { cfg.mirror=e.target.checked; setMirror(cfg.mirror); save(); };
   $('#cAwake').onchange  = e => { cfg.awake=e.target.checked; save(); };
+  $('#cStille').onchange = e => { cfg.stille=e.target.checked; save(); };
+  $('#cBefehle').onchange= e => { cfg.befehle=e.target.checked; save(); };
   $('#fitPhone').onclick = () => { nutzerHatGeschraubt = true; geraeteWerte(); };
   $('#segLead').onclick = e => {
     const b = e.target.closest('button'); if(!b) return;
@@ -530,10 +540,20 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       hoch und runter wischen schiebt den Text ·
       die runden Knöpfe werden beim Laufen blass, bleiben aber da und funktionieren weiter.<br>
       Zurück zu diesem Startbildschirm kommst du jederzeit über das <b>✕</b> rechts unten.<br><br>
-      <b>Sprachmodus.</b> Braucht Chrome. Beim ersten Start fragt der Browser nach dem Mikrofon.
-      Der Text folgt dann deinem Sprechen. Setzt die Erkennung aus, scrollt er ruhig weiter und
-      fängt dich wieder ein, sobald er dich versteht. Chrome schickt dafür Ton an Google.
+      <b>Wenn das Handy weiter weg steht.</b> Du musst nicht hinlaufen. Der Prompter hält an,
+      sobald du aufhörst zu sprechen, und läuft weiter, sobald du wieder anfängst. Setzt du
+      einen Satz neu an, springt er mit zurück. Und du kannst ihn ansprechen:<br>
+      „<b>Prompter zurück</b>" ein Satz zurück · „<b>Prompter nochmal</b>" den Satz von vorn ·
+      „<b>Prompter weiter</b>" ein Satz vor · „<b>Prompter stopp</b>" und „<b>Prompter los</b>" ·
+      „<b>Prompter anfang</b>" ganz nach oben · „<b>Prompter langsamer</b>" und
+      „<b>Prompter schneller</b>".<br>
+      Das Wort Prompter davor ist Absicht, sonst löst dein eigener Text die Befehle aus.<br><br>
+      <b>Sprachmodus.</b> Beim Start fragt der Browser nach dem Mikrofon, das musst du erlauben.
+      Der Text folgt dann deinem Sprechen. Der Ton-Knopf unten zeigt „hört", wenn wirklich
+      zugehört wird. Für die Erkennung schickt der Browser Ton an Google beziehungsweise Apple.
       Wenn dir das nicht recht ist, Haken raus und mit festem Tempo arbeiten.<br><br>
+      <b>Fernbedienung.</b> Ein Bluetooth-Presenter oder eine Bluetooth-Tastatur wirkt sofort:
+      Pfeiltasten und Bild auf/ab springen einen Satz, Leertaste hält an.<br><br>
       <b>Aufbau.</b> Handy quer direkt neben oder unter das Objektiv, Höhe der Lesezeile so wählen,
       dass dein Blick fast in die Linse geht. Für den ganzen Bildschirm ohne Adressleiste:
       im Browser-Menü „Zum Home-Bildschirm“ und von dort starten.
@@ -741,9 +761,22 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       offset += px * dt;
     }
     apply();
+    stillePruefen();
     if(!recOn) mitlaufen();
     updateHud();
     requestAnimationFrame(loop);
+  }
+
+  // Haelt an, wenn er nichts mehr hoert. Das Zuhoeren laeuft weiter,
+  // damit es von selbst weitergeht, sobald wieder gesprochen wird.
+  function stillePruefen(){
+    if(!cfg.stille || !cfg.voice || !recOn || !running || stillePause) return;
+    if(!letzteStimme){ letzteStimme = performance.now(); return; }
+    if(performance.now() - letzteStimme > STILLE_MS){
+      stillePause = true; running = false; setPlayIcon();
+      setMode('wartet auf dich', 'warte');
+      zeigeLeiste();
+    }
   }
 
   // Ohne Spracherkennung gibt der Scroll die Stelle vor: alles, was ueber die
@@ -784,11 +817,27 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       // Safari beendet die Erkennung nach jeder Sprechpause. Sofort wieder anwerfen.
       rec.onend = () => { if(recOn){ try{ rec.start(); }catch(e){ setMode('Erkennung gestoppt','err'); } } };
       rec.onresult = ev => {
+        // Nur die letzten Abschnitte zusammensetzen. Ueber eine lange Aufnahme
+        // waechst die volle Liste sonst ins Unendliche.
+        const von = Math.max(0, ev.results.length - 4);
         let heard='';
-        for(let i=0;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
+        for(let i=von;i<ev.results.length;i++) heard += ev.results[i][0].transcript+' ';
         const w = heard.split(/\s+/).map(norm).filter(Boolean);
+        if(!w.length) return;
+
+        letzteStimme = performance.now();
+
+        // Gesprochener Befehl? Dann nur den ausfuehren und nichts abgleichen.
+        if(cfg.befehle){
+          const frisch = (ev.results[ev.results.length-1][0].transcript || '')
+                           .split(/\s+/).map(norm).filter(Boolean).slice(-6);
+          if(befehlPruefen(frisch)) return;
+        }
+
         gehoert = w.slice(-14);
         zeigeGehoert(heard.split(/\s+/).slice(-7).join(' '));
+        // Er spricht wieder: der Halt wegen Stille loest sich von selbst.
+        if(stillePause){ stillePause=false; running=true; setPlayIcon(); setMode('hört zu','live'); }
         match();
       };
       rec.start();
@@ -813,6 +862,42 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   }
 
   var gehoert = [];
+  let letzteStimme = 0;      // wann zuletzt etwas verstanden wurde
+  let stillePause = false;   // haelt fest, ob die Stille angehalten hat
+  const STILLE_MS = 3500;
+
+  // Gesprochene Fernbedienung. Das Wort "Prompter" davor haelt normale
+  // Skriptsaetze davon ab, versehentlich einen Befehl auszuloesen.
+  const BEFEHLE = [
+    {worte:['zuruck','zurueck','ruckwarts'], tu:() => { jump(-1); toast('einen Satz zurück'); }},
+    {worte:['nochmal','wiederholen'],        tu:() => { jump(-1); jump(-1); jump(+1); toast('Satz nochmal'); }},
+    {worte:['weiter','vor','naechster','nachster'], tu:() => { jump(+1); toast('einen Satz vor'); }},
+    {worte:['stopp','stop','halt','pause','anhalten'], tu:() => { if(running) toggle(); }},
+    {worte:['los','start','weiterlaufen'],   tu:() => { if(!running) toggle(); }},
+    {worte:['anfang','oben','vonvorn'],      tu:() => { pos=0; paint(true); toast('von vorn'); }},
+    {worte:['schneller'],                    tu:() => tempo(+15)},
+    {worte:['langsamer'],                    tu:() => tempo(-15)}
+  ];
+  let letzterBefehl = 0;
+
+  function befehlPruefen(worte){
+    const jetzt = performance.now();
+    if(jetzt - letzterBefehl < 2000) return false;
+    // Ausloeser suchen: alles, was mit "promp" anfaengt, zaehlt.
+    let i = worte.findIndex(w => w.startsWith('promp'));
+    if(i < 0) return false;
+    for(let k = i+1; k <= i+2 && k < worte.length; k++){
+      const b = BEFEHLE.find(x => x.worte.includes(worte[k]));
+      if(b){
+        letzterBefehl = jetzt; gehoert = [];
+        stillePause = false;
+        b.tu();
+        zeigeGehoert('Befehl: ' + worte[k]);
+        return true;
+      }
+    }
+    return false;
+  }
 
   function zeigeGehoert(s, treffer){
     const el = $('#hHeard');
@@ -823,11 +908,11 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
   function match(){
     if(gehoert.length < 2 || !words.length) return;
 
-    const VOR = 140, ZURUECK = 20;
+    const VOR = 140, ZURUECK = 70;
     const from = Math.max(0, pos - ZURUECK);
     const to   = Math.min(words.length, pos + VOR);
 
-    let bestEnde = -1, bestPunkte = 0;
+    let bestEnde = -1, bestPunkte = 0, bestInhalt = 0;
 
     for(let i = from; i < to; i++){
       let punkte = 0, luecken = 0, wi = i, letzterTreffer = -1, inhalt = 0;
@@ -849,12 +934,18 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       const gewichtet = punkte + (i - from) * 0.001;
       if(inhalt >= 2 && punkte >= 2.5 && gewichtet > bestPunkte){
         bestPunkte = gewichtet;
+        bestInhalt = inhalt;
         bestEnde = letzterTreffer + 1;
       }
     }
 
     if(bestEnde > pos){
       advance(bestEnde);
+      $('#hHeard').classList.add('treffer');
+    } else if(bestEnde >= 0 && bestEnde < pos - 6 && bestInhalt >= 3){
+      // Er hat neu angesetzt. Rueckwaerts nur bei klarem Befund, sonst
+      // zappelt der Text bei jedem wiederholten Wort.
+      pos = bestEnde; paint(false); center(false);
       $('#hHeard').classList.add('treffer');
     }
   }
@@ -987,6 +1078,7 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
 
   function toggle(){
     running = !running;
+    stillePause = false; letzteStimme = performance.now();
     setPlayIcon();
     if(running){
       if(cfg.voice && !recOn) startVoice();
@@ -1005,8 +1097,11 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
       case ' ': e.preventDefault(); toggle(); break;
       case 'ArrowUp':   e.preventDefault(); tempo(+10); break;
       case 'ArrowDown': e.preventDefault(); tempo(-10); break;
-      case 'ArrowRight':e.preventDefault(); jump(+1); break;
-      case 'ArrowLeft': e.preventDefault(); jump(-1); break;
+      case 'ArrowRight': case 'PageDown': case 'Enter': case 'AudioVolumeUp':
+        e.preventDefault(); jump(+1); break;
+      case 'ArrowLeft': case 'PageUp': case 'AudioVolumeDown':
+        e.preventDefault(); jump(-1); break;
+      case 'Home': e.preventDefault(); pos=0; paint(true); break;
       case 'r': case 'R': pos=0; paint(true); break;
       case 'm': case 'M': cfg.mirror=!cfg.mirror; setMirror(cfg.mirror); save(); break;
       case 'h': case 'H': hud.classList.toggle('hide'); break;
@@ -1111,6 +1206,10 @@ Wenn er stehen bleibt, sprich etwas lauter und deutlicher.`;
     set pos(v){ pos = v; paint(true); },
     get anzahl(){ return words.length; },
     get cfg(){ return cfg; },
+    // Befehl ohne Mikrofon ausloesen: window.__pp.befehl("prompter zurueck")
+    befehl(t){ letzterBefehl = 0;
+      return befehlPruefen(t.split(/\s+/).map(norm).filter(Boolean).slice(-6)); },
+    get laeuft(){ return running; },
     toggle, geraeteWerte
   };
 
