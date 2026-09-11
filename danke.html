@@ -65,6 +65,10 @@ font-size:18px;color:var(--ink-2);
 .next li:last-child{border-bottom:0}
 .next .n{font-family:'Playfair Display',Georgia,serif;color:var(--sand);font-size:22px;font-weight:700;flex:none;width:28px}
 .next a{color:var(--terra);font-weight:500}
+.next li.klick{padding:0}
+.next li.klick a{display:flex;gap:14px;align-items:baseline;width:100%;min-height:48px;padding:14px 0;color:inherit;font-weight:400;text-decoration:none}
+.next li.klick a b{color:var(--terra);font-weight:500}
+.next li.klick a:hover b,.next li.klick a:focus-visible b{text-decoration:underline}
 footer{border-top:1px solid var(--line);padding:28px 0;font-size:16px;color:var(--ink-2)}
 footer a{color:var(--ink-2);margin-right:18px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -121,17 +125,17 @@ Du bekommst den Link zusätzlich per Mail, du kannst ihn also jederzeit erneut a
   <div class="next">
     <h2>Wenn deine Rechnung nicht aufgeht</h2>
     <ul>
-      <li><span class="n">·</span><span><a href="/bibliothek?via=danke">Die sechs Hefte</a>, je 19 Euro: Visum, Wohnung, Krankenversicherung ab 55, Deutschland abwickeln, Plan B, die 7 größten Fehler. Jedes beantwortet genau eine Frage, ohne Umweg.</span></li>
-      <li><span class="n">·</span><span><a href="/beratung?via=danke">60 Minuten mit mir</a>, 97 Euro. Wir gehen deine Zahlen durch, nur deine Situation. Danach weißt du, ob es reicht oder was fehlt.</span></li>
+      <li class="klick"><a href="/bibliothek?via=danke"><span class="n">·</span><span><b>Die sechs Hefte</b>, je 19 Euro: Visum, Wohnung, Krankenversicherung ab 55, Deutschland abwickeln, Plan B, die 7 größten Fehler. Jedes beantwortet genau eine Frage, ohne Umweg.</span></a></li>
+      <li class="klick"><a href="/beratung?via=danke"><span class="n">·</span><span><b>60 Minuten mit mir</b>, 97 Euro. Wir gehen deine Zahlen durch, nur deine Situation. Danach weißt du, ob es reicht oder was fehlt.</span></a></li>
     </ul>
   </div>
 
   <div class="next">
     <h2>Solange du noch hier bist</h2>
     <ul>
-      <li><span class="n">·</span><span><a href="/reality-check">Der Reality-Check</a>, zehn Fragen, danach weißt du ehrlicher, ob das wirklich zu dir passt.</span></li>
-      <li><span class="n">·</span><span><a href="https://www.youtube.com/@FreiweitmitNihat">Der Kanal</a>, dort sitze ich bei Leuten am Tisch und frage nach den Zahlen.</span></li>
-      <li><span class="n">·</span><span><a href="/interview">Deine eigene Geschichte</a>, wenn du selbst draußen lebst oder zurückgekommen bist.</span></li>
+      <li class="klick"><a href="/reality-check"><span class="n">·</span><span><b>Der Reality-Check</b>, zehn Fragen, danach weißt du ehrlicher, ob das wirklich zu dir passt.</span></a></li>
+      <li class="klick"><a href="https://www.youtube.com/@FreiweitmitNihat" target="_blank" rel="noopener noreferrer"><span class="n">·</span><span><b>Der Kanal</b>, dort sitze ich bei Leuten am Tisch und frage nach den Zahlen.</span></a></li>
+      <li class="klick"><a href="/interview"><span class="n">·</span><span><b>Deine eigene Geschichte</b>, wenn du selbst draußen lebst oder zurückgekommen bist.</span></a></li>
     </ul>
   </div>
 </main>
