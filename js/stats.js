@@ -51,18 +51,34 @@ function zaehle(name, daten) {
    Passt zum Schema aus brevo.js: qr | yt | pinned | web
    Damit ist sichtbar, ob die QR-Codes aus den Videos wirken.
    ------------------------------------------------------------ */
-document.addEventListener('DOMContentLoaded', function () {
+/* Umami wird mit defer nachgeladen und ist beim DOMContentLoaded meist
+   noch nicht da. Deshalb wird bis zu zehn Sekunden lang nachgesehen, ob
+   window.umami inzwischen existiert, und erst dann gemeldet. Ohne diese
+   Warteschleife ging jede QR-Herkunft still verloren (Befund 12.09.2026:
+   in drei Wochen Messung kein einziges herkunft-Ereignis, obwohl alle
+   Kurz-URLs ?via=qr anhaengen). */
+function meldeHerkunft() {
   try {
     var p   = new URLSearchParams(window.location.search);
     var via = p.get('via');
-    if (via) {
-      zaehle('herkunft', {
-        via:   via.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40),
-        seite: window.location.pathname
-      });
-    }
+    if (!via) return;
+    var daten = {
+      via:   via.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40),
+      seite: window.location.pathname
+    };
+    var versuche = 0;
+    var t = setInterval(function () {
+      versuche++;
+      if (window.umami && typeof window.umami.track === 'function') {
+        clearInterval(t);
+        zaehle('herkunft', daten);
+      } else if (versuche >= 40) {
+        clearInterval(t);
+      }
+    }, 250);
   } catch (e) { /* still */ }
-});
+}
+document.addEventListener('DOMContentLoaded', meldeHerkunft);
 
 /* ------------------------------------------------------------
    Wichtige Klicks automatisch zaehlen.
@@ -80,6 +96,7 @@ var ZIELE = [
   ['cal.eu',             'beratung-buchen'],
   ['digistore24',        'kauf-klick'],
   ['checkout-ds24',      'kauf-klick'],
+  ['buy.stripe.com',     'kauf-klick'],
   ['bit.ly/nihathotels', 'affiliate-hotels'],
   ['bit.ly/nihat-safe',  'affiliate-versicherung'],
   ['buymeacoffee',       'kaffee-klick'],

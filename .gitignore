@@ -18,3 +18,7 @@ __pycache__/
 search-console.json
 *-service-account*.json
 *.pem
+
+# Karussell-Arbeitsdateien, gehoeren nicht auf die Website
+_kar-*/
+_karussell-*.html
