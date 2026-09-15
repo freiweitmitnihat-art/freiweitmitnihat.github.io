@@ -38,6 +38,8 @@ Daraus folgt:
 | `freiweitmitnihat.com/o` | `o.html` | `/immobilien?via=qr` | 23.08.2026 | Immobilien in Asien, **O**bjekte zum Mieten und Kaufen |
 | `freiweitmitnihat.com/k` | `k.html` | `/community?via=qr` | 29.08.2026 | Der Freiweit-**K**reis, die feste Runde mit Live-Stunde |
 | `freiweitmitnihat.com/l` | `l.html` | `/links?via=ig` | 02.09.2026 | Alle **L**inks, Instagram-Bio-Ersatz für Beacons |
+| `freiweitmitnihat.com/p` | `p.html` | `paypal.me/nhtbckl` | 15.09.2026 | **P**ayPal, Kanal unterstützen (Support-Einblendung) |
+| `freiweitmitnihat.com/s` | `s.html` | `buymeacoffee.com/freiweitmitnihat` | 15.09.2026 | **S**upport per Buy Me a Coffee (Support-Einblendung) |
 
 **Merkregel:** ein Kleinbuchstabe, und zwar der Anfangsbuchstabe des Ziels.
 
@@ -61,7 +63,7 @@ Deshalb wurde `/h` für die Hefte neu angelegt und die falsche Zeile korrigiert.
 
 ## Freie Buchstaben
 
-`a c d e f j k m n p q s t u v x y z`
+`a c d e f j m n q t u v x y z`
 
 Vorgemerkt für wahrscheinliche Ziele, damit sie niemand anders belegt:
 
