@@ -67,9 +67,13 @@ BROWSER = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
 
 def video_id(t):
     """Holt die YouTube-ID aus der Videokarte eines Artikels."""
-    m = re.search(r'class="vid-karte"\s+href="https://youtu\.be/([\w-]+)"', t)
+    # Videokarten gibt es in beiden Formen (youtu.be und watch?v=).
+    m = re.search(r'class="vid-karte"\s+href="https://(?:youtu\.be/|www\.youtube\.com/watch\?v=)([\w-]+)"', t)
     if m:
         return m.group(1)
+    # Den eigenen JSON-LD-Block nie als Quelle nehmen, sonst haelt sich eine
+    # falsche ID von selbst (so standen 21 Artikel auf Oi7S3hzAApk).
+    t = re.sub(r'<script type="application/ld\+json".*?</script>', '', t, flags=re.S)
     m = re.search(r'youtu\.be/([\w-]+)|youtube\.com/(?:watch\?v=|embed/)([\w-]+)', t)
     if m:
         return m.group(1) or m.group(2)
