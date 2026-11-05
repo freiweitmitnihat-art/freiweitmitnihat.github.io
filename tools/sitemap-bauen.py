@@ -59,17 +59,29 @@ def git_datum(rel):
     return None
 
 
+def ignoriert(rels):
+    """Dateien, die per .gitignore nie online gehen (z. B. _karussell-a.html).
+    Sie standen frueher in der Sitemap und lieferten Google eine 404."""
+    try:
+        aus = subprocess.run(['git', 'check-ignore', '--stdin'], cwd=BASIS,
+                             input='\n'.join(rels), capture_output=True, text=True, timeout=10)
+        return set(aus.stdout.split())
+    except Exception:
+        return set()
+
+
 def main():
     frisch = set(a for a in sys.argv[1:] if a != '--neu')
     heute  = datetime.date.today().isoformat()
     alt    = alte_daten()
 
     seiten = sorted(list(BASIS.glob('*.html')) + list((BASIS / 'blog').glob('*.html')))
+    nie_online = ignoriert([str(f.relative_to(BASIS)) for f in seiten])
     zeilen, drin, raus = [], 0, []
     for f in seiten:
         rel = str(f.relative_to(BASIS))
         t = f.read_text(encoding='utf-8')
-        if rel in AUS or f.name in AUS or hat_noindex(t):
+        if rel in AUS or f.name in AUS or rel in nie_online or hat_noindex(t):
             raus.append(rel)
             continue
         url = ROOT if rel == 'index.html' else ROOT + rel
