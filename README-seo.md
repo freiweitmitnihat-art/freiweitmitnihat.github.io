@@ -11,6 +11,8 @@ nachliest, muss nichts raten.
 Der Slash-Befehl `/seo` arbeitet die Kette ab. Von Hand geht es auch:
 
 ```bash
+python3 homepage/tools/themenseiten.py
+python3 homepage/tools/weiterlesen.py
 python3 homepage/tools/sitemap-bauen.py
 python3 homepage/tools/seo-strukturdaten.py
 python3 homepage/tools/blog-index-pflegen.py
@@ -27,6 +29,9 @@ python3 homepage/tools/seo-pruefen.py
 
 | Werkzeug | Was es macht | Ändert Dateien |
 |---|---|---|
+| `themen.py` | ordnet jeden Artikel nach Ort und Thema, Grundlage der beiden folgenden | nein |
+| `themenseiten.py` | baut die Sammelseiten `wohnen-thailand.html` und `rente-thailand.html` | ja |
+| `weiterlesen.py` | setzt vier verwandte Artikel plus Link zur Sammelseite unter jeden Text | ja |
 | `sitemap-bauen.py` | baut `sitemap.xml` aus dem echten Dateibestand | ja |
 | `seo-strukturdaten.py` | schreibt die Schema-Blöcke in jede Seite, inklusive `VideoObject` | ja |
 | `blog-index-pflegen.py` | trägt neue Artikel in die Blog-Übersicht ein, neueste zuerst | ja |
