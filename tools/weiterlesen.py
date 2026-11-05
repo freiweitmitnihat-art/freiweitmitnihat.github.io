@@ -130,8 +130,12 @@ def main():
         zeilenanfang = neu.rfind('\n', 0, stelle)
         neu = neu[:zeilenanfang] + b.rstrip('\n') + neu[zeilenanfang:]
         # Stil bei jedem Lauf erneuern, damit Aenderungen hier ueberall ankommen.
-        neu = re.sub(re.escape(STIL_MARKE) + r'.*?</style>\n', '', neu, flags=re.S)
-        neu = neu.replace('</head>', STIL + '</head>', 1)
+        # An Ort und Stelle ersetzen, sonst wandert der Block bei jedem Lauf.
+        alt = re.compile(re.escape(STIL_MARKE) + r'.*?</style>\n', re.S)
+        if alt.search(neu):
+            neu = alt.sub(lambda m: STIL, neu, count=1)
+        else:
+            neu = neu.replace('</head>', STIL + '</head>', 1)
         if pruefen:
             print('%s\n   %s' % (a['datei'], '\n   '.join(x['datei'] for x in ergebnis[a['datei']])))
         elif neu != t:

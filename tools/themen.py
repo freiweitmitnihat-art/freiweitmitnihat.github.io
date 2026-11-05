@@ -63,6 +63,7 @@ KORREKTUR = {
     'si-racha-the-strand.html': {'-': ['entdecken']},
     '2026-06-16-thomas-loft-pattaya.html': {'-': ['interview']},
     'grab-app-einrichten.html': {'+': ['praktisch']},
+    'lebenshaltungskosten-thailand.html': {'-': ['wohnen']},
 }
 
 # Gewicht beim Suchen verwandter Artikel
