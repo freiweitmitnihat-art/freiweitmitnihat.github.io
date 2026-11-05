@@ -28,7 +28,7 @@
 #
 #   python3 tools/seo-pruefen.py
 # ============================================================
-import pathlib, re, struct, urllib.parse, collections
+import pathlib, re, struct, urllib.parse, collections, subprocess
 
 BASIS = pathlib.Path(__file__).resolve().parent.parent
 ROOT = 'https://freiweitmitnihat.com/'
@@ -39,7 +39,8 @@ MARKE = re.compile(r'\s*[·|:]\s*Freiweit mit Nihat\s*$')
 # Uebersichtsseiten sind Inhalt, keine Funktionsseiten. Sie folgen deshalb der
 # Artikel-Regel: kein Marken-Zusatz im Titel, damit Google den Titel nicht
 # mitten im Keyword abschneidet. Neue Uebersichtsseiten hier eintragen.
-UEBERSICHT = {'auswandern-thailand.html', 'auswandern-vietnam.html'}
+UEBERSICHT = {'auswandern-thailand.html', 'auswandern-vietnam.html',
+              'wohnen-thailand.html', 'rente-thailand.html'}
 
 NOINDEX = re.compile(
     r'<meta[^>]+name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
@@ -56,8 +57,22 @@ def alle_seiten():
     return sorted(list(BASIS.glob('*.html')) + list((BASIS / 'blog').glob('*.html')))
 
 
+def _nie_online():
+    """Per .gitignore ausgeschlossene Seiten gehen nie online (z. B. _karussell-a.html)."""
+    try:
+        alle = [str(p.relative_to(BASIS)) for p in BASIS.rglob('*.html')]
+        aus = subprocess.run(['git', 'check-ignore', '--stdin'], cwd=BASIS, input='\n'.join(alle),
+                             capture_output=True, text=True, timeout=10)
+        return {BASIS / z for z in aus.stdout.split()}
+    except Exception:
+        return set()
+
+
+NIE_ONLINE = _nie_online()
+
+
 def oeffentlich(f, t):
-    return not NOINDEX.search(t) and f.name != '404.html'
+    return not NOINDEX.search(t) and f.name != '404.html' and f not in NIE_ONLINE
 
 
 def jpg_masse(pfad):
@@ -232,7 +247,7 @@ def main():
             if not oeffentlich(f, t) or f.name == 'blog-template.html':
                 continue
             rel = str(f.relative_to(BASIS))
-            url = ROOT if rel == 'index.html' else ROOT + rel
+            url = ROOT if rel == 'index.html' else ROOT + rel.replace('index.html', '')
             if url not in drin:
                 smfehler.append('fehlt in der Sitemap: ' + rel)
         for url in drin:

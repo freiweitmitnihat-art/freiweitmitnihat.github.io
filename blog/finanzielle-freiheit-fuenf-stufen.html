@@ -119,6 +119,18 @@ footer a:hover{color:white}
 .fw-krumen .fw-krumen-hier{color:#1a1410;font-weight:600}
 @media(max-width:600px){.fw-krumen{font-size:14px;margin-bottom:20px}}
   </style>
+<style data-quelle="weiterlesen">
+.fw-wl{margin:40px 0;max-width:740px}
+.fw-wl .fw-wl-t{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#A44A18;margin-bottom:14px}
+.fw-wl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fw-wl li{margin:0}
+.fw-wl a{display:block;height:100%;background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:10px;padding:14px 16px;text-decoration:none;color:#1a1410;font-size:16px;font-weight:600;line-height:1.45;transition:border-color .2s,color .2s}
+.fw-wl a:hover,.fw-wl a:focus-visible{border-color:#A44A18;color:#A44A18}
+.fw-wl small{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b5e52;margin-bottom:4px}
+.fw-wl a.fw-wl-alle{display:inline-block;height:auto;background:none;border:0;padding:14px 0 0;color:#A44A18;font-size:16px}
+.fw-wl a.fw-wl-alle:hover{text-decoration:underline}
+@media(max-width:600px){.fw-wl ul{grid-template-columns:1fr}}
+</style>
   <script type="application/ld+json" data-quelle="seo-strukturdaten">
 {
   "@context": "https://schema.org",
@@ -398,7 +410,15 @@ footer a:hover{color:white}
         </div>
       </a>
     </div>
-
+    <aside class="fw-wl" data-quelle="weiterlesen" aria-label="Weiterlesen">
+      <div class="fw-wl-t">Weiterlesen</div>
+      <ul>
+      <li><a href="/blog/hua-hin-night-market.html"><small>Kosten</small>Hua Hin Night Market: Preise, Zeiten und der beste Teil</a></li>
+      <li><a href="/blog/lebenshaltungskosten-thailand.html"><small>Kosten</small>Lebenshaltungskosten Thailand 2026: was kostet ein Monat</a></li>
+      <li><a href="/blog/7-fehler-auswandern.html"><small>Auswandern</small>Die 7 größten Fehler beim Auswandern: aus eigener Erfahrung</a></li>
+      <li><a href="/blog/deutschland-verlassen-thailand-auswandern.html"><small>Auswandern</small>Deutschland verlassen: warum Thailand kein Ausweg ist</a></li>
+      </ul>
+    </aside>
     <div class="fw-res">
       <div class="fw-res-t">Das k&ouml;nnte dir weiterhelfen</div>
       <a href="/rechnung"><b>Die echte Monatsrechnung</b><span>Was das Leben wirklich kostet, gratis als PDF</span><span class="fw-res-p">&#8594;</span></a>
