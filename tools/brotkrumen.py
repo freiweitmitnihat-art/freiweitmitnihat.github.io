@@ -72,9 +72,9 @@ def seitentitel(t):
 def krumen_html(titel):
     return (
         '\n  <div class="fw-krumen" %s role="navigation" aria-label="Sie sind hier">'
-        '<a href="../index.html">Startseite</a>'
+        '<a href="/">Startseite</a>'
         '<span aria-hidden="true">›</span>'
-        '<a href="index.html">Blog</a>'
+        '<a href="/blog/">Blog</a>'
         '<span aria-hidden="true">›</span>'
         '<span class="fw-krumen-hier">%s</span>'
         "</div>\n" % (MARKER, html.escape(titel))

@@ -44,7 +44,8 @@ def alte_daten():
     sm = p.read_text(encoding='utf-8')
     d = {}
     for m in re.finditer(r'<loc>https://freiweitmitnihat\.com/([^<]*)</loc><lastmod>([^<]+)</lastmod>', sm):
-        d[m.group(1) or 'index.html'] = m.group(2)
+        rel = m.group(1) or 'index.html'
+        d['blog/index.html' if rel == 'blog/' else rel] = m.group(2)
     return d
 
 
@@ -84,7 +85,8 @@ def main():
         if rel in AUS or f.name in AUS or rel in nie_online or hat_noindex(t):
             raus.append(rel)
             continue
-        url = ROOT if rel == 'index.html' else ROOT + rel
+        # Wie im Canonical: Verzeichnisadressen ohne index.html.
+        url = ROOT if rel == 'index.html' else ROOT + rel.replace('index.html', '')
         if rel in frisch or rel not in alt:
             datum = heute if rel in frisch else (git_datum(rel) or heute)
         else:
