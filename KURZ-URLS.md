@@ -40,6 +40,7 @@ Daraus folgt:
 | `freiweitmitnihat.com/l` | `l.html` | `/links?via=ig` | 02.09.2026 | Alle **L**inks, Instagram-Bio-Ersatz für Beacons |
 | `freiweitmitnihat.com/p` | `p.html` | `paypal.me/nhtbckl` | 15.09.2026 | **P**ayPal, Kanal unterstützen (Support-Einblendung) |
 | `freiweitmitnihat.com/s` | `s.html` | `buymeacoffee.com/freiweitmitnihat` | 15.09.2026 | **S**upport per Buy Me a Coffee (Support-Einblendung) |
+| `freiweitmitnihat.com/a` | `a.html` | `/immobilien-anfrage?via=qr` | 25.11.2026 | Immobilien-**A**nfrage, Suchprofil zum Antippen (Vorqualifizierung, erstmals im Video Pattaya Michael Northshore) |
 
 **Merkregel:** ein Kleinbuchstabe, und zwar der Anfangsbuchstabe des Ziels.
 

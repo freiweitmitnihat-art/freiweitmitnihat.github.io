@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immobilie im Ausland suchen: Anfrage in 2 Minuten · Freiweit</title>
+<meta name="description" content="Wohnung oder Haus im Ausland kaufen oder mieten? Tipp in zwei Minuten an, was du suchst. Ein Makler vor Ort meldet sich bei dir.">
+<link rel="canonical" href="https://freiweitmitnihat.com/immobilien-anfrage">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Freiweit mit Nihat">
+<meta property="og:title" content="Was suchst du? Immobilien-Anfrage in 2 Minuten">
+<meta property="og:description" content="Mieten oder kaufen, Ort, Größe, Budget, Zeitpunkt. Antippen, abschicken, ich melde mich persönlich.">
+<meta property="og:url" content="https://freiweitmitnihat.com/immobilien-anfrage">
+<meta property="og:image" content="https://freiweitmitnihat.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<!--
+  Immobilien-Vorqualifizierung, angelegt 25.11.2026 (Video Pattaya Michael Northshore).
+  Kurz-URL fuer QR-Codes: freiweitmitnihat.com/a  (a.html, Registry homepage/KURZ-URLS.md)
+  Versand: Web3Forms (js/w3f.js), landet im selben Postfach wie Interview- und Kontaktformular.
+  Betreff beginnt mit der Einstufung [HEISS] / [WARM] / [KALT], damit Nihat im Postfach sortieren kann.
+
+  Vorbelegen per URL, z. B. aus einer Videobeschreibung:
+    /immobilien-anfrage?via=yt&objekt=Northshore%20Pattaya&ort=pattaya-nord&ziel=mieten
+  Parameter: via (qr|yt|pinned|web), objekt (freier Text), ort (Schluessel aus ORTE), ziel (mieten|kaufen)
+
+  Kurs fuer die Euro-Angaben: EZB-Referenzkurs 25.11.2026, 1 EUR = 37,321 THB. Bei Bedarf KURS unten aendern.
+-->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1A1410;--ink-2:#4A4238;--terra:#A44A18;--terra-d:#8E3F13;--sand:#C8A97E;--paper:#FAF8F5;--paper-2:#F1ECE4;--line:rgba(26,20,16,.14);--weiss:#FFFFFF;--fehler:#A4161A}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',-apple-system,sans-serif;font-size:20px;line-height:1.7}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.kopf{border-bottom:1px solid var(--line);background:var(--paper)}
+.kopf-in{max-width:880px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:700;color:var(--ink);text-decoration:none}
+.logo span{color:var(--terra)}
+.kopf a.zurueck{color:var(--ink-2);font-size:17px;text-decoration:underline;text-underline-offset:3px;min-height:48px;display:inline-flex;align-items:center}
+
+.hero{background:var(--ink);color:var(--weiss)}
+.hero-in{max-width:880px;margin:0 auto;padding:clamp(40px,7vw,72px) 20px clamp(36px,6vw,56px)}
+.kicker{font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:14px}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(34px,5.4vw,56px);line-height:1.08;letter-spacing:-1px;margin-bottom:18px}
+.hero p{font-size:20px;color:rgba(255,255,255,.86);max-width:62ch}
+.hero .objekt-hinweis{margin-top:18px;font-size:18px;color:var(--weiss);border-left:3px solid var(--sand);padding-left:14px;display:none}
+
+.haupt{max-width:880px;margin:0 auto;padding:clamp(28px,5vw,48px) 20px 72px}
+.fortschritt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.fortschritt .zahl{font-size:16px;font-weight:600;color:var(--terra);text-transform:uppercase;letter-spacing:.06em}
+.fortschritt .thema{font-size:16px;color:var(--ink-2)}
+.balken{height:8px;background:rgba(26,20,16,.1);border-radius:99px;overflow:hidden;margin-bottom:28px}
+.balken div{height:100%;width:0;background:var(--terra);border-radius:99px;transition:width .3s ease}
+
+.schritt{display:none}
+.schritt.aktiv{display:block}
+.frage{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(27px,3.6vw,38px);line-height:1.2;letter-spacing:-.5px;margin-bottom:8px}
+.hilfe{font-size:18px;color:var(--ink-2);margin-bottom:24px;max-width:64ch}
+.pflicht-marke{font-family:'Inter',-apple-system,sans-serif;letter-spacing:0;vertical-align:middle;font-size:15px;font-weight:600;color:var(--terra);margin-left:6px;white-space:nowrap}
+
+.wahl{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.wahl.breit{grid-template-columns:1fr}
+.wahl label{position:relative;display:flex;align-items:center;gap:14px;background:var(--weiss);border:2px solid var(--line);border-radius:12px;padding:14px 18px;min-height:64px;cursor:pointer;font-size:19px;line-height:1.4;transition:border-color .15s,background .15s}
+.wahl label:hover{border-color:var(--terra)}
+.wahl input{position:absolute;opacity:0;width:1px;height:1px}
+.wahl .marke{flex:none;width:28px;height:28px;border:2px solid rgba(26,20,16,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--weiss)}
+.wahl input[type=checkbox]+.marke{border-radius:7px}
+.wahl input:checked+.marke{background:var(--terra);border-color:var(--terra)}
+.wahl input:checked+.marke::after{content:"";width:9px;height:15px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-2px)}
+.wahl input:checked~.text{font-weight:600}
+.wahl label:has(input:checked){border-color:var(--terra);background:#FBF3EC}
+.wahl input:focus-visible+.marke{outline:3px solid var(--terra);outline-offset:3px}
+.wahl .klein{display:block;font-size:16px;font-weight:400;color:var(--ink-2)}
+.unterfrage{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.unterfrage .frage{font-size:clamp(23px,3vw,30px)}
+
+.feld{margin-bottom:20px}
+.feld label{display:block;font-size:18px;font-weight:600;margin-bottom:8px}
+.feld input[type=text],.feld input[type=email],.feld input[type=tel],.feld textarea{width:100%;font:inherit;font-size:20px;color:var(--ink);background:var(--weiss);border:2px solid rgba(26,20,16,.3);border-radius:10px;padding:14px 16px;min-height:60px}
+.feld textarea{min-height:150px;resize:vertical;line-height:1.55}
+.feld input:focus,.feld textarea:focus{outline:3px solid var(--terra);outline-offset:1px;border-color:var(--terra)}
+.feld .notiz{font-size:16px;color:var(--ink-2);margin-top:6px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+@media (max-width:640px){.zwei{grid-template-columns:1fr}}
+.einwilligung{display:flex;gap:14px;align-items:flex-start;margin:8px 0 6px;cursor:pointer;font-size:17px;line-height:1.6;color:var(--ink-2)}
+.einwilligung input{width:28px;height:28px;flex:none;margin-top:2px;accent-color:var(--terra)}
+.einwilligung a{color:var(--terra)}
+
+.fehler{display:none;margin-top:16px;color:var(--fehler);font-size:18px;font-weight:600}
+.fehler.zeigen{display:block}
+.feld.falsch input,.feld.falsch textarea{border-color:var(--fehler)}
+
+.knoepfe{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.knopf{font:inherit;font-size:19px;font-weight:600;border-radius:10px;padding:14px 28px;min-height:58px;cursor:pointer;border:2px solid transparent}
+.knopf.vor{background:var(--terra);color:#fff}
+.knopf.vor:hover{background:var(--terra-d)}
+.knopf.zur{background:none;border-color:rgba(26,20,16,.3);color:var(--ink)}
+.knopf.zur:hover{border-color:var(--ink)}
+.knopf:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+.knopf[disabled]{opacity:.6;cursor:wait}
+
+.zusammenfassung{background:var(--paper-2);border-radius:12px;padding:20px 22px;margin-bottom:26px}
+.zusammenfassung h3{font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin-bottom:10px}
+.zusammenfassung dl{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:6px 16px;font-size:18px}
+.zusammenfassung dt{color:var(--ink-2)}
+.zusammenfassung dd{font-weight:600}
+@media (max-width:560px){.zusammenfassung dl{grid-template-columns:1fr}.zusammenfassung dd{margin-bottom:8px}}
+
+.fertig{display:none;text-align:left}
+.fertig.aktiv{display:block}
+.fertig h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,4vw,42px);line-height:1.15;margin-bottom:14px}
+.fertig p{max-width:64ch;margin-bottom:14px}
+.fertig ul{margin:0 0 20px 1.2em}
+.fertig a.knopf{display:inline-flex;align-items:center;text-decoration:none;margin:6px 10px 0 0}
+
+.rahmen{border-top:3px solid var(--ink);margin-top:56px;padding-top:26px}
+.rahmen h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,3vw,32px);margin-bottom:12px}
+.rahmen p{color:var(--ink-2);max-width:66ch;margin-bottom:12px;font-size:19px}
+
+.fuss{background:var(--ink);color:rgba(255,255,255,.8);font-size:17px}
+.fuss-in{max-width:880px;margin:0 auto;padding:28px 20px;display:flex;gap:20px;flex-wrap:wrap}
+.fuss a{color:rgba(255,255,255,.86);min-height:48px;display:inline-flex;align-items:center}
+</style>
+<script defer src="/js/stats.js"></script>
+</head>
+<body>
+
+<header class="kopf"><div class="kopf-in">
+  <a class="logo" href="/">Freiweit <span>mit Nihat</span></a>
+  <a class="zurueck" href="/immobilien">Alle Objekte ansehen</a>
+</div></header>
+
+<section class="hero"><div class="hero-in">
+  <div class="kicker">Immobilien im Ausland</div>
+  <h1>Was suchst du?</h1>
+  <p>Tipp an, was für dich passt. Das dauert etwa zwei Minuten. Deine Anfrage kommt bei mir an, und ich gebe sie an einen Makler vor Ort weiter, der sich bei dir meldet. In Pattaya ist das Michael, den du aus meinen Videos kennst. Es kann das Objekt aus dem Video sein oder ein ganz anderes.</p>
+  <p class="objekt-hinweis" id="objekt-hinweis"></p>
+</div></section>
+
+<main class="haupt">
+  <form id="anfrage" novalidate>
+    <div class="fortschritt"><span class="zahl" id="fs-zahl">Schritt 1 von 9</span><span class="thema" id="fs-thema"></span></div>
+    <div class="balken" aria-hidden="true"><div id="fs-balken"></div></div>
+
+    <!-- 1 -->
+    <section class="schritt" data-thema="Kaufen oder mieten" data-pflicht="ziel">
+      <h2 class="frage">Willst du kaufen oder mieten?<span class="pflicht-marke">Pflicht</span></h2>
+      <p class="hilfe">Die meisten, die ich getroffen habe, haben erst gemietet.</p>
+      <div class="wahl breit">
+        <label><input type="radio" name="ziel" value="kaufen"><span class="marke"></span><span class="text">Kaufen</span></label>
+        <label><input type="radio" name="ziel" value="mieten"><span class="marke"></span><span class="text">Mieten</span></label>
+        <label><input type="radio" name="ziel" value="erst-mieten"><span class="marke"></span><span class="text">Erst mieten, später vielleicht kaufen</span></label>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="schritt" data-thema="Ort" data-pflicht="ort">
+      <h2 class="frage">Wo soll es sein?<span class="pflicht-marke">Pflicht</span></h2>
+      <p class="hilfe">Mehrere Antworten möglich.</p>
+      <div class="wahl" id="orte"></div>
+    </section>
+
+    <!-- 3 -->
+    <section class="schritt" data-thema="Objekt" data-pflicht="art">
+      <h2 class="frage">Was für ein Objekt?<span class="pflicht-marke">Pflicht</span></h2>
+      <p class="hilfe">Mehrere Antworten möglich.</p>
+      <div class="wahl">
+        <label><input type="checkbox" name="art" value="Wohnung (Condo)"><span class="marke"></span><span class="text">Wohnung (Condo)</span></label>
+        <label><input type="checkbox" name="art" value="Haus"><span class="marke"></span><span class="text">Haus</span></label>
+        <label><input type="checkbox" name="art" value="Poolvilla"><span class="marke"></span><span class="text">Poolvilla</span></label>
+        <label><input type="checkbox" name="art" value="Townhouse"><span class="marke"></span><span class="text">Townhouse</span></label>
+      </div>
+      <div class="unterfrage" data-pflicht="groesse">
+        <h2 class="frage">Wie viele Schlafzimmer?<span class="pflicht-marke">Pflicht</span></h2>
+        <div class="wahl">
+          <label><input type="radio" name="groesse" value="Studio"><span class="marke"></span><span class="text">Studio<span class="klein">ein Raum mit Bett</span></span></label>
+          <label><input type="radio" name="groesse" value="1 Schlafzimmer"><span class="marke"></span><span class="text">1 Schlafzimmer</span></label>
+          <label><input type="radio" name="groesse" value="2 Schlafzimmer"><span class="marke"></span><span class="text">2 Schlafzimmer</span></label>
+          <label><input type="radio" name="groesse" value="3 oder mehr"><span class="marke"></span><span class="text">3 oder mehr</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="schritt" data-thema="Budget" data-pflicht="budget">
+      <h2 class="frage" id="budget-frage">Wie viel willst du im Monat ausgeben?<span class="pflicht-marke">Pflicht</span></h2>
+      <p class="hilfe" id="budget-hilfe">Warmmiete ohne Strom. Euro gerundet, Kurs der Europäischen Zentralbank vom 25.11.2026.</p>
+      <div class="wahl breit" id="budget"></div>
+      <div class="unterfrage" id="unter-miete" data-pflicht="dauer">
+        <h2 class="frage">Für wie lange?<span class="pflicht-marke">Pflicht</span></h2>
+        <div class="wahl">
+          <label><input type="radio" name="dauer" value="1 bis 3 Monate"><span class="marke"></span><span class="text">1 bis 3 Monate</span></label>
+          <label><input type="radio" name="dauer" value="3 bis 6 Monate"><span class="marke"></span><span class="text">3 bis 6 Monate</span></label>
+          <label><input type="radio" name="dauer" value="6 bis 12 Monate"><span class="marke"></span><span class="text">6 bis 12 Monate</span></label>
+          <label><input type="radio" name="dauer" value="länger als 1 Jahr"><span class="marke"></span><span class="text">Länger als 1 Jahr</span></label>
+        </div>
+      </div>
+      <div class="unterfrage" id="unter-kauf" data-pflicht="zahlung">
+        <h2 class="frage">Wie würdest du bezahlen?<span class="pflicht-marke">Pflicht</span></h2>
+        <div class="wahl breit">
+          <label><input type="radio" name="zahlung" value="Eigenkapital vorhanden"><span class="marke"></span><span class="text">Das Geld ist vorhanden</span></label>
+          <label><input type="radio" name="zahlung" value="nach Verkauf in DACH"><span class="marke"></span><span class="text">Erst nach einem Verkauf zu Hause</span></label>
+          <label><input type="radio" name="zahlung" value="Finanzierung nötig"><span class="marke"></span><span class="text">Ich bräuchte eine Finanzierung</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="schritt" data-thema="Zeitpunkt" data-pflicht="wann">
+      <h2 class="frage">Wann soll es losgehen?<span class="pflicht-marke">Pflicht</span></h2>
+      <div class="wahl breit">
+        <label><input type="radio" name="wann" value="sofort"><span class="marke"></span><span class="text">So bald wie möglich</span></label>
+        <label><input type="radio" name="wann" value="1 bis 3 Monate"><span class="marke"></span><span class="text">In 1 bis 3 Monaten</span></label>
+        <label><input type="radio" name="wann" value="3 bis 6 Monate"><span class="marke"></span><span class="text">In 3 bis 6 Monaten</span></label>
+        <label><input type="radio" name="wann" value="6 bis 12 Monate"><span class="marke"></span><span class="text">In 6 bis 12 Monaten</span></label>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="schritt" data-thema="Wer zieht ein" data-pflicht="wer">
+      <h2 class="frage">Wer zieht ein?<span class="pflicht-marke">Pflicht</span></h2>
+      <div class="wahl">
+        <label><input type="radio" name="wer" value="allein"><span class="marke"></span><span class="text">Ich allein</span></label>
+        <label><input type="radio" name="wer" value="zu zweit"><span class="marke"></span><span class="text">Zu zweit</span></label>
+        <label><input type="radio" name="wer" value="Familie mit Kindern"><span class="marke"></span><span class="text">Familie mit Kindern</span></label>
+        <label><input type="radio" name="wer" value="Kapitalanlage, wohne nicht selbst"><span class="marke"></span><span class="text">Niemand, es ist eine Anlage</span></label>
+      </div>
+      <div class="unterfrage">
+        <h2 class="frage">Kommt ein Haustier mit?</h2>
+        <div class="wahl">
+          <label><input type="radio" name="tier" value="nein"><span class="marke"></span><span class="text">Nein</span></label>
+          <label><input type="radio" name="tier" value="ja, Hund"><span class="marke"></span><span class="text">Ja, ein Hund</span></label>
+          <label><input type="radio" name="tier" value="ja, Katze"><span class="marke"></span><span class="text">Ja, eine Katze</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="schritt" data-thema="Was dir wichtig ist">
+      <h2 class="frage">Was ist dir wichtig?</h2>
+      <p class="hilfe">Freiwillig, mehrere Antworten möglich. Je mehr du antippst, desto besser kann ich filtern.</p>
+      <div class="wahl">
+        <label><input type="checkbox" name="wichtig" value="Meerblick"><span class="marke"></span><span class="text">Meerblick</span></label>
+        <label><input type="checkbox" name="wichtig" value="Strand zu Fuß"><span class="marke"></span><span class="text">Strand zu Fuß</span></label>
+        <label><input type="checkbox" name="wichtig" value="Pool"><span class="marke"></span><span class="text">Pool</span></label>
+        <label><input type="checkbox" name="wichtig" value="Fitnessraum"><span class="marke"></span><span class="text">Fitnessraum</span></label>
+        <label><input type="checkbox" name="wichtig" value="ruhige Lage"><span class="marke"></span><span class="text">Ruhige Lage</span></label>
+        <label><input type="checkbox" name="wichtig" value="Einkaufen und Essen zu Fuß"><span class="marke"></span><span class="text">Einkaufen und Essen zu Fuß</span></label>
+        <label><input type="checkbox" name="wichtig" value="Krankenhaus in der Nähe"><span class="marke"></span><span class="text">Krankenhaus in der Nähe</span></label>
+        <label><input type="checkbox" name="wichtig" value="Aufzug, wenig Stufen"><span class="marke"></span><span class="text">Aufzug, wenig Stufen</span></label>
+        <label><input type="checkbox" name="wichtig" value="schnelles Internet, Arbeitsplatz"><span class="marke"></span><span class="text">Schnelles Internet, Arbeitsplatz</span></label>
+        <label><input type="checkbox" name="wichtig" value="Parkplatz"><span class="marke"></span><span class="text">Parkplatz</span></label>
+        <label><input type="checkbox" name="wichtig" value="voll möbliert"><span class="marke"></span><span class="text">Voll möbliert</span></label>
+        <label><input type="checkbox" name="wichtig" value="richtige Küche"><span class="marke"></span><span class="text">Richtige Küche zum Kochen</span></label>
+        <label><input type="checkbox" name="wichtig" value="Neubau"><span class="marke"></span><span class="text">Neubau</span></label>
+        <label><input type="checkbox" name="wichtig" value="Sicherheitsdienst"><span class="marke"></span><span class="text">Sicherheitsdienst rund um die Uhr</span></label>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="schritt" data-thema="Besichtigung" data-pflicht="vorort">
+      <h2 class="frage">Wo bist du gerade?<span class="pflicht-marke">Pflicht</span></h2>
+      <div class="wahl breit">
+        <label><input type="radio" name="vorort" value="schon vor Ort"><span class="marke"></span><span class="text">Ich bin schon vor Ort</span></label>
+        <label><input type="radio" name="vorort" value="Reise gebucht"><span class="marke"></span><span class="text">Meine Reise ist gebucht</span></label>
+        <label><input type="radio" name="vorort" value="noch zu Hause"><span class="marke"></span><span class="text">Noch zu Hause, ohne festen Reisetermin</span></label>
+      </div>
+      <div class="unterfrage">
+        <h2 class="frage">Wäre eine Besichtigung per Video für dich in Ordnung?</h2>
+        <div class="wahl">
+          <label><input type="radio" name="video" value="ja"><span class="marke"></span><span class="text">Ja, gern</span></label>
+          <label><input type="radio" name="video" value="nur persönlich"><span class="marke"></span><span class="text">Nein, nur persönlich</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="schritt" data-thema="Kontakt" id="schritt-kontakt">
+      <h2 class="frage">Wie erreiche ich dich?</h2>
+      <p class="hilfe">Prüf kurz deine Angaben. Dann noch Name und E-Mail, und ab damit.</p>
+      <div class="zusammenfassung" id="zusammenfassung"><h3>Deine Angaben</h3><dl id="zf-liste"></dl></div>
+      <div class="zwei">
+        <div class="feld" id="f-name"><label for="name">Vorname <span class="pflicht-marke">Pflicht</span></label><input type="text" id="name" name="name" autocomplete="given-name"></div>
+        <div class="feld" id="f-email"><label for="email">E-Mail <span class="pflicht-marke">Pflicht</span></label><input type="email" id="email" name="email" autocomplete="email" inputmode="email"></div>
+      </div>
+      <div class="feld"><label for="telefon">WhatsApp oder Telefon (freiwillig)</label><input type="tel" id="telefon" name="telefon" autocomplete="tel" inputmode="tel"><div class="notiz">Mit Ländervorwahl, zum Beispiel +49 oder +66.</div></div>
+      <div class="feld">
+        <label>Wie soll ich mich melden?</label>
+        <div class="wahl">
+          <label><input type="radio" name="weg" value="E-Mail" checked><span class="marke"></span><span class="text">Per E-Mail</span></label>
+          <label><input type="radio" name="weg" value="WhatsApp"><span class="marke"></span><span class="text">Per WhatsApp</span></label>
+        </div>
+      </div>
+      <div class="feld"><label for="nachricht">Was sollte ich noch wissen? (freiwillig)</label><textarea id="nachricht" name="nachricht" placeholder="Zum Beispiel ein bestimmtes Objekt aus einem Video, ein Stockwerk, ein Viertel, das du nicht willst, oder Fragen zum Ablauf."></textarea></div>
+      <label class="einwilligung" id="f-ok"><input type="checkbox" id="ok"><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung dieser Anfrage gespeichert werden und Nihat sie an einen Makler vor Ort weitergibt (in Pattaya derzeit Michael), damit er sich bei mir meldet. Mehr in der <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>. <span class="pflicht-marke">Pflicht</span></span></label>
+      <input type="checkbox" name="botcheck" class="versteckt" style="display:none" tabindex="-1" autocomplete="off">
+    </section>
+
+    <p class="fehler" id="fehler" role="alert"></p>
+
+    <div class="knoepfe" id="knoepfe">
+      <button type="button" class="knopf zur" id="zurueck">Zurück</button>
+      <button type="button" class="knopf vor" id="weiter">Weiter</button>
+    </div>
+  </form>
+
+  <section class="fertig" id="fertig" aria-live="polite">
+    <div class="kicker" style="color:var(--terra)">Angekommen</div>
+    <h2>Danke, <span id="fertig-name"></span>. Deine Anfrage ist bei mir.</h2>
+    <p>Ich lese jede Anfrage selbst und gebe sie an einen Makler vor Ort weiter. Für Pattaya ist das Michael. Er meldet sich auf dem Weg, den du angetippt hast. Für eine Gegend, in der ich niemanden kenne, sage ich dir das ehrlich.</p>
+    <p>Bis dahin:</p>
+    <ul>
+      <li>Schau dir die Objekte an, die ich schon gefilmt habe.</li>
+      <li>Hol dir die echte Monatsrechnung, damit du weißt, was neben der Miete noch dazukommt.</li>
+    </ul>
+    <a class="knopf vor" href="/immobilien">Alle Objekte</a>
+    <a class="knopf zur" href="/rechnung?via=anfrage">Die echte Monatsrechnung</a>
+  </section>
+
+  <section class="rahmen">
+    <h2>Was du von mir bekommst, und was nicht</h2>
+    <p>Ich selbst bin kein Makler. Ich habe viele Objekte selbst besucht und gefilmt und kenne Leute vor Ort. Die Objekte in meinen Videos sind Angebote der Makler und Eigentümer dort, nicht meine. Mit deinen Angaben weiß der Makler gleich, was du suchst, und du musst nicht alles zweimal erzählen.</p>
+    <p>Deine Angaben gehen nur an den Makler, der sich um deine Anfrage kümmert, an niemanden sonst. Vor einem Kauf gehört immer ein unabhängiger Anwalt vor Ort dazu.</p>
+  </section>
+</main>
+
+<footer class="fuss"><div class="fuss-in">
+  <a href="/">Startseite</a><a href="/immobilien">Immobilien</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a>
+</div></footer>
+
+<script src="/js/w3f.js"></script>
+<script>
+(function(){
+  var KURS = 37.321; // EZB-Referenzkurs 25.11.2026, 1 EUR in THB
+  var ORTE = [
+    ['pattaya-nord','Pattaya Nord, Naklua, Wongamat'],
+    ['pattaya-mitte','Pattaya Zentrum'],
+    ['pratumnak','Pratumnak'],
+    ['jomtien','Jomtien'],
+    ['na-jomtien','Na Jomtien, Bang Saray'],
+    ['si-racha','Si Racha, Bang Saen'],
+    ['hua-hin','Hua Hin, Cha-am'],
+    ['bangkok','Bangkok'],
+    ['inseln','Koh Samui, Koh Phangan'],
+    ['phuket','Phuket'],
+    ['chiang-mai','Chiang Mai'],
+    ['vietnam','Vietnam, Da Nang']
+  ];
+  var MIETE = [[0,15000],[15000,25000],[25000,40000],[40000,70000],[70000,0]];
+  var KAUF  = [[0,3e6],[3e6,6e6],[6e6,10e6],[10e6,20e6],[20e6,0]];
+
+  var q = new URLSearchParams(location.search);
+  var via = (q.get('via') || 'web').slice(0,20);
+  var objekt = (q.get('objekt') || '').slice(0,120);
+
+  var orteBox = document.getElementById('orte');
+  ORTE.forEach(function(o){
+    orteBox.insertAdjacentHTML('beforeend','<label><input type="checkbox" name="ort" value="'+o[1]+'" data-key="'+o[0]+'"><span class="marke"></span><span class="text">'+o[1]+'</span></label>');
+  });
+  if (objekt) {
+    var h = document.getElementById('objekt-hinweis');
+    h.textContent = 'Du kommst über das Video zu: ' + objekt;
+    h.style.display = 'block';
+  }
+  if (q.get('ort')) {
+    var vor = orteBox.querySelector('input[data-key="'+q.get('ort').replace(/[^a-z-]/g,'')+'"]');
+    if (vor) vor.checked = true;
+  }
+  if (q.get('ziel')) {
+    var z = document.querySelector('input[name=ziel][value="'+q.get('ziel').replace(/[^a-z-]/g,'')+'"]');
+    if (z) z.checked = true;
+  }
+
+  function tausend(n){ return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function baht(n){ return n >= 1e6 ? (n/1e6).toString().replace('.',',') + ' Mio. ฿' : tausend(n) + ' ฿'; }
+  function euro(n){ var e = n / KURS; e = e >= 20000 ? Math.round(e/1000)*1000 : Math.round(e/10)*10; return 'rund ' + tausend(e) + ' €'; }
+  function spanne(a,b){
+    if (!a) return ['bis ' + baht(b), 'bis ' + euro(b).replace('rund ','')];
+    if (!b) return ['über ' + baht(a), 'über ' + euro(a).replace('rund ','')];
+    return [baht(a) + ' bis ' + baht(b), euro(a) + ' bis ' + euro(b).replace('rund ','')];
+  }
+  function istKauf(){ var v = wert('ziel'); return v === 'kaufen'; }
+  function baueBudget(){
+    var liste = istKauf() ? KAUF : MIETE;
+    var alt = wert('budget');
+    document.getElementById('budget-frage').firstChild.nodeValue = istKauf() ? 'Wie hoch ist dein Kaufbudget?' : 'Wie viel willst du im Monat ausgeben?';
+    document.getElementById('budget-hilfe').textContent = (istKauf() ? 'Kaufpreis gesamt.' : 'Miete pro Monat, ohne Strom.') + ' Euro gerundet, Kurs der Europäischen Zentralbank vom 25.11.2026. Für Vietnam zählt der Euro-Wert.';
+    var box = document.getElementById('budget'); box.innerHTML = '';
+    liste.forEach(function(s){
+      var t = spanne(s[0],s[1]); var v = t[0] + ' (' + t[1] + ')';
+      box.insertAdjacentHTML('beforeend','<label><input type="radio" name="budget" value="'+v+'"'+(alt===v?' checked':'')+'><span class="marke"></span><span class="text">'+t[0]+'<span class="klein">'+t[1]+'</span></span></label>');
+    });
+    document.getElementById('unter-miete').style.display = istKauf() ? 'none' : '';
+    document.getElementById('unter-kauf').style.display = istKauf() ? '' : 'none';
+  }
+
+  function wert(n){ var e = document.querySelector('input[name="'+n+'"]:checked'); return e ? e.value : ''; }
+  function werte(n){ return Array.prototype.map.call(document.querySelectorAll('input[name="'+n+'"]:checked'), function(e){ return e.value; }); }
+
+  var schritte = document.querySelectorAll('.schritt');
+  var nr = 0;
+  var fehler = document.getElementById('fehler');
+  var weiter = document.getElementById('weiter');
+  var zurueck = document.getElementById('zurueck');
+
+  function zeige(i){
+    nr = i;
+    schritte.forEach(function(s,k){ s.classList.toggle('aktiv', k === i); });
+    var s = schritte[i];
+    document.getElementById('fs-zahl').textContent = 'Schritt ' + (i+1) + ' von ' + schritte.length;
+    document.getElementById('fs-thema').textContent = s.dataset.thema || '';
+    document.getElementById('fs-balken').style.width = Math.round((i+1)/schritte.length*100) + '%';
+    zurueck.style.visibility = i === 0 ? 'hidden' : 'visible';
+    weiter.textContent = i === schritte.length-1 ? 'Anfrage abschicken' : 'Weiter';
+    fehler.classList.remove('zeigen');
+    if (s.id === 'schritt-kontakt') zusammenfassen();
+    if (i === 3) baueBudget();
+    var oben = document.querySelector('.fortschritt').getBoundingClientRect().top + window.scrollY - 12;
+    if (window.scrollY > oben) window.scrollTo(0, oben);
+  }
+
+  // Pflichtfelder je Schritt: Abschnitt und Unterfragen mit data-pflicht, die sichtbar sind
+  function pruefen(s){
+    var felder = [];
+    if (s.dataset.pflicht) felder.push(s.dataset.pflicht);
+    s.querySelectorAll('.unterfrage[data-pflicht]').forEach(function(u){ if (u.style.display !== 'none') felder.push(u.dataset.pflicht); });
+    for (var k=0;k<felder.length;k++){ if (!werte(felder[k]).length) return false; }
+    return true;
+  }
+
+  weiter.addEventListener('click', function(){
+    var s = schritte[nr];
+    if (s.id === 'schritt-kontakt') return absenden();
+    if (!pruefen(s)) { fehler.textContent = 'Bitte tipp bei jeder Frage mit „Pflicht“ eine Antwort an.'; fehler.classList.add('zeigen'); return; }
+    zeige(nr+1);
+  });
+  zurueck.addEventListener('click', function(){ if (nr > 0) zeige(nr-1); });
+
+  // Einfachauswahl im ersten Schritt: gleich weiter, spart einen Tipp
+  document.querySelectorAll('input[name=ziel]').forEach(function(r){
+    r.addEventListener('change', function(){ if (nr === 0) setTimeout(function(){ zeige(1); }, 250); });
+  });
+
+  function angaben(){
+    var a = [
+      ['Ziel', ({'kaufen':'Kaufen','mieten':'Mieten','erst-mieten':'Erst mieten, später vielleicht kaufen'})[wert('ziel')] || ''],
+      ['Ort', werte('ort').join(', ')],
+      ['Objekt', werte('art').join(', ')],
+      ['Schlafzimmer', wert('groesse')],
+      [istKauf() ? 'Kaufbudget' : 'Miete im Monat', wert('budget')]
+    ];
+    if (istKauf()) a.push(['Bezahlung', wert('zahlung')]); else a.push(['Mietdauer', wert('dauer')]);
+    a.push(['Start', wert('wann')], ['Wer zieht ein', wert('wer')], ['Haustier', wert('tier') || 'keine Angabe'],
+           ['Wichtig', werte('wichtig').join(', ') || 'keine Angabe'], ['Gerade', wert('vorort')], ['Video-Besichtigung', wert('video') || 'keine Angabe']);
+    if (objekt) a.unshift(['Aus dem Video', objekt]);
+    return a;
+  }
+  function zusammenfassen(){
+    var dl = document.getElementById('zf-liste'); dl.innerHTML = '';
+    angaben().forEach(function(p){
+      var dt = document.createElement('dt'); dt.textContent = p[0];
+      var dd = document.createElement('dd'); dd.textContent = p[1] || 'keine Angabe';
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+  }
+
+  // Grobe Einstufung fuer den Betreff: wer bald startet und schon vor Ort ist, kommt zuerst
+  function einstufung(){
+    var p = 0, w = wert('wann'), o = wert('vorort'), b = wert('budget'), z = wert('zahlung');
+    if (w === 'sofort') p += 3; else if (w === '1 bis 3 Monate') p += 2; else if (w === '3 bis 6 Monate') p += 1;
+    if (o === 'schon vor Ort') p += 2; else if (o === 'Reise gebucht') p += 1;
+    if (b) p += 1;
+    if (istKauf() && z === 'Eigenkapital vorhanden') p += 1;
+    if (document.getElementById('telefon').value.trim()) p += 1;
+    return p >= 6 ? 'HEISS' : p >= 3 ? 'WARM' : 'KALT';
+  }
+
+  function feldFehler(id, an){ document.getElementById(id).classList.toggle('falsch', an); }
+
+  function absenden(){
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var ok = document.getElementById('ok').checked;
+    var gut = true;
+    feldFehler('f-name', !name); if (!name) gut = false;
+    var mailOk = typeof isEmail === 'function' ? isEmail(email) : /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    feldFehler('f-email', !mailOk); if (!mailOk) gut = false;
+    if (!ok) gut = false;
+    if (!gut) {
+      fehler.textContent = !name || !mailOk ? 'Bitte Vorname und eine gültige E-Mail-Adresse eintragen.' : 'Bitte setz noch den Haken bei der Einwilligung.';
+      fehler.classList.add('zeigen'); return;
+    }
+    var stufe = einstufung();
+    var a = angaben();
+    var tel = document.getElementById('telefon').value.trim();
+    var text = 'Immobilien-Anfrage über die Website\nEinstufung: ' + stufe + '\nQuelle: ' + via + '\n\n'
+      + a.map(function(p){ return p[0] + ': ' + (p[1] || 'keine Angabe'); }).join('\n')
+      + '\n\nName: ' + name + '\nE-Mail: ' + email + '\nWhatsApp/Telefon: ' + (tel || 'keine Angabe')
+      + '\nKontakt gewünscht per: ' + wert('weg')
+      + '\n\nNachricht:\n' + (document.getElementById('nachricht').value.trim() || 'keine');
+    var kurzOrt = (werte('ort')[0] || '').split(',')[0];
+    var betreff = '[' + stufe + '] Immobilien-Anfrage: ' + (a[objekt?1:0][1]) + ', ' + kurzOrt + ', ' + (wert('budget').split(' (')[0]) + ', ' + name;
+
+    weiter.disabled = true; weiter.textContent = 'Wird gesendet …';
+    w3fSend({ subject: betreff, from_name: 'Freiweit Immobilien-Anfrage', name: name, email: email, replyto: email, message: text })
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if (!j || !j.success) throw new Error('nicht angenommen');
+        document.getElementById('anfrage').style.display = 'none';
+        document.getElementById('fertig-name').textContent = name;
+        document.getElementById('fertig').classList.add('aktiv');
+        window.scrollTo(0, 0);
+      })
+      .catch(function(){
+        weiter.disabled = false; weiter.textContent = 'Anfrage abschicken';
+        fehler.innerHTML = 'Das Senden hat gerade nicht geklappt. Versuch es bitte gleich noch einmal oder schreib mir direkt an <a href="mailto:freiweit.mit.nihat@gmail.com">freiweit.mit.nihat@gmail.com</a>.';
+        fehler.classList.add('zeigen');
+      });
+  }
+
+  zeige(0);
+  if (wert('ziel')) { /* aus der URL vorbelegt: trotzdem bei Schritt 1 bleiben, damit man es sieht */ }
+})();
+</script>
+</body>
+</html>
