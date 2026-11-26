@@ -34,9 +34,9 @@ KAESTEN = {
    'Am häufigsten vergessen: Krankenversicherung, Visum-Verlängerungen und einmalig <strong>300 bis 500 €</strong> für Kaution und Grundausstattung.',
  ],
  'lebenshaltungskosten-vietnam': [
-   'In Da Nang reichen sparsam rund <strong>323 € im Monat</strong>, komfortabel rund <strong>825 €</strong>. Realistisch sind etwa <strong>550 €</strong>.',
-   'Vietnam ist günstiger als Thailand, aber nicht so günstig wie oft erzählt wird.',
-   'Wohnen kostet <strong>180 bis 380 €</strong>, mit Meerblick geht es ab 250 € los. Eine Pho kostet 1,50 €, ein Banh Mi 0,80 €.',
+   'Meine echte Monatsrechnung für Da Nang: <strong>1.254 € im Monat</strong>, Posten für Posten im Video vorgerechnet.',
+   'Größte Posten: <strong>400 € Essen gehen</strong> und <strong>300 € Miete</strong> für ein Studio mit Meerblick, 50 m vom Strand.',
+   'Das ist kein Sparmodus: jede Mahlzeit draußen, oft mit Freunden, dazu 100 € Nahrungsergänzung.',
    'Die Sprachbarriere ist höher als in Thailand. Für Behördengänge und Verträge brauchst du Übersetzung oder Hilfe.',
  ],
  'pattaya-kosten-2026': [
