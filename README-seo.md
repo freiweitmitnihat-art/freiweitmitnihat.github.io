@@ -47,6 +47,8 @@ python3 homepage/tools/seo-pruefen.py
 
 Nach dem Push gehören zwei Handgriffe in der Search Console dazu:
 Sitemap neu einreichen und neue Seiten per URL-Prüfung zur Indexierung anmelden.
+**Das erledigt Claude nach jedem Push selbst, ohne Nachfrage** (Nihat, 26.11.2026),
+über Claude in Chrome. Ablauf und Fallen: Gedächtnis `search-console-zugang`.
 
 ---
 
